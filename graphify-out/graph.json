@@ -113,8 +113,8 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 12,
+      "community_name": "Community 12",
       "file_type": "code",
       "norm_label": "marketingmanagementtool",
       "source_file": "includes/class-marketing-management-tool.php",
@@ -884,40 +884,76 @@
       "source_location": "L18"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
-      "label": ".call()",
+      "id": "includes_endpoint_guard_closure_1",
+      "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".call()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L27"
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L39"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_configuration_schema",
-      "label": ".configuration_schema()",
+      "id": "includes_endpoint_guard_closure_2",
+      "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".configuration_schema()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L5"
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L49"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_definition",
-      "label": ".definition()",
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_has_blocked",
+      "label": "getmcp_extensions_guard_has_blocked()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".definition()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L24"
+      "norm_label": "getmcp_extensions_guard_has_blocked()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L33"
+    },
+    {
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_marketing_missing",
+      "label": "getmcp_extensions_guard_marketing_missing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": "getmcp_extensions_guard_marketing_missing()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L15"
+    },
+    {
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_ready",
+      "label": "getmcp_extensions_guard_ready()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": "getmcp_extensions_guard_ready()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L12"
+    },
+    {
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_row",
+      "label": "getmcp_extensions_guard_row()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": "getmcp_extensions_guard_row()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L21"
     },
     {
       "id": "admin_oauth_user_picker_createoauthuserpicker",
@@ -932,12 +968,48 @@
       "source_location": "L3"
     },
     {
-      "id": "getmcp_extensions_closure_1",
-      "label": "{closure#1}()",
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
+      "label": ".call()",
       "_callable": true,
       "_origin": "ast",
       "community": 12,
       "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".call()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L27"
+    },
+    {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_configuration_schema",
+      "label": ".configuration_schema()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".configuration_schema()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_definition",
+      "label": ".definition()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".definition()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L24"
+    },
+    {
+      "id": "getmcp_extensions_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
       "file_type": "code",
       "norm_label": "{closure#1}()",
       "source_file": "getmcp-extensions.php",
@@ -1314,78 +1386,6 @@
       "norm_label": ".migrate()",
       "source_file": "includes/class-lifecycle.php",
       "source_location": "L22"
-    },
-    {
-      "id": "includes_class_runtime_closure_1",
-      "label": "{closure#1}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L67"
-    },
-    {
-      "id": "includes_class_runtime_closure_2",
-      "label": "{closure#2}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "{closure#2}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L79"
-    },
-    {
-      "id": "includes_class_runtime_closure_3",
-      "label": "{closure#3}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "{closure#3}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_runtime_closure_4",
-      "label": "{closure#4}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "{closure#4}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_runtime_closure_5",
-      "label": "{closure#5}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "{closure#5}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L103"
-    },
-    {
-      "id": "includes_class_runtime_closure_6",
-      "label": "{closure#6}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "{closure#6}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L103"
     },
     {
       "id": "includes_class_runtime_runtime_assert_enabled",
@@ -1892,6 +1892,18 @@
       "source_location": "L14"
     },
     {
+      "id": "includes_class_updater_updater_cached_update",
+      "label": ".cached_update()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "code",
+      "norm_label": ".cached_update()",
+      "source_file": "includes/class-updater.php",
+      "source_location": "L76"
+    },
+    {
       "id": "includes_class_updater_updater_checker",
       "label": ".checker()",
       "_callable": true,
@@ -1901,7 +1913,19 @@
       "file_type": "code",
       "norm_label": ".checker()",
       "source_file": "includes/class-updater.php",
-      "source_location": "L37"
+      "source_location": "L38"
+    },
+    {
+      "id": "includes_class_updater_updater_details",
+      "label": ".details()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "code",
+      "norm_label": ".details()",
+      "source_file": "includes/class-updater.php",
+      "source_location": "L65"
     },
     {
       "id": "includes_class_updater_updater_icons",
@@ -1913,7 +1937,7 @@
       "file_type": "code",
       "norm_label": ".icons()",
       "source_file": "includes/class-updater.php",
-      "source_location": "L60"
+      "source_location": "L86"
     },
     {
       "id": "includes_class_updater_updater_normalize",
@@ -1925,7 +1949,19 @@
       "file_type": "code",
       "norm_label": ".normalize()",
       "source_file": "includes/class-updater.php",
-      "source_location": "L44"
+      "source_location": "L45"
+    },
+    {
+      "id": "includes_class_updater_updater_section",
+      "label": ".section()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Community 7",
+      "file_type": "code",
+      "norm_label": ".section()",
+      "source_file": "includes/class-updater.php",
+      "source_location": "L61"
     },
     {
       "id": "includes_class_updater_updater_transient",
@@ -1937,7 +1973,7 @@
       "file_type": "code",
       "norm_label": ".transient()",
       "source_file": "includes/class-updater.php",
-      "source_location": "L68"
+      "source_location": "L94"
     },
     {
       "id": "includes_class_updater_updater_valid_package_url",
@@ -1949,10 +1985,10 @@
       "file_type": "code",
       "norm_label": ".valid_package_url()",
       "source_file": "includes/class-updater.php",
-      "source_location": "L39"
+      "source_location": "L40"
     },
     {
-      "id": "includes_endpoint_guard_closure_1",
+      "id": "includes_class_runtime_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
@@ -1960,11 +1996,11 @@
       "community_name": "Community 9",
       "file_type": "code",
       "norm_label": "{closure#1}()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L39"
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L67"
     },
     {
-      "id": "includes_endpoint_guard_closure_2",
+      "id": "includes_class_runtime_closure_2",
       "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
@@ -1972,56 +2008,56 @@
       "community_name": "Community 9",
       "file_type": "code",
       "norm_label": "{closure#2}()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L49"
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L79"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_has_blocked",
-      "label": "getmcp_extensions_guard_has_blocked()",
+      "id": "includes_class_runtime_closure_3",
+      "label": "{closure#3}()",
       "_callable": true,
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_has_blocked()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L33"
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L102"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_marketing_missing",
-      "label": "getmcp_extensions_guard_marketing_missing()",
+      "id": "includes_class_runtime_closure_4",
+      "label": "{closure#4}()",
       "_callable": true,
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_marketing_missing()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L15"
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L102"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_ready",
-      "label": "getmcp_extensions_guard_ready()",
+      "id": "includes_class_runtime_closure_5",
+      "label": "{closure#5}()",
       "_callable": true,
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_ready()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L12"
+      "norm_label": "{closure#5}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L103"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_row",
-      "label": "getmcp_extensions_guard_row()",
+      "id": "includes_class_runtime_closure_6",
+      "label": "{closure#6}()",
       "_callable": true,
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_row()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L21"
+      "norm_label": "{closure#6}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L103"
     },
     {
       "id": "includes_class_authentication_settings",
@@ -2057,14 +2093,14 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_marketing_management_tool",
-      "label": "class-marketing-management-tool.php",
+      "id": "includes_endpoint_guard",
+      "label": "endpoint-guard.php",
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": "class-marketing-management-tool.php",
-      "source_file": "includes/class-marketing-management-tool.php",
+      "norm_label": "endpoint-guard.php",
+      "source_file": "includes/endpoint-guard.php",
       "source_location": "L1"
     },
     {
@@ -2079,14 +2115,14 @@
       "source_location": "L1"
     },
     {
-      "id": "getmcp_extensions",
-      "label": "getmcp-extensions.php",
+      "id": "includes_class_marketing_management_tool",
+      "label": "class-marketing-management-tool.php",
       "_origin": "ast",
       "community": 12,
       "community_name": "Community 12",
       "file_type": "code",
-      "norm_label": "getmcp-extensions.php",
-      "source_file": "getmcp-extensions.php",
+      "norm_label": "class-marketing-management-tool.php",
+      "source_file": "includes/class-marketing-management-tool.php",
       "source_location": "L1"
     },
     {
@@ -2101,14 +2137,14 @@
       "source_location": "L1"
     },
     {
-      "id": "admin_extensions_settings",
-      "label": "extensions-settings.js",
+      "id": "getmcp_extensions",
+      "label": "getmcp-extensions.php",
       "_origin": "ast",
       "community": 14,
       "community_name": "Community 14",
       "file_type": "code",
-      "norm_label": "extensions-settings.js",
-      "source_file": "admin/extensions-settings.js",
+      "norm_label": "getmcp-extensions.php",
+      "source_file": "getmcp-extensions.php",
       "source_location": "L1"
     },
     {
@@ -2123,11 +2159,22 @@
       "source_location": "L1"
     },
     {
-      "id": "admin_native_connections",
-      "label": "native-connections.js",
+      "id": "admin_extensions_settings",
+      "label": "extensions-settings.js",
       "_origin": "ast",
       "community": 16,
       "community_name": "Community 16",
+      "file_type": "code",
+      "norm_label": "extensions-settings.js",
+      "source_file": "admin/extensions-settings.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "admin_native_connections",
+      "label": "native-connections.js",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": "native-connections.js",
       "source_file": "admin/native-connections.js",
@@ -2153,17 +2200,6 @@
       "file_type": "code",
       "norm_label": "class-lifecycle.php",
       "source_file": "includes/class-lifecycle.php",
-      "source_location": "L1"
-    },
-    {
-      "id": "includes_class_runtime",
-      "label": "class-runtime.php",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "class-runtime.php",
-      "source_file": "includes/class-runtime.php",
       "source_location": "L1"
     },
     {
@@ -2343,6 +2379,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_sync_readme",
+      "label": "sync-readme.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "sync-readme.py",
+      "source_file": "tools/sync-readme.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_verify",
       "label": "verify.py",
       "_origin": "ast",
@@ -2384,6 +2431,17 @@
       "file_type": "rationale",
       "norm_label": "portable, code-only graphify ast map. no provider credentials or model/api...",
       "source_file": "tools/graph.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_sync_readme_rationale_1",
+      "label": "Generate the WordPress changelog from the single categorized canonical source.",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "generate the wordpress changelog from the single categorized canonical source.",
+      "source_file": "tools/sync-readme.py",
       "source_location": "L1"
     },
     {
@@ -2497,19 +2555,20 @@
       "source_location": "L3"
     },
     {
-      "id": "includes_endpoint_guard",
-      "label": "endpoint-guard.php",
+      "id": "includes_class_runtime",
+      "label": "class-runtime.php",
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "endpoint-guard.php",
-      "source_file": "includes/endpoint-guard.php",
+      "norm_label": "class-runtime.php",
+      "source_file": "includes/class-runtime.php",
       "source_location": "L1"
     },
     {
       "id": "hashlib",
       "label": "hashlib",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2521,6 +2580,7 @@
     {
       "id": "json",
       "label": "json",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2532,6 +2592,7 @@
     {
       "id": "os",
       "label": "os",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2543,6 +2604,7 @@
     {
       "id": "pathlib",
       "label": "pathlib",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2554,6 +2616,7 @@
     {
       "id": "re",
       "label": "re",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2565,6 +2628,7 @@
     {
       "id": "runpy",
       "label": "runpy",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2576,6 +2640,7 @@
     {
       "id": "shutil",
       "label": "shutil",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2587,6 +2652,7 @@
     {
       "id": "subprocess",
       "label": "subprocess",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2598,6 +2664,7 @@
     {
       "id": "sys",
       "label": "sys",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2609,6 +2676,7 @@
     {
       "id": "tempfile",
       "label": "tempfile",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -2620,6 +2688,7 @@
     {
       "id": "zipfile",
       "label": "zipfile",
+      "_origin": "semantic",
       "community": 6,
       "community_name": "Community 6",
       "external": true,
@@ -3087,6 +3156,18 @@
       "weight": 1.0
     },
     {
+      "source": "tools_sync_readme",
+      "target": "re",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/sync-readme.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "tools_verify",
       "target": "json",
       "relation": "imports",
@@ -3203,6 +3284,18 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/graph.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_sync_readme",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/sync-readme.py",
       "source_location": "L2",
       "weight": 1.0
     },
@@ -5085,7 +5178,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-updater.php",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -5096,7 +5189,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-updater.php",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -5107,7 +5200,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-updater.php",
-      "source_location": "L44",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_updater_updater",
+      "target": "includes_class_updater_updater_section",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-updater.php",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_updater_updater",
+      "target": "includes_class_updater_updater_details",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-updater.php",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_updater_updater",
+      "target": "includes_class_updater_updater_cached_update",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-updater.php",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -5118,7 +5244,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-updater.php",
-      "source_location": "L60",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -5129,7 +5255,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-updater.php",
-      "source_location": "L68",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -5162,6 +5288,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/graph.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_sync_readme_rationale_1",
+      "target": "tools_sync_readme",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/sync-readme.py",
       "source_location": "L1",
       "weight": 1.0
     },
@@ -5969,5 +6106,6 @@
       "weight": 1.0
     }
   ],
-  "hyperedges": []
+  "hyperedges": [],
+  "built_at_commit": "b70466e12ff3161688587029c0a6f4109b25eec3"
 }

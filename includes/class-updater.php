@@ -25,13 +25,14 @@ final class Updater {
         self::$checker->addFilter( 'vcs_update_detection_strategies', static function( array $strategies ): array {
             return isset( $strategies['latest_release'] ) ? array( 'latest_release' => $strategies['latest_release'] ) : array();
         } );
-        foreach ( array( 'request_info_result', 'request_update_result', 'pre_inject_info', 'pre_inject_update' ) as $hook ) {
+        foreach ( array( 'request_info_result', 'request_update_result', 'pre_inject_info' ) as $hook ) {
             self::$checker->addFilter( $hook, array( self::class, 'normalize' ) );
         }
+        self::$checker->addFilter( 'pre_inject_update', array( self::class, 'cached_update' ) );
         // Normalize both freshly written and cached WordPress update responses.
         add_filter( 'pre_set_site_transient_update_plugins', array( self::class, 'transient' ), 100 );
         add_filter( 'site_transient_update_plugins', array( self::class, 'transient' ), 100 );
-        // plugins_api details are provided by the checker's validated info path.
+        add_filter( 'plugins_api_result', array( self::class, 'details' ), 100, 3 );
     }
 
     public static function checker() { return self::$checker; }
@@ -49,12 +50,37 @@ final class Updater {
         }
         $info->icons = self::icons( is_array( $info->icons ?? null ) ? $info->icons : array() );
         if ( property_exists( $info, 'sections' ) ) {
-            foreach ( $info->sections as $key => $html ) { $info->sections[$key] = wp_kses_post( (string) $html ); }
+            foreach ( $info->sections as $key => $html ) { $info->sections[$key] = self::section( (string) $html ); }
             $info->name = 'GetMCP Extensions';
-            $info->author = '<a href="https://synergetic.dev/">Synergetic Dev</a>';
+            $info->author = 'Synergetic Dev';
             $info->author_homepage = 'https://synergetic.dev/';
         }
         return $info;
+    }
+
+    private static function section( string $html ): string {
+        return preg_replace( '~(<li\b[^>]*>\s*)\[(NEW|IMPROVE|FIX|SECURITY|COMPAT|DEPRECATE|REMOVE|DEV|TRANSLATIONS)\]\s+~i', '$1<strong>[$2]</strong> ', wp_kses_post( $html ) );
+    }
+
+    public static function details( $result, $action, $args ) {
+        if ( $action !== 'plugin_information' || ( $args->slug ?? '' ) !== self::SLUG || is_wp_error( $result ) ) { return $result; }
+        if ( ! is_object( $result ) || ! self::valid_package_url( (string) ( $result->download_link ?? '' ), (string) ( $result->version ?? '' ) ) ) {
+            return new \WP_Error( 'getmcp_release_unavailable', 'Verified GetMCP Extensions release information is unavailable.' );
+        }
+        $result->icons = self::icons( is_array( $result->icons ?? null ) ? $result->icons : array() );
+        $result->author = '<a href="https://synergetic.dev/">Synergetic Dev</a>';
+        foreach ( (array) ( $result->sections ?? array() ) as $key => $html ) { $result->sections[$key] = self::section( (string) $html ); }
+        return $result;
+    }
+
+    public static function cached_update( $update ) {
+        $valid = self::normalize( $update );
+        if ( $valid !== null || ! is_object( $update ) ) { return $valid; }
+        // PUC converts the callback result without a null guard. Keep its typed object safe,
+        // clear the stale state, and let our final transient validator remove the empty package.
+        self::$checker->resetUpdateState();
+        $update->download_url = ''; $update->version = GETMCP_EXTENSIONS_VERSION;
+        return $update;
     }
 
     private static function icons( array $icons ): array {

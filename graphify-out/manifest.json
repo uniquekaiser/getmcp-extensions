@@ -1,176 +1,182 @@
 {
   ".syn-release.json": {
-    "mtime": 1791304206.6694295,
-    "seen": 1791304498.646013,
+    "mtime": 1791305253.8885674,
+    "seen": 1791306305.7253842,
     "ast_hash": "f1b6dd923602cfc5066cf73b8da2c411",
     "semantic_hash": "f1b6dd923602cfc5066cf73b8da2c411"
   },
   "admin/authentication-settings.js": {
-    "mtime": 1791254878.40186,
-    "seen": 1791304498.6460245,
+    "mtime": 1791305253.8915682,
+    "seen": 1791306305.7253902,
     "ast_hash": "4d43f5d812b77ce0113321511aacfd3c",
     "semantic_hash": "4d43f5d812b77ce0113321511aacfd3c"
   },
   "admin/extensions-settings.js": {
-    "mtime": 1791255108.94169,
-    "seen": 1791304498.6460297,
-    "ast_hash": "c532e0388d5683e01f8f638e319c82f7",
-    "semantic_hash": "c532e0388d5683e01f8f638e319c82f7"
+    "mtime": 1791305253.8925683,
+    "seen": 1791306305.7253923,
+    "ast_hash": "682914a1aed5f4120d494825dc08c84c",
+    "semantic_hash": "682914a1aed5f4120d494825dc08c84c"
   },
   "admin/getmcp-app-extension.js": {
-    "mtime": 1791256378.9773488,
-    "seen": 1791304498.6460323,
+    "mtime": 1791305253.8925683,
+    "seen": 1791306305.725394,
     "ast_hash": "c7e599ddbd9fa7bedd3dbe0a03f0dbc0",
     "semantic_hash": "c7e599ddbd9fa7bedd3dbe0a03f0dbc0"
   },
   "admin/native-connections.js": {
-    "mtime": 1791256381.6967976,
-    "seen": 1791304498.6460347,
-    "ast_hash": "a0039ad723271f32192d35dfca460f4c",
-    "semantic_hash": "a0039ad723271f32192d35dfca460f4c"
+    "mtime": 1791305253.8925683,
+    "seen": 1791306305.7253952,
+    "ast_hash": "4cc78d24bab78be1d9f46af6deb20f89",
+    "semantic_hash": "4cc78d24bab78be1d9f46af6deb20f89"
   },
   "admin/oauth-user-picker.js": {
-    "mtime": 1791256378.9773488,
-    "seen": 1791304498.646037,
+    "mtime": 1791305253.8925683,
+    "seen": 1791306305.7253964,
     "ast_hash": "df72d1bb70f8f3316a15149fb7b3a049",
     "semantic_hash": "df72d1bb70f8f3316a15149fb7b3a049"
   },
   "compatibility.json": {
-    "mtime": 1791256380.933483,
-    "seen": 1791304498.6460392,
-    "ast_hash": "ff56d82fe1a4b98da97b8991870de432",
-    "semantic_hash": "ff56d82fe1a4b98da97b8991870de432"
+    "mtime": 1791305253.9036195,
+    "seen": 1791306305.7253976,
+    "ast_hash": "3b1f19bc775ad2c8fb872051d0014cae",
+    "semantic_hash": "3b1f19bc775ad2c8fb872051d0014cae"
   },
   "composer.json": {
-    "mtime": 1791304107.3498533,
-    "seen": 1791304498.6460412,
-    "ast_hash": "f7468351ec2347b349d2cb76d31b1671",
-    "semantic_hash": "f7468351ec2347b349d2cb76d31b1671"
+    "mtime": 1791305253.9036195,
+    "seen": 1791306305.7253985,
+    "ast_hash": "0724d40dffe4a3ebfcd040753329a37b",
+    "semantic_hash": "0724d40dffe4a3ebfcd040753329a37b"
   },
   "getmcp-extensions.php": {
-    "mtime": 1791304107.2965827,
-    "seen": 1791304498.6460428,
-    "ast_hash": "eac5a2a7b5efca046de4ee0eb74aeb45",
-    "semantic_hash": "eac5a2a7b5efca046de4ee0eb74aeb45"
+    "mtime": 1791305937.2438078,
+    "seen": 1791306305.7253997,
+    "ast_hash": "bcc8bab78e298f10840d572de84e9f94",
+    "semantic_hash": "bcc8bab78e298f10840d572de84e9f94"
   },
   "includes/class-authentication-settings.php": {
-    "mtime": 1791256794.6154897,
-    "seen": 1791304498.6460447,
+    "mtime": 1791305254.347215,
+    "seen": 1791306305.7254012,
     "ast_hash": "74a027bf6c2f77ce536131f793cd987b",
     "semantic_hash": "74a027bf6c2f77ce536131f793cd987b"
   },
   "includes/class-configuration-import.php": {
-    "mtime": 1791256441.63443,
-    "seen": 1791304498.6460469,
-    "ast_hash": "7622ff472f3b4cd5231e080c174b035c",
-    "semantic_hash": "7622ff472f3b4cd5231e080c174b035c"
+    "mtime": 1791305254.3482168,
+    "seen": 1791306305.7254024,
+    "ast_hash": "fc3ba3e609d60c8631f0fea9649b145f",
+    "semantic_hash": "fc3ba3e609d60c8631f0fea9649b145f"
   },
   "includes/class-connection-headers.php": {
-    "mtime": 1791255586.2742684,
-    "seen": 1791304498.6460493,
+    "mtime": 1791305254.3494506,
+    "seen": 1791306305.7254033,
     "ast_hash": "fd00c953db95d044f56005c78c215bdf",
     "semantic_hash": "fd00c953db95d044f56005c78c215bdf"
   },
   "includes/class-lifecycle.php": {
-    "mtime": 1791254898.64733,
-    "seen": 1791304498.6460512,
+    "mtime": 1791305254.3494506,
+    "seen": 1791306305.7254045,
     "ast_hash": "bd7061e32abebd597de1ebd7afbea117",
     "semantic_hash": "bd7061e32abebd597de1ebd7afbea117"
   },
   "includes/class-marketing-management-tool.php": {
-    "mtime": 1791256422.9330041,
-    "seen": 1791304498.6460526,
-    "ast_hash": "e8132e192a67307ba1d2277f6fbfb834",
-    "semantic_hash": "e8132e192a67307ba1d2277f6fbfb834"
+    "mtime": 1791305254.3504686,
+    "seen": 1791306305.7254057,
+    "ast_hash": "866df4cf21bd315b95005102dd0839cc",
+    "semantic_hash": "866df4cf21bd315b95005102dd0839cc"
   },
   "includes/class-marketing-module.php": {
-    "mtime": 1791256357.0354624,
-    "seen": 1791304498.6460547,
-    "ast_hash": "facc93f051ef1bf5ce137701ec684417",
-    "semantic_hash": "facc93f051ef1bf5ce137701ec684417"
+    "mtime": 1791305254.3504686,
+    "seen": 1791306305.725407,
+    "ast_hash": "c893f4f5ff50a835ab3cdea51bd667e7",
+    "semantic_hash": "c893f4f5ff50a835ab3cdea51bd667e7"
   },
   "includes/class-page-tokens.php": {
-    "mtime": 1791256218.2830698,
-    "seen": 1791304498.6460564,
+    "mtime": 1791305254.351467,
+    "seen": 1791306305.725408,
     "ast_hash": "f4cc628b10559b1906143b09d89539e4",
     "semantic_hash": "f4cc628b10559b1906143b09d89539e4"
   },
   "includes/class-protocol-envelope.php": {
-    "mtime": 1791255959.1206439,
-    "seen": 1791304498.6460583,
+    "mtime": 1791305254.3524737,
+    "seen": 1791306305.7254093,
     "ast_hash": "ab56eca96625d5345c83f053c8cc41a5",
     "semantic_hash": "ab56eca96625d5345c83f053c8cc41a5"
   },
   "includes/class-provider-connections.php": {
-    "mtime": 1791256293.3347259,
-    "seen": 1791304498.6460598,
-    "ast_hash": "cab907cd9c9bb35074eebeb403776a46",
-    "semantic_hash": "cab907cd9c9bb35074eebeb403776a46"
+    "mtime": 1791305254.3524737,
+    "seen": 1791306305.7254102,
+    "ast_hash": "b544f9ef7ff839c6437c8662fd73876c",
+    "semantic_hash": "b544f9ef7ff839c6437c8662fd73876c"
   },
   "includes/class-provider-discovery.php": {
-    "mtime": 1791255276.6215916,
-    "seen": 1791304498.6460617,
-    "ast_hash": "604bbbfec4cd3543f6a47ff986e311f3",
-    "semantic_hash": "604bbbfec4cd3543f6a47ff986e311f3"
+    "mtime": 1791305254.353469,
+    "seen": 1791306305.7254114,
+    "ast_hash": "759e68ba1910b1a5d0ab9b9f3bb60ce3",
+    "semantic_hash": "759e68ba1910b1a5d0ab9b9f3bb60ce3"
   },
   "includes/class-provider-execution.php": {
-    "mtime": 1791256764.7794924,
-    "seen": 1791304498.6460636,
-    "ast_hash": "c357af26de3ba9909147a03b44538846",
-    "semantic_hash": "c357af26de3ba9909147a03b44538846"
+    "mtime": 1791305254.353469,
+    "seen": 1791306305.7254126,
+    "ast_hash": "ab82ac5a614a028d7ae15d3e9e5ffc5e",
+    "semantic_hash": "ab82ac5a614a028d7ae15d3e9e5ffc5e"
   },
   "includes/class-provider-readiness.php": {
-    "mtime": 1791256218.4237125,
-    "seen": 1791304498.6460657,
+    "mtime": 1791305254.353469,
+    "seen": 1791306305.7254136,
     "ast_hash": "f962bfcc157f7f484e28f03ab0971ab3",
     "semantic_hash": "f962bfcc157f7f484e28f03ab0971ab3"
   },
   "includes/class-provider-tokens.php": {
-    "mtime": 1791255958.8653765,
-    "seen": 1791304498.6460674,
+    "mtime": 1791305254.354471,
+    "seen": 1791306305.7254148,
     "ast_hash": "fdb69545c65c24057b3593b70bc55156",
     "semantic_hash": "fdb69545c65c24057b3593b70bc55156"
   },
   "includes/class-runtime.php": {
-    "mtime": 1791304607.4004035,
-    "seen": 1791304731.5467017,
-    "ast_hash": "cc47527ae94fca658b770deaefb4c021",
-    "semantic_hash": "cc47527ae94fca658b770deaefb4c021"
+    "mtime": 1791305254.354471,
+    "seen": 1791306305.7254157,
+    "ast_hash": "c6f13175dd8043124b4302cff3f32880",
+    "semantic_hash": "c6f13175dd8043124b4302cff3f32880"
   },
   "includes/class-updater.php": {
-    "mtime": 1791304563.6479907,
-    "seen": 1791304731.546703,
-    "ast_hash": "4c0bad43f53e5361dfd006d05b34b649",
-    "semantic_hash": "4c0bad43f53e5361dfd006d05b34b649"
+    "mtime": 1791305937.076584,
+    "seen": 1791306305.7254167,
+    "ast_hash": "0f26a93970d7ce019f1d3b7e33ab2083",
+    "semantic_hash": "0f26a93970d7ce019f1d3b7e33ab2083"
   },
   "includes/endpoint-guard.php": {
-    "mtime": 1791256594.4552948,
-    "seen": 1791304498.646073,
-    "ast_hash": "7fb7099164bbc95adae4b757a5ad20be",
-    "semantic_hash": "7fb7099164bbc95adae4b757a5ad20be"
+    "mtime": 1791305254.3554666,
+    "seen": 1791306305.7254174,
+    "ast_hash": "12e65f1d675484657653e6826f1aa9a3",
+    "semantic_hash": "12e65f1d675484657653e6826f1aa9a3"
   },
   "tools/build.py": {
-    "mtime": 1791304564.4940667,
-    "seen": 1791304731.5467749,
-    "ast_hash": "3afcc268171142e9b2059c192b26738d",
-    "semantic_hash": "3afcc268171142e9b2059c192b26738d"
+    "mtime": 1791305254.3666868,
+    "seen": 1791306305.7254193,
+    "ast_hash": "95e6abfee07be8f289f4668a7adaf22f",
+    "semantic_hash": "95e6abfee07be8f289f4668a7adaf22f"
   },
   "tools/graph.py": {
-    "mtime": 1791304451.3535712,
-    "seen": 1791304498.6460764,
-    "ast_hash": "05e23c484ee3af341dd4e1f9a54e78e9",
-    "semantic_hash": "05e23c484ee3af341dd4e1f9a54e78e9"
+    "mtime": 1791305380.8617024,
+    "seen": 1791306305.7254205,
+    "ast_hash": "54ecda1b5f38a4ea99789b0296f33563",
+    "semantic_hash": "54ecda1b5f38a4ea99789b0296f33563"
   },
   "tools/verify.py": {
-    "mtime": 1791304607.0115106,
-    "seen": 1791304731.5468514,
+    "mtime": 1791305254.3676927,
+    "seen": 1791306305.7254229,
     "ast_hash": "a870182ca88b7281756956da14b2c4d8",
     "semantic_hash": "a870182ca88b7281756956da14b2c4d8"
   },
   "tools/build-release.py": {
-    "mtime": 1791304549.5398207,
-    "seen": 1791304731.5467734,
+    "mtime": 1791305254.3666868,
+    "seen": 1791306305.7254183,
     "ast_hash": "989f67f3fcc53f6d4fa1033b1e4ba680",
     "semantic_hash": "989f67f3fcc53f6d4fa1033b1e4ba680"
+  },
+  "tools/sync-readme.py": {
+    "mtime": 1791305937.733711,
+    "seen": 1791306305.725422,
+    "ast_hash": "a2fd6f857d604db05976ab377ba5bb5a",
+    "semantic_hash": "a2fd6f857d604db05976ab377ba5bb5a"
   }
 }

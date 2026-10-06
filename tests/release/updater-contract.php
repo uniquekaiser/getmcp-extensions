@@ -12,15 +12,15 @@ $filter = static function( $pre, $args, $url ) use ( &$mode, &$requests ) {
     $requests[] = $url;
     $root = WP_PLUGIN_DIR . '/getmcp-extensions';
     if ( str_contains( $url, '/releases/latest' ) ) {
-        $data = array( 'tag_name' => 'v1.1.2', 'draft' => false, 'prerelease' => false, 'created_at' => '2026-10-06T00:00:00Z',
-            'zipball_url' => 'https://api.github.com/repos/uniquekaiser/getmcp-extensions/zipball/v1.1.2',
-            'body' => "## 1.1.2\n- [FIX] Synthetic updater fixture.",
-            'assets' => $mode === 'missing' ? array() : array( array( 'name' => $mode === 'wrong-name' ? 'other-1.1.2.zip' : 'getmcp-extensions-1.1.2.zip',
-                'browser_download_url' => $mode === 'foreign' ? 'https://example.org/unrelated.zip' : Updater::REPOSITORY . '/releases/download/v1.1.2/getmcp-extensions-1.1.2.zip', 'download_count' => 0 ) ) );
+        $data = array( 'tag_name' => 'v1.1.3', 'draft' => false, 'prerelease' => false, 'created_at' => '2026-10-06T00:00:00Z',
+            'zipball_url' => 'https://api.github.com/repos/uniquekaiser/getmcp-extensions/zipball/v1.1.3',
+            'body' => "## 1.1.3\n- [FIX] Synthetic updater fixture.",
+            'assets' => $mode === 'missing' ? array() : array( array( 'name' => $mode === 'wrong-name' ? 'other-1.1.3.zip' : 'getmcp-extensions-1.1.3.zip',
+                'browser_download_url' => $mode === 'foreign' ? 'https://example.org/unrelated.zip' : Updater::REPOSITORY . '/releases/download/v1.1.3/getmcp-extensions-1.1.3.zip', 'download_count' => 0 ) ) );
     } elseif ( str_contains( $url, '/contents/' ) ) {
         $name = basename( wp_parse_url( $url, PHP_URL_PATH ) );
         $content = file_get_contents( $root . '/' . $name );
-        $content = str_replace( array( 'Version: 1.1.1', 'Stable tag: 1.1.1' ), array( 'Version: 1.1.2', 'Stable tag: 1.1.2' ), $content );
+        $content = str_replace( array( 'Version: 1.1.2', 'Stable tag: 1.1.2' ), array( 'Version: 1.1.3', 'Stable tag: 1.1.3' ), $content );
         $data = array( 'encoding' => 'base64', 'content' => base64_encode( $content ) );
     } else { throw new RuntimeException( 'Unexpected source fallback: ' . $url ); }
     return array( 'headers' => array(), 'body' => wp_json_encode( $data ), 'response' => array( 'code' => 200 ), 'cookies' => array() );
@@ -28,18 +28,31 @@ $filter = static function( $pre, $args, $url ) use ( &$mode, &$requests ) {
 add_filter( 'pre_http_request', $filter, 10, 3 );
 try {
     $info = $checker->requestInfo();
-    $assert( $info && $info->version === '1.1.2' && Updater::valid_package_url( $info->download_url, $info->version ), 'latest_release_exact_asset_selected' );
+    $assert( $info && $info->version === '1.1.3' && Updater::valid_package_url( $info->download_url, $info->version ), 'latest_release_exact_asset_selected' );
     $assert( $info->requires === '6.2' && $info->tested === '7.1.2' && $info->requires_php === '8.2', 'details_compatibility_complete' );
     $assert( str_contains( $info->author, 'Synergetic Dev' ) && ! empty( $info->icons['1x'] ) && ! empty( $info->icons['2x'] ), 'publisher_and_icons_present' );
     $assert( ! str_contains( $info->sections['changelog'], '- [FIX]' ) && str_contains( $info->sections['changelog'], '<li>' ), 'details_changelog_is_html' );
     $checker->checkForUpdates();
     $fresh = get_site_transient( 'update_plugins' );
     $file = 'getmcp-extensions/getmcp-extensions.php';
-    $assert( isset( $fresh->response[$file] ) && $fresh->response[$file]->new_version === '1.1.2', 'real_wordpress_update_transient' );
+    $assert( isset( $fresh->response[$file] ) && $fresh->response[$file]->new_version === '1.1.3', 'real_wordpress_update_transient' );
     $count = count( $requests ); $cached = get_site_transient( 'update_plugins' );
     $assert( count( $requests ) === $count && $cached->response[$file]->package === $info->download_url, 'cached_metadata_preserves_valid_package_without_request' );
     $details = plugins_api( 'plugin_information', (object) array( 'slug' => 'getmcp-extensions' ) );
     $assert( ! is_wp_error( $details ) && $details->name === 'GetMCP Extensions' && $details->slug === 'getmcp-extensions', 'real_plugins_api_details' );
+    $assert( ! empty( $details->icons['1x'] ) && ! empty( $details->icons['2x'] ), 'actual_details_icons_survive_wp_conversion' );
+    $assert( str_contains( $details->sections['changelog'], '<strong>[FIX]</strong>' ), 'actual_details_categories_are_html' );
+    $assert( substr_count( $details->author, '<a ' ) === 1 && str_contains( $details->author, 'https://synergetic.dev/' ), 'actual_details_single_publisher_link' );
+    $again = Updater::details( $details, 'plugin_information', (object) array( 'slug' => 'getmcp-extensions' ) );
+    $assert( ! str_contains( $again->sections['changelog'], '<strong><strong>' ), 'category_formatting_is_idempotent' );
+    $other = (object) array( 'name' => 'Unrelated' );
+    $assert( Updater::details( $other, 'plugin_information', (object) array( 'slug' => 'unrelated' ) ) === $other, 'unrelated_plugin_details_preserved' );
+    $state = $checker->getUpdateState(); $badUpdate = clone $checker->getUpdate();
+    $badUpdate->download_url = 'https://example.org/unrelated.zip';
+    $state->setUpdate( $badUpdate )->save();
+    $injected = Updater::transient( $checker->injectUpdate( (object) array( 'response' => array() ) ) );
+    $assert( empty( $injected->response[$file] ), 'real_puc_invalid_cache_injection_has_no_fatal_or_package' );
+    $assert( $state->getUpdate() === null, 'invalid_puc_cache_is_cleared' );
     foreach ( array( 'missing', 'wrong-name', 'foreign' ) as $failure ) {
         $mode = $failure; $assert( $checker->requestInfo() === null, $failure . '_release_has_no_source_archive_fallback' );
     }
@@ -51,7 +64,7 @@ try {
     $safe = Updater::normalize( $safe );
     $assert( $safe->icons['1x'] === 'https://example.org/existing.png' && ! empty( $safe->icons['2x'] ), 'existing_artwork_preserved_missing_icon_filled' );
     $assert( ! str_contains( $safe->sections['changelog'], '<script' ), 'details_script_removed' );
-    $tampered = (object) array( 'response' => array( $file => (object) array( 'new_version' => '1.1.2', 'package' => 'https://example.org/source.zip' ) ) );
+    $tampered = (object) array( 'response' => array( $file => (object) array( 'new_version' => '1.1.3', 'package' => 'https://example.org/source.zip' ) ) );
     $assert( empty( Updater::transient( $tampered )->response[$file] ), 'cached_foreign_package_rejected' );
     $assert( ! array_filter( $requests, static fn( $url ) => str_contains( $url, '/tags' ) || str_contains( $url, '/branches' ) || str_contains( $url, '/zipball/' ) ), 'no_tag_branch_or_source_requests' );
 } finally { remove_filter( 'pre_http_request', $filter, 10 ); $checker->resetUpdateState(); delete_site_transient( 'update_plugins' ); }

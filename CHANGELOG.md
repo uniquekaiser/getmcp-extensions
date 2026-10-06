@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 - 2026-10-06
+
+- [FIX] Include icons, valid publisher links and categorized HTML changelogs in the WordPress release-details response.
+- [SECURITY] Discard invalid cached update packages without interrupting the Plugins screen.
+- [DEV] Verify anonymous release delivery and dashboard upgrades with preserved configuration in disposable compatibility environments.
+
 ## 1.1.1 - 2026-10-06
 
 - [NEW] Receive WordPress dashboard updates from public GitHub releases without a client token.

@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.2
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,22 +41,33 @@ No. Its persistent endpoint guard blocks affected endpoints until a compatible r
 
 == Changelog ==
 
+= 1.1.2 =
+
+* [FIX] Include icons, valid publisher links and categorized HTML changelogs in the WordPress release-details response.
+* [SECURITY] Discard invalid cached update packages without interrupting the Plugins screen.
+* [DEV] Verify anonymous release delivery and dashboard upgrades with preserved configuration in disposable compatibility environments.
+
 = 1.1.1 =
-* [NEW] Receive dashboard updates from public GitHub releases without a client token.
-* [IMPROVE] Show Synergetic Dev publisher information, release details and icons.
-* [SECURITY] Accept matching versioned packages and exclude development checkouts from updates.
-* [DEV] Add reproducible packages, local verification, API docs and a Graphify map.
+
+* [NEW] Receive WordPress dashboard updates from public GitHub releases without a client token.
+* [IMPROVE] Show Synergetic Dev publisher information, release details and update icons.
+* [SECURITY] Accept only the matching versioned release package and keep development checkouts outside automatic updates.
+* [DEV] Add reproducible packages, local verification commands, API documentation and a Graphify architecture map.
 
 = 1.1.0 =
-* [FIX] Preserve secrets and advanced OAuth settings during Authentication saves.
-* [NEW] Preview imported connection settings and edit encrypted custom headers.
-* [NEW] Connect personal marketing accounts and select private Page credentials.
-* [SECURITY] Verify permissions and harmless reads before reviewed messaging activation.
-* [IMPROVE] Show provider readiness and normalize nested response envelopes.
+
+* [FIX] Preserve encrypted secrets and advanced OAuth settings during Authentication saves, with explicit clear controls and stale-save rejection.
+* [NEW] Import remote connections from configuration previews and edit authentication and encrypted custom headers through individual fields.
+* [NEW] Connect personal REST-provider accounts and select encrypted, per-user Instagram Page credentials.
+* [SECURITY] Require current permissions, Page ownership and a harmless read before enabling reviewed messaging drafts; isolate identities and disable mutation retries.
+* [IMPROVE] Discover provider accounts, show connection readiness and normalize nested Meta response envelopes.
 
 = 1.0.0 =
-* [NEW] Add native OAuth, explicit user allowlists, remote connections and project gateways.
-* [SECURITY] Isolate credentials and protect endpoints with a persistent guard.
+
+* [NEW] Add native WordPress OAuth with searchable user allowlists and optional feature switches.
+* [NEW] Connect remote Streamable HTTP servers with personal OAuth, tool, resource and prompt routing.
+* [NEW] Create project gateways with explicit server membership and user restrictions while preserving the original gateway.
+* [SECURITY] Enforce endpoint-bound tokens, identity-scoped sessions and a persistent endpoint guard when the extension is unavailable.
 
 == Upgrade Notice ==
 
