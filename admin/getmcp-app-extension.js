@@ -1,5 +1,8 @@
 /** Adapter for the captured distribution only. Upstream should inject source imports. */
 window.registerGetMCPConnectionRuntime = function(requireModule) {
+  const tools = window.createGetMCPConnectionTools({React:requireModule(1609),api:requireModule(2854).AT});
+  window.GetMCPExtensionsCodexConnect = tools.CodexConnect;
+  window.GetMCPExtensionsProjectGateways = tools.ProjectGateways;
   window.loadGetMCPExtensionsPage = async function() { await window.loadGetMCPConnectionPage(); return window.createGetMCPExtensionsPage({React:requireModule(1609),useToast:requireModule(7942).dj,UI:{Button:requireModule(891).A,Card:requireModule(6929).A,PageHeader:requireModule(2711).A,PageContainer:requireModule(1868).A,Badge:requireModule(8938).A}}); };
   window.loadGetMCPConnectionPage = async function() {
     await Promise.all([866, 425, 859, 879].map(chunk => requireModule.e(chunk)));

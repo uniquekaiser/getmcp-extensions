@@ -18,16 +18,16 @@
     "semantic_hash": "682914a1aed5f4120d494825dc08c84c"
   },
   "admin/getmcp-app-extension.js": {
-    "mtime": 1791305253.8925683,
-    "seen": 1791306305.725394,
-    "ast_hash": "c7e599ddbd9fa7bedd3dbe0a03f0dbc0",
-    "semantic_hash": "c7e599ddbd9fa7bedd3dbe0a03f0dbc0"
+    "mtime": 1791308512.5810003,
+    "seen": 1791309287.8213892,
+    "ast_hash": "57bec33174c7266b66ccc29ce03202fd",
+    "semantic_hash": "57bec33174c7266b66ccc29ce03202fd"
   },
   "admin/native-connections.js": {
-    "mtime": 1791305253.8925683,
-    "seen": 1791306305.7253952,
-    "ast_hash": "4cc78d24bab78be1d9f46af6deb20f89",
-    "semantic_hash": "4cc78d24bab78be1d9f46af6deb20f89"
+    "mtime": 1791308614.9045246,
+    "seen": 1791309287.8213909,
+    "ast_hash": "3336b19d0fb89da641f26668da63a756",
+    "semantic_hash": "3336b19d0fb89da641f26668da63a756"
   },
   "admin/oauth-user-picker.js": {
     "mtime": 1791305253.8925683,
@@ -48,10 +48,10 @@
     "semantic_hash": "0724d40dffe4a3ebfcd040753329a37b"
   },
   "getmcp-extensions.php": {
-    "mtime": 1791305937.2438078,
-    "seen": 1791306305.7253997,
-    "ast_hash": "bcc8bab78e298f10840d572de84e9f94",
-    "semantic_hash": "bcc8bab78e298f10840d572de84e9f94"
+    "mtime": 1791308709.9897027,
+    "seen": 1791309287.8216593,
+    "ast_hash": "d4162b1655afb192fec8f3671857e234",
+    "semantic_hash": "d4162b1655afb192fec8f3671857e234"
   },
   "includes/class-authentication-settings.php": {
     "mtime": 1791305254.347215,
@@ -60,10 +60,10 @@
     "semantic_hash": "74a027bf6c2f77ce536131f793cd987b"
   },
   "includes/class-configuration-import.php": {
-    "mtime": 1791305254.3482168,
-    "seen": 1791306305.7254024,
-    "ast_hash": "fc3ba3e609d60c8631f0fea9649b145f",
-    "semantic_hash": "fc3ba3e609d60c8631f0fea9649b145f"
+    "mtime": 1791308987.8773017,
+    "seen": 1791309287.821753,
+    "ast_hash": "281efef906385b375634c0d42cafe02c",
+    "semantic_hash": "281efef906385b375634c0d42cafe02c"
   },
   "includes/class-connection-headers.php": {
     "mtime": 1791305254.3494506,
@@ -84,10 +84,10 @@
     "semantic_hash": "866df4cf21bd315b95005102dd0839cc"
   },
   "includes/class-marketing-module.php": {
-    "mtime": 1791305254.3504686,
-    "seen": 1791306305.725407,
-    "ast_hash": "c893f4f5ff50a835ab3cdea51bd667e7",
-    "semantic_hash": "c893f4f5ff50a835ab3cdea51bd667e7"
+    "mtime": 1791308103.4895873,
+    "seen": 1791309287.8222501,
+    "ast_hash": "8bb924e9c1f746d25ce6ea423e02708d",
+    "semantic_hash": "8bb924e9c1f746d25ce6ea423e02708d"
   },
   "includes/class-page-tokens.php": {
     "mtime": 1791305254.351467,
@@ -132,10 +132,10 @@
     "semantic_hash": "fdb69545c65c24057b3593b70bc55156"
   },
   "includes/class-runtime.php": {
-    "mtime": 1791305254.354471,
-    "seen": 1791306305.7254157,
-    "ast_hash": "c6f13175dd8043124b4302cff3f32880",
-    "semantic_hash": "c6f13175dd8043124b4302cff3f32880"
+    "mtime": 1791309833.9189777,
+    "seen": 1791310001.2018645,
+    "ast_hash": "5c93cbe1ee3207052e787cf567ac49ef",
+    "semantic_hash": "5c93cbe1ee3207052e787cf567ac49ef"
   },
   "includes/class-updater.php": {
     "mtime": 1791305937.076584,
@@ -178,5 +178,83 @@
     "seen": 1791306305.725422,
     "ast_hash": "a2fd6f857d604db05976ab377ba5bb5a",
     "semantic_hash": "a2fd6f857d604db05976ab377ba5bb5a"
+  },
+  "admin/connection-tools.js": {
+    "mtime": 1791309088.5354612,
+    "seen": 1791309287.8212945,
+    "ast_hash": "f07f59d11905fc45bfb84796553631b5",
+    "semantic_hash": "f07f59d11905fc45bfb84796553631b5"
+  },
+  "assets/templates/google-ads.json": {
+    "mtime": 1791308614.9008667,
+    "seen": 1791309287.8214805,
+    "ast_hash": "9d8a9dbb76b498221ecbcb4ff78951a7",
+    "semantic_hash": "9d8a9dbb76b498221ecbcb4ff78951a7"
+  },
+  "assets/templates/google-analytics.json": {
+    "mtime": 1791308614.9020205,
+    "seen": 1791309287.8214815,
+    "ast_hash": "57756538fc820e94485032c14a76dab5",
+    "semantic_hash": "57756538fc820e94485032c14a76dab5"
+  },
+  "assets/templates/google-search-console.json": {
+    "mtime": 1791308614.9030216,
+    "seen": 1791309287.8214824,
+    "ast_hash": "5a3115e82f09ac690f60f2bf6b44ddd6",
+    "semantic_hash": "5a3115e82f09ac690f60f2bf6b44ddd6"
+  },
+  "assets/templates/instagram.json": {
+    "mtime": 1791308614.9030216,
+    "seen": 1791309287.8214836,
+    "ast_hash": "122b96147b174adbadf0f5ff2b41479d",
+    "semantic_hash": "122b96147b174adbadf0f5ff2b41479d"
+  },
+  "assets/templates/meta-ads.json": {
+    "mtime": 1791308614.9040213,
+    "seen": 1791309287.8214846,
+    "ast_hash": "33132c627ac0b5d9aab611b9d56f5f36",
+    "semantic_hash": "33132c627ac0b5d9aab611b9d56f5f36"
+  },
+  "docs/verification/delivery-1.1.2.json": {
+    "mtime": 1791306710.2465158,
+    "seen": 1791309287.8216581,
+    "ast_hash": "06de5690377d973ce83a1c4b1e80edfc",
+    "semantic_hash": "06de5690377d973ce83a1c4b1e80edfc"
+  },
+  "includes/class-configuration-transcoder.php": {
+    "mtime": 1791308988.048455,
+    "seen": 1791309287.8217537,
+    "ast_hash": "90a992a98e742601bda6448796127bd8",
+    "semantic_hash": "90a992a98e742601bda6448796127bd8"
+  },
+  "includes/class-connection-screens.php": {
+    "mtime": 1791308987.566936,
+    "seen": 1791309287.8219376,
+    "ast_hash": "e5f409f2e914b9a8cc6c645ac554f2a2",
+    "semantic_hash": "e5f409f2e914b9a8cc6c645ac554f2a2"
+  },
+  "includes/class-marketing-templates.php": {
+    "mtime": 1791310121.7810075,
+    "seen": 1791310310.4516063,
+    "ast_hash": "b5587a4f33eddcfaaee665b45d1f223b",
+    "semantic_hash": "b5587a4f33eddcfaaee665b45d1f223b"
+  },
+  "tools/build-ui.py": {
+    "mtime": 1791309834.0596654,
+    "seen": 1791310001.2021399,
+    "ast_hash": "ef2fd9c9d0e93f41081d8b3c561fdb7c",
+    "semantic_hash": "ef2fd9c9d0e93f41081d8b3c561fdb7c"
+  },
+  "tools/test-connections.py": {
+    "mtime": 1791308836.206075,
+    "seen": 1791309287.8241396,
+    "ast_hash": "6400d0f962a3ec43c7aac1d1715df1c9",
+    "semantic_hash": "6400d0f962a3ec43c7aac1d1715df1c9"
+  },
+  "tools/handoff-connections.py": {
+    "mtime": 1791310639.0939443,
+    "seen": 1791316189.4256942,
+    "ast_hash": "f6c27aebd05fb9d6fd249340014249aa",
+    "semantic_hash": "f6c27aebd05fb9d6fd249340014249aa"
   }
 }

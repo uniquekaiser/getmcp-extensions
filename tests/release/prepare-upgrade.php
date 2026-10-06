@@ -1,6 +1,7 @@
 <?php
 /** Baseline a genuine previous packaged release before a normal WordPress upgrade. */
 if ( ! defined( 'ABSPATH' ) || wp_parse_url( home_url(), PHP_URL_HOST ) !== 'localhost' || ! in_array( (int) wp_parse_url( home_url(), PHP_URL_PORT ), array( 8917, 8918 ), true ) || ! get_option( 'getmcp_qa_paid_fixture' ) ) { throw new RuntimeException( 'Owned release fixture required.' ); }
+if ( GETMCP_EXTENSIONS_VERSION !== '1.1.2' ) { throw new RuntimeException( 'Install the genuine published 1.1.2 package before baselining.' ); }
 global $wpdb;
 $baseline = array(
     'servers' => hash( 'sha256', wp_json_encode( $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}getmcp_servers ORDER BY id", ARRAY_A ) ) ),
@@ -11,7 +12,6 @@ $baseline = array(
     'guard' => hash( 'sha256', str_replace( "\r\n", "\n", file_get_contents( WPMU_PLUGIN_DIR . '/getmcp-extensions-guard.php' ) ) ),
 );
 file_put_contents( '/evidence/upgrade-baseline.json', wp_json_encode( $baseline, JSON_PRETTY_PRINT ) );
-if ( GETMCP_EXTENSIONS_VERSION !== '1.1.1' ) { throw new RuntimeException( 'Install the genuine published 1.1.1 package before baselining.' ); }
 GetMCPExtensions\Updater::checker()->resetUpdateState();
 wp_clean_plugins_cache( true ); delete_site_transient( 'update_plugins' );
-echo 'Baselined genuine published 1.1.1 client; protected-state hashes only.';
+echo 'Baselined genuine published 1.1.2 client; protected-state hashes only.';

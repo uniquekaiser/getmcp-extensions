@@ -1,0 +1,155 @@
+{
+  "format": "getmcp/server-v1",
+  "exported_at": "2026-10-06T01:50:35+00:00",
+  "generator": {
+    "product": "GetMCP",
+    "version": "1.6.0"
+  },
+  "server": {
+    "name": "Meta Ads",
+    "slug": "meta-ads",
+    "status": "inactive",
+    "transport_type": "streamable-http",
+    "auth_type": "oauth",
+    "auth_config": {
+      "provider": "external",
+      "authorize_url": "https://www.facebook.com/v26.0/dialog/oauth",
+      "token_url": "https://graph.facebook.com/v26.0/oauth/access_token",
+      "scope": "ads_mcp_management,ads_read,ads_management,catalog_management,business_management,pages_show_list,instagram_basic",
+      "client_id": ""
+    },
+    "outbound_auth_type": "none",
+    "outbound_auth_config": null,
+    "cors_origins": null,
+    "rate_limit_per_min": 60,
+    "settings": {
+      "instructions": "Bridge to Meta's official Ads MCP at https://mcp.facebook.com/ads based on https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-get-started. Start with list_meta_ads_tools and use the returned live tool names and JSON schemas; never invent tool names. call_meta_ads_tool forwards a JSON-RPC tools/call envelope. It may read or change real ads; call writes only after the user authorizes the exact change. Never publish, activate, change budgets, or delete just to test connectivity. Configure your Meta app's Create & manage ads with ads MCP server use case and OAuth app credentials. Required scopes ads_mcp_management ads_read ads_management catalog_management business_management pages_show_list instagram_basic. This wrapper has two bridge tools, not a native replica of Meta's tool catalogue. Tokens expire; reconnect when Meta requires it."
+    }
+  },
+  "tools": [
+    {
+      "name": "list_meta_ads_tools",
+      "slug": "list_meta_ads_tools",
+      "description": "Read Meta's official live MCP tool catalogue. Returns a JSON-RPC result containing tool names, schemas and annotations. Discover before calling. Does not modify ads.",
+      "endpoint_url": "https://mcp.facebook.com/ads",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "cursor": {
+            "type": "string",
+            "description": "Optional pagination cursor from tools/list"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "body_template": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/list"
+      },
+      "parameter_mapping": {
+        "cursor": {
+          "target": "body",
+          "key": "params.cursor"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json, text/event-stream",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 0
+    },
+    {
+      "name": "call_meta_ads_tool",
+      "slug": "call_meta_ads_tool",
+      "description": "Call a tool discovered with list_meta_ads_tools on Meta's official Ads MCP. This may change real campaigns, spending, catalogs or ads. Use live schemas and obtain explicit authorization before any write; harmless reads only for connectivity tests. Omit arguments for tools with no inputs. Inspect upstream error and result.isError fields; an HTTP 200 may still contain an MCP error.",
+      "endpoint_url": "https://mcp.facebook.com/ads",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Exact upstream tool name from list_meta_ads_tools"
+          },
+          "arguments": {
+            "type": "object",
+            "description": "Nonempty arguments object matching the live upstream schema. Omit entirely for tools with no arguments.",
+            "additionalProperties": true,
+            "minProperties": 1
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call"
+      },
+      "parameter_mapping": {
+        "name": {
+          "target": "body",
+          "key": "params.name"
+        },
+        "arguments": {
+          "target": "body",
+          "key": "params.arguments"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json, text/event-stream",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 1
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "excluded": {
+    "fields": [
+      "auth_credentials",
+      "outbound_auth_credentials",
+      "test_auth_credentials"
+    ],
+    "reason": "Stored credentials are encrypted with a key unique to the site that saved them, so they cannot be restored elsewhere. Re-enter them after importing."
+  }
+}

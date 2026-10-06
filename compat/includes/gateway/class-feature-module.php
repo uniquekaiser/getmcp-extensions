@@ -75,7 +75,13 @@ class FeatureModule {
 				$items[] = array( 'id' => $server->id, 'name' => $server->name, 'connected' => $connected );
 			}
 		}
-		return array( 'connections' => $items );
+		$endpoints = array();
+		foreach ( FeatureManager::all() as $server ) {
+			if ( 'native' !== $server->server_kind && 'active' === $server->status && \GetMCPExtensions\Runtime::server_enabled( $server ) && \GetMCP\Auth\FirstPartyOAuth::can_user_access( $user, $server ) ) {
+				$endpoints[] = array_intersect_key( FeatureManager::present( $server ), array_flip( array( 'id', 'kind', 'name', 'slug', 'status', 'url' ) ) );
+			}
+		}
+		return array( 'connections' => $items, 'endpoints' => $endpoints, 'can_manage_connections' => current_user_can( 'getmcp_manage_servers' ) );
 	}
 
 	public static function menu(): void {

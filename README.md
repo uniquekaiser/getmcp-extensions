@@ -10,6 +10,10 @@ A standalone WordPress add-on for personal MCP connections, project gateways and
 - Remote Streamable HTTP connections with tools, resources, prompts and personal upstream OAuth.
 - Project gateways with selected servers, separate user access and endpoint-bound credentials.
 - Paste Configuration previews for supported JSON, simple YAML/TOML, MCP client commands and HTTPS URLs.
+- Select and import up to 100 Remote MCP entries with individual results, renaming and retry support.
+- Codex Desktop Quick Connect with direct HTTP and copyable `config.toml` entries.
+- A redacting configuration converter for Claude/Cursor JSON, VS Code JSON and Codex TOML.
+- Five marketing templates that install into empty native servers in draft status.
 - Editable authentication fields and encrypted custom headers. Blank saved-secret fields preserve existing values.
 - Personal marketing connections, private Instagram Page selection, provider discovery and readiness checks.
 - Optional modules that can be retired individually as matching functionality becomes available.
@@ -35,6 +39,8 @@ Activation installs an owned persistent endpoint guard in `wp-content/mu-plugins
 ## Documentation
 
 - [Installation, compatibility and rollback](docs/installation.md)
+- [Bulk import, portal, templates and Codex setup](docs/connections-1.2.0.md)
+- [Local 1.2.0 verification](docs/verification-1.2.0.md)
 - [User access API](docs/api-user-access.md) and [gateway API/hooks](docs/api-gateways.md)
 - [Marketing connections and setup API](docs/marketing.md)
 - [Token-free updates and releases](docs/releases.md)

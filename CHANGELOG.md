@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0 - 2026-10-06
+
+- [NEW] Preview and import multiple Remote MCP servers with editable names, user access and independent retry results.
+- [NEW] Add Remote MCP from My MCP Connections and copy accessible project gateway URLs.
+- [NEW] Connect Codex Desktop with direct HTTP and copyable config.toml.
+- [NEW] Convert client configuration between Claude/Cursor JSON, VS Code JSON and Codex TOML with secret redaction.
+- [NEW] Install five marketing templates into empty draft native servers with credentials and messaging activation kept separate.
+- [FIX] Show project gateways on the original Gateway screen and return saved gateways to the correct list.
+
 ## 1.1.2 - 2026-10-06
 
 - [FIX] Include icons, valid publisher links and categorized HTML changelogs in the WordPress release-details response.

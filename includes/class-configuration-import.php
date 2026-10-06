@@ -34,12 +34,12 @@ final class ConfigurationImport {
         $entries = array(); $name = null; $section = ''; $indent = null;
         foreach ( preg_split( '/\r?\n/', $text ) as $line ) {
             if ( '' === trim( $line ) || str_starts_with( ltrim( $line ), '#' ) ) { continue; }
-            if ( preg_match( '/^\[mcp_servers\.(?:"([^"]+)"|([\w-]+))(?:\.(http_headers|headers|oauth))?\]$/', trim( $line ), $m ) ) { $name = $m[1] ?: $m[2]; $entries[$name] ??= array(); $section = $m[3] ?? ''; continue; }
+            if ( preg_match( '/^\[mcp_servers\.(?:"([^"]+)"|([\w-]+))(?:\.(http_headers|env_http_headers|headers|oauth|env))?\]$/', trim( $line ), $m ) ) { $name = $m[1] ?: $m[2]; $entries[$name] ??= array(); $section = $m[3] ?? ''; continue; }
             if ( preg_match( '/^\s*(mcpServers|mcp_servers|servers):\s*$/', $line ) ) { continue; }
             if ( preg_match( '/^(\s+)([\w.-]+):\s*$/', $line, $m ) ) {
                 $level = strlen( $m[1] );
                 if ( null === $indent || $level === $indent ) { $indent = $level; $name = $m[2]; $entries[$name] ??= array(); $section = ''; }
-                elseif ( in_array( $m[2], array( 'headers', 'http_headers', 'oauth' ), true ) ) { $section = $m[2]; }
+                elseif ( in_array( $m[2], array( 'headers', 'http_headers', 'oauth', 'env' ), true ) ) { $section = $m[2]; }
                 else { throw new \InvalidArgumentException( 'Unsupported nested configuration field.' ); }
                 continue;
             }
@@ -55,7 +55,7 @@ final class ConfigurationImport {
         return $entries;
     }
     public static function map( string $name, array $entry ): array {
-        $url = $entry['url'] ?? $entry['endpoint'] ?? $entry['serverUrl'] ?? null;
+        $url = $entry['url'] ?? $entry['endpoint'] ?? $entry['serverUrl'] ?? $entry['httpUrl'] ?? null;
         if ( ! $url && isset( $entry['command'] ) && preg_match( '~(?:^|[\\\\/])(npx|uvx)(?:\.exe)?$~', (string) $entry['command'] ) && in_array( 'mcp-remote', $entry['args'] ?? array(), true ) ) {
             foreach ( $entry['args'] as $arg ) { if ( is_string( $arg ) && str_starts_with( $arg, 'https://' ) ) { $url = $arg; break; } }
         }
@@ -84,7 +84,7 @@ final class ConfigurationImport {
         $credentials = array(); $custom = array();
         foreach ( $headers as $key => $value ) { if ( 'authorization' === strtolower( $key ) ) { if ( 'oauth' === $mode ) { throw new \InvalidArgumentException( 'An imported Authorization header cannot override personal OAuth.' ); } $credentials['headers']['Authorization'] = $value; } else { $custom[] = array( 'name' => $key, 'value' => $value ); } }
         if ( ! empty( $oauth['client_secret'] ) ) { $credentials['client_secret'] = $oauth['client_secret']; }
-        return array( 'name' => $name, 'supported' => true, 'kind' => 'remote-mcp', 'remote' => $remote, 'credentials' => $credentials, 'connection_headers' => $custom, 'unmapped_fields' => array_merge( array_values( array_diff( array_keys( $entry ), array( 'url', 'endpoint', 'serverUrl', 'headers', 'http_headers', 'oauth', 'auth', 'authMethod', 'bearer_token', 'command', 'args', 'type', 'transport' ) ) ), array_map( static fn( $key ) => 'oauth.' . $key, array_values( array_diff( array_keys( $oauth ), array( 'type', 'client_id', 'clientId', 'client_secret', 'clientSecret', 'scope', 'scopes', 'resource_metadata_url', 'resourceMetadataUrl' ) ) ) ) ) );
+        return array( 'name' => $name, 'supported' => true, 'kind' => 'remote-mcp', 'remote' => $remote, 'credentials' => $credentials, 'connection_headers' => $custom, 'unmapped_fields' => array_merge( array_values( array_diff( array_keys( $entry ), array( 'url', 'endpoint', 'serverUrl', 'httpUrl', 'headers', 'http_headers', 'oauth', 'auth', 'authMethod', 'bearer_token', 'command', 'args', 'type', 'transport' ) ) ), array_map( static fn( $key ) => 'oauth.' . $key, array_values( array_diff( array_keys( $oauth ), array( 'type', 'client_id', 'clientId', 'client_secret', 'clientSecret', 'scope', 'scopes', 'resource_metadata_url', 'resourceMetadataUrl' ) ) ) ) ) );
     }
     public static function preview( string $text, int $actor ): array {
         if ( ! user_can( $actor, 'getmcp_manage_servers' ) ) { throw new RemoteException( 'You cannot import servers.', -32003 ); }
@@ -109,17 +109,56 @@ final class ConfigurationImport {
         if ( ! $enc ) { throw new \InvalidArgumentException( 'The preview expired or was already confirmed.' ); }
         $d = json_decode( Encryption::decrypt_strict( $enc ), true );
         if ( $d['actor'] !== $actor || $d['expires_at'] < time() ) { throw new RemoteException( 'This import belongs to another user or has expired.', -32003 ); }
-        $entry = $d['entries'][(int) ( $args['index'] ?? -1 )] ?? null;
+        $index = $args['index'] ?? -1;
+        if ( ! is_int( $index ) ) { throw new \InvalidArgumentException( 'Select a server index.' ); }
+        $entry = $d['entries'][$index] ?? null;
         if ( ! $entry || empty( $entry['supported'] ) ) { throw new \InvalidArgumentException( 'Select a supported server from the preview.' ); }
-        if ( 1 !== $wpdb->delete( $wpdb->options, array( 'option_name' => $name, 'option_value' => $enc ) ) ) { throw new \InvalidArgumentException( 'The import was already confirmed.' ); }
-        wp_cache_delete( $name, 'options' );
-        $input = $args['configuration'] ?? array(); unset( $input['id'], $input['kind'] );
+        $input = $args['configuration'] ?? array(); if ( ! is_array( $input ) ) { throw new \InvalidArgumentException( 'Settings must be an object.' ); } unset( $input['id'], $input['kind'] );
         if ( isset( $input['connection_headers'] ) ) {
             $original = array_column( $entry['connection_headers'] ?? array(), 'value', 'name' );
             foreach ( $input['connection_headers'] as &$header ) { if ( '' === ( $header['value'] ?? null ) && isset( $original[$header['name']] ) ) { $header['value'] = $original[$header['name']]; } } unset( $header );
         }
         $entry = array_replace( $entry, $input, array( 'kind' => 'remote-mcp' ) );
         foreach ( \GetMCP\Gateway\FeatureManager::all() as $existing ) { if ( strtolower( $existing->name ) === strtolower( $entry['name'] ) ) { throw new \InvalidArgumentException( 'A server with that name exists. Rename the imported server; existing servers are preserved.' ); } }
-        return \GetMCP\Gateway\FeatureManager::run( 'save', $entry, $actor );
+        // Consume only this entry. A transactional CAS prevents double creation and
+        // leaves failed entries available for correction without losing their secrets.
+        $wpdb->query( 'START TRANSACTION' );
+        try {
+            $d['entries'][$index] = null;
+            $next = Encryption::encrypt( wp_json_encode( $d ) );
+            if ( 1 !== $wpdb->update( $wpdb->options, array( 'option_value' => $next ), array( 'option_name' => $name, 'option_value' => $enc ) ) ) { throw new \InvalidArgumentException( 'The preview changed. Reload before confirming again.' ); }
+            $saved = \GetMCP\Gateway\FeatureManager::run( 'save', $entry, $actor );
+            $wpdb->query( 'COMMIT' );
+            wp_cache_delete( $name, 'options' );
+            if ( ! array_filter( $d['entries'] ) ) { delete_option( $name ); }
+            return $saved;
+        } catch ( \Throwable $e ) {
+            $wpdb->query( 'ROLLBACK' ); wp_cache_delete( $name, 'options' ); throw $e;
+        }
+    }
+
+    /** Independent results; a rejected entry never overwrites or discards another. */
+    public static function commit_batch( array $args, int $actor ): array {
+        if ( ! user_can( $actor, 'getmcp_manage_servers' ) ) { throw new RemoteException( 'You cannot import servers.', -32003 ); }
+        $items = $args['entries'] ?? null;
+        if ( ! is_array( $items ) || array_values( $items ) !== $items || ! $items || count( $items ) > 100 ) { throw new \InvalidArgumentException( 'Select between one and 100 servers.' ); }
+        $seen = array();
+        foreach ( $items as $item ) {
+            if ( ! is_array( $item ) ) { throw new \InvalidArgumentException( 'Each selected server must be an object.' ); }
+            $index = $item['index'] ?? null;
+            if ( ! is_int( $index ) || $index < 0 || isset( $seen[$index] ) || ! is_array( $item['configuration'] ?? array() ) ) { throw new \InvalidArgumentException( 'Supply distinct server indexes and editable settings.' ); }
+            $seen[$index] = true;
+        }
+        $results = array();
+        foreach ( $items as $item ) {
+            try {
+                $saved = self::commit( array( 'preview_token' => $args['preview_token'] ?? '', 'index' => $item['index'], 'configuration' => $item['configuration'] ?? array() ), $actor );
+                $results[] = array( 'index' => $item['index'], 'status' => 'created', 'server' => $saved );
+            } catch ( \Throwable $e ) {
+                // Never echo arbitrary provider/configuration exception text or credentials.
+                $results[] = array( 'index' => $item['index'], 'status' => 'failed', 'message' => $e instanceof \InvalidArgumentException || $e instanceof RemoteException ? $e->getMessage() : 'Could not import this server. Correct its settings and preview again.' );
+            }
+        }
+        return array( 'results' => $results, 'created' => count( array_filter( $results, static fn( $r ) => 'created' === $r['status'] ) ) );
     }
 }

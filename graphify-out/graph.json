@@ -43,16 +43,16 @@
       "source_location": "L7"
     },
     {
-      "id": "includes_class_marketing_module_marketingmodule",
-      "label": "MarketingModule",
+      "id": "includes_class_page_tokens_pagetokens",
+      "label": "PageTokens",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "marketingmodule",
-      "source_file": "includes/class-marketing-module.php",
+      "norm_label": "pagetokens",
+      "source_file": "includes/class-page-tokens.php",
       "source_location": "L7"
     },
     {
@@ -69,16 +69,16 @@
       "source_location": "L9"
     },
     {
-      "id": "includes_class_provider_discovery_providerdiscovery",
-      "label": "ProviderDiscovery",
+      "id": "includes_class_provider_execution_providerexecution",
+      "label": "ProviderExecution",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "providerdiscovery",
-      "source_file": "includes/class-provider-discovery.php",
+      "norm_label": "providerexecution",
+      "source_file": "includes/class-provider-execution.php",
       "source_location": "L6"
     },
     {
@@ -119,6 +119,58 @@
       "norm_label": "marketingmanagementtool",
       "source_file": "includes/class-marketing-management-tool.php",
       "source_location": "L4"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery",
+      "label": "ProviderDiscovery",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": "providerdiscovery",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L6"
+    },
+    {
+      "id": "includes_class_connection_screens_connectionscreens",
+      "label": "ConnectionScreens",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": "connectionscreens",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule",
+      "label": "MarketingModule",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": "marketingmodule",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates",
+      "label": "MarketingTemplates",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": "marketingtemplates",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L8"
     },
     {
       "id": "includes_class_configuration_import_configurationimport",
@@ -173,30 +225,17 @@
       "source_location": "L6"
     },
     {
-      "id": "includes_class_page_tokens_pagetokens",
-      "label": "PageTokens",
+      "id": "includes_class_configuration_transcoder_configurationtranscoder",
+      "label": "ConfigurationTranscoder",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "Community 5",
       "file_type": "code",
-      "norm_label": "pagetokens",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution",
-      "label": "ProviderExecution",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": "providerexecution",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L6"
+      "norm_label": "configurationtranscoder",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L5"
     },
     {
       "id": "includes_class_updater_updater",
@@ -368,100 +407,28 @@
       "source_location": "L8"
     },
     {
-      "id": "includes_class_marketing_module_closure_29",
-      "label": "{closure#29}()",
+      "id": "includes_class_marketing_module_closure_31",
+      "label": "{closure#31}()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "Community 0",
       "file_type": "code",
-      "norm_label": "{closure#29}()",
+      "norm_label": "{closure#31}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L75"
+      "source_location": "L76"
     },
     {
-      "id": "includes_class_marketing_module_closure_33",
-      "label": "{closure#33}()",
+      "id": "includes_class_marketing_module_closure_35",
+      "label": "{closure#35}()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "Community 0",
       "file_type": "code",
-      "norm_label": "{closure#33}()",
+      "norm_label": "{closure#35}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L148"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_assets",
-      "label": ".assets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".assets()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L110"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_boot",
-      "label": ".boot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L9"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_callback",
-      "label": ".callback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".callback()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L159"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_cleanup",
-      "label": ".cleanup()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".cleanup()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L166"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_configuration",
-      "label": ".configuration()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".configuration()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L115"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_configuration_revision",
-      "label": ".configuration_revision()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".configuration_revision()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L120"
+      "source_location": "L149"
     },
     {
       "id": "includes_class_marketing_module_marketingmodule_configure",
@@ -473,115 +440,43 @@
       "file_type": "code",
       "norm_label": ".configure()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L121"
+      "source_location": "L122"
     },
     {
-      "id": "includes_class_marketing_module_marketingmodule_enabled",
-      "label": ".enabled()",
+      "id": "includes_class_provider_tokens_providertokens_config",
+      "label": ".config()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "Community 0",
       "file_type": "code",
-      "norm_label": ".enabled()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L8"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_public_response",
-      "label": ".public_response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".public_response()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L146"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_response",
-      "label": ".response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".response()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L18"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_routes",
-      "label": ".routes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".routes()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L24"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_can_connect",
-      "label": ".can_connect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".can_connect()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L15"
-    },
-    {
-      "id": "includes_class_provider_tokens_providertokens_secret",
-      "label": ".secret()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".secret()",
+      "norm_label": ".config()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L14"
+      "source_location": "L9"
     },
     {
-      "id": "includes_class_runtime_runtime_boot",
-      "label": ".boot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L53"
-    },
-    {
-      "id": "includes_class_marketing_module_closure_15",
-      "label": "{closure#15}()",
+      "id": "includes_class_marketing_module_closure_1",
+      "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "{closure#15}()",
+      "norm_label": "{closure#1}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L40"
+      "source_location": "L12"
     },
     {
-      "id": "includes_class_marketing_module_closure_21",
-      "label": "{closure#21}()",
+      "id": "includes_class_marketing_module_closure_2",
+      "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "{closure#21}()",
+      "norm_label": "{closure#2}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L45"
+      "source_location": "L13"
     },
     {
       "id": "includes_class_marketing_module_closure_23",
@@ -593,19 +488,43 @@
       "file_type": "code",
       "norm_label": "{closure#23}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L49"
+      "source_location": "L46"
     },
     {
-      "id": "includes_class_marketing_module_closure_26",
-      "label": "{closure#26}()",
+      "id": "includes_class_marketing_module_closure_28",
+      "label": "{closure#28}()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "{closure#26}()",
+      "norm_label": "{closure#28}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L58"
+      "source_location": "L59"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_3",
+      "label": "{closure#3}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L14"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_cleanup",
+      "label": ".cleanup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".cleanup()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L103"
     },
     {
       "id": "includes_class_page_tokens_pagetokens_discover",
@@ -620,6 +539,18 @@
       "source_location": "L25"
     },
     {
+      "id": "includes_class_page_tokens_pagetokens_epoch",
+      "label": ".epoch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".epoch()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L8"
+    },
+    {
       "id": "includes_class_page_tokens_pagetokens_fingerprint",
       "label": ".fingerprint()",
       "_callable": true,
@@ -630,6 +561,102 @@
       "norm_label": ".fingerprint()",
       "source_file": "includes/class-page-tokens.php",
       "source_location": "L10"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_forget",
+      "label": ".forget()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".forget()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L102"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_get",
+      "label": ".get()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".get()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L11"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_key",
+      "label": ".key()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".key()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L9"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_present",
+      "label": ".present()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".present()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L46"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_record_conversations",
+      "label": ".record_conversations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".record_conversations()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L95"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_save",
+      "label": ".save()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".save()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L17"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_select",
+      "label": ".select()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".select()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L51"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_token",
+      "label": ".token()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".token()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L86"
     },
     {
       "id": "includes_class_page_tokens_pagetokens_verify",
@@ -666,6 +693,18 @@
       "norm_label": ".callback()",
       "source_file": "includes/class-provider-connections.php",
       "source_location": "L26"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_can_connect",
+      "label": ".can_connect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".can_connect()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L15"
     },
     {
       "id": "includes_class_provider_connections_providerconnections_complete",
@@ -728,52 +767,64 @@
       "source_location": "L10"
     },
     {
-      "id": "includes_class_provider_discovery_providerdiscovery_ads",
-      "label": ".ads()",
+      "id": "includes_class_provider_execution_providerexecution_context",
+      "label": ".context()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": ".ads()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L46"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_discover",
-      "label": ".discover()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": ".discover()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L28"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_pages",
-      "label": ".pages()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": ".pages()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L17"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_presets",
-      "label": ".presets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": ".presets()",
-      "source_file": "includes/class-provider-discovery.php",
+      "norm_label": ".context()",
+      "source_file": "includes/class-provider-execution.php",
       "source_location": "L7"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_identity",
+      "label": ".identity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".identity()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L51"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_inject",
+      "label": ".inject()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".inject()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L27"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_record",
+      "label": ".record()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".record()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L61"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_retries",
+      "label": ".retries()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".retries()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L55"
     },
     {
       "id": "includes_class_provider_readiness_providerreadiness_accounts",
@@ -810,18 +861,6 @@
       "norm_label": ".after_exchange()",
       "source_file": "includes/class-provider-tokens.php",
       "source_location": "L28"
-    },
-    {
-      "id": "includes_class_provider_tokens_providertokens_config",
-      "label": ".config()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": ".config()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L9"
     },
     {
       "id": "includes_class_provider_tokens_providertokens_graph_base",
@@ -882,6 +921,18 @@
       "norm_label": ".request()",
       "source_file": "includes/class-provider-tokens.php",
       "source_location": "L18"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_secret",
+      "label": ".secret()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".secret()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L14"
     },
     {
       "id": "includes_endpoint_guard_closure_1",
@@ -1004,6 +1055,78 @@
       "source_location": "L24"
     },
     {
+      "id": "includes_class_marketing_module_closure_17",
+      "label": "{closure#17}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": "{closure#17}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L41"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_25",
+      "label": "{closure#25}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": "{closure#25}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L50"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_ads",
+      "label": ".ads()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".ads()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L46"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_discover",
+      "label": ".discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".discover()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L28"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_pages",
+      "label": ".pages()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".pages()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L17"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_presets",
+      "label": ".presets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "Community 12",
+      "file_type": "code",
+      "norm_label": ".presets()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L7"
+    },
+    {
       "id": "getmcp_extensions_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
@@ -1013,6 +1136,234 @@
       "file_type": "code",
       "norm_label": "{closure#1}()",
       "source_file": "getmcp-extensions.php",
+      "source_location": "L24"
+    },
+    {
+      "id": "includes_class_connection_screens_connectionscreens_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L8"
+    },
+    {
+      "id": "includes_class_connection_screens_connectionscreens_routes",
+      "label": ".routes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".routes()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L11"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_assets",
+      "label": ".assets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".assets()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L111"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L9"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_callback",
+      "label": ".callback()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".callback()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L160"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_cleanup",
+      "label": ".cleanup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".cleanup()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L167"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_configuration",
+      "label": ".configuration()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".configuration()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L116"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_configuration_revision",
+      "label": ".configuration_revision()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".configuration_revision()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L121"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_public_response",
+      "label": ".public_response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".public_response()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L147"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_response",
+      "label": ".response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".response()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L18"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_routes",
+      "label": ".routes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".routes()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L24"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L10"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
+      "label": ".client_catalogue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".client_catalogue()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L12"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_install",
+      "label": ".install()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".install()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L43"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_response",
+      "label": ".response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".response()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L26"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_template",
+      "label": ".template()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".template()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L21"
+    },
+    {
+      "id": "includes_class_runtime_runtime_assets",
+      "label": ".assets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".assets()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L122"
+    },
+    {
+      "id": "includes_class_runtime_runtime_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L53"
+    },
+    {
+      "id": "includes_class_runtime_runtime_server_enabled",
+      "label": ".server_enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".server_enabled()",
+      "source_file": "includes/class-runtime.php",
       "source_location": "L24"
     },
     {
@@ -1026,6 +1377,18 @@
       "norm_label": ".commit()",
       "source_file": "includes/class-configuration-import.php",
       "source_location": "L104"
+    },
+    {
+      "id": "includes_class_configuration_import_configurationimport_commit_batch",
+      "label": ".commit_batch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "norm_label": ".commit_batch()",
+      "source_file": "includes/class-configuration-import.php",
+      "source_location": "L141"
     },
     {
       "id": "includes_class_configuration_import_configurationimport_map",
@@ -1124,6 +1487,18 @@
       "source_location": "L40"
     },
     {
+      "id": "includes_class_marketing_module_closure_15",
+      "label": "{closure#15}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "norm_label": "{closure#15}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L40"
+    },
+    {
       "id": "includes_class_marketing_module_closure_16",
       "label": "{closure#16}()",
       "_callable": true,
@@ -1133,19 +1508,7 @@
       "file_type": "code",
       "norm_label": "{closure#16}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L42"
-    },
-    {
-      "id": "includes_class_marketing_module_closure_17",
-      "label": "{closure#17}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "{closure#17}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L42"
+      "source_location": "L41"
     },
     {
       "id": "includes_class_marketing_module_closure_18",
@@ -1181,7 +1544,19 @@
       "file_type": "code",
       "norm_label": "{closure#20}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L45"
+      "source_location": "L44"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_21",
+      "label": "{closure#21}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "norm_label": "{closure#21}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L44"
     },
     {
       "id": "includes_class_marketing_module_closure_22",
@@ -1193,7 +1568,7 @@
       "file_type": "code",
       "norm_label": "{closure#22}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L49"
+      "source_location": "L46"
     },
     {
       "id": "includes_class_marketing_module_closure_24",
@@ -1205,19 +1580,19 @@
       "file_type": "code",
       "norm_label": "{closure#24}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L58"
+      "source_location": "L50"
     },
     {
-      "id": "includes_class_marketing_module_closure_25",
-      "label": "{closure#25}()",
+      "id": "includes_class_marketing_module_closure_26",
+      "label": "{closure#26}()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "Community 2",
       "file_type": "code",
-      "norm_label": "{closure#25}()",
+      "norm_label": "{closure#26}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L58"
+      "source_location": "L59"
     },
     {
       "id": "includes_class_marketing_module_closure_27",
@@ -1229,19 +1604,19 @@
       "file_type": "code",
       "norm_label": "{closure#27}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L75"
+      "source_location": "L59"
     },
     {
-      "id": "includes_class_marketing_module_closure_28",
-      "label": "{closure#28}()",
+      "id": "includes_class_marketing_module_closure_29",
+      "label": "{closure#29}()",
       "_callable": true,
       "_origin": "ast",
       "community": 2,
       "community_name": "Community 2",
       "file_type": "code",
-      "norm_label": "{closure#28}()",
+      "norm_label": "{closure#29}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L75"
+      "source_location": "L76"
     },
     {
       "id": "includes_class_marketing_module_closure_30",
@@ -1253,19 +1628,7 @@
       "file_type": "code",
       "norm_label": "{closure#30}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L100"
-    },
-    {
-      "id": "includes_class_marketing_module_closure_31",
-      "label": "{closure#31}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "{closure#31}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L100"
+      "source_location": "L76"
     },
     {
       "id": "includes_class_marketing_module_closure_32",
@@ -1277,7 +1640,31 @@
       "file_type": "code",
       "norm_label": "{closure#32}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L100"
+      "source_location": "L101"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_33",
+      "label": "{closure#33}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "norm_label": "{closure#33}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L101"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_34",
+      "label": "{closure#34}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "Community 2",
+      "file_type": "code",
+      "norm_label": "{closure#34}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L101"
     },
     {
       "id": "includes_class_marketing_module_closure_4",
@@ -1388,6 +1775,90 @@
       "source_location": "L22"
     },
     {
+      "id": "includes_class_marketing_module_marketingmodule_enabled",
+      "label": ".enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": ".enabled()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L8"
+    },
+    {
+      "id": "includes_class_runtime_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L67"
+    },
+    {
+      "id": "includes_class_runtime_closure_2",
+      "label": "{closure#2}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L81"
+    },
+    {
+      "id": "includes_class_runtime_closure_3",
+      "label": "{closure#3}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L104"
+    },
+    {
+      "id": "includes_class_runtime_closure_4",
+      "label": "{closure#4}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L104"
+    },
+    {
+      "id": "includes_class_runtime_closure_5",
+      "label": "{closure#5}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "{closure#5}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L105"
+    },
+    {
+      "id": "includes_class_runtime_closure_6",
+      "label": "{closure#6}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "{closure#6}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L105"
+    },
+    {
       "id": "includes_class_runtime_runtime_assert_enabled",
       "label": ".assert_enabled()",
       "_callable": true,
@@ -1410,18 +1881,6 @@
       "norm_label": ".assert_server()",
       "source_file": "includes/class-runtime.php",
       "source_location": "L33"
-    },
-    {
-      "id": "includes_class_runtime_runtime_assets",
-      "label": ".assets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".assets()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L120"
     },
     {
       "id": "includes_class_runtime_runtime_enabled",
@@ -1457,7 +1916,7 @@
       "file_type": "code",
       "norm_label": ".menu()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L112"
+      "source_location": "L114"
     },
     {
       "id": "includes_class_runtime_runtime_native_features",
@@ -1481,7 +1940,7 @@
       "file_type": "code",
       "norm_label": ".notice()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L130"
+      "source_location": "L134"
     },
     {
       "id": "includes_class_runtime_runtime_ready",
@@ -1505,7 +1964,7 @@
       "file_type": "code",
       "norm_label": ".render()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L116"
+      "source_location": "L118"
     },
     {
       "id": "includes_class_runtime_runtime_rest_guard",
@@ -1517,7 +1976,7 @@
       "file_type": "code",
       "norm_label": ".rest_guard()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L106"
+      "source_location": "L108"
     },
     {
       "id": "includes_class_runtime_runtime_routes",
@@ -1529,7 +1988,7 @@
       "file_type": "code",
       "norm_label": ".routes()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L100"
+      "source_location": "L102"
     },
     {
       "id": "includes_class_runtime_runtime_save",
@@ -1541,19 +2000,7 @@
       "file_type": "code",
       "norm_label": ".save()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L85"
-    },
-    {
-      "id": "includes_class_runtime_runtime_server_enabled",
-      "label": ".server_enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".server_enabled()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L24"
+      "source_location": "L87"
     },
     {
       "id": "includes_class_runtime_runtime_settings",
@@ -1577,7 +2024,7 @@
       "file_type": "code",
       "norm_label": ".status()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L81"
+      "source_location": "L83"
     },
     {
       "id": "includes_class_configuration_import_closure_1",
@@ -1616,6 +2063,30 @@
       "source_location": "L87"
     },
     {
+      "id": "includes_class_configuration_import_closure_4",
+      "label": "{closure#4}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-configuration-import.php",
+      "source_location": "L162"
+    },
+    {
+      "id": "includes_class_marketing_templates_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L17"
+    },
+    {
       "id": "includes_class_protocol_envelope_protocolenvelope_decode",
       "label": ".decode()",
       "_callable": true,
@@ -1652,7 +2123,7 @@
       "source_location": "L7"
     },
     {
-      "id": "includes_class_marketing_module_closure_1",
+      "id": "includes_class_configuration_transcoder_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
@@ -1660,11 +2131,47 @@
       "community_name": "Community 5",
       "file_type": "code",
       "norm_label": "{closure#1}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L12"
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L41"
     },
     {
-      "id": "includes_class_marketing_module_closure_2",
+      "id": "includes_class_configuration_transcoder_configurationtranscoder_convert",
+      "label": ".convert()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": ".convert()",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_configuration_transcoder_configurationtranscoder_quote",
+      "label": ".quote()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": ".quote()",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L6"
+    },
+    {
+      "id": "includes_class_connection_screens_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L13"
+    },
+    {
+      "id": "includes_class_connection_screens_closure_2",
       "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
@@ -1672,11 +2179,11 @@
       "community_name": "Community 5",
       "file_type": "code",
       "norm_label": "{closure#2}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L13"
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L14"
     },
     {
-      "id": "includes_class_marketing_module_closure_3",
+      "id": "includes_class_connection_screens_closure_3",
       "label": "{closure#3}()",
       "_callable": true,
       "_origin": "ast",
@@ -1684,188 +2191,80 @@
       "community_name": "Community 5",
       "file_type": "code",
       "norm_label": "{closure#3}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L14"
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L26"
     },
     {
-      "id": "includes_class_page_tokens_pagetokens_cleanup",
-      "label": ".cleanup()",
+      "id": "includes_class_connection_screens_closure_4",
+      "label": "{closure#4}()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "Community 5",
       "file_type": "code",
-      "norm_label": ".cleanup()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L103"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_epoch",
-      "label": ".epoch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".epoch()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L8"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_forget",
-      "label": ".forget()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".forget()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_get",
-      "label": ".get()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".get()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L11"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_key",
-      "label": ".key()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".key()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L9"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_present",
-      "label": ".present()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".present()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L46"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_record_conversations",
-      "label": ".record_conversations()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".record_conversations()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L95"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_save",
-      "label": ".save()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".save()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L17"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_select",
-      "label": ".select()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".select()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L51"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_token",
-      "label": ".token()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".token()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L86"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_context",
-      "label": ".context()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".context()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_identity",
-      "label": ".identity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".identity()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L51"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_inject",
-      "label": ".inject()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
-      "file_type": "code",
-      "norm_label": ".inject()",
-      "source_file": "includes/class-provider-execution.php",
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-connection-screens.php",
       "source_location": "L27"
     },
     {
-      "id": "includes_class_provider_execution_providerexecution_record",
-      "label": ".record()",
+      "id": "includes_class_connection_screens_closure_5",
+      "label": "{closure#5}()",
       "_callable": true,
       "_origin": "ast",
       "community": 5,
       "community_name": "Community 5",
       "file_type": "code",
-      "norm_label": ".record()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L61"
+      "norm_label": "{closure#5}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27"
     },
     {
-      "id": "includes_class_provider_execution_providerexecution_retries",
-      "label": ".retries()",
+      "id": "tools_build_ui_baseline",
+      "label": "baseline()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "Community 5",
+      "community": 6,
+      "community_name": "Community 6",
       "file_type": "code",
-      "norm_label": ".retries()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L55"
+      "norm_label": "baseline()",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L9"
+    },
+    {
+      "id": "tools_build_ui_replace_once",
+      "label": "replace_once()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "replace_once()",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L11"
+    },
+    {
+      "id": "tools_handoff_connections_git",
+      "label": "git()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "git()",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L5"
+    },
+    {
+      "id": "tools_handoff_connections_sha",
+      "label": "sha()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "sha()",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L6"
     },
     {
       "id": "includes_class_updater_closure_1",
@@ -1988,76 +2387,28 @@
       "source_location": "L40"
     },
     {
-      "id": "includes_class_runtime_closure_1",
-      "label": "{closure#1}()",
+      "id": "admin_connection_tools_codexconnect",
+      "label": "CodexConnect()",
       "_callable": true,
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L67"
+      "norm_label": "codexconnect()",
+      "source_file": "admin/connection-tools.js",
+      "source_location": "L5"
     },
     {
-      "id": "includes_class_runtime_closure_2",
-      "label": "{closure#2}()",
+      "id": "admin_connection_tools_projectgateways",
+      "label": "ProjectGateways()",
       "_callable": true,
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "{closure#2}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L79"
-    },
-    {
-      "id": "includes_class_runtime_closure_3",
-      "label": "{closure#3}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "Community 9",
-      "file_type": "code",
-      "norm_label": "{closure#3}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_runtime_closure_4",
-      "label": "{closure#4}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "Community 9",
-      "file_type": "code",
-      "norm_label": "{closure#4}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_runtime_closure_5",
-      "label": "{closure#5}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "Community 9",
-      "file_type": "code",
-      "norm_label": "{closure#5}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L103"
-    },
-    {
-      "id": "includes_class_runtime_closure_6",
-      "label": "{closure#6}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "Community 9",
-      "file_type": "code",
-      "norm_label": "{closure#6}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L103"
+      "norm_label": "projectgateways()",
+      "source_file": "admin/connection-tools.js",
+      "source_location": "L25"
     },
     {
       "id": "includes_class_authentication_settings",
@@ -2181,6 +2532,17 @@
       "source_location": "L1"
     },
     {
+      "id": "wp_rest_response",
+      "label": "WP_REST_Response",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": "wp_rest_response",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "includes_class_marketing_module",
       "label": "class-marketing-module.php",
       "_origin": "ast",
@@ -2203,6 +2565,17 @@
       "source_location": "L1"
     },
     {
+      "id": "includes_class_runtime",
+      "label": "class-runtime.php",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": "class-runtime.php",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L1"
+    },
+    {
       "id": "getmcp_core_servermanager",
       "label": "GetMCP\\Core\\ServerManager",
       "_origin": "ast",
@@ -2210,6 +2583,28 @@
       "community_name": "Community 4",
       "file_type": "code",
       "norm_label": "getmcp\\core\\servermanager",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "getmcp_core_toolmanager",
+      "label": "GetMCP\\Core\\ToolManager",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "getmcp\\core\\toolmanager",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "getmcp_licensing_licensetier",
+      "label": "GetMCP\\Licensing\\LicenseTier",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "getmcp\\licensing\\licensetier",
       "source_file": "",
       "source_location": ""
     },
@@ -2280,6 +2675,17 @@
       "source_location": "L1"
     },
     {
+      "id": "includes_class_marketing_templates",
+      "label": "class-marketing-templates.php",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "class-marketing-templates.php",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L1"
+    },
+    {
       "id": "includes_class_page_tokens",
       "label": "class-page-tokens.php",
       "_origin": "ast",
@@ -2346,6 +2752,39 @@
       "source_location": "L1"
     },
     {
+      "id": "getmcp_auth_firstpartyoauth",
+      "label": "GetMCP\\Auth\\FirstPartyOAuth",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "getmcp\\auth\\firstpartyoauth",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "includes_class_configuration_transcoder",
+      "label": "class-configuration-transcoder.php",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "class-configuration-transcoder.php",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "includes_class_connection_screens",
+      "label": "class-connection-screens.php",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "class-connection-screens.php",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_build",
       "label": "build.py",
       "_origin": "ast",
@@ -2368,6 +2807,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_build_ui",
+      "label": "build-ui.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "build-ui.py",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_graph",
       "label": "graph.py",
       "_origin": "ast",
@@ -2379,6 +2829,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_handoff_connections",
+      "label": "handoff-connections.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "handoff-connections.py",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_sync_readme",
       "label": "sync-readme.py",
       "_origin": "ast",
@@ -2387,6 +2848,17 @@
       "file_type": "code",
       "norm_label": "sync-readme.py",
       "source_file": "tools/sync-readme.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_test_connections",
+      "label": "test-connections.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "test-connections.py",
+      "source_file": "tools/test-connections.py",
       "source_location": "L1"
     },
     {
@@ -2423,6 +2895,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_build_ui_rationale_1",
+      "label": "Reviewed seams for GetMCP's distributed React build; readable behavior lives in\u2026",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "reviewed seams for getmcp's distributed react build; readable behavior lives in...",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_graph_rationale_1",
       "label": "Portable, code-only Graphify AST map. No provider credentials or model/API\u2026",
       "_origin": "ast",
@@ -2434,6 +2917,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_handoff_connections_rationale_1",
+      "label": "Credential-free feature handoff from the public add-on baseline; no Git\u2026",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "credential-free feature handoff from the public add-on baseline; no git...",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_sync_readme_rationale_1",
       "label": "Generate the WordPress changelog from the single categorized canonical source.",
       "_origin": "ast",
@@ -2442,6 +2936,17 @@
       "file_type": "rationale",
       "norm_label": "generate the wordpress changelog from the single categorized canonical source.",
       "source_file": "tools/sync-readme.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_test_connections_rationale_1",
+      "label": "Run feasible acceptance/regressions in the two owned Docker fixtures, locally\u2026",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "run feasible acceptance/regressions in the two owned docker fixtures, locally...",
+      "source_file": "tools/test-connections.py",
       "source_location": "L1"
     },
     {
@@ -2555,15 +3060,27 @@
       "source_location": "L3"
     },
     {
-      "id": "includes_class_runtime",
-      "label": "class-runtime.php",
+      "id": "admin_connection_tools",
+      "label": "connection-tools.js",
       "_origin": "ast",
       "community": 9,
       "community_name": "Community 9",
       "file_type": "code",
-      "norm_label": "class-runtime.php",
-      "source_file": "includes/class-runtime.php",
+      "norm_label": "connection-tools.js",
+      "source_file": "admin/connection-tools.js",
       "source_location": "L1"
+    },
+    {
+      "id": "difflib",
+      "label": "difflib",
+      "_origin": "semantic",
+      "community": 6,
+      "community_name": "Community 6",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "difflib",
+      "source_file": "",
+      "type": "external"
     },
     {
       "id": "hashlib",
@@ -2880,6 +3397,30 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_connection_screens",
+      "target": "getmcp_core_servermanager",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "getmcp_auth_firstpartyoauth",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_marketing_module",
       "target": "getmcp_core_servermanager",
       "relation": "imports",
@@ -2901,6 +3442,42 @@
       "context": "import",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates",
+      "target": "getmcp_core_servermanager",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates",
+      "target": "getmcp_core_toolmanager",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates",
+      "target": "getmcp_licensing_licensetier",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -3120,6 +3697,42 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_ui",
+      "target": "hashlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "subprocess",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "tools_graph",
       "target": "json",
       "relation": "imports",
@@ -3156,6 +3769,66 @@
       "weight": 1.0
     },
     {
+      "source": "tools_handoff_connections",
+      "target": "difflib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "hashlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "subprocess",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "zipfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "tools_sync_readme",
       "target": "re",
       "relation": "imports",
@@ -3164,6 +3837,42 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/sync-readme.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_test_connections",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_test_connections",
+      "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_test_connections",
+      "target": "subprocess",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-connections.py",
       "source_location": "L3",
       "weight": 1.0
     },
@@ -3276,6 +3985,18 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_ui",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "tools_graph",
       "target": "pathlib",
       "relation": "imports_from",
@@ -3284,6 +4005,18 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/graph.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-connections.py",
       "source_location": "L2",
       "weight": 1.0
     },
@@ -3300,6 +4033,18 @@
       "weight": 1.0
     },
     {
+      "source": "tools_test_connections",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-connections.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "tools_verify",
       "target": "pathlib",
       "relation": "imports_from",
@@ -3309,6 +4054,40 @@
       "context": "import",
       "source_file": "tools/verify.py",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_install",
+      "target": "wp_rest_response",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_connection_tools",
+      "target": "admin_connection_tools_projectgateways",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "admin/connection-tools.js",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_connection_tools",
+      "target": "admin_connection_tools_codexconnect",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "admin/connection-tools.js",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -3456,6 +4235,17 @@
     },
     {
       "source": "includes_class_configuration_import",
+      "target": "includes_class_configuration_import_closure_4",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-configuration-import.php",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_configuration_import",
       "target": "includes_class_configuration_import_closure_1",
       "relation": "contains",
       "_origin": "ast",
@@ -3499,6 +4289,28 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_configuration_transcoder",
+      "target": "includes_class_configuration_transcoder_closure_1",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_configuration_transcoder",
+      "target": "includes_class_configuration_transcoder_configurationtranscoder",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_connection_headers",
       "target": "includes_class_connection_headers_connectionheaders",
       "relation": "contains",
@@ -3506,6 +4318,72 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-connection-headers.php",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "includes_class_connection_screens_closure_1",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "includes_class_connection_screens_closure_2",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "includes_class_connection_screens_closure_3",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "includes_class_connection_screens_closure_4",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "includes_class_connection_screens_closure_5",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens",
+      "target": "includes_class_connection_screens_connectionscreens",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
       "source_location": "L7",
       "weight": 1.0
     },
@@ -3533,35 +4411,35 @@
     },
     {
       "source": "includes_class_marketing_module",
-      "target": "includes_class_marketing_module_closure_30",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L100",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_marketing_module",
-      "target": "includes_class_marketing_module_closure_31",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L100",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_marketing_module",
       "target": "includes_class_marketing_module_closure_32",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L100",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module",
+      "target": "includes_class_marketing_module_closure_33",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module",
+      "target": "includes_class_marketing_module_closure_34",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -3599,13 +4477,13 @@
     },
     {
       "source": "includes_class_marketing_module",
-      "target": "includes_class_marketing_module_closure_33",
+      "target": "includes_class_marketing_module_closure_35",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L148",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -3748,7 +4626,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L42",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -3759,7 +4637,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L42",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -3792,7 +4670,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L45",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -3803,7 +4681,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L45",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -3814,7 +4692,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L49",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -3825,7 +4703,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L49",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -3836,7 +4714,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L58",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -3847,7 +4725,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L58",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -3858,7 +4736,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L58",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module",
+      "target": "includes_class_marketing_module_closure_27",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module",
+      "target": "includes_class_marketing_module_closure_28",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -3874,35 +4774,57 @@
     },
     {
       "source": "includes_class_marketing_module",
-      "target": "includes_class_marketing_module_closure_27",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L75",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_marketing_module",
-      "target": "includes_class_marketing_module_closure_28",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L75",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_marketing_module",
       "target": "includes_class_marketing_module_closure_29",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L75",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module",
+      "target": "includes_class_marketing_module_closure_30",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module",
+      "target": "includes_class_marketing_module_closure_31",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates",
+      "target": "includes_class_marketing_templates_closure_1",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates",
+      "target": "includes_class_marketing_templates_marketingtemplates",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -3990,7 +4912,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L102",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -4001,7 +4923,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L102",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -4012,7 +4934,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L103",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -4023,7 +4945,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L103",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -4056,7 +4978,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L79",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -4145,6 +5067,50 @@
       "confidence_score": 1.0,
       "source_file": "includes/endpoint-guard.php",
       "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "tools_build_ui_replace_once",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-ui.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "tools_build_ui_baseline",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-ui.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "tools_handoff_connections_git",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections",
+      "target": "tools_handoff_connections_sha",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/handoff-connections.py",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -4248,6 +5214,17 @@
     },
     {
       "source": "includes_class_configuration_import_configurationimport",
+      "target": "includes_class_configuration_import_configurationimport_commit_batch",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-configuration-import.php",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_configuration_import_configurationimport",
       "target": "includes_class_configuration_import_configurationimport_map",
       "relation": "method",
       "_origin": "ast",
@@ -4280,6 +5257,28 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_configuration_transcoder_configurationtranscoder",
+      "target": "includes_class_configuration_transcoder_configurationtranscoder_quote",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_configuration_transcoder_configurationtranscoder",
+      "target": "includes_class_configuration_transcoder_configurationtranscoder_convert",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_connection_headers_connectionheaders",
       "target": "includes_class_connection_headers_connectionheaders_names",
       "relation": "method",
@@ -4309,6 +5308,28 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-connection-headers.php",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens_connectionscreens",
+      "target": "includes_class_connection_screens_connectionscreens_routes",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens_connectionscreens",
+      "target": "includes_class_connection_screens_connectionscreens_boot",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-connection-screens.php",
       "source_location": "L8",
       "weight": 1.0
     },
@@ -4386,7 +5407,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L110",
+      "source_location": "L111",
       "weight": 1.0
     },
     {
@@ -4397,7 +5418,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L115",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -4408,7 +5429,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L120",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -4419,7 +5440,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L121",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -4430,7 +5451,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L146",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -4441,7 +5462,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L159",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -4452,7 +5473,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L166",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -4497,6 +5518,61 @@
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates",
+      "target": "includes_class_marketing_templates_marketingtemplates_boot",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates",
+      "target": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates",
+      "target": "includes_class_marketing_templates_marketingtemplates_template",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates",
+      "target": "includes_class_marketing_templates_marketingtemplates_response",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates",
+      "target": "includes_class_marketing_templates_marketingtemplates_install",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -4980,7 +6056,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L100",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -4991,7 +6067,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L106",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -5013,7 +6089,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L112",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -5024,7 +6100,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L116",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -5035,7 +6111,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L120",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -5046,7 +6122,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L130",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -5145,7 +6221,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L81",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -5156,7 +6232,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L85",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -5281,6 +6357,17 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_ui_rationale_1",
+      "target": "tools_build_ui",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-ui.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tools_graph_rationale_1",
       "target": "tools_graph",
       "relation": "rationale_for",
@@ -5288,6 +6375,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/graph.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_connections_rationale_1",
+      "target": "tools_handoff_connections",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/handoff-connections.py",
       "source_location": "L1",
       "weight": 1.0
     },
@@ -5303,6 +6401,17 @@
       "weight": 1.0
     },
     {
+      "source": "tools_test_connections_rationale_1",
+      "target": "tools_test_connections",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/test-connections.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tools_verify_rationale_1",
       "target": "tools_verify",
       "relation": "rationale_for",
@@ -5311,6 +6420,18 @@
       "confidence_score": 1.0,
       "source_file": "tools/verify.py",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_configuration_transcoder_configurationtranscoder_convert",
+      "target": "includes_class_configuration_import_configurationimport",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -5335,6 +6456,54 @@
       "context": "call",
       "source_file": "includes/class-connection-headers.php",
       "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens_closure_2",
+      "target": "includes_class_runtime_runtime",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens_closure_2",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens_closure_4",
+      "target": "includes_class_marketing_module_marketingmodule",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_connection_screens_closure_5",
+      "target": "includes_class_configuration_transcoder_configurationtranscoder",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -5411,7 +6580,7 @@
     },
     {
       "source": "includes_class_marketing_module_closure_15",
-      "target": "includes_class_provider_discovery_providerdiscovery",
+      "target": "includes_class_configuration_import_configurationimport",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5419,6 +6588,18 @@
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_17",
+      "target": "includes_class_provider_discovery_providerdiscovery",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -5434,18 +6615,6 @@
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_21",
-      "target": "includes_class_provider_connections_providerconnections",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "call",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L46",
-      "weight": 1.0
-    },
-    {
       "source": "includes_class_marketing_module_closure_23",
       "target": "includes_class_provider_connections_providerconnections",
       "relation": "calls",
@@ -5454,12 +6623,12 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L50",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_23",
-      "target": "includes_class_provider_discovery_providerdiscovery",
+      "source": "includes_class_marketing_module_closure_25",
+      "target": "includes_class_provider_connections_providerconnections",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5470,20 +6639,20 @@
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_26",
-      "target": "includes_class_provider_connections_providerconnections",
+      "source": "includes_class_marketing_module_closure_25",
+      "target": "includes_class_provider_discovery_providerdiscovery",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_26",
-      "target": "includes_class_page_tokens_pagetokens",
+      "source": "includes_class_marketing_module_closure_28",
+      "target": "includes_class_provider_connections_providerconnections",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5494,7 +6663,19 @@
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_26",
+      "source": "includes_class_marketing_module_closure_28",
+      "target": "includes_class_page_tokens_pagetokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_28",
       "target": "includes_class_provider_tokens_providertokens",
       "relation": "calls",
       "_origin": "ast",
@@ -5502,11 +6683,11 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_26",
+      "source": "includes_class_marketing_module_closure_28",
       "target": "includes_class_authentication_settings_authenticationsettings",
       "relation": "calls",
       "_origin": "ast",
@@ -5514,31 +6695,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L69",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_marketing_module_closure_29",
-      "target": "includes_class_authentication_settings_settingsconflict",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "call",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L80",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_marketing_module_closure_29",
-      "target": "includes_class_authentication_settings_authenticationsettings",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "call",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L84",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -5554,7 +6711,19 @@
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_module_closure_33",
+      "source": "includes_class_marketing_module_closure_31",
+      "target": "includes_class_authentication_settings_settingsconflict",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_31",
       "target": "includes_class_authentication_settings_authenticationsettings",
       "relation": "calls",
       "_origin": "ast",
@@ -5562,7 +6731,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L149",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_35",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -5574,7 +6755,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L111",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -5586,7 +6767,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L163",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -5598,7 +6779,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L167",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -5610,7 +6791,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L117",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -5622,7 +6803,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L120",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -5634,7 +6815,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L123",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -5646,7 +6827,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L126",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -5658,7 +6839,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L133",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -5682,7 +6863,55 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L155",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
+      "target": "includes_class_marketing_module_marketingmodule",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_install",
+      "target": "includes_class_marketing_module_marketingmodule",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_install",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_response",
+      "target": "includes_class_marketing_module_marketingmodule",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -6082,6 +7311,18 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_runtime_runtime_assets",
+      "target": "includes_class_marketing_templates_marketingtemplates",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_runtime_runtime_boot",
       "target": "includes_class_marketing_module_marketingmodule",
       "relation": "calls",
@@ -6091,6 +7332,30 @@
       "context": "call",
       "source_file": "includes/class-runtime.php",
       "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_runtime_runtime_boot",
+      "target": "includes_class_connection_screens_connectionscreens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_runtime_runtime_boot",
+      "target": "includes_class_marketing_templates_marketingtemplates",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -6107,5 +7372,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b70466e12ff3161688587029c0a6f4109b25eec3"
+  "built_at_commit": "87dbabf07fd8d344a848ac8e4cef4135f4636dd3"
 }

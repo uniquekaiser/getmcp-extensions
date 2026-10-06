@@ -1,0 +1,782 @@
+{
+  "format": "getmcp/server-v1",
+  "exported_at": "2026-10-06T01:50:35+00:00",
+  "generator": {
+    "product": "GetMCP",
+    "version": "1.6.0"
+  },
+  "server": {
+    "name": "Google Analytics",
+    "slug": "google-analytics",
+    "status": "inactive",
+    "transport_type": "streamable-http",
+    "auth_type": "oauth",
+    "auth_config": {
+      "provider": "external",
+      "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth",
+      "token_url": "https://oauth2.googleapis.com/token",
+      "scope": "https://www.googleapis.com/auth/analytics.readonly",
+      "extra_authorize_params": {
+        "access_type": "offline",
+        "prompt": "consent"
+      },
+      "client_id": ""
+    },
+    "outbound_auth_type": "none",
+    "outbound_auth_config": null,
+    "cors_origins": null,
+    "rate_limit_per_min": 60,
+    "settings": {
+      "instructions": "GA4 reporting server based on https://github.com/googleanalytics/google-analytics-mcp. Start with get_account_summaries. property_id is numeric, without properties/ prefix. OAuth scope https://www.googleapis.com/auth/analytics.readonly; configure Google web OAuth client credentials in Authentication. Reporting POST tools are read-only. Dates follow the property's timezone. Use offset/limit and pageToken pagination. Custom dimensions and custom metrics are separate REST reads; call both for the combined reference feature."
+    }
+  },
+  "tools": [
+    {
+      "name": "get_account_summaries",
+      "slug": "get_account_summaries",
+      "description": "Read accessible Google Analytics account/property summaries; paginate with nextPageToken.",
+      "endpoint_url": "https://analyticsadmin.googleapis.com/v1beta/accountSummaries",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 100
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "nextPageToken from previous response"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 0
+    },
+    {
+      "name": "get_property_details",
+      "slug": "get_property_details",
+      "description": "Read a GA4 property's display name, time zone, currency and parent account.",
+      "endpoint_url": "https://analyticsadmin.googleapis.com/v1beta/properties/{{property_id}}",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "property_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 1
+    },
+    {
+      "name": "list_google_ads_links",
+      "slug": "list_google_ads_links",
+      "description": "Read Google Ads links for a GA4 property.",
+      "endpoint_url": "https://analyticsadmin.googleapis.com/v1beta/properties/{{property_id}}/googleAdsLinks",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 100
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "nextPageToken from previous response"
+          }
+        },
+        "required": [
+          "property_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 2
+    },
+    {
+      "name": "list_custom_dimensions",
+      "slug": "list_custom_dimensions",
+      "description": "Read configured custom dimensions. Call list_custom_metrics too for combined custom definitions.",
+      "endpoint_url": "https://analyticsadmin.googleapis.com/v1beta/properties/{{property_id}}/customDimensions",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 100
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "nextPageToken from previous response"
+          }
+        },
+        "required": [
+          "property_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 3
+    },
+    {
+      "name": "list_custom_metrics",
+      "slug": "list_custom_metrics",
+      "description": "Read configured custom metrics.",
+      "endpoint_url": "https://analyticsadmin.googleapis.com/v1beta/properties/{{property_id}}/customMetrics",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 100
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "nextPageToken from previous response"
+          }
+        },
+        "required": [
+          "property_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 4
+    },
+    {
+      "name": "run_report",
+      "slug": "run_report",
+      "description": "Read a GA4 core report. Returns headers, rows, rowCount and metadata. Paginate with limit/offset.",
+      "endpoint_url": "https://analyticsdata.googleapis.com/v1beta/properties/{{property_id}}:runReport",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          },
+          "dateRanges": {
+            "type": "array",
+            "description": "Date ranges; each startDate/endDate is YYYY-MM-DD or relative e.g. 7daysAgo, yesterday.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "startDate": {
+                  "type": "string",
+                  "description": "Start date"
+                },
+                "endDate": {
+                  "type": "string",
+                  "description": "End date"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Optional range name"
+                }
+              },
+              "required": [
+                "startDate",
+                "endDate"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "dimensions": {
+            "type": "array",
+            "description": "Dimension names",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "GA4 dimension API name"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "description": "Metric names or expressions",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "dimensionFilter": {
+            "type": "object",
+            "description": "Data API FilterExpression",
+            "additionalProperties": true
+          },
+          "metricFilter": {
+            "type": "object",
+            "description": "Data API FilterExpression",
+            "additionalProperties": true
+          },
+          "orderBys": {
+            "type": "array",
+            "description": "Data API OrderBy objects",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "limit": {
+            "type": "string",
+            "description": "Integer row limit as a decimal string",
+            "pattern": "^[0-9]+$",
+            "default": "10000"
+          },
+          "offset": {
+            "type": "string",
+            "description": "Integer offset as a decimal string",
+            "pattern": "^[0-9]+$"
+          },
+          "returnPropertyQuota": {
+            "type": "boolean"
+          },
+          "keepEmptyRows": {
+            "type": "boolean"
+          },
+          "metricAggregations": {
+            "type": "array",
+            "description": "TOTAL, MINIMUM, MAXIMUM or COUNT",
+            "items": {
+              "type": "string",
+              "enum": [
+                "TOTAL",
+                "MINIMUM",
+                "MAXIMUM",
+                "COUNT"
+              ]
+            }
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "ISO currency code"
+          },
+          "comparisons": {
+            "type": "array",
+            "description": "Comparison definitions",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "cohortSpec": {
+            "type": "object",
+            "description": "CohortSpec",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "property_id",
+          "dateRanges",
+          "metrics"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 5
+    },
+    {
+      "name": "run_realtime_report",
+      "slug": "run_realtime_report",
+      "description": "Read GA4 realtime activity; use realtime-compatible dimensions and metrics.",
+      "endpoint_url": "https://analyticsdata.googleapis.com/v1beta/properties/{{property_id}}:runRealtimeReport",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          },
+          "dimensions": {
+            "type": "array",
+            "description": "Dimension names",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "GA4 dimension API name"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "description": "Metric names or expressions",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "dimensionFilter": {
+            "type": "object",
+            "description": "Data API FilterExpression",
+            "additionalProperties": true
+          },
+          "metricFilter": {
+            "type": "object",
+            "description": "Data API FilterExpression",
+            "additionalProperties": true
+          },
+          "orderBys": {
+            "type": "array",
+            "description": "Data API OrderBy objects",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "limit": {
+            "type": "string",
+            "description": "Integer row limit as a decimal string",
+            "pattern": "^[0-9]+$",
+            "default": "10000"
+          },
+          "returnPropertyQuota": {
+            "type": "boolean"
+          },
+          "minuteRanges": {
+            "type": "array",
+            "description": "MinuteRange objects",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "metricAggregations": {
+            "type": "array",
+            "description": "MetricAggregation enums",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "property_id",
+          "metrics"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 6
+    },
+    {
+      "name": "run_funnel_report",
+      "slug": "run_funnel_report",
+      "description": "Read a GA4 funnel report using the Data API v1alpha. Specify Funnel steps with filter expressions; returns funnelTable/funnelVisualization.",
+      "endpoint_url": "https://analyticsdata.googleapis.com/v1alpha/properties/{{property_id}}:runFunnelReport",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          },
+          "dateRanges": {
+            "type": "array",
+            "description": "Date ranges; each startDate/endDate is YYYY-MM-DD or relative e.g. 7daysAgo, yesterday.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "startDate": {
+                  "type": "string",
+                  "description": "Start date"
+                },
+                "endDate": {
+                  "type": "string",
+                  "description": "End date"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Optional range name"
+                }
+              },
+              "required": [
+                "startDate",
+                "endDate"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "funnel": {
+            "type": "object",
+            "description": "Funnel with isOpenFunnel and steps[]",
+            "additionalProperties": true
+          },
+          "funnelBreakdown": {
+            "type": "object",
+            "description": "FunnelBreakdown",
+            "additionalProperties": true
+          },
+          "funnelNextAction": {
+            "type": "object",
+            "description": "FunnelNextAction",
+            "additionalProperties": true
+          },
+          "funnelVisualizationType": {
+            "type": "string",
+            "enum": [
+              "STANDARD_FUNNEL",
+              "TRENDED_FUNNEL"
+            ]
+          },
+          "segments": {
+            "type": "array",
+            "description": "Segment definitions",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "dimensionFilter": {
+            "type": "object",
+            "description": "Data API FilterExpression",
+            "additionalProperties": true
+          },
+          "limit": {
+            "type": "string",
+            "description": "Integer row limit as a decimal string",
+            "pattern": "^[0-9]+$",
+            "default": "10000"
+          },
+          "returnPropertyQuota": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "property_id",
+          "dateRanges",
+          "funnel"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 7
+    },
+    {
+      "name": "get_reporting_metadata",
+      "slug": "get_reporting_metadata",
+      "description": "Read available reporting dimension and metric names for a GA4 property.",
+      "endpoint_url": "https://analyticsdata.googleapis.com/v1beta/properties/{{property_id}}/metadata",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "property_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "property_id": {
+          "target": "path",
+          "key": "property_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 8
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "excluded": {
+    "fields": [
+      "auth_credentials",
+      "outbound_auth_credentials",
+      "test_auth_credentials"
+    ],
+    "reason": "Stored credentials are encrypted with a key unique to the site that saved them, so they cannot be restored elsewhere. Re-enter them after importing."
+  }
+}

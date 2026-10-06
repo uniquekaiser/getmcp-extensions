@@ -14,13 +14,16 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
     const [entryMode,setEntryMode] = useState('url'), [document,setDocument] = useState(''), [importPreview,setImportPreview] = useState(null);
     const [headers,setHeaders] = useState([]), [sharedKind,setSharedKind] = useState('bearer'), [sharedName,setSharedName] = useState('X-API-Key'), [sharedUser,setSharedUser] = useState('');
     const [providerPreview,setProviderPreview] = useState(null);
-    const load = async () => { const r = await api(portal ? 'my-connections' : 'connections'); setItems(r.connections || r.servers || []); };
+    const [endpoints,setEndpoints]=useState([]),[canManage,setCanManage]=useState(false);
+    const [batch,setBatch]=useState([]),[batchUsers,setBatchUsers]=useState([]),[batchStatus,setBatchStatus]=useState('draft'),[conversion,setConversion]=useState(null),[outputFormat,setOutputFormat]=useState('codex');
+    const load = async () => { const r = await api(portal ? 'my-connections' : 'connections'); setItems(r.connections || r.servers || []);setEndpoints(r.endpoints||[]);setCanManage(!!r.can_manage_connections); };
     const action = async fn => {
       setBusy(true); setError('');
       try { await fn(); } catch (e) { const message = e.message || 'The operation could not be completed.'; setError(message); addToast(message, 'error'); }
       finally { setBusy(false); }
     };
     useEffect(() => { load().catch(e => setError(e.message || 'Could not load connections.')).finally(() => setLoading(false)); }, [portal]);
+    useEffect(()=>{if(!portal && new URLSearchParams(window.location.hash.split('?')[1]||'').get('add')==='remote-mcp'){edit({kind:'remote-mcp',name:'',slug:'',status:'draft'});window.history.replaceState(null,'',window.location.pathname+window.location.search+'#/connections');}},[portal]);
     const update = (key, value) => setForm(p => ({...p, [key]: value}));
     const remote = (key, value) => setForm(p => ({...p, remote: {...p.remote, [key]: value}}));
     const edit = item => { setForm({...item, allowed_user_ids: item.allowed_user_ids || [], server_ids: item.server_ids || [], remote: item.remote || {auth_mode: 'oauth'}}); setSecret(''); setPreview(null); setError(''); setMemberQuery(''); setHeaders((item.header_names || []).map(name=>({name,value:''}))); setEntryMode('url'); setImportPreview(null); setDocument(''); };
@@ -37,7 +40,7 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
         else body.credentials={headers:{[sharedKind==='api-key'?sharedName:'Authorization']:sharedKind==='bearer'?'Bearer '+secret:secret}};
       }
       const saved = form.import_token ? await api('connections/import-confirm',{method:'POST',data:{preview_token:form.import_token,index:form.import_index,configuration:body}}) : await api('connections' + (form.id ? '/' + form.id : ''), {method: form.id ? 'PUT' : 'POST', data: body});
-      edit(saved); await load(); addToast(form.kind === 'gateway' ? 'Gateway saved. Selected servers are available to its allowed users.' : 'Remote MCP connection saved.', 'success');
+      setKind(form.kind);setQuery('');edit(saved); await load(); addToast(form.kind === 'gateway' ? 'Gateway saved. Selected servers are available to its allowed users.' : 'Remote MCP connection saved.', 'success');
     };
     const flags = window.getmcpExtensions?.effective_features || {};
     const available = value => value === 'gateway' ? flags.project_gateways !== false : flags.remote_mcp !== false;
@@ -45,13 +48,19 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
     const selected = items.filter(item => item.kind === kind && (item.name + ' ' + item.slug).toLowerCase().includes(query.toLowerCase()));
     const candidates = items.filter(item => item.kind !== 'gateway' && item.id > 0);
     const previewSections = [['tools/list','tools','Tools'], ['resources/list','resources','Resources'], ['resources/templates/list','resourceTemplates','Resource templates'], ['prompts/list','prompts','Prompts']];
+    const batchChange=(index,key,value)=>setBatch(rows=>rows.map(row=>row.index===index?{...row,[key]:value}:row));
+    const batchImport=async()=>{
+      const r=await api('connections/import-batch',{method:'POST',data:{preview_token:importPreview.preview_token,entries:batch.filter(row=>row.selected && row.status!=='created').map(row=>({index:row.index,configuration:{name:row.name,slug:row.slug,status:batchStatus,allowed_user_ids:batchUsers}}))}});
+      setBatch(rows=>rows.map(row=>{const result=r.results.find(item=>item.index===row.index);return result?{...row,...result,selected:result.status!=='created'}:row;}));setKind('remote-mcp');setQuery('');await load();addToast(r.created+' Remote MCP connection(s) created.','success');
+    };
     return h(PageContainer, null,
-      h(PageHeader, {title, description: portal ? 'Connect your own upstream accounts for the servers you can access.' : 'Group servers by project and connect remote MCP services.', actions: !portal && !form && h(React.Fragment, null,
+      h(PageHeader, {title, description: portal ? 'Connect your own upstream accounts for the servers you can access.' : 'Group servers by project and connect remote MCP services.', actions: portal ? canManage && button('Add Remote MCP',()=>window.location.assign(window.getmcpExtensions.connectionsUrl+'#/connections?add=remote-mcp')) : !form && h(React.Fragment, null,
         button('Create gateway', () => edit({kind: 'gateway', name: '', slug: '', status: 'active'}), 'primary'), button('Add Remote MCP', () => edit({kind: 'remote-mcp', name: '', slug: '', status: 'active'})))}),
       !portal && h('p', {className:'text-sm text-gray-500'}, 'Feature switches and compatibility: ', h('a',{href:'admin.php?page=getmcp-extensions'},'GetMCP Extensions')),
       error && h('div', {role: 'alert', className: 'rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-600'}, error, !form && button('Retry', load)),
       loading ? h(Skeleton, {variant: 'card'}) : h('div', {className: 'space-y-6'},
         portal ? h(React.Fragment, null,
+          endpoints.length>0 && h(Card,{title:'Available MCP endpoints'},...endpoints.map(item=>h('div',{key:item.id,className:'border-b py-3'},h('strong',null,item.name),' · '+(item.kind==='gateway'?'Gateway':'Remote MCP'),h('code',{className:'block break-all'},item.url),h(CopyButton,{text:item.url,label:'Copy URL'}),h(window.GetMCPExtensionsCodexConnect,{connection:{...item,auth_type:'oauth'}})))),
           !items.length && h(Card, null, h(EmptyState, {title: 'No account connections available', description: 'Your administrator can make upstream OAuth servers available through a gateway.'})),
           ...items.map(item => h(Card, {key: item.id, title: item.name, actions: h(Badge, {variant: item.connected && !item.reconnect_required ? 'success' : 'neutral', dot: true}, item.reconnect_required ? 'Reconnect required' : item.connected ? 'Connected' : 'Not connected')},
             item.kind==='rest-provider' && h('div',{className:'space-y-3 mb-4'},
@@ -72,8 +81,15 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
             entryMode==='paste' && h('div',{className:'space-y-4 mt-4'},
               h('label',null,'Configuration',h('textarea',{'aria-label':'Configuration',className:'block w-full rounded border p-3',rows:8,value:document,onChange:e=>setDocument(e.target.value)})),
               h('p',null,'Paste client JSON, basic YAML, Codex TOML, a Claude/Codex add command or a bare HTTPS URL. Preview maps supported fields; existing servers are preserved.'),
-              button('Preview configuration',async()=>{setImportPreview(await api('connections/import-preview',{method:'POST',data:{document}}));setDocument('');}),
-              importPreview && importPreview.entries.map(row=>h('div',{key:row.index,className:'rounded border p-3'},h('strong',null,row.name),h('p',null,row.supported?row.remote.endpoint:row.reason),row.unmapped_fields?.length>0&&h('p',null,'Unmapped fields: '+row.unmapped_fields.join(', ')),row.supported&&button('Use these settings',()=>{const token=importPreview.preview_token;edit({...row,kind:'remote-mcp',status:'draft',import_token:token,import_index:row.index});}))))),
+              button('Preview configuration',async()=>{const r=await api('connections/import-preview',{method:'POST',data:{document}});setImportPreview(r);setBatch(r.entries.map(row=>({...row,selected:row.supported,slug:'',status:'pending'})));setConversion(null);setDocument('');}),
+              h('details',null,h('summary',null,'Convert configuration between clients'),h('p',null,'Convert the pasted text without importing. Header and environment values are redacted; command arguments are omitted. Review warnings before use.'),h(Select,{label:'Output format',value:outputFormat,onChange:e=>setOutputFormat(e.target.value),options:[{value:'codex',label:'Codex config.toml'},{value:'claude',label:'Claude / Cursor JSON'},{value:'vscode',label:'VS Code JSON'}]}),button('Convert configuration',async()=>setConversion(await api('connections/transcode',{method:'POST',data:{document,format:outputFormat}}))),conversion&&h('div',null,h('textarea',{'aria-label':'Converted configuration',readOnly:true,value:conversion.configuration,rows:8,className:'w-full rounded border p-3 font-mono'}),h(CopyButton,{text:conversion.configuration,label:'Copy converted configuration'}),...conversion.warnings.map((warning,i)=>h('p',{key:i},warning)))),
+              importPreview && h('div',{className:'space-y-4'},
+                h('h3',null,'Select servers to import'),
+                checkbox('Select all supported servers',batch.filter(row=>row.supported && row.status!=='created').every(row=>row.selected),value=>setBatch(rows=>rows.map(row=>({...row,selected:row.supported && row.status!=='created' && value})))),
+                h(Select,{label:'Imported server status',value:batchStatus,onChange:e=>setBatchStatus(e.target.value),options:['draft','active','paused'].map(value=>({value,label:value}))}),
+                h('p',null,'Choose users for the selected servers. An empty list denies everyone. Original /mcp publication stays off.'),h(Picker,{value:batchUsers,onChange:setBatchUsers}),
+                ...batch.map(row=>h('div',{key:row.index,className:'rounded border p-3 space-y-2'},row.supported && row.status!=='created'?checkbox('Import '+row.name,row.selected,value=>batchChange(row.index,'selected',value)):h('strong',null,row.name),h('p',null,row.supported?row.remote.endpoint:row.reason),row.unmapped_fields?.length>0&&h('p',null,'Unmapped fields: '+row.unmapped_fields.join(', ')),row.status==='created'?h('p',{role:'status'},'Created: '+row.server.name):row.supported&&h(React.Fragment,null,field('Import name '+(row.index+1),row.name,value=>batchChange(row.index,'name',value)),field('Import slug '+(row.index+1),row.slug,value=>batchChange(row.index,'slug',value)),row.message&&h('p',{role:'alert'},row.message),button('Edit individual settings',()=>{const token=importPreview.preview_token;edit({...row,kind:'remote-mcp',status:batchStatus,allowed_user_ids:batchUsers,import_token:token,import_index:row.index});})))),
+                h(Button,{variant:'primary',disabled:busy || !batch.some(row=>row.selected && row.status!=='created'),onClick:()=>action(batchImport)},'Import selected servers')))),
           h(Card, {title: 'Endpoint settings', actions: form.id && h(CopyButton, {text: form.url, label: 'Copy URL'})}, h('div', {className: 'space-y-4'},
             h('div', {className: 'grid grid-cols-1 md:grid-cols-2 gap-4'}, field('Name', form.name, v => update('name', v), 'text', {required: true}), field('URL slug', form.slug, v => update('slug', v), 'text', {helperText: 'Used in the MCP connection URL.'})),
             h(Select, {label: 'Status', value: form.status, disabled: busy, onChange: e => update('status', e.target.value), options: ['active','paused','draft'].map(value => ({value, label: value[0].toUpperCase() + value.slice(1)}))}),
@@ -92,7 +108,7 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
             checkbox('Explicitly publish to the original /mcp gateway', !!form.remote.publish_original, v => remote('publish_original', v)))),
           h('div', {className: 'flex flex-wrap items-center gap-3'}, h(Button, {variant:'primary', loading:busy, disabled:!form.name.trim(), onClick:() => action(save)}, 'Save'),
             form.id && button(form.kind === 'gateway' ? 'Preview capabilities' : 'Test & discover capabilities', async () => { setPreview(await api('connections/' + form.id + '/preview')); await load(); addToast('Capability discovery completed.','success'); }),
-            button('Close', () => { setForm(null); setPreview(null); }), form.id && button('Delete', () => setConfirm({kind:'delete',item:form}), 'danger')),
+            button(form.kind==='gateway'?'Back to gateway list':'Back to Remote MCP list', () => { setKind(form.kind);setQuery('');setForm(null); setPreview(null); }), form.id && button('Delete', () => setConfirm({kind:'delete',item:form}), 'danger')),
           preview && h(Card, {title:'Available capabilities'}, h('div',{className:'space-y-6'}, ...previewSections.map(([method,field,label]) => {
             const entries = preview[method]?.[field] || [];
             return h('section',{key:method,'aria-label':label}, h('h3',{className:'text-base font-semibold text-gray-900'}, `${label} (${entries.length})`),
@@ -106,7 +122,7 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
           !selected.length && h(Card,null,h(EmptyState,{title:query ? 'No matching connections' : kind === 'gateway' ? 'No project gateways yet':'No remote connections yet',description:'Create an endpoint with its own servers and allowed users.'})),
           ...selected.map(item => h(Card,{key:item.id,title:item.name,actions:h(Badge,{variant:item.status === 'active' ? 'success':'neutral',dot:true},words(item.status))}, h('div',{className:'space-y-4'},
             item.kind === 'remote-mcp' && h('p',{className:'text-sm text-gray-500'},'Your connection: ' + words(item.connection_status?.state || 'not_tested')),
-            h('code',{className:'block font-mono text-sm text-gray-700 break-all'},item.url), h('div',{className:'flex flex-wrap gap-3'},h(CopyButton,{text:item.url,label:'Copy URL'}),button('Edit',() => edit(item)))))))),
+            h('code',{className:'block font-mono text-sm text-gray-700 break-all'},item.url), h('div',{className:'flex flex-wrap gap-3'},h(CopyButton,{text:item.url,label:'Copy URL'}),button('Edit',() => edit(item))),h(window.GetMCPExtensionsCodexConnect,{connection:{...item,auth_type:'oauth'}})))))),
       h(ConfirmDialog,{open:!!confirm,title:confirm?.kind === 'delete' ? 'Delete this endpoint?':'Disconnect your account?',
         message:confirm?.kind === 'delete' ? 'This endpoint and its upstream account connections will be removed.':'GetMCP will remove your saved upstream credentials. You can connect again later.', confirmLabel:confirm?.kind === 'delete' ? 'Delete endpoint':'Disconnect',loading:busy,
         onClose:() => { if (!busy) setConfirm(null); }, onConfirm:() => action(async () => {

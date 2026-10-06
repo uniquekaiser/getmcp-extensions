@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.2
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,15 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.2.0 =
+
+* [NEW] Preview and import multiple Remote MCP servers with editable names, user access and independent retry results.
+* [NEW] Add Remote MCP from My MCP Connections and copy accessible project gateway URLs.
+* [NEW] Connect Codex Desktop with direct HTTP and copyable config.toml.
+* [NEW] Convert client configuration between Claude/Cursor JSON, VS Code JSON and Codex TOML with secret redaction.
+* [NEW] Install five marketing templates into empty draft native servers with credentials and messaging activation kept separate.
+* [FIX] Show project gateways on the original Gateway screen and return saved gateways to the correct list.
 
 = 1.1.2 =
 

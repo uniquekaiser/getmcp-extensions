@@ -37,6 +37,7 @@ final class MarketingModule {
         ) );
         register_rest_route( 'getmcp/v1', '/connections/import-preview', array( 'methods' => 'POST', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => ConfigurationImport::preview( (string) $r->get_param( 'document' ), get_current_user_id() ) ) ) );
         register_rest_route( 'getmcp/v1', '/connections/import-confirm', array( 'methods' => 'POST', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => ConfigurationImport::commit( $r->get_json_params() ?: array(), get_current_user_id() ) ) ) );
+        register_rest_route( 'getmcp/v1', '/connections/import-batch', array( 'methods' => 'POST', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => ConfigurationImport::commit_batch( $r->get_json_params() ?: array(), get_current_user_id() ) ) ) );
         register_rest_route( 'getmcp/v1', '/provider-presets', array( 'methods' => 'GET', 'permission_callback' => $manage, 'callback' => fn() => self::response( fn() => ProviderDiscovery::presets() ) ) );
         register_rest_route( 'getmcp/v1', '/servers/(?P<uuid>[a-f0-9-]{36})/provider-configuration', array(
             array( 'methods' => 'GET', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => self::configuration( $r['uuid'] ) ) ),

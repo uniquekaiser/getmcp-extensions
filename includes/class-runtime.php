@@ -72,6 +72,8 @@ final class Runtime {
         if ( ! defined( 'GETMCP_EXTENSIONS_READY' ) ) { define( 'GETMCP_EXTENSIONS_READY', true ); }
         if ( ! $native ) { \GetMCP\Gateway\FeatureModule::register(); }
         MarketingModule::boot();
+        ConnectionScreens::boot();
+        MarketingTemplates::boot();
         add_action( 'init', array( Lifecycle::class, 'migrate' ), 30 );
         add_action( 'admin_enqueue_scripts', array( self::class, 'assets' ), 100 );
         add_action( 'wp_enqueue_scripts', array( self::class, 'assets' ), 100 );
@@ -121,10 +123,12 @@ final class Runtime {
         if ( ! wp_script_is( 'getmcp-admin', 'enqueued' ) ) { return; }
         wp_enqueue_script( 'getmcp-extensions-settings', GETMCP_EXTENSIONS_URL . 'admin/extensions-settings.js', array( 'wp-element' ), GETMCP_EXTENSIONS_VERSION, true );
         wp_enqueue_script( 'getmcp-authentication-settings', GETMCP_EXTENSIONS_URL . 'admin/authentication-settings.js', array( 'wp-element', 'wp-api-fetch', 'getmcp-oauth-user-picker' ), GETMCP_EXTENSIONS_VERSION, true );
+        wp_enqueue_script( 'getmcp-connection-tools', GETMCP_EXTENSIONS_URL . 'admin/connection-tools.js', array( 'wp-element' ), GETMCP_EXTENSIONS_VERSION, true );
+        wp_add_inline_script( 'getmcp-admin', 'window.getmcpMarketingTemplates=' . wp_json_encode( MarketingTemplates::client_catalogue() ) . ';', 'before' );
         // Add-on settings page also works alongside an already integrated snapshot.
-        wp_add_inline_script( 'getmcp-admin', 'window.getmcpExtensions=' . wp_json_encode( self::status() + array( 'assetUrl' => GETMCP_EXTENSIONS_URL, 'settingsUrl' => rest_url( 'getmcp-extensions/v1/settings' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
+        wp_add_inline_script( 'getmcp-admin', 'window.getmcpExtensions=' . wp_json_encode( self::status() + array( 'connectionsUrl' => admin_url( 'admin.php?page=getmcp-connections' ), 'assetUrl' => GETMCP_EXTENSIONS_URL, 'settingsUrl' => rest_url( 'getmcp-extensions/v1/settings' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
         $scripts = wp_scripts();
-        if ( isset( $scripts->registered['getmcp-admin'] ) ) { $scripts->registered['getmcp-admin']->deps[] = 'getmcp-extensions-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-authentication-settings'; $scripts->registered['getmcp-admin']->src = GETMCP_EXTENSIONS_URL . 'build/index.js'; $scripts->registered['getmcp-admin']->ver = substr( hash_file( 'sha256', GETMCP_EXTENSIONS_PATH . 'build/index.js' ), 0, 12 );
+        if ( isset( $scripts->registered['getmcp-admin'] ) ) { $scripts->registered['getmcp-admin']->deps[] = 'getmcp-extensions-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-authentication-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-connection-tools'; $scripts->registered['getmcp-admin']->src = GETMCP_EXTENSIONS_URL . 'build/index.js'; $scripts->registered['getmcp-admin']->ver = substr( hash_file( 'sha256', GETMCP_EXTENSIONS_PATH . 'build/index.js' ), 0, 12 );
             foreach ( array( 'getmcp-native-connections' => 'native-connections.js', 'getmcp-app-extension' => 'getmcp-app-extension.js', 'getmcp-oauth-user-picker' => 'oauth-user-picker.js' ) as $handle => $file ) { if ( isset( $scripts->registered[$handle] ) ) { $scripts->registered[$handle]->src = GETMCP_EXTENSIONS_URL . 'admin/' . $file; $scripts->registered[$handle]->ver = substr( hash_file( 'sha256', GETMCP_EXTENSIONS_PATH . 'admin/' . $file ), 0, 12 ); } } }
     }
     public static function notice(): void {
