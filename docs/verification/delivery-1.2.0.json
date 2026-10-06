@@ -1,0 +1,94 @@
+{
+  "version": "1.2.0",
+  "date": "2026-10-06",
+  "release_commit": "bae5172114c6eb11735dc5f9f015ef8008cdd5f7",
+  "tag": "v1.2.0",
+  "repository": "https://github.com/uniquekaiser/getmcp-extensions",
+  "asset_sha256": {
+    "getmcp-extensions-1.2.0.zip": "6efc1a123e9f91087e16361b96906eb6fe9d0d2c42f89fd8eea9ef71294dc90f",
+    "getmcp-extensions-1.2.0-developer-handoff.zip": "94bc1b223dfcb24ec91eba98a8ba2e642586c41290c79061fd3d3924b52ce5b7"
+  },
+  "anonymous_download_equal": true,
+  "install_files": 190,
+  "handoff_patch_files": 41,
+  "php_syntax_files_per_runtime": 122,
+  "php_runtimes": [
+    "8.2.30",
+    "8.3.29",
+    "8.4.16"
+  ],
+  "oauth_assertions_per_runtime": 62,
+  "access_assertions_per_runtime": 33,
+  "javascript_syntax_files": 11,
+  "updater_contract_assertions_per_environment": 23,
+  "wordpress": [
+    {
+      "wordpress": "7.1.2",
+      "php": "8.3",
+      "fresh_public_update": true,
+      "cached_public_update": {
+        "passed": true,
+        "version": "1.2.0",
+        "http_requests": 0,
+        "package": "https://github.com/uniquekaiser/getmcp-extensions/releases/download/v1.2.0/getmcp-extensions-1.2.0.zip",
+        "compatibility_and_icons_complete": true
+      },
+      "runtime_gate": "READY target=1.2.0",
+      "normal_upgrade": "WordPress dashboard, genuine 1.1.2 to 1.2.0",
+      "upgrade_checks": {
+        "servers_preserved": true,
+        "upstream_preserved": true,
+        "pages_preserved": true,
+        "modules_preserved": true,
+        "active_plugins_preserved": true,
+        "guard_preserved": true,
+        "installed_version": true,
+        "runtime_ready": true,
+        "updater_loaded": true,
+        "installed_bytes_equal_published_package": true
+      }
+    },
+    {
+      "wordpress": "6.2.2",
+      "php": "8.2",
+      "fresh_public_update": true,
+      "cached_public_update": {
+        "passed": true,
+        "version": "1.2.0",
+        "http_requests": 0,
+        "package": "https://github.com/uniquekaiser/getmcp-extensions/releases/download/v1.2.0/getmcp-extensions-1.2.0.zip",
+        "compatibility_and_icons_complete": true
+      },
+      "runtime_gate": "READY target=1.2.0",
+      "normal_upgrade": "WP CLI Plugin_Upgrader, genuine 1.1.2 to 1.2.0",
+      "upgrade_checks": {
+        "servers_preserved": true,
+        "upstream_preserved": true,
+        "pages_preserved": true,
+        "modules_preserved": true,
+        "active_plugins_preserved": true,
+        "guard_preserved": true,
+        "installed_version": true,
+        "runtime_ready": true,
+        "updater_loaded": true,
+        "installed_bytes_equal_published_package": true
+      }
+    }
+  ],
+  "feature_evidence": "docs/verification-1.2.0.md; unchanged install ZIP",
+  "log_fatal_parse_errors": 0,
+  "hosted_workflows": 0,
+  "hosted_actions_runs": 0,
+  "customer_deployment": false,
+  "live_provider_writes": false,
+  "unavailable": [
+    "actual Codex Desktop sign-in/tool calls",
+    "real Google/Meta consent/refresh/messaging",
+    "original React source/type build",
+    "other platforms/database/version/edition combinations"
+  ],
+  "unsupported": [
+    "PHP below 8.2",
+    "multisite"
+  ]
+}
