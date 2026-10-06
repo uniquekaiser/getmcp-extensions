@@ -12,7 +12,7 @@ Prepared 2026-10-06. This release corrects the public updater's final WordPress 
 
 ## Publication and normal upgrade
 
-Final public anonymous download, metadata/image response, cached metadata and normal dashboard/CLI upgrades from the genuine published 1.1.1 package are recorded in the delivery report after publication. Baselines retain only hashes of protected server, credential and Page records, module options, active plugins and the persistent guard.
+Final public anonymous download, metadata/image response, cached metadata and normal dashboard/CLI upgrades from the genuine published 1.1.1 package are recorded in [the delivery report](delivery-1.1.2.md). Baselines retain only hashes of protected server, credential and Page records, module options, active plugins and the persistent guard.
 
 The older 1.1.1 updater can deliver the valid new package, but its details formatting cannot gain the missing icons until 1.1.2 is installed. The final-format gate runs on the corrected client; previous-client delivery and the normal upgrade are separate evidence. Real 1.0.0/1.1.0 packages require one manual bootstrap installation.
 

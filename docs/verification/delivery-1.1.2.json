@@ -1,0 +1,86 @@
+{
+  "version": "1.1.2",
+  "date": "2026-10-06",
+  "release_commit": "1bf07bd1c474ed5d10d3e227449292f8c0f426c9",
+  "tag": "v1.1.2",
+  "repository": "https://github.com/uniquekaiser/getmcp-extensions",
+  "asset_sha256": "e64f80ea61f889f8b4fb10fbda2fef84a2790e2eae3e7b39ea9a5f2cbcdc8d16",
+  "asset_files": 180,
+  "anonymous_download_equal": true,
+  "php": {
+    "versions": [
+      "8.2.30",
+      "8.3.29",
+      "8.4.16"
+    ],
+    "syntax_files_per_runtime": 114,
+    "oauth_assertions_per_runtime": 62,
+    "access_assertions_per_runtime": 33
+  },
+  "javascript_syntax_files": 9,
+  "wordpress": [
+    {
+      "version": "7.1.2",
+      "php": "8.3",
+      "updater_assertions": 23,
+      "normal_upgrade": "browser dashboard, genuine 1.1.1 -> 1.1.2",
+      "upgrade_checks": {
+        "servers_preserved": true,
+        "upstream_preserved": true,
+        "pages_preserved": true,
+        "modules_preserved": true,
+        "active_plugins_preserved": true,
+        "guard_preserved": true,
+        "installed_version": true,
+        "runtime_ready": true,
+        "updater_loaded": true,
+        "installed_bytes_equal_published_package": true
+      }
+    },
+    {
+      "version": "6.2.2",
+      "php": "8.2",
+      "updater_assertions": 23,
+      "normal_upgrade": "WP CLI Plugin_Upgrader, genuine 1.1.1 -> 1.1.2",
+      "upgrade_checks": {
+        "servers_preserved": true,
+        "upstream_preserved": true,
+        "pages_preserved": true,
+        "modules_preserved": true,
+        "active_plugins_preserved": true,
+        "guard_preserved": true,
+        "installed_version": true,
+        "runtime_ready": true,
+        "updater_loaded": true,
+        "installed_bytes_equal_published_package": true
+      }
+    }
+  ],
+  "graphify": {
+    "nodes": 227,
+    "edges": 299,
+    "communities": 18,
+    "mode": "code-only AST; zero model/API calls"
+  },
+  "unchanged_feature_evidence": {
+    "release": "1.1.1",
+    "wordpress_integration_assertions_per_environment": 215,
+    "browser": "Authentication save/reload with unchanged encrypted secret and advanced parameters",
+    "reason_reusable": "1.1.2 only changes updater/version/public documentation; provider/gateway/access runtime files are unchanged."
+  },
+  "hosted_actions_runs": 0,
+  "customer_deployment": false,
+  "live_provider_writes": false,
+  "known_previous_client_gap": "1.1.1 details omit icons and category formatting until 1.1.2 installs; valid upgrade delivery works.",
+  "not_supported": [
+    "PHP 8.0/8.1",
+    "multisite"
+  ],
+  "unavailable": [
+    "real provider consent/token extension/Page messaging",
+    "original React build/type checks",
+    "other intermediate hosting/platform/database/version combinations",
+    "other licensed editions",
+    "exact WordPress 6.2.0"
+  ]
+}
