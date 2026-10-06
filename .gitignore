@@ -1,0 +1,15 @@
+/dist/
+/evidence/
+/fixtures/vendor-getmcp/
+/.distribution-tests/
+/tests/.auth-root/
+/.venv/
+**/__pycache__/
+*.pyc
+*.log
+*.zip
+.env*
+wp-config.php
+graphify-out/.*
+graphify-out/cost.json
+graphify-out/cache/

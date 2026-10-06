@@ -1,0 +1,5 @@
+{
+  "channel": "github",
+  "changelog": "CHANGELOG.md",
+  "public_copy_forbidden_terms": ["GPL port", "copied from", "SDK removed"]
+}

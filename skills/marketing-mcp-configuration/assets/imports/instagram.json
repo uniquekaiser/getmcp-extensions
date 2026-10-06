@@ -1,0 +1,1655 @@
+{
+  "format": "getmcp/server-v1",
+  "exported_at": "2026-10-06T01:50:35+00:00",
+  "generator": {
+    "product": "GetMCP",
+    "version": "1.6.0"
+  },
+  "server": {
+    "name": "Instagram",
+    "slug": "instagram",
+    "status": "inactive",
+    "transport_type": "streamable-http",
+    "auth_type": "oauth",
+    "auth_config": {
+      "provider": "external",
+      "authorize_url": "https://www.facebook.com/v26.0/dialog/oauth",
+      "token_url": "https://graph.facebook.com/v26.0/oauth/access_token",
+      "scope": "instagram_basic,instagram_content_publish,instagram_manage_insights,instagram_manage_comments,pages_show_list,pages_read_engagement,instagram_manage_messages,pages_manage_metadata",
+      "client_id": ""
+    },
+    "outbound_auth_type": "none",
+    "outbound_auth_config": null,
+    "cors_origins": null,
+    "rate_limit_per_min": 60,
+    "settings": {
+      "instructions": "Instagram Graph API server based on https://github.com/mcpware/instagram-mcp, Graph v26.0 and Facebook Login. Business/Creator account linked to a Facebook Page required. Use get_account_pages then get_instagram_account to discover IDs. Configure Meta app OAuth; scopes instagram_basic, instagram_content_publish, instagram_manage_insights, instagram_manage_comments, pages_show_list, pages_read_engagement, instagram_manage_messages and pages_manage_metadata. Messaging permissions may require App Review/Advanced Access; if messaging is not needed, omit its last two scopes. Publish an image or Reel with create_media_container, poll get_media_container_status until FINISHED, then publish_media with creation_id. Reels use media_type REELS. Carousels: create 2-10 child containers with is_carousel_item true, create_carousel_container from IDs, poll and publish the parent. These workflows cover reference publish_media/publish_reel/publish_carousel through multiple tools, not one-call wrappers. Comment writes are post_comment, reply_to_comment, hide_comment and delete_comment. get_mentions lists tagged media only. Require explicit intent for publishing, messaging and moderation. Inactive messaging tools require a Page access token, not the broker's standard User token; get_conversations and send_dm take linked Facebook page_id. The generic OAuth broker cannot currently select Page tokens per tool. Keep messaging tools inactive until Page-token mode is configured. No static Page-token override is installed. Page-token overrides would apply to all tools on this server. Never expose tokens through tool results. Meta token expiry can require reconnecting."
+    }
+  },
+  "tools": [
+    {
+      "name": "get_account_pages",
+      "slug": "get_account_pages",
+      "description": "Read Facebook Pages connected to the current user and linked Instagram professional accounts. Uses a Facebook User token; excludes Page access tokens from the response.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/me/accounts?fields=id,name,instagram_business_account%7Bid,username%7D",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 0
+    },
+    {
+      "name": "get_instagram_account",
+      "slug": "get_instagram_account",
+      "description": "Read the Instagram professional account linked to a known Facebook Page.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{page_id}}?fields=id,name,instagram_business_account%7Bid,username%7D",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "page_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "page_id": {
+          "target": "path",
+          "key": "page_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 1
+    },
+    {
+      "name": "get_profile_info",
+      "slug": "get_profile_info",
+      "description": "Read Instagram professional account profile and follower/media counts.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}?fields=id,username,name,biography,website,profile_picture_url,followers_count,follows_count,media_count",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 2
+    },
+    {
+      "name": "get_media_posts",
+      "slug": "get_media_posts",
+      "description": "Read recent Instagram media and basic engagement counts. Paginate with after.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/media?fields=id,media_type,media_product_type,media_url,permalink,thumbnail_url,caption,timestamp,like_count,comments_count",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 3
+    },
+    {
+      "name": "get_media_details",
+      "slug": "get_media_details",
+      "description": "Read one owned Instagram media object.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{media_id}}?fields=id,media_type,media_product_type,media_url,permalink,thumbnail_url,caption,timestamp,like_count,comments_count",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "media_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "media_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "media_id": {
+          "target": "path",
+          "key": "media_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 4
+    },
+    {
+      "name": "get_media_insights",
+      "slug": "get_media_insights",
+      "description": "Read insights for owned Instagram media. metric is comma-separated and must match the media type and current Graph version; do not use removed impressions/plays metrics.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{media_id}}/insights",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "media_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "metric": {
+            "type": "string",
+            "description": "Comma-separated supported metrics, e.g. reach,views,total_interactions"
+          },
+          "period": {
+            "type": "string",
+            "description": "Optional supported metric period"
+          }
+        },
+        "required": [
+          "media_id",
+          "metric"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "media_id": {
+          "target": "path",
+          "key": "media_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 5
+    },
+    {
+      "name": "get_account_insights",
+      "slug": "get_account_insights",
+      "description": "Read account-level insights. Select current supported metrics and their required metric_type, period and breakdown; timestamps are UTC.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/insights",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "metric": {
+            "type": "string",
+            "description": "Comma-separated supported account metrics"
+          },
+          "period": {
+            "type": "string",
+            "description": "Supported period, e.g. day"
+          },
+          "metric_type": {
+            "type": "string",
+            "enum": [
+              "time_series",
+              "total_value"
+            ]
+          },
+          "since": {
+            "type": "string",
+            "description": "Unix timestamp or YYYY-MM-DD"
+          },
+          "until": {
+            "type": "string",
+            "description": "Unix timestamp or YYYY-MM-DD"
+          },
+          "breakdown": {
+            "type": "string",
+            "description": "Comma-separated supported breakdowns"
+          },
+          "timeframe": {
+            "type": "string",
+            "description": "Required by some demographic metrics"
+          }
+        },
+        "required": [
+          "account_id",
+          "metric",
+          "period"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 6
+    },
+    {
+      "name": "validate_access_token",
+      "slug": "validate_access_token",
+      "description": "Harmless authenticated identity read to verify the current token works. Does not expose the access token or prove every permission.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/me?fields=id,name",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": [],
+        "required": [],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 7
+    },
+    {
+      "name": "get_content_publishing_limit",
+      "slug": "get_content_publishing_limit",
+      "description": "Read the current publishing quota and usage from Meta. Do not hardcode historic limits.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/content_publishing_limit?fields=config,quota_usage",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 8
+    },
+    {
+      "name": "get_comments",
+      "slug": "get_comments",
+      "description": "Read comments and replies on owned Instagram media.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{media_id}}/comments?fields=id,text,timestamp,username,hidden,replies%7Bid,text,timestamp,username%7D",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "media_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [
+          "media_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "media_id": {
+          "target": "path",
+          "key": "media_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 9
+    },
+    {
+      "name": "get_comment_replies",
+      "slug": "get_comment_replies",
+      "description": "Read replies to one Instagram comment.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{comment_id}}/replies?fields=id,text,timestamp,username",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "comment_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [
+          "comment_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "comment_id": {
+          "target": "path",
+          "key": "comment_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 10
+    },
+    {
+      "name": "get_stories",
+      "slug": "get_stories",
+      "description": "Read currently available Instagram stories.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/stories?fields=id,media_type,media_url,permalink,timestamp",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 11
+    },
+    {
+      "name": "get_mentions",
+      "slug": "get_mentions",
+      "description": "Read media where the Instagram professional account has been tagged, using the Graph /tags edge. This matches the reference implementation's tagged-media operation; it does not enumerate every caption or comment @mention.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/tags?fields=id,media_type,media_product_type,media_url,permalink,thumbnail_url,caption,timestamp,like_count,comments_count",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 12
+    },
+    {
+      "name": "business_discovery",
+      "slug": "business_discovery",
+      "description": "Read public metadata and media for another professional Instagram account through Business Discovery; no personal or age-gated accounts.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}?fields=business_discovery.username({{username}})%7Bid,username,name,biography,website,profile_picture_url,followers_count,media_count,media%7Bid,caption,media_type,permalink,timestamp,like_count,comments_count%7D%7D",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "username": {
+            "type": "string",
+            "description": "Target Instagram username without @",
+            "pattern": "^[A-Za-z0-9._]+$"
+          }
+        },
+        "required": [
+          "account_id",
+          "username"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        },
+        "username": {
+          "target": "path",
+          "key": "username"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 13
+    },
+    {
+      "name": "search_hashtag",
+      "slug": "search_hashtag",
+      "description": "Read the ID of a hashtag; requires approved Instagram Public Content Access. Meta counts unique searched hashtags against its rolling quota.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/ig_hashtag_search",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "q": {
+            "type": "string",
+            "description": "Hashtag without #"
+          }
+        },
+        "required": [
+          "user_id",
+          "q"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 14
+    },
+    {
+      "name": "get_hashtag_media",
+      "slug": "get_hashtag_media",
+      "description": "Read top or recent public hashtag media; requires Instagram Public Content Access.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{hashtag_id}}/{{media_type}}?fields=id,caption,media_type,media_url,permalink,like_count,comments_count",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "hashtag_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "top_media",
+              "recent_media"
+            ]
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          }
+        },
+        "required": [
+          "hashtag_id",
+          "media_type",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "hashtag_id": {
+          "target": "path",
+          "key": "hashtag_id"
+        },
+        "media_type": {
+          "target": "path",
+          "key": "media_type"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 15
+    },
+    {
+      "name": "get_conversations",
+      "slug": "get_conversations",
+      "description": "Read Instagram messaging conversations. Requires reviewed messaging permissions and an appropriate Page access token; per-user Facebook OAuth alone may not satisfy this endpoint.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{page_id}}/conversations?platform=instagram&fields=id,updated_time,participants",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 25
+          },
+          "after": {
+            "type": "string",
+            "description": "paging.cursors.after from previous response"
+          },
+          "page_id": {
+            "type": "string",
+            "pattern": "^[0-9]+$",
+            "description": "Linked Facebook Page ID, not the Instagram account ID."
+          }
+        },
+        "required": [
+          "page_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "page_id": {
+          "target": "path",
+          "key": "page_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "inactive",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 16
+    },
+    {
+      "name": "get_conversation_messages",
+      "slug": "get_conversation_messages",
+      "description": "Read the messages field of an Instagram conversation with a Page access token and approved messaging permissions. Returns nested messages data and its pagination. Configure Page-token authentication before activating this inactive tool.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{conversation_id}}",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "conversation_id": {
+            "type": "string",
+            "description": "Conversation ID from get_conversations."
+          },
+          "fields": {
+            "type": "string",
+            "default": "id,messages.limit(25){id,created_time,from,to,message}",
+            "description": "Graph fields expression. To paginate nested messages, request messages.limit(25).after(CURSOR){id,created_time,from,to,message}; use the returned messages.paging cursor."
+          }
+        },
+        "required": [
+          "conversation_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "conversation_id": {
+          "target": "path",
+          "key": "conversation_id"
+        },
+        "fields": {
+          "target": "query",
+          "key": "fields"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "inactive",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 17
+    },
+    {
+      "name": "create_media_container",
+      "slug": "create_media_container",
+      "description": "Create an unpublished Instagram image, Reel, story, or carousel-child container. This is a write. Provide exactly one image_url or video_url. For VIDEO/REELS wait until container status FINISHED before publishing. For carousel children set is_carousel_item:true. URLs must be publicly fetchable and meet Meta media requirements.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/media",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "image_url": {
+            "type": "string",
+            "description": "Public HTTPS image URL"
+          },
+          "video_url": {
+            "type": "string",
+            "description": "Public HTTPS video URL"
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "VIDEO",
+              "REELS",
+              "STORIES"
+            ],
+            "description": "Omit for images; use VIDEO only for carousel video children."
+          },
+          "caption": {
+            "type": "string",
+            "description": "Caption"
+          },
+          "is_carousel_item": {
+            "type": "boolean"
+          },
+          "share_to_feed": {
+            "type": "boolean"
+          },
+          "cover_url": {
+            "type": "string",
+            "description": "Public cover image URL"
+          },
+          "thumb_offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "user_tags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "User tag username/x/y",
+              "additionalProperties": true
+            }
+          },
+          "location_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "alt_text": {
+            "type": "string",
+            "description": "Image alt text"
+          }
+        },
+        "required": [
+          "account_id"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "required": [
+              "image_url"
+            ],
+            "not": {
+              "required": [
+                "video_url"
+              ]
+            }
+          },
+          {
+            "required": [
+              "video_url",
+              "media_type"
+            ],
+            "not": {
+              "required": [
+                "image_url"
+              ]
+            }
+          }
+        ]
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 18
+    },
+    {
+      "name": "create_carousel_container",
+      "slug": "create_carousel_container",
+      "description": "Create an unpublished carousel from previously created and ready child container IDs. This is a write. Publish using publish_media only after explicit approval.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/media",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Real numeric ID returned by the API",
+              "pattern": "^[0-9]+$"
+            },
+            "minItems": 2,
+            "maxItems": 10
+          },
+          "caption": {
+            "type": "string",
+            "description": "Caption"
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "CAROUSEL"
+            ],
+            "default": "CAROUSEL"
+          },
+          "location_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "account_id",
+          "children"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 19
+    },
+    {
+      "name": "get_media_container_status",
+      "slug": "get_media_container_status",
+      "description": "Read container processing status. Publish only after FINISHED; ERROR/EXPIRED requires investigation.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{container_id}}?fields=id,status_code,status",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "container_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "container_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "container_id": {
+          "target": "path",
+          "key": "container_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 20
+    },
+    {
+      "name": "publish_media",
+      "slug": "publish_media",
+      "description": "Publish a ready Instagram media or carousel container to the real account. Requires explicit user authorization for this exact post. Wait for FINISHED first; independently read published media afterwards.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{account_id}}/media_publish",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "creation_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "account_id",
+          "creation_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "account_id": {
+          "target": "path",
+          "key": "account_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 21
+    },
+    {
+      "name": "post_comment",
+      "slug": "post_comment",
+      "description": "Post a real comment on owned Instagram media. Requires explicit authorization for the exact text and target.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{media_id}}/comments",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "media_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "message": {
+            "type": "string",
+            "description": "Approved comment text"
+          }
+        },
+        "required": [
+          "media_id",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "media_id": {
+          "target": "path",
+          "key": "media_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 22
+    },
+    {
+      "name": "reply_to_comment",
+      "slug": "reply_to_comment",
+      "description": "Post a real reply to an Instagram comment. Requires explicit authorization for the exact text and target.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{comment_id}}/replies",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "comment_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "message": {
+            "type": "string",
+            "description": "Approved reply text"
+          }
+        },
+        "required": [
+          "comment_id",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "comment_id": {
+          "target": "path",
+          "key": "comment_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 23
+    },
+    {
+      "name": "hide_comment",
+      "slug": "hide_comment",
+      "description": "Hide or unhide an Instagram comment. Requires explicit authorization for moderation.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{comment_id}}",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "comment_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          },
+          "hide": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "comment_id",
+          "hide"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "comment_id": {
+          "target": "path",
+          "key": "comment_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 24
+    },
+    {
+      "name": "delete_comment",
+      "slug": "delete_comment",
+      "description": "Permanently delete an Instagram comment. Irreversible write; requires explicit authorization for the exact comment.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{comment_id}}",
+      "http_method": "DELETE",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "comment_id": {
+            "type": "string",
+            "description": "Real numeric ID returned by the API",
+            "pattern": "^[0-9]+$"
+          }
+        },
+        "required": [
+          "comment_id"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "comment_id": {
+          "target": "path",
+          "key": "comment_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 25
+    },
+    {
+      "name": "send_dm",
+      "slug": "send_dm",
+      "description": "Send a real Instagram text message via its linked Facebook Page using a Page access token. Requires instagram_manage_messages with the appropriate access level; recipient must have initiated the conversation and be within the permitted response window. Text must be 1000 UTF-8 bytes or less. Requires explicit intent for the exact recipient and text. Configure a Page-token authentication flow before activating this inactive tool.",
+      "endpoint_url": "https://graph.facebook.com/v26.0/{{page_id}}/messages",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "recipient": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[0-9]+$"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "additionalProperties": false
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "text"
+            ],
+            "additionalProperties": false
+          },
+          "page_id": {
+            "type": "string",
+            "pattern": "^[0-9]+$",
+            "description": "Facebook Page ID linked to the Instagram account; not the Instagram account ID."
+          }
+        },
+        "required": [
+          "page_id",
+          "recipient",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "page_id": {
+          "target": "path",
+          "key": "page_id"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "inactive",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "sort_order": 26
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "excluded": {
+    "fields": [
+      "auth_credentials",
+      "outbound_auth_credentials",
+      "test_auth_credentials"
+    ],
+    "reason": "Stored credentials are encrypted with a key unique to the site that saved them, so they cannot be restored elsewhere. Re-enter them after importing."
+  }
+}

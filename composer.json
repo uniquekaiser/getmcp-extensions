@@ -1,0 +1,9 @@
+{
+  "name": "synergetic-dev/getmcp-extensions",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=8.2",
+    "yahnis-elsts/plugin-update-checker": "5.7"
+  }
+}

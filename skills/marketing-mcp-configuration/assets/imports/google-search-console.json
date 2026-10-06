@@ -1,0 +1,626 @@
+{
+  "format": "getmcp/server-v1",
+  "exported_at": "2026-10-06T01:50:35+00:00",
+  "generator": {
+    "product": "GetMCP",
+    "version": "1.6.0"
+  },
+  "server": {
+    "name": "Google Search Console",
+    "slug": "google-search-console",
+    "status": "inactive",
+    "transport_type": "streamable-http",
+    "auth_type": "oauth",
+    "auth_config": {
+      "provider": "external",
+      "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth",
+      "token_url": "https://oauth2.googleapis.com/token",
+      "scope": "https://www.googleapis.com/auth/webmasters",
+      "extra_authorize_params": {
+        "access_type": "offline",
+        "prompt": "consent"
+      },
+      "client_id": ""
+    },
+    "outbound_auth_type": "none",
+    "outbound_auth_config": null,
+    "cors_origins": null,
+    "rate_limit_per_min": 60,
+    "settings": {
+      "instructions": "Search Console server based on https://github.com/AminForou/mcp-gsc. Start with list_properties. site_url must exactly match the returned URL-prefix or sc-domain property; pass it unencoded. OAuth scope https://www.googleapis.com/auth/webmasters includes writes. add_site, delete_site, submit_sitemap and delete_sitemap modify the authenticated user's property configuration. Add does not verify ownership; delete sitemap does not delete the remote file or indexed pages. Execute writes only for an explicitly requested property/sitemap and re-read afterwards. Compare periods with two search analytics calls; get an overview with aggregate and dimension queries. Batch inspections by repeating inspect_url, at most 10 per batch. Use the full get_search_analytics schema for advanced filters and dates. API top rows are not a full export. Reauthentication happens through the MCP client's OAuth reconnection, not a shell command."
+    }
+  },
+  "tools": [
+    {
+      "name": "list_properties",
+      "slug": "list_properties",
+      "description": "Read all accessible Search Console properties and permission levels.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": [],
+        "required": [],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 0
+    },
+    {
+      "name": "get_site_details",
+      "slug": "get_site_details",
+      "description": "Read the permission level and URL of one exact Search Console property.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "description": "Exact unencoded URL-prefix or sc-domain property from list_properties"
+          }
+        },
+        "required": [
+          "site_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 1
+    },
+    {
+      "name": "get_search_analytics",
+      "slug": "get_search_analytics",
+      "description": "Read Search Console clicks, impressions, CTR and position by dimensions and filters. Results sorted by clicks; page with startRow/rowLimit. Top rows only; totals may differ from exported full data.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}/searchAnalytics/query",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "description": "Exact unencoded URL-prefix or sc-domain property from list_properties"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD in Pacific Time"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD in Pacific Time"
+          },
+          "dimensions": {
+            "type": "array",
+            "description": "Group by country, device, page, query, searchAppearance, date, hour",
+            "items": {
+              "type": "string",
+              "enum": [
+                "country",
+                "device",
+                "page",
+                "query",
+                "searchAppearance",
+                "date",
+                "hour"
+              ]
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "web",
+              "image",
+              "video",
+              "news",
+              "discover",
+              "googleNews"
+            ],
+            "default": "web"
+          },
+          "dataState": {
+            "type": "string",
+            "enum": [
+              "all",
+              "final",
+              "hourly_all"
+            ],
+            "default": "all"
+          },
+          "aggregationType": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "byPage",
+              "byProperty",
+              "byNewsShowcasePanel"
+            ],
+            "default": "auto"
+          },
+          "dimensionFilterGroups": {
+            "type": "array",
+            "description": "Filter groups with groupType:'and', filters[] containing dimension, operator and expression",
+            "items": {
+              "type": "object",
+              "description": "API object",
+              "additionalProperties": true
+            }
+          },
+          "rowLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25000,
+            "default": 1000
+          },
+          "startRow": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          }
+        },
+        "required": [
+          "site_url",
+          "startDate",
+          "endDate"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 2
+    },
+    {
+      "name": "inspect_url",
+      "slug": "inspect_url",
+      "description": "Read Google's indexed version of a URL: indexing, crawl, canonical, mobile and rich results. Not a live fetch or an indexing submission.",
+      "endpoint_url": "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "inspectionUrl": {
+            "type": "string",
+            "description": "Fully qualified URL belonging to siteUrl"
+          },
+          "siteUrl": {
+            "type": "string",
+            "description": "Exact URL-prefix or sc-domain property"
+          },
+          "languageCode": {
+            "type": "string",
+            "description": "BCP-47 locale",
+            "default": "en-US"
+          }
+        },
+        "required": [
+          "inspectionUrl",
+          "siteUrl"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 3
+    },
+    {
+      "name": "get_sitemaps",
+      "slug": "get_sitemaps",
+      "description": "Read sitemap submission, download, pending status, warnings and errors.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}/sitemaps",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "description": "Exact unencoded URL-prefix or sc-domain property from list_properties"
+          },
+          "sitemapIndex": {
+            "type": "string",
+            "description": "Optional sitemap-index URL"
+          }
+        },
+        "required": [
+          "site_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 4
+    },
+    {
+      "name": "get_sitemap_details",
+      "slug": "get_sitemap_details",
+      "description": "Read details and errors for one submitted sitemap.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}/sitemaps/{{sitemap_url}}",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "description": "Exact unencoded URL-prefix or sc-domain property from list_properties"
+          },
+          "sitemap_url": {
+            "type": "string",
+            "description": "Unencoded full sitemap URL"
+          }
+        },
+        "required": [
+          "site_url",
+          "sitemap_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        },
+        "sitemap_url": {
+          "target": "path",
+          "key": "sitemap_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 5
+    },
+    {
+      "name": "add_site",
+      "slug": "add_site",
+      "description": "Add a Search Console property to the authenticated user's account. This does not verify ownership; complete verification separately. Changes account configuration.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}",
+      "http_method": "PUT",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact unencoded URL-prefix or sc-domain property."
+          }
+        },
+        "required": [
+          "site_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": null,
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 6
+    },
+    {
+      "name": "delete_site",
+      "slug": "delete_site",
+      "description": "Remove a Search Console property from the authenticated user's account. Changes account configuration; request explicit user intent and re-read list_properties afterwards.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}",
+      "http_method": "DELETE",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact unencoded URL-prefix or sc-domain property."
+          }
+        },
+        "required": [
+          "site_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": null,
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 7
+    },
+    {
+      "name": "submit_sitemap",
+      "slug": "submit_sitemap",
+      "description": "Submit or resubmit a sitemap for an existing accessible Search Console property. Requires write access. Confirm the exact property and sitemap URL.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}/sitemaps/{{sitemap_url}}",
+      "http_method": "PUT",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact unencoded URL-prefix or sc-domain property."
+          },
+          "sitemap_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Full unencoded sitemap URL."
+          }
+        },
+        "required": [
+          "site_url",
+          "sitemap_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        },
+        "sitemap_url": {
+          "target": "path",
+          "key": "sitemap_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": null,
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 8
+    },
+    {
+      "name": "delete_sitemap",
+      "slug": "delete_sitemap",
+      "description": "Delete a sitemap submission from Search Console. Does not delete the sitemap file or indexed pages. Confirm exact property and sitemap URL.",
+      "endpoint_url": "https://www.googleapis.com/webmasters/v3/sites/{{site_url}}/sitemaps/{{sitemap_url}}",
+      "http_method": "DELETE",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "site_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact unencoded URL-prefix or sc-domain property."
+          },
+          "sitemap_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Full unencoded sitemap URL."
+          }
+        },
+        "required": [
+          "site_url",
+          "sitemap_url"
+        ],
+        "additionalProperties": false
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "site_url": {
+          "target": "path",
+          "key": "site_url"
+        },
+        "sitemap_url": {
+          "target": "path",
+          "key": "sitemap_url"
+        }
+      },
+      "response_mapping": null,
+      "headers": null,
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 9
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "excluded": {
+    "fields": [
+      "auth_credentials",
+      "outbound_auth_credentials",
+      "test_auth_credentials"
+    ],
+    "reason": "Stored credentials are encrypted with a key unique to the site that saved them, so they cannot be restored elsewhere. Re-enter them after importing."
+  }
+}

@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+*.zip binary
+graphify-out/graph.json -diff
+graphify-out/graph.html -diff

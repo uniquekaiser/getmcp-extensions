@@ -1,0 +1,257 @@
+{
+  "format": "getmcp/server-v1",
+  "exported_at": "2026-10-06T01:50:35+00:00",
+  "generator": {
+    "product": "GetMCP",
+    "version": "1.6.0"
+  },
+  "server": {
+    "name": "Google Ads",
+    "slug": "google-ads",
+    "status": "inactive",
+    "transport_type": "streamable-http",
+    "auth_type": "oauth",
+    "auth_config": {
+      "provider": "external",
+      "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth",
+      "token_url": "https://oauth2.googleapis.com/token",
+      "scope": "https://www.googleapis.com/auth/adwords",
+      "extra_authorize_params": {
+        "access_type": "offline",
+        "prompt": "consent"
+      },
+      "client_id": ""
+    },
+    "outbound_auth_type": "none",
+    "outbound_auth_config": null,
+    "cors_origins": null,
+    "rate_limit_per_min": 60,
+    "settings": {
+      "instructions": "Google Ads reporting server based on https://github.com/googleads/google-ads-mcp. Discover accessible customer IDs first. Use GAQL SELECT queries only; these tools do not mutate ads. API v25. OAuth scope https://www.googleapis.com/auth/adwords. Configure Google web OAuth client ID and secret in Authentication. Google Ads API access is managed by the Cloud project owning the OAuth client; verify production eligibility there. Developer tokens were sunset on 9 September 2026 and are not a required connection header. Never pass credentials as tool arguments. Optional login_customer_id is a manager ID without hyphens. Paginate with nextPageToken.",
+      "pii_redaction": {
+        "enabled": false,
+        "scope": "both",
+        "presets": [],
+        "custom": []
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "list_accessible_customers",
+      "slug": "list_accessible_customers",
+      "description": "Read directly accessible Google Ads customers; returns resourceNames. Manager child accounts require GAQL customer_client search.",
+      "endpoint_url": "https://googleads.googleapis.com/v25/customers:listAccessibleCustomers",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": []
+      },
+      "body_template": null,
+      "parameter_mapping": [],
+      "response_mapping": {
+        "selector": "",
+        "selector_type": "jsonpath",
+        "format": "json",
+        "template": ""
+      },
+      "headers": {
+        "Accept": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 0
+    },
+    {
+      "name": "search",
+      "slug": "search",
+      "description": "Read Google Ads data using a GAQL SELECT query. Returns results and nextPageToken; repeat the exact query with pageToken. Does not modify ads.",
+      "endpoint_url": "https://googleads.googleapis.com/v25/customers/{{customer_id}}/googleAds:search",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens"
+          },
+          "query": {
+            "type": "string",
+            "description": "GAQL SELECT query"
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "nextPageToken"
+          },
+          "returnTotalResultsCount": {
+            "type": "boolean"
+          },
+          "login_customer_id": {
+            "type": "string",
+            "description": "Numeric ID without prefixes or hyphens"
+          },
+          "returnSummaryRow": {
+            "type": "boolean"
+          },
+          "omitResults": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "customer_id",
+          "query"
+        ]
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "customer_id": {
+          "target": "path",
+          "key": "customer_id"
+        },
+        "query": {
+          "target": "body",
+          "key": "query"
+        },
+        "pageToken": {
+          "target": "body",
+          "key": "pageToken"
+        },
+        "returnTotalResultsCount": {
+          "target": "body",
+          "key": "searchSettings.returnTotalResultsCount"
+        },
+        "login_customer_id": {
+          "target": "header",
+          "key": "login-customer-id"
+        },
+        "returnSummaryRow": {
+          "target": "body",
+          "key": "searchSettings.returnSummaryRow"
+        },
+        "omitResults": {
+          "target": "body",
+          "key": "searchSettings.omitResults"
+        }
+      },
+      "response_mapping": {
+        "selector": "",
+        "selector_type": "jsonpath",
+        "format": "json",
+        "template": ""
+      },
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 1
+    },
+    {
+      "name": "get_resource_metadata",
+      "slug": "get_resource_metadata",
+      "description": "Read Google Ads resource/field metadata using GAQL. Example: SELECT name, category, data_type, selectable, filterable, sortable, selectable_with WHERE name LIKE 'campaign.%'. No customer ID required.",
+      "endpoint_url": "https://googleads.googleapis.com/v25/googleAdsFields:search",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "GoogleAdsFieldService SELECT query; no FROM clause"
+          },
+          "pageToken": {
+            "type": "string",
+            "description": "nextPageToken"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "body_template": null,
+      "parameter_mapping": {
+        "query": {
+          "target": "body",
+          "key": "query"
+        },
+        "pageToken": {
+          "target": "body",
+          "key": "pageToken"
+        },
+        "pageSize": {
+          "target": "body",
+          "key": "pageSize"
+        }
+      },
+      "response_mapping": {
+        "selector": "",
+        "selector_type": "jsonpath",
+        "format": "json",
+        "template": ""
+      },
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 2
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "excluded": {
+    "fields": [
+      "auth_credentials",
+      "outbound_auth_credentials",
+      "test_auth_credentials"
+    ],
+    "reason": "Stored credentials are encrypted with a key unique to the site that saved them, so they cannot be restored elsewhere. Re-enter them after importing."
+  }
+}

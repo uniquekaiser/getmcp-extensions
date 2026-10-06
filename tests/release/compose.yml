@@ -1,0 +1,39 @@
+name: getmcp-extensions-release-qa
+services:
+  db:
+    image: mariadb:11.4.13
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: fixture
+      MARIADB_PASSWORD: disposable-fixture-only
+      MARIADB_ROOT_PASSWORD: disposable-fixture-only
+    volumes:
+      - database:/var/lib/mysql
+  wordpress:
+    image: ${GETMCP_QA_IMAGE:-wordpress:7.1.2-php8.3-apache}
+    ports:
+      - '127.0.0.1:${GETMCP_QA_PORT:-8917}:80'
+    environment: &wp
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: fixture
+      WORDPRESS_DB_PASSWORD: disposable-fixture-only
+      WORDPRESS_DEBUG: '1'
+    volumes: &mounts
+      - wordpress:/var/www/html
+      - ${GETMCP_QA_VENDOR:?Supply a reviewed vendor directory}:/var/www/html/wp-content/plugins/getmcp:ro
+      - ../gateway-fixture-license.php:/var/www/html/wp-content/mu-plugins/qa-license.php:ro
+      - ../marketing/provider-fixture.php:/var/www/html/wp-content/mu-plugins/qa-provider.php:ro
+      - ../gateway-upstream.php:/var/www/html/qa-upstream.php:ro
+      - ..:/fixtures:ro
+      - ../../dist:/packages:ro
+      - ${GETMCP_QA_EVIDENCE:-../../evidence}:/evidence
+  cli:
+    image: ${GETMCP_QA_CLI_IMAGE:-wordpress:cli-2.12.0-php8.3}
+    network_mode: service:wordpress
+    user: '33:33'
+    environment: *wp
+    volumes: *mounts
+volumes:
+  database:
+  wordpress:

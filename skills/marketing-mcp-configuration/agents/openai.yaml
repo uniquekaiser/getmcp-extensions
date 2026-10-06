@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing MCP Configuration"
+  short_description: "Configure marketing MCP servers and OAuth access"
+  default_prompt: "Use $marketing-mcp-configuration to configure Google Ads, Analytics, Search Console, Meta Ads, and Instagram MCP servers with OAuth and verify accessible accounts."
