@@ -6,7 +6,7 @@
  * Author URI: https://synergetic.dev/
  * Update URI: https://github.com/uniquekaiser/getmcp-extensions
  * Description: Optional native OAuth/user access, remote MCP connections and project gateways for GetMCP.
- * Version: 1.2.0
+ * Version: 1.2.2
  * Requires at least: 6.2
  * Requires PHP: 8.2
  * Requires Plugins: getmcp
@@ -14,7 +14,7 @@
  * Text Domain: getmcp-extensions
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-define( 'GETMCP_EXTENSIONS_VERSION', '1.2.0' );
+define( 'GETMCP_EXTENSIONS_VERSION', '1.2.2' );
 require_once __DIR__ . '/includes/class-updater.php';
 add_action( 'plugins_loaded', array( '\GetMCPExtensions\Updater', 'boot' ), 5 );
 define( 'GETMCP_EXTENSIONS_PATH', plugin_dir_path( __FILE__ ) );

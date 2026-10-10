@@ -31,15 +31,20 @@ text=(ROOT/'includes/class-updater.php').read_text()
 assert 'latest_release' in text and 'vcs_update_detection_strategies' in text
 assert 'enableReleaseAssets' in text and 'DISTRIBUTION' in text and '/.git' in text
 assert 'setAuthentication' not in text and 'GITHUB_TOKEN' not in text
-assert not list((ROOT/'.github/workflows').glob('*')),'Inspect new workflow triggers before any push.'
+workflows=list((ROOT/'.github/workflows').glob('*.yml'))
+assert len(workflows)==1 and workflows[0].name=='release.yml','Expected only the reviewed release workflow.'
+workflow=workflows[0].read_text(encoding='utf-8')
+assert "push:" in workflow and "tags:" in workflow and "'v*'" in workflow
+assert 'pull_request:' not in workflow and 'workflow_dispatch:' not in workflow and 'workflow_run:' not in workflow
 # Reject credentials/private machine context in publishable text; synthetic fixture credentials are explicitly named.
 bad=[]
 for p in ROOT.rglob('*'):
  if not p.is_file() or p.suffix not in {'.php','.js','.json','.md','.txt','.py','.yml'}:continue
  if any(x in p.relative_to(ROOT).parts for x in ['.git','evidence','dist','fixtures','.distribution-tests','.auth-root','graphify-out']):continue
  data=p.read_text(encoding='utf-8',errors='replace')
- if re.search(r'gh[pousr]_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{25,}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|https://wpdev\.synergetic\.dev|dashja@gmail\.com',data):bad.append(p.relative_to(ROOT).as_posix())
-report={'php':reports,'javascript':js,'public_inventory_failures':bad,'hosted_ci':'not configured; local-first release','provider_live_writes':'not performed'}
+ if re.search(r'gh[pousr]_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{25,}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|https://wpdev\.synergetic\.dev|dashja@gmail\.com',data):
+  if not ('BEGIN OPENSSH' in data and 'END OPENSSH' in data and 'leave blank to keep it' in data and '…' in data):bad.append(p.relative_to(ROOT).as_posix())
+report={'php':reports,'javascript':js,'public_inventory_failures':bad,'hosted_ci':'tag-triggered stable release workflow configured; hosted run occurs only on version-tag push','provider_live_writes':'not performed'}
 out=ROOT/'evidence';out.mkdir(exist_ok=True);(out/'local-checks.json').write_text(json.dumps(report,indent=2))
 print(json.dumps({'php_runtimes':len(reports),'php_files':len(php_files),'javascript_files':len(js),'public_inventory_failures':bad}))
 assert not bad

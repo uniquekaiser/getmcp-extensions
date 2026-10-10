@@ -52,7 +52,7 @@ final class ProviderDiscovery {
         $r = ProviderTokens::read( $base . '/customers:listAccessibleCustomers', $token );
         if ( ! is_array( $r['resourceNames'] ?? null ) ) { throw new RemoteException( 'Malformed accessible-customer response.' ); }
         $queue = array(); foreach ( $r['resourceNames'] as $resource ) { if ( preg_match( '#^customers/(\d+)$#D', $resource, $m ) ) { $queue[] = array( 'id' => $m[1], 'manager' => '' ); } }
-        $seen = array(); $customers = array();
+        $seen = array(); $customers = array(); $unavailable = array();
         while ( $queue ) {
             $item = array_shift( $queue ); $key = $item['id'] . '|' . $item['manager']; if ( isset( $seen[$key] ) ) { continue; } $seen[$key] = true;
             if ( count( $seen ) > 1000 ) { throw new RemoteException( 'Manager traversal exceeded its bound; discovery is incomplete.' ); }
@@ -60,8 +60,18 @@ final class ProviderDiscovery {
             $next = ''; $cursors = array();
             do {
                 $body = array( 'query' => 'SELECT customer_client.client_customer, customer_client.descriptive_name, customer_client.manager, customer_client.level, customer_client.status FROM customer_client WHERE customer_client.level <= 1' ); if ( '' !== $next ) { $body['pageToken'] = $next; }
-                $data = \GetMCP\Remote\SafeHttp::json( $base . '/customers/' . $item['id'] . '/googleAds:search', 'POST', $body, $headers );
-                if ( isset( $data['error'] ) || ! is_array( $data['results'] ?? null ) ) { throw new RemoteException( 'Google Ads manager discovery failed. No reporting access was assumed.' ); }
+                $response = \GetMCP\Remote\SafeHttp::request( $base . '/customers/' . $item['id'] . '/googleAds:search', 'POST', $headers + array( 'Content-Type' => 'application/json', 'Accept' => 'application/json' ), wp_json_encode( $body ) );
+                $data = json_decode( $response['body'], true );
+                $disabled = false;
+                if ( 403 === $response['status'] ) {
+                    foreach ( $data['error']['details'] ?? array() as $detail ) {
+                        foreach ( $detail['errors'] ?? array() as $error ) { if ( 'CUSTOMER_NOT_ENABLED' === ( $error['errorCode']['authorizationError'] ?? '' ) ) { $disabled = true; } }
+                    }
+                }
+                // A disabled customer is an account restriction, not a failed OAuth connection.
+                // Keep other account results, while making the incomplete hierarchy explicit.
+                if ( $disabled ) { $unavailable[$key] = array( 'id' => $item['id'], 'login_customer_id' => $item['manager'], 'reason' => 'CUSTOMER_NOT_ENABLED', 'reporting_verified' => false ); break; }
+                if ( $response['status'] < 200 || $response['status'] >= 300 || ! is_array( $data ) || isset( $data['error'] ) || ! is_array( $data['results'] ?? null ) ) { throw new RemoteException( 'Google Ads manager discovery failed. No reporting access was assumed.' ); }
                 foreach ( $data['results'] as $row ) {
                     $c = $row['customerClient'] ?? array(); $resource = $c['clientCustomer'] ?? '';
                     if ( ! preg_match( '#^customers/(\d+)$#D', $resource, $m ) ) { continue; }
@@ -72,6 +82,6 @@ final class ProviderDiscovery {
                 if ( ! is_string( $next ) || ( '' !== $next && isset( $cursors[$next] ) ) || count( $cursors ) >= 100 ) { throw new RemoteException( 'Invalid Ads discovery cursor.' ); } $cursors[$next] = true;
             } while ( '' !== $next );
         }
-        return array( 'customers' => array_values( $customers ), 'directly_accessible' => $r['resourceNames'], 'complete' => true, 'reporting_verified' => false );
+        return array( 'customers' => array_values( $customers ), 'directly_accessible' => $r['resourceNames'], 'unavailable_customers' => array_values( $unavailable ), 'complete' => empty( $unavailable ), 'reporting_verified' => false );
     }
 }

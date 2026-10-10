@@ -43,7 +43,7 @@ class UpstreamOAuth {
 		return $metadata;
 	}
 
-	public static function begin( Server $server, int $user ): array {
+	public static function begin( Server $server, int $user, string $return_to = '' ): array {
 		if ( ! UpstreamConnections::can_connect( $server, $user ) || 'oauth' !== ( UpstreamConnections::config( $server )['auth_mode'] ?? '' ) ) { throw new RemoteException( 'You cannot connect this upstream account.', -32003 ); }
 		$metadata = self::metadata( $server );
 		$config = UpstreamConnections::config( $server );
@@ -65,6 +65,7 @@ class UpstreamOAuth {
 		$verifier = self::b64( random_bytes( 48 ) );
 		$previous_version = UpstreamConnections::version( $server->id, $user );
 		$record = array( 'epoch' => (string) get_user_meta( $user, 'getmcp_upstream_epoch_' . $server->id, true ), 'server_id' => $server->id, 'user_id' => $user, 'expires_at' => time() + 600, 'verifier' => $verifier, 'metadata' => $metadata, 'client_id' => $client_id, 'client_secret' => $client_secret, 'config_hash' => UpstreamConnections::config_hash( $server ), 'previous_version' => $previous_version );
+		$record['return_to'] = in_array( $return_to, array( 'admin', 'profile', 'portal' ), true ) ? $return_to : '';
 		if ( ! add_option( 'getmcp_upstream_state_' . hash( 'sha256', $state ), Encryption::encrypt( wp_json_encode( $record ) ), '', false ) ) { throw new RemoteException( 'Could not start the upstream connection.' ); }
 		$scope = trim( (string) ( $config['scope'] ?? implode( ' ', $metadata['resource']['scopes_supported'] ?? array() ) ) );
 		$query = array( 'response_type' => 'code', 'client_id' => $client_id, 'redirect_uri' => self::callback_url(), 'state' => $state, 'code_challenge' => self::b64( hash( 'sha256', $verifier, true ) ), 'code_challenge_method' => 'S256', 'resource' => $config['endpoint'] );
@@ -73,7 +74,7 @@ class UpstreamOAuth {
 	}
 
 	/** Atomically consume encrypted state; bind it to the logged-in principal and issuer. */
-	public static function complete( array $query, int $user ): void {
+	public static function complete( array $query, int $user ): string {
 		global $wpdb;
 		$state = $query['state'] ?? '';
 		if ( ! is_string( $state ) || ! preg_match( '/^[a-f0-9]{64}$/D', $state ) ) { throw new RemoteException( 'Invalid upstream OAuth state.' ); }
@@ -96,6 +97,7 @@ class UpstreamOAuth {
 		$live = ( new ServerManager() )->get( $server->id );
 		if ( $current_version !== $record['previous_version'] || $record['epoch'] !== (string) get_user_meta( $user, 'getmcp_upstream_epoch_' . $server->id, true ) || ! $live || ! UpstreamConnections::can_connect( $live, $user ) || $record['config_hash'] !== UpstreamConnections::config_hash( $live ) ) { throw new RemoteException( 'Your upstream connection changed while consent was open. Start again.' ); }
 		UpstreamConnections::save( $server->id, $user, $data, $record['previous_version'] );
+		return UpstreamConnections::portal_url( $record['return_to'] ?? '' );
 	}
 
 	public static function refresh( Server $server, int $user, array $grant ): array {

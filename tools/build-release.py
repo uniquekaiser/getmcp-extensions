@@ -6,6 +6,7 @@ version=re.search(r'\* Version:\s*(\S+)',(ROOT/'getmcp-extensions.php').read_tex
 assert re.fullmatch(r'\d+\.\d+\.\d+',version)
 assert f'Stable tag: {version}' in (ROOT/'readme.txt').read_text()
 required=['getmcp-extensions.php','includes/class-updater.php','compatibility.json',
+ 'build/index.js','compat/versions/1.7.0/build/index.js',
  'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php','vendor/yahnis-elsts/plugin-update-checker/license.txt']
 assert all((ROOT/p).is_file() for p in required),'Missing runtime or legal dependency.'
 files={}

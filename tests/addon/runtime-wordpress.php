@@ -6,10 +6,12 @@ use GetMCP\Core\ServerManager as S;
 wp_set_current_user( 1 );
 global $wpdb;
 $checks=array();$assert=function($ok,$name)use(&$checks){$checks[$name]=(bool)$ok;if(!$ok)throw new RuntimeException($name);};
-$assert( R::ready() && in_array(R::status()['profile'],array('vendor-1.6.0','vendor-original-1.6.0'),true),'untouched_vendor_profile_and_early_adapter_loaded' );
+$assert( R::ready() && in_array(R::status()['profile'],array('vendor-1.6.0','vendor-original-1.6.0','vendor-original-1.7.0'),true),'untouched_vendor_profile_and_early_adapter_loaded' );
+if ( 'vendor-original-1.7.0' === R::status()['profile'] ) { $assert( str_contains( (new ReflectionClass( GetMCP\Api\ServersController::class ))->getFileName(), '/compat/versions/1.7.0/' ), 'getmcp_1_7_controller_adapter_loaded' ); $assert( str_contains( (new ReflectionClass( GetMCP\Execution\ToolExecutor::class ))->getFileName(), '/compat/versions/1.7.0/' ), 'getmcp_1_7_ftp_executor_adapter_loaded' ); }
 $ref=new ReflectionClass( S::class );$assert(str_contains($ref->getFileName(),'/getmcp-extensions/compat/'),'adapter_loaded_from_separate_plugin');
 $assert(is_file(WPMU_PLUGIN_DIR.'/getmcp-extensions-guard.php'),'persistent_guard_installed');
-$assert(GETMCP_DB_VERSION==='1.25' && get_option('getmcp_extensions_schema_version')==='1','independent_schema_version_leaves_vendor_version_unchanged');
+$expected_db = 'vendor-original-1.7.0' === R::status()['profile'] ? '1.26' : '1.25';
+$assert(GETMCP_DB_VERSION===$expected_db && get_option('getmcp_extensions_schema_version')==='1','independent_schema_version_leaves_vendor_version_unchanged');
 $before=$wpdb->get_results("SELECT id,auth_config,outbound_auth_credentials,settings,status FROM {$wpdb->prefix}getmcp_servers ORDER BY id",ARRAY_A);
 $remote=F::run('save',array('kind'=>'remote-mcp','name'=>'Addon module fixture','allowed_user_ids'=>array(1),'remote'=>array('endpoint'=>'https://example.org/getmcp-qa/json','auth_mode'=>'shared','publish_original'=>true),'credentials'=>array('headers'=>array('Authorization'=>'Bearer fixture-add-on'))));
 $gateway=F::run('save',array('kind'=>'gateway','name'=>'Addon native gateway','allowed_user_ids'=>array(1),'server_ids'=>array($remote['id'])));

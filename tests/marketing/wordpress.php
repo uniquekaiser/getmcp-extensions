@@ -22,7 +22,7 @@ $b = (int) ( username_exists( 'marketing-b' ) ?: wp_create_user( 'marketing-b', 
 $sm = new SM();
 foreach ( get_option( 'getmcp_marketing_fixture_ids', array() ) as $id ) { $s = $sm->get( $id ); if ( $s && str_starts_with( $s->name, 'Marketing Fixture ' ) ) { $sm->delete( $id ); } }
 $ids = array(); $remember = function( $s ) use ( &$ids ) { $ids[] = $s->id; update_option( 'getmcp_marketing_fixture_ids', $ids ); return $s; };
-$assert( GetMCPExtensions\Runtime::status()['profile'] === 'vendor-original-1.6.0', 'genuine_vendor_profile_verified' );
+$assert( in_array( GetMCPExtensions\Runtime::status()['profile'], array( 'vendor-original-1.6.0', 'vendor-original-1.7.0' ), true ), 'genuine_vendor_profile_verified' );
 $baseline = AuthSettings::object( get_option( 'getmcp_settings', array() ) );
 $google = array();
 foreach ( array( 'google-ads', 'google-analytics', 'google-search-console' ) as $preset ) {

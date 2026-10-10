@@ -14,6 +14,13 @@ final class MarketingModule {
         add_action( 'deleted_user', static fn( $user ) => PageTokens::cleanup( null, $user ) );
         add_action( 'getmcp_daily_cleanup', array( self::class, 'cleanup' ) );
         add_filter( 'rest_post_dispatch', array( self::class, 'public_response' ), 10, 3 );
+        add_filter( 'rest_pre_dispatch', array( self::class, 'personal_no_cache' ), -110, 3 );
+    }
+    public static function personal_no_cache( $response, $service, $request ) {
+        if ( preg_match( '#^/getmcp/v1/my-connections(?:/|$)#', $request->get_route() ) ) {
+            do_action( 'litespeed_control_set_nocache', 'Personal MCP connection state' );
+        }
+        return $response;
     }
     public static function response( callable $callback ) {
         try { if ( ! self::enabled() ) { throw new RemoteException( 'Marketing extensions are disabled.', -32003 ); } return rest_ensure_response( $callback() ); }
@@ -145,7 +152,14 @@ final class MarketingModule {
         return self::configuration( $uuid );
     }
     public static function public_response( $response, $service, $request ) {
-        if ( ! $response instanceof \WP_REST_Response || $response->get_status() >= 400 ) { return $response; }
+        if ( ! $response instanceof \WP_REST_Response ) { return $response; }
+        if ( preg_match( '#^/getmcp/v1/my-connections(?:/|$)#', $request->get_route() ) ) {
+            $response->header( 'Cache-Control', 'private, no-store, no-cache, must-revalidate, max-age=0' );
+            $response->header( 'Pragma', 'no-cache' );
+            $response->header( 'Expires', '0' );
+            $response->header( 'Vary', 'Cookie, Authorization', false );
+        }
+        if ( $response->get_status() >= 400 ) { return $response; }
         $redact = static function( array $item ): array {
             foreach ( array( 'auth_config', 'outbound_auth_config', 'test_auth_config' ) as $field ) { if ( isset( $item[$field] ) ) { $clean = AuthenticationSettings::public_config( $item[$field] ); $item[$field] = is_string( $item[$field] ) ? wp_json_encode( $clean ) : $clean; } }
             return $item;
@@ -161,7 +175,7 @@ final class MarketingModule {
         $query = array(); wp_parse_str( (string) ( $_SERVER['QUERY_STRING'] ?? '' ), $query );
         if ( ! is_string( $query['state'] ?? null ) || ! str_starts_with( $query['state'], 'gxp_' ) ) { return; }
         if ( ! is_user_logged_in() ) { wp_safe_redirect( wp_login_url( home_url( $_SERVER['REQUEST_URI'] ) ) ); exit; }
-        try { if ( ! self::enabled() ) { throw new RemoteException( 'Provider connections are disabled.' ); } ProviderConnections::complete( $query, get_current_user_id(), (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ); wp_safe_redirect( \GetMCP\Remote\UpstreamConnections::portal_url() ); exit; }
+        try { if ( ! self::enabled() ) { throw new RemoteException( 'Provider connections are disabled.' ); } $return_url = ProviderConnections::complete( $query, get_current_user_id(), (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ); wp_safe_redirect( $return_url ); exit; }
         catch ( \Throwable $e ) { wp_die( 'The provider connection could not be completed. Start again from My MCP Connections.', 'MCP Connection', array( 'response' => 400 ) ); }
     }
     public static function cleanup(): void {

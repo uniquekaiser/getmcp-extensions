@@ -14,6 +14,16 @@ class SafeHttp {
 		}
 		$reason = $fetch ? UrlGuard::validate_fetch_url( $url ) : UrlGuard::validate_configured_url( $url );
 		if ( null !== $reason ) { throw new RemoteException( 'The remote connection URL is not permitted.' ); }
+		// Remote MCP endpoints are always public HTTPS services. GetMCP 1.7
+		// permits private hosts for self-hosted native connectors, so apply the
+		// add-on's stricter public-endpoint rule independently of that setting.
+		$host = (string) wp_parse_url( $url, PHP_URL_HOST );
+		// host_is_public() itself resolves all A/AAAA records and rejects an
+		// unresolved name. Use that stable public API across GetMCP 1.6/1.7;
+		// resolve_host() is private in 1.6 and public only in 1.7.
+		if ( ! UrlGuard::host_is_public( $host ) ) {
+			throw new RemoteException( 'The remote connection URL is not permitted.' );
+		}
 	}
 
 	/** Redirects are deliberately refused: token endpoints and MCP URLs must be exact. */

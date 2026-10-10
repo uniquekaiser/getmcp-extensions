@@ -12,9 +12,9 @@ Existing 1.0.0/1.1.0 distributions have no public updater. One manual installati
 2. Align main header, version constant, readme stable tag and categorized CHANGELOG.md. Record actual WordPress/PHP verification.
 3. Run `python tools/sync-readme.py`, `python tools/verify.py`, relevant disposable WordPress tests, `python tools/graph.py`, and `python tools/build.py`. The builder is deterministic and rejects missing updater/license files.
 4. Use the syn-release and wp-github-updater skill audits when available. Validate exact notes generated from CHANGELOG.md. Inspect all package entries and the public Git diff for secrets.
-5. Inspect workflow triggers before pushing. This repository deliberately has no hosted workflows; do not dispatch CI or add/change workflows implicitly.
-6. Commit the reviewed files, create an annotated `vX.Y.Z` tag, push the exact commit/tag, then create one release with the audited ZIP and SHA256SUMS. Use `--notes-file` with generated categorized notes.
-7. Re-read the published body, download the public package anonymously, compare SHA-256/root/main header and test WordPress's metadata and normal upgrade path in an owned fixture.
+5. Run all feasible local checks before pushing. The tag-triggered `.github/workflows/release.yml` validates the version and categorized changelog, builds the deterministic install ZIP and credential-free developer handoff from tracked source, verifies their checksums and archive structure, and creates one stable GitHub Release with both ZIPs, `SHA256SUMS`, and `files.json`. It does not rerun Docker integration tests because those require reviewed GetMCP snapshots and owned local fixtures.
+6. Commit the reviewed files, create an annotated `vX.Y.Z` tag, and push the exact commit/tag once. The `vX.Y.Z` tag push is the sole release trigger; do not also dispatch the workflow manually.
+7. Wait for the exact-tag workflow to succeed. Re-read the published body, download the public package anonymously, compare SHA-256/root/main header, and test WordPress's metadata and normal upgrade path in an owned fixture.
 8. Report passed, failed, skipped and unavailable coverage separately. Publication does not authorize deployment to customer sites.
 
-No workflow, billing or branch protection changes are required for this local-first release path. Graphify, tests and tools are public source material but excluded from the installed ZIP.
+The workflow requires only the repository's built-in `GITHUB_TOKEN` with `contents: write`; it uses no stored release secrets. Graphify, tests and tools are public source material but excluded from the installed ZIP.

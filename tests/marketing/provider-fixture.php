@@ -28,7 +28,10 @@ add_filter( 'pre_http_request', function( $before, $args, $url ) {
         $data = array( 'accountSummaries' => array( array( 'account' => empty( $query['pageToken'] ) ? 'accounts/1' : 'accounts/2', 'propertySummaries' => array( array( 'property' => 'properties/1' ) ) ) ) ); if ( empty( $query['pageToken'] ) ) { $data['nextPageToken'] = 'next'; }
     } elseif ( str_ends_with( $path, '/sites' ) ) { $data = array( 'siteEntry' => array( array( 'siteUrl' => 'https://fixture.example', 'permissionLevel' => 'siteOwner' ) ) ); }
     elseif ( str_ends_with( $path, ':listAccessibleCustomers' ) ) { $data = array( 'resourceNames' => array( 'customers/1' ) ); }
-    elseif ( str_ends_with( $path, '/googleAds:search' ) ) { $data = array( 'results' => array( array( 'customerClient' => array( 'clientCustomer' => 'customers/1', 'manager' => false, 'level' => 0 ) ), array( 'customerClient' => array( 'clientCustomer' => 'customers/2', 'manager' => true, 'level' => str_contains( $path, '/customers/2/' ) ? 0 : 1 ) ) ) ); }
+    elseif ( str_ends_with( $path, '/googleAds:search' ) ) {
+        if ( 'ads_disabled_customer' === $mode && str_contains( $path, '/customers/2/' ) ) { $status = 403; $data = array( 'error' => array( 'details' => array( array( 'errors' => array( array( 'errorCode' => array( 'authorizationError' => 'CUSTOMER_NOT_ENABLED' ) ) ) ) ) ) ); }
+        else { $data = array( 'results' => array( array( 'customerClient' => array( 'clientCustomer' => 'customers/1', 'manager' => false, 'level' => 0 ) ), array( 'customerClient' => array( 'clientCustomer' => 'customers/2', 'manager' => true, 'level' => str_contains( $path, '/customers/2/' ) ? 0 : 1 ) ) ) ); }
+    }
     else { $data = array( 'id' => 'fixture-read', 'data' => array() ); }
     if ( 'malformed' === $mode ) { $raw = '{invalid'; } else { $raw = wp_json_encode( $data ); }
     return array( 'response' => array( 'code' => $status, 'message' => 'Fixture' ), 'headers' => array( 'content-type' => 'application/json' ), 'body' => $raw, 'cookies' => array() );

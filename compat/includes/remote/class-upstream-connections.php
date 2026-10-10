@@ -115,5 +115,11 @@ class UpstreamConnections {
 		return hash( 'sha256', $server->id . '|' . $user . '|' . $server->settings . '|' . $server->outbound_auth_credentials . '|' . ( $grant['version'] ?? '' ) );
 	}
 
-	public static function portal_url(): string { return add_query_arg( 'getmcp_connections', '1', home_url( '/' ) ); }
+	/** Only fixed, capability-checked destinations; never accept a caller-supplied URL. */
+	public static function portal_url( string $context = '' ): string {
+		if ( 'portal' === $context ) { return add_query_arg( 'getmcp_connections', '1', home_url( '/' ) ); }
+		if ( 'profile' !== $context && current_user_can( 'getmcp_manage_servers' ) ) { return admin_url( 'admin.php?page=getmcp-my-connections' ); }
+		if ( current_user_can( 'read' ) ) { return admin_url( 'profile.php?page=getmcp-account-connections' ); }
+		return add_query_arg( 'getmcp_connections', '1', home_url( '/' ) );
+	}
 }

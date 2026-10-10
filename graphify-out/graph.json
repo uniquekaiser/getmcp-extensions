@@ -43,6 +43,19 @@
       "source_location": "L7"
     },
     {
+      "id": "includes_class_marketing_module_marketingmodule",
+      "label": "MarketingModule",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": "marketingmodule",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L7"
+    },
+    {
       "id": "includes_class_page_tokens_pagetokens",
       "label": "PageTokens",
       "_callable": true,
@@ -67,6 +80,19 @@
       "norm_label": "providerconnections",
       "source_file": "includes/class-provider-connections.php",
       "source_location": "L9"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery",
+      "label": "ProviderDiscovery",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "providerdiscovery",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L6"
     },
     {
       "id": "includes_class_provider_execution_providerexecution",
@@ -108,69 +134,30 @@
       "source_location": "L8"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool",
-      "label": "MarketingManagementTool",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": "marketingmanagementtool",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L4"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery",
-      "label": "ProviderDiscovery",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": "providerdiscovery",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L6"
-    },
-    {
-      "id": "includes_class_connection_screens_connectionscreens",
-      "label": "ConnectionScreens",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": "connectionscreens",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule",
-      "label": "MarketingModule",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": "marketingmodule",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L7"
-    },
-    {
       "id": "includes_class_marketing_templates_marketingtemplates",
       "label": "MarketingTemplates",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": "marketingtemplates",
       "source_file": "includes/class-marketing-templates.php",
       "source_location": "L8"
+    },
+    {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool",
+      "label": "MarketingManagementTool",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": "marketingmanagementtool",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L4"
     },
     {
       "id": "includes_class_configuration_import_configurationimport",
@@ -236,6 +223,19 @@
       "norm_label": "configurationtranscoder",
       "source_file": "includes/class-configuration-transcoder.php",
       "source_location": "L5"
+    },
+    {
+      "id": "includes_class_connection_screens_connectionscreens",
+      "label": "ConnectionScreens",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "connectionscreens",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L7"
     },
     {
       "id": "includes_class_updater_updater",
@@ -416,7 +416,7 @@
       "file_type": "code",
       "norm_label": "{closure#31}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L76"
+      "source_location": "L83"
     },
     {
       "id": "includes_class_marketing_module_closure_35",
@@ -428,7 +428,67 @@
       "file_type": "code",
       "norm_label": "{closure#35}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L149"
+      "source_location": "L163"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_assets",
+      "label": ".assets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".assets()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L118"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L9"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_cleanup",
+      "label": ".cleanup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".cleanup()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L181"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_configuration",
+      "label": ".configuration()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".configuration()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L123"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_configuration_revision",
+      "label": ".configuration_revision()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".configuration_revision()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L128"
     },
     {
       "id": "includes_class_marketing_module_marketingmodule_configure",
@@ -440,7 +500,79 @@
       "file_type": "code",
       "norm_label": ".configure()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L122"
+      "source_location": "L129"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_personal_no_cache",
+      "label": ".personal_no_cache()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".personal_no_cache()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L19"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_public_response",
+      "label": ".public_response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".public_response()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L154"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_response",
+      "label": ".response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".response()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L25"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_routes",
+      "label": ".routes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".routes()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L31"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_install",
+      "label": ".install()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".install()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L43"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_can_connect",
+      "label": ".can_connect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".can_connect()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L15"
     },
     {
       "id": "includes_class_provider_tokens_providertokens_config",
@@ -455,6 +587,18 @@
       "source_location": "L9"
     },
     {
+      "id": "includes_class_provider_tokens_providertokens_secret",
+      "label": ".secret()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".secret()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L14"
+    },
+    {
       "id": "includes_class_marketing_module_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
@@ -465,6 +609,18 @@
       "norm_label": "{closure#1}()",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L12"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_17",
+      "label": "{closure#17}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "{closure#17}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L48"
     },
     {
       "id": "includes_class_marketing_module_closure_2",
@@ -488,7 +644,19 @@
       "file_type": "code",
       "norm_label": "{closure#23}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L46"
+      "source_location": "L53"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_25",
+      "label": "{closure#25}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "{closure#25}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L57"
     },
     {
       "id": "includes_class_marketing_module_closure_28",
@@ -500,7 +668,7 @@
       "file_type": "code",
       "norm_label": "{closure#28}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59"
+      "source_location": "L66"
     },
     {
       "id": "includes_class_marketing_module_closure_3",
@@ -513,6 +681,18 @@
       "norm_label": "{closure#3}()",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L14"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_callback",
+      "label": ".callback()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".callback()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L174"
     },
     {
       "id": "includes_class_page_tokens_pagetokens_cleanup",
@@ -695,18 +875,6 @@
       "source_location": "L26"
     },
     {
-      "id": "includes_class_provider_connections_providerconnections_can_connect",
-      "label": ".can_connect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": ".can_connect()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L15"
-    },
-    {
       "id": "includes_class_provider_connections_providerconnections_complete",
       "label": ".complete()",
       "_callable": true,
@@ -740,7 +908,7 @@
       "file_type": "code",
       "norm_label": ".grant()",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L62"
+      "source_location": "L66"
     },
     {
       "id": "includes_class_provider_connections_providerconnections_listing",
@@ -752,7 +920,19 @@
       "file_type": "code",
       "norm_label": ".listing()",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L78"
+      "source_location": "L82"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_refresh_available",
+      "label": ".refresh_available()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".refresh_available()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L63"
     },
     {
       "id": "includes_class_provider_connections_providerconnections_supported",
@@ -765,6 +945,54 @@
       "norm_label": ".supported()",
       "source_file": "includes/class-provider-connections.php",
       "source_location": "L10"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_ads",
+      "label": ".ads()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".ads()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L46"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_discover",
+      "label": ".discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".discover()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L28"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_pages",
+      "label": ".pages()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".pages()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L17"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_presets",
+      "label": ".presets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".presets()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L7"
     },
     {
       "id": "includes_class_provider_execution_providerexecution_context",
@@ -923,18 +1151,6 @@
       "source_location": "L18"
     },
     {
-      "id": "includes_class_provider_tokens_providertokens_secret",
-      "label": ".secret()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": ".secret()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L14"
-    },
-    {
       "id": "includes_endpoint_guard_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
@@ -1019,264 +1235,36 @@
       "source_location": "L3"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
-      "label": ".call()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".call()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L27"
-    },
-    {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_configuration_schema",
-      "label": ".configuration_schema()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".configuration_schema()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L5"
-    },
-    {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_definition",
-      "label": ".definition()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".definition()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L24"
-    },
-    {
-      "id": "includes_class_marketing_module_closure_17",
-      "label": "{closure#17}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": "{closure#17}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L41"
-    },
-    {
-      "id": "includes_class_marketing_module_closure_25",
-      "label": "{closure#25}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": "{closure#25}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L50"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_ads",
-      "label": ".ads()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".ads()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L46"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_discover",
-      "label": ".discover()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".discover()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L28"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_pages",
-      "label": ".pages()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".pages()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L17"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_presets",
-      "label": ".presets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "Community 12",
-      "file_type": "code",
-      "norm_label": ".presets()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L7"
-    },
-    {
       "id": "getmcp_extensions_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
+      "community": 12,
+      "community_name": "Community 12",
       "file_type": "code",
       "norm_label": "{closure#1}()",
       "source_file": "getmcp-extensions.php",
       "source_location": "L24"
     },
     {
-      "id": "includes_class_connection_screens_connectionscreens_boot",
-      "label": ".boot()",
+      "id": "includes_class_marketing_templates_closure_1",
+      "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L8"
-    },
-    {
-      "id": "includes_class_connection_screens_connectionscreens_routes",
-      "label": ".routes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".routes()",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L11"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_assets",
-      "label": ".assets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".assets()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L111"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_boot",
-      "label": ".boot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L9"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_callback",
-      "label": ".callback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".callback()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L160"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_cleanup",
-      "label": ".cleanup()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".cleanup()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L167"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_configuration",
-      "label": ".configuration()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".configuration()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L116"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_configuration_revision",
-      "label": ".configuration_revision()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".configuration_revision()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L121"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_public_response",
-      "label": ".public_response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".public_response()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L147"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_response",
-      "label": ".response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".response()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L18"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_routes",
-      "label": ".routes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".routes()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L24"
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L17"
     },
     {
       "id": "includes_class_marketing_templates_marketingtemplates_boot",
       "label": ".boot()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": ".boot()",
       "source_file": "includes/class-marketing-templates.php",
@@ -1287,32 +1275,20 @@
       "label": ".client_catalogue()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": ".client_catalogue()",
       "source_file": "includes/class-marketing-templates.php",
       "source_location": "L12"
     },
     {
-      "id": "includes_class_marketing_templates_marketingtemplates_install",
-      "label": ".install()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
-      "file_type": "code",
-      "norm_label": ".install()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L43"
-    },
-    {
       "id": "includes_class_marketing_templates_marketingtemplates_response",
       "label": ".response()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": ".response()",
       "source_file": "includes/class-marketing-templates.php",
@@ -1323,8 +1299,8 @@
       "label": ".template()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": ".template()",
       "source_file": "includes/class-marketing-templates.php",
@@ -1335,36 +1311,84 @@
       "label": ".assets()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "Community 18",
+      "community": 17,
+      "community_name": "Community 17",
       "file_type": "code",
       "norm_label": ".assets()",
       "source_file": "includes/class-runtime.php",
       "source_location": "L122"
     },
     {
-      "id": "includes_class_runtime_runtime_boot",
-      "label": ".boot()",
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
+      "label": ".call()",
       "_callable": true,
       "_origin": "ast",
       "community": 18,
       "community_name": "Community 18",
       "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L53"
+      "norm_label": ".call()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L27"
     },
     {
-      "id": "includes_class_runtime_runtime_server_enabled",
-      "label": ".server_enabled()",
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_configuration_schema",
+      "label": ".configuration_schema()",
       "_callable": true,
       "_origin": "ast",
       "community": 18,
       "community_name": "Community 18",
       "file_type": "code",
-      "norm_label": ".server_enabled()",
-      "source_file": "includes/class-runtime.php",
+      "norm_label": ".configuration_schema()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_definition",
+      "label": ".definition()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Community 18",
+      "file_type": "code",
+      "norm_label": ".definition()",
+      "source_file": "includes/class-marketing-management-tool.php",
       "source_location": "L24"
+    },
+    {
+      "id": "admin_native_oauth_authentication_clientauthcard",
+      "label": "clientAuthCard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": "clientauthcard()",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L18"
+    },
+    {
+      "id": "admin_native_oauth_authentication_mount",
+      "label": "mount()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": "mount()",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L54"
+    },
+    {
+      "id": "admin_native_oauth_authentication_syncnativeoauthsettings",
+      "label": "syncNativeOAuthSettings()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": "syncnativeoauthsettings()",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L27"
     },
     {
       "id": "includes_class_configuration_import_configurationimport_commit",
@@ -1436,7 +1460,7 @@
       "file_type": "code",
       "norm_label": "{closure#10}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L38"
+      "source_location": "L45"
     },
     {
       "id": "includes_class_marketing_module_closure_11",
@@ -1448,7 +1472,7 @@
       "file_type": "code",
       "norm_label": "{closure#11}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L38"
+      "source_location": "L45"
     },
     {
       "id": "includes_class_marketing_module_closure_12",
@@ -1460,7 +1484,7 @@
       "file_type": "code",
       "norm_label": "{closure#12}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L39"
+      "source_location": "L46"
     },
     {
       "id": "includes_class_marketing_module_closure_13",
@@ -1472,7 +1496,7 @@
       "file_type": "code",
       "norm_label": "{closure#13}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L39"
+      "source_location": "L46"
     },
     {
       "id": "includes_class_marketing_module_closure_14",
@@ -1484,7 +1508,7 @@
       "file_type": "code",
       "norm_label": "{closure#14}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L40"
+      "source_location": "L47"
     },
     {
       "id": "includes_class_marketing_module_closure_15",
@@ -1496,7 +1520,7 @@
       "file_type": "code",
       "norm_label": "{closure#15}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L40"
+      "source_location": "L47"
     },
     {
       "id": "includes_class_marketing_module_closure_16",
@@ -1508,7 +1532,7 @@
       "file_type": "code",
       "norm_label": "{closure#16}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L41"
+      "source_location": "L48"
     },
     {
       "id": "includes_class_marketing_module_closure_18",
@@ -1520,7 +1544,7 @@
       "file_type": "code",
       "norm_label": "{closure#18}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L43"
+      "source_location": "L50"
     },
     {
       "id": "includes_class_marketing_module_closure_19",
@@ -1532,7 +1556,7 @@
       "file_type": "code",
       "norm_label": "{closure#19}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L43"
+      "source_location": "L50"
     },
     {
       "id": "includes_class_marketing_module_closure_20",
@@ -1544,7 +1568,7 @@
       "file_type": "code",
       "norm_label": "{closure#20}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L44"
+      "source_location": "L51"
     },
     {
       "id": "includes_class_marketing_module_closure_21",
@@ -1556,7 +1580,7 @@
       "file_type": "code",
       "norm_label": "{closure#21}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L44"
+      "source_location": "L51"
     },
     {
       "id": "includes_class_marketing_module_closure_22",
@@ -1568,7 +1592,7 @@
       "file_type": "code",
       "norm_label": "{closure#22}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L46"
+      "source_location": "L53"
     },
     {
       "id": "includes_class_marketing_module_closure_24",
@@ -1580,7 +1604,7 @@
       "file_type": "code",
       "norm_label": "{closure#24}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L50"
+      "source_location": "L57"
     },
     {
       "id": "includes_class_marketing_module_closure_26",
@@ -1592,7 +1616,7 @@
       "file_type": "code",
       "norm_label": "{closure#26}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59"
+      "source_location": "L66"
     },
     {
       "id": "includes_class_marketing_module_closure_27",
@@ -1604,7 +1628,7 @@
       "file_type": "code",
       "norm_label": "{closure#27}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59"
+      "source_location": "L66"
     },
     {
       "id": "includes_class_marketing_module_closure_29",
@@ -1616,7 +1640,7 @@
       "file_type": "code",
       "norm_label": "{closure#29}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L76"
+      "source_location": "L83"
     },
     {
       "id": "includes_class_marketing_module_closure_30",
@@ -1628,7 +1652,7 @@
       "file_type": "code",
       "norm_label": "{closure#30}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L76"
+      "source_location": "L83"
     },
     {
       "id": "includes_class_marketing_module_closure_32",
@@ -1640,7 +1664,7 @@
       "file_type": "code",
       "norm_label": "{closure#32}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L101"
+      "source_location": "L108"
     },
     {
       "id": "includes_class_marketing_module_closure_33",
@@ -1652,7 +1676,7 @@
       "file_type": "code",
       "norm_label": "{closure#33}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L101"
+      "source_location": "L108"
     },
     {
       "id": "includes_class_marketing_module_closure_34",
@@ -1664,7 +1688,7 @@
       "file_type": "code",
       "norm_label": "{closure#34}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L101"
+      "source_location": "L108"
     },
     {
       "id": "includes_class_marketing_module_closure_4",
@@ -1676,7 +1700,7 @@
       "file_type": "code",
       "norm_label": "{closure#4}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L25"
+      "source_location": "L32"
     },
     {
       "id": "includes_class_marketing_module_closure_5",
@@ -1688,7 +1712,7 @@
       "file_type": "code",
       "norm_label": "{closure#5}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L26"
+      "source_location": "L33"
     },
     {
       "id": "includes_class_marketing_module_closure_6",
@@ -1700,7 +1724,7 @@
       "file_type": "code",
       "norm_label": "{closure#6}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L28"
+      "source_location": "L35"
     },
     {
       "id": "includes_class_marketing_module_closure_7",
@@ -1712,7 +1736,7 @@
       "file_type": "code",
       "norm_label": "{closure#7}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L28"
+      "source_location": "L35"
     },
     {
       "id": "includes_class_marketing_module_closure_8",
@@ -1724,7 +1748,7 @@
       "file_type": "code",
       "norm_label": "{closure#8}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L29"
+      "source_location": "L36"
     },
     {
       "id": "includes_class_marketing_module_closure_9",
@@ -1736,7 +1760,7 @@
       "file_type": "code",
       "norm_label": "{closure#9}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L29"
+      "source_location": "L36"
     },
     {
       "id": "includes_class_lifecycle_lifecycle_activate",
@@ -1940,7 +1964,7 @@
       "file_type": "code",
       "norm_label": ".notice()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L134"
+      "source_location": "L137"
     },
     {
       "id": "includes_class_runtime_runtime_ready",
@@ -2001,6 +2025,18 @@
       "norm_label": ".save()",
       "source_file": "includes/class-runtime.php",
       "source_location": "L87"
+    },
+    {
+      "id": "includes_class_runtime_runtime_server_enabled",
+      "label": ".server_enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": ".server_enabled()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L24"
     },
     {
       "id": "includes_class_runtime_runtime_settings",
@@ -2073,18 +2109,6 @@
       "norm_label": "{closure#4}()",
       "source_file": "includes/class-configuration-import.php",
       "source_location": "L162"
-    },
-    {
-      "id": "includes_class_marketing_templates_closure_1",
-      "label": "{closure#1}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Community 4",
-      "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L17"
     },
     {
       "id": "includes_class_protocol_envelope_protocolenvelope_decode",
@@ -2219,6 +2243,78 @@
       "source_location": "L27"
     },
     {
+      "id": "includes_class_connection_screens_connectionscreens_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L8"
+    },
+    {
+      "id": "includes_class_connection_screens_connectionscreens_routes",
+      "label": ".routes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": ".routes()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L11"
+    },
+    {
+      "id": "includes_class_runtime_runtime_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L53"
+    },
+    {
+      "id": "tools_build_release_handoff_blob",
+      "label": "blob()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "blob()",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L22"
+    },
+    {
+      "id": "tools_build_release_handoff_git",
+      "label": "git()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "git()",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L14"
+    },
+    {
+      "id": "tools_build_release_handoff_sha",
+      "label": "sha()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "sha()",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L18"
+    },
+    {
       "id": "tools_build_ui_baseline",
       "label": "baseline()",
       "_callable": true,
@@ -2228,7 +2324,7 @@
       "file_type": "code",
       "norm_label": "baseline()",
       "source_file": "tools/build-ui.py",
-      "source_location": "L9"
+      "source_location": "L45"
     },
     {
       "id": "tools_build_ui_replace_once",
@@ -2240,7 +2336,7 @@
       "file_type": "code",
       "norm_label": "replace_once()",
       "source_file": "tools/build-ui.py",
-      "source_location": "L11"
+      "source_location": "L5"
     },
     {
       "id": "tools_handoff_connections_git",
@@ -2265,6 +2361,30 @@
       "norm_label": "sha()",
       "source_file": "tools/handoff-connections.py",
       "source_location": "L6"
+    },
+    {
+      "id": "tools_handoff_maintenance_git",
+      "label": "git()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "git()",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L6"
+    },
+    {
+      "id": "tools_handoff_maintenance_sha",
+      "label": "sha()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "sha()",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L8"
     },
     {
       "id": "includes_class_updater_closure_1",
@@ -2433,6 +2553,17 @@
       "source_location": ""
     },
     {
+      "id": "wp_rest_response",
+      "label": "WP_REST_Response",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": "wp_rest_response",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "includes_class_provider_readiness",
       "label": "class-provider-readiness.php",
       "_origin": "ast",
@@ -2466,14 +2597,14 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_marketing_management_tool",
-      "label": "class-marketing-management-tool.php",
+      "id": "getmcp_extensions",
+      "label": "getmcp-extensions.php",
       "_origin": "ast",
       "community": 12,
       "community_name": "Community 12",
       "file_type": "code",
-      "norm_label": "class-marketing-management-tool.php",
-      "source_file": "includes/class-marketing-management-tool.php",
+      "norm_label": "getmcp-extensions.php",
+      "source_file": "getmcp-extensions.php",
       "source_location": "L1"
     },
     {
@@ -2488,14 +2619,14 @@
       "source_location": "L1"
     },
     {
-      "id": "getmcp_extensions",
-      "label": "getmcp-extensions.php",
+      "id": "admin_native_connections",
+      "label": "native-connections.js",
       "_origin": "ast",
       "community": 14,
       "community_name": "Community 14",
       "file_type": "code",
-      "norm_label": "getmcp-extensions.php",
-      "source_file": "getmcp-extensions.php",
+      "norm_label": "native-connections.js",
+      "source_file": "admin/native-connections.js",
       "source_location": "L1"
     },
     {
@@ -2521,26 +2652,59 @@
       "source_location": "L1"
     },
     {
-      "id": "admin_native_connections",
-      "label": "native-connections.js",
+      "id": "getmcp_core_toolmanager",
+      "label": "GetMCP\\Core\\ToolManager",
       "_origin": "ast",
       "community": 17,
       "community_name": "Community 17",
       "file_type": "code",
-      "norm_label": "native-connections.js",
-      "source_file": "admin/native-connections.js",
+      "norm_label": "getmcp\\core\\toolmanager",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "getmcp_licensing_licensetier",
+      "label": "GetMCP\\Licensing\\LicenseTier",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "Community 17",
+      "file_type": "code",
+      "norm_label": "getmcp\\licensing\\licensetier",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "includes_class_marketing_templates",
+      "label": "class-marketing-templates.php",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "Community 17",
+      "file_type": "code",
+      "norm_label": "class-marketing-templates.php",
+      "source_file": "includes/class-marketing-templates.php",
       "source_location": "L1"
     },
     {
-      "id": "wp_rest_response",
-      "label": "WP_REST_Response",
+      "id": "includes_class_marketing_management_tool",
+      "label": "class-marketing-management-tool.php",
       "_origin": "ast",
       "community": 18,
       "community_name": "Community 18",
       "file_type": "code",
-      "norm_label": "wp_rest_response",
-      "source_file": "",
-      "source_location": ""
+      "norm_label": "class-marketing-management-tool.php",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "admin_native_oauth_authentication",
+      "label": "native-oauth-authentication.js",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": "native-oauth-authentication.js",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L1"
     },
     {
       "id": "includes_class_marketing_module",
@@ -2583,28 +2747,6 @@
       "community_name": "Community 4",
       "file_type": "code",
       "norm_label": "getmcp\\core\\servermanager",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "getmcp_core_toolmanager",
-      "label": "GetMCP\\Core\\ToolManager",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Community 4",
-      "file_type": "code",
-      "norm_label": "getmcp\\core\\toolmanager",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "getmcp_licensing_licensetier",
-      "label": "GetMCP\\Licensing\\LicenseTier",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Community 4",
-      "file_type": "code",
-      "norm_label": "getmcp\\licensing\\licensetier",
       "source_file": "",
       "source_location": ""
     },
@@ -2672,17 +2814,6 @@
       "file_type": "code",
       "norm_label": "class-connection-headers.php",
       "source_file": "includes/class-connection-headers.php",
-      "source_location": "L1"
-    },
-    {
-      "id": "includes_class_marketing_templates",
-      "label": "class-marketing-templates.php",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Community 4",
-      "file_type": "code",
-      "norm_label": "class-marketing-templates.php",
-      "source_file": "includes/class-marketing-templates.php",
       "source_location": "L1"
     },
     {
@@ -2807,6 +2938,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_build_release_handoff",
+      "label": "build-release-handoff.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "build-release-handoff.py",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_build_ui",
       "label": "build-ui.py",
       "_origin": "ast",
@@ -2837,6 +2979,17 @@
       "file_type": "code",
       "norm_label": "handoff-connections.py",
       "source_file": "tools/handoff-connections.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_handoff_maintenance",
+      "label": "handoff-maintenance.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "handoff-maintenance.py",
+      "source_file": "tools/handoff-maintenance.py",
       "source_location": "L1"
     },
     {
@@ -2884,6 +3037,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_build_release_handoff_rationale_1",
+      "label": "Build a credential-free developer handoff from committed source only.",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "build a credential-free developer handoff from committed source only.",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_build_release_rationale_1",
       "label": "Reproducible release ZIP with a package-only updater marker and exact hash\u2026",
       "_origin": "ast",
@@ -2896,12 +3060,12 @@
     },
     {
       "id": "tools_build_ui_rationale_1",
-      "label": "Reviewed seams for GetMCP's distributed React build; readable behavior lives in\u2026",
+      "label": "Build reviewed admin seams against the explicitly supplied GetMCP package.",
       "_origin": "ast",
       "community": 6,
       "community_name": "Community 6",
       "file_type": "rationale",
-      "norm_label": "reviewed seams for getmcp's distributed react build; readable behavior lives in...",
+      "norm_label": "build reviewed admin seams against the explicitly supplied getmcp package.",
       "source_file": "tools/build-ui.py",
       "source_location": "L1"
     },
@@ -2925,6 +3089,17 @@
       "file_type": "rationale",
       "norm_label": "credential-free feature handoff from the public add-on baseline; no git...",
       "source_file": "tools/handoff-connections.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_handoff_maintenance_rationale_1",
+      "label": "Credential-free maintenance patch, reviewed files and local verification; never\u2026",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "credential-free maintenance patch, reviewed files and local verification; never...",
+      "source_file": "tools/handoff-maintenance.py",
       "source_location": "L1"
     },
     {
@@ -3213,9 +3388,56 @@
       "norm_label": "zipfile",
       "source_file": "",
       "type": "external"
+    },
+    {
+      "id": "argparse",
+      "label": "argparse",
+      "community": 6,
+      "community_name": "Community 6",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "argparse",
+      "source_file": "",
+      "type": "external"
     }
   ],
   "links": [
+    {
+      "source": "admin_native_oauth_authentication",
+      "target": "admin_native_oauth_authentication_mount",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_native_oauth_authentication_mount",
+      "target": "admin_native_oauth_authentication_syncnativeoauthsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_native_oauth_authentication_syncnativeoauthsettings",
+      "target": "admin_native_oauth_authentication_clientauthcard",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L28",
+      "weight": 1.0
+    },
     {
       "source": "includes_class_authentication_settings_authenticationsettings_prepare",
       "target": "includes_class_authentication_settings_settingsconflict",
@@ -3697,6 +3919,90 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_release_handoff",
+      "target": "argparse",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "difflib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "hashlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "re",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "subprocess",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "zipfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "tools_build_ui",
       "target": "hashlib",
       "relation": "imports",
@@ -3705,7 +4011,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/build-ui.py",
-      "source_location": "L7",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -3717,7 +4023,31 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/build-ui.py",
-      "source_location": "L7",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "re",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "shutil",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-ui.py",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -3729,7 +4059,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/build-ui.py",
-      "source_location": "L7",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -3829,6 +4159,78 @@
       "weight": 1.0
     },
     {
+      "source": "tools_handoff_maintenance",
+      "target": "difflib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "hashlib",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "re",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "subprocess",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "zipfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "tools_sync_readme",
       "target": "re",
       "relation": "imports",
@@ -3855,6 +4257,18 @@
     {
       "source": "tools_test_connections",
       "target": "os",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-connections.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_test_connections",
+      "target": "re",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3985,6 +4399,18 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_release_handoff",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "tools_build_ui",
       "target": "pathlib",
       "relation": "imports_from",
@@ -3993,7 +4419,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/build-ui.py",
-      "source_location": "L6",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -4017,6 +4443,18 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/handoff-connections.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/handoff-maintenance.py",
       "source_location": "L2",
       "weight": 1.0
     },
@@ -4088,6 +4526,39 @@
       "confidence_score": 1.0,
       "source_file": "admin/connection-tools.js",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_native_oauth_authentication",
+      "target": "admin_native_oauth_authentication_clientauthcard",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_native_oauth_authentication",
+      "target": "admin_native_oauth_authentication_syncnativeoauthsettings",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_native_oauth_authentication",
+      "target": "admin_native_oauth_authentication_mount",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -4417,7 +4888,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L101",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -4428,7 +4899,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L101",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -4439,7 +4910,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L101",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -4483,7 +4954,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L149",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -4494,7 +4965,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L25",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -4505,7 +4976,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L26",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -4516,7 +4987,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L28",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4527,7 +4998,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L28",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -4538,7 +5009,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L29",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -4549,7 +5020,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L29",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -4560,7 +5031,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L38",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -4571,7 +5042,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L38",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -4582,7 +5053,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L39",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -4593,7 +5064,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L39",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -4604,7 +5075,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L40",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -4615,7 +5086,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L40",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -4626,7 +5097,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -4637,7 +5108,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -4648,7 +5119,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L43",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -4659,7 +5130,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L43",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -4670,7 +5141,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L44",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -4681,7 +5152,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L44",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -4692,7 +5163,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L46",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -4703,7 +5174,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L46",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -4714,7 +5185,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L50",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -4725,7 +5196,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L50",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -4736,7 +5207,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -4747,7 +5218,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -4758,7 +5229,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L59",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -4780,7 +5251,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L76",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -4791,7 +5262,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L76",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -4802,7 +5273,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L76",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -5070,14 +5541,36 @@
       "weight": 1.0
     },
     {
-      "source": "tools_build_ui",
-      "target": "tools_build_ui_replace_once",
+      "source": "tools_build_release_handoff",
+      "target": "tools_build_release_handoff_git",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "tools/build-ui.py",
-      "source_location": "L11",
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "tools_build_release_handoff_sha",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_release_handoff",
+      "target": "tools_build_release_handoff_blob",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -5088,7 +5581,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/build-ui.py",
-      "source_location": "L9",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_ui",
+      "target": "tools_build_ui_replace_once",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-ui.py",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -5111,6 +5615,28 @@
       "confidence_score": 1.0,
       "source_file": "tools/handoff-connections.py",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "tools_handoff_maintenance_git",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_handoff_maintenance",
+      "target": "tools_handoff_maintenance_sha",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5407,7 +5933,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L111",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -5418,7 +5944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L116",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -5429,7 +5955,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L121",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -5440,7 +5966,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L122",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -5451,7 +5977,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L147",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -5462,7 +5988,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L160",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -5473,7 +5999,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L167",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_marketingmodule",
+      "target": "includes_class_marketing_module_marketingmodule_personal_no_cache",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -5484,7 +6021,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L18",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -5495,7 +6032,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L24",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -5819,13 +6356,24 @@
     },
     {
       "source": "includes_class_provider_connections_providerconnections",
+      "target": "includes_class_provider_connections_providerconnections_refresh_available",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_connections_providerconnections",
       "target": "includes_class_provider_connections_providerconnections_grant",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L62",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -5836,7 +6384,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L78",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -6122,7 +6670,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L134",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -6346,6 +6894,17 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_release_handoff_rationale_1",
+      "target": "tools_build_release_handoff",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-release-handoff.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tools_build_release_rationale_1",
       "target": "tools_build_release",
       "relation": "rationale_for",
@@ -6390,6 +6949,17 @@
       "weight": 1.0
     },
     {
+      "source": "tools_handoff_maintenance_rationale_1",
+      "target": "tools_handoff_maintenance",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/handoff-maintenance.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tools_sync_readme_rationale_1",
       "target": "tools_sync_readme",
       "relation": "rationale_for",
@@ -6420,6 +6990,18 @@
       "confidence_score": 1.0,
       "source_file": "tools/verify.py",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "admin_native_oauth_authentication",
+      "target": "admin_native_oauth_authentication_mount",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "admin/native-oauth-authentication.js",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -6563,7 +7145,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L38",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -6575,7 +7157,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L39",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -6587,7 +7169,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L40",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -6599,7 +7181,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -6623,7 +7205,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L47",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -6635,7 +7217,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L51",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -6647,7 +7229,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L52",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -6659,7 +7241,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L60",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -6671,7 +7253,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L61",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -6683,7 +7265,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L65",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -6695,7 +7277,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L70",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -6719,7 +7301,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L81",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -6731,7 +7313,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L85",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -6743,7 +7325,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L150",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -6755,7 +7337,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L112",
+      "source_location": "L119",
       "weight": 1.0
     },
     {
@@ -6767,7 +7349,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L164",
+      "source_location": "L178",
       "weight": 1.0
     },
     {
@@ -6779,7 +7361,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L168",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -6791,7 +7373,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L118",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -6803,7 +7385,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L121",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -6815,7 +7397,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L124",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -6827,7 +7409,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L127",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -6839,7 +7421,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L134",
+      "source_location": "L141",
       "weight": 1.0
     },
     {
@@ -6863,7 +7445,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L156",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -7043,7 +7625,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L70",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -7055,7 +7637,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L84",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -7067,7 +7649,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L85",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -7079,7 +7661,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L85",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_connections_providerconnections_refresh_available",
+      "target": "includes_class_provider_tokens_providertokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -7276,6 +7870,18 @@
     },
     {
       "source": "includes_class_provider_readiness_providerreadiness_connection",
+      "target": "includes_class_provider_connections_providerconnections",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-readiness.php",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_readiness_providerreadiness_connection",
       "target": "includes_class_provider_tokens_providertokens",
       "relation": "calls",
       "_origin": "ast",
@@ -7319,7 +7925,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L127",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -7372,5 +7978,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "87dbabf07fd8d344a848ac8e4cef4135f4636dd3"
+  "built_at_commit": "484ad9cb381895be242d676756d96aef15342203"
 }

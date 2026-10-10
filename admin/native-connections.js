@@ -16,7 +16,8 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
     const [providerPreview,setProviderPreview] = useState(null);
     const [endpoints,setEndpoints]=useState([]),[canManage,setCanManage]=useState(false);
     const [batch,setBatch]=useState([]),[batchUsers,setBatchUsers]=useState([]),[batchStatus,setBatchStatus]=useState('draft'),[conversion,setConversion]=useState(null),[outputFormat,setOutputFormat]=useState('codex');
-    const load = async () => { const r = await api(portal ? 'my-connections' : 'connections'); setItems(r.connections || r.servers || []);setEndpoints(r.endpoints||[]);setCanManage(!!r.can_manage_connections); };
+    const load = async () => { const r = await api(portal ? 'my-connections' : 'connections', portal ? {params:{_connection_status:Date.now()+'-'+Math.random().toString(36).slice(2)}} : {}); setItems(r.connections || r.servers || []);setEndpoints(r.endpoints||[]);setCanManage(!!r.can_manage_connections); };
+    const returnTo = () => window.location.pathname.includes('/wp-admin/') ? (new URLSearchParams(window.location.search).get('page')==='getmcp-account-connections'?'profile':'admin') : 'portal';
     const action = async fn => {
       setBusy(true); setError('');
       try { await fn(); } catch (e) { const message = e.message || 'The operation could not be completed.'; setError(message); addToast(message, 'error'); }
@@ -66,6 +67,7 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
             item.kind==='rest-provider' && h('div',{className:'space-y-3 mb-4'},
               h('p',null,`Application: ${item.has_application_credentials?'configured':'missing credentials'} · Scopes: ${item.readiness?.required_scopes_present===true?'required scopes present':item.readiness?.required_scopes_present===false?'required scopes missing':'not yet verified'} · Harmless read: ${item.readiness?.read_verified?'verified':'not verified'}`),
               item.expires_at && h('p',null,'Token expiry: '+new Date(item.expires_at*1000).toLocaleString()),
+              item.refresh_pending && h('p',null,'Your account remains connected. GetMCP renews the access token automatically on the next request.'),
               item.connected && button('Discover accounts and assets',async()=>{setProviderPreview(await api('my-connections/'+item.id+'/discover',{method:'POST',data:{}}));await load();}),
               item.supports_pages && item.connected && h(React.Fragment,null,
                 button('Discover Instagram Pages',async()=>{await api('my-connections/'+item.id+'/assets',{method:'POST',data:{}});await load();}),
@@ -73,7 +75,7 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
                 item.can_enable_messaging && item.assets?.messaging_verified && button('Enable reviewed messaging drafts',async()=>{await api('servers/'+item.uuid+'/enable-messaging',{method:'POST',data:{}});await load();}),
                 item.assets?.selected_page_id && button('Verify messaging access',async()=>{await api('my-connections/'+item.id+'/assets',{method:'POST',data:{operation:'verify'}});await load();}),
                 h('p',null,item.assets?.messaging_verified?'Messaging access verified for this Page.':'Messaging requires granted permissions and a successful harmless conversation read.'))),
-            h('div', {className: 'flex flex-wrap gap-3'}, button(item.connected ? 'Reconnect account' : 'Connect account', async () => { const r = await api('my-connections/' + item.id, {method: 'POST', data: {}}); window.location.assign(r.authorization_url); }, 'primary'),
+            h('div', {className: 'flex flex-wrap gap-3'}, button(item.connected ? 'Reconnect account' : 'Connect account', async () => { const r = await api('my-connections/' + item.id, {method: 'POST', data: {return_to:returnTo()}}); window.location.assign(r.authorization_url); }, 'primary'),
               item.connected && button('Disconnect account', () => setConfirm({kind: 'disconnect', item}))))),
           providerPreview && h(Card,{title:'Discovery result — reporting is not yet verified'},h('pre',{className:'overflow-auto max-h-64'},JSON.stringify(providerPreview,null,2))))
         : form ? h(React.Fragment, null,

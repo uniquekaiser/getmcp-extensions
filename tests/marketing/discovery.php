@@ -16,7 +16,11 @@ $tool = $tm->create( array( 'server_id' => $s->id, 'name' => 'fixture_list_acces
 $changed = Settings::prepare( $s, array( 'auth_config' => array( 'token_url' => 'https://graph.facebook.com/v26.0/oauth/access_token' ), 'auth_credentials' => array() ) );
 $assert( array_key_exists( 'auth_credentials', $changed ) && null === $changed['auth_credentials'], 'provider_host_switch_clears_obsolete_secret' );
 $grant = $flow( $s ); $found = PD::discover( $s, $grant['data']['access_token'], $a );
-$assert( $found['complete'] && count( $found['customers'] ) === 2 && ! $found['reporting_verified'], 'ads_manager_and_child_discovery_separate_from_reporting' ); $tm->delete( $tool->id );
+$assert( $found['complete'] && count( $found['customers'] ) === 2 && ! $found['reporting_verified'], 'ads_manager_and_child_discovery_separate_from_reporting' );
+update_option( 'getmcp_fixture_provider_mode', 'ads_disabled_customer' ); $found = PD::discover( $s, $grant['data']['access_token'], $a );
+$assert( ! $found['complete'] && count( $found['customers'] ) === 2 && $found['unavailable_customers'][0]['reason'] === 'CUSTOMER_NOT_ENABLED' && ! $found['reporting_verified'], 'disabled_ads_customer_preserves_other_accounts_and_reports_partial_coverage' );
+update_option( 'getmcp_fixture_provider_mode', 'timeout' ); $reject( fn() => PD::discover( $s, $grant['data']['access_token'], $a ), 'ads_outage_is_not_misclassified_as_disabled_customer' );
+update_option( 'getmcp_fixture_provider_mode', 'valid' ); $tm->delete( $tool->id );
 $s = $m->get( $f['google']['google-search-console']['id'] ); $grant = $flow( $s );
 $assert( PD::discover( $s, $grant['data']['access_token'], $a )['properties'][0]['permissionLevel'] === 'siteOwner', 'search_console_property_permission_preserved' );
 $status = Ready::connection( $s, $grant['data'], true, array() );

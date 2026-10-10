@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.2
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.2.0
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,22 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.2.2 =
+
+* [COMPAT] Support GetMCP 1.7.0 with a separately verified compatibility profile and version-specific adapters while retaining GetMCP 1.6.0 support.
+* [FIX] Load isolated 1.6 and 1.7 admin bundles so each supported core version renders the correct native app and add-on routes.
+* [FIX] Preserve GetMCP 1.7 server settings validation, FTP handling, OAuth branding, and the native admin/FTP interface alongside add-on screens; use only public UrlGuard methods across both releases.
+* [FIX] Restore native WordPress OAuth controls in GetMCP 1.7 while keeping other authentication cards available and accepting the native provider configuration.
+* [FIX] Keep GetMCP's full client-authentication choices visible alongside WordPress sign-in, and replace irrelevant external OAuth setup fields with clear first-party guidance.
+* [SECURITY] Include the complete 1.7 core and admin asset inventory in runtime integrity checks so unreviewed vendor changes keep affected endpoints blocked.
+
+= 1.2.1 =
+
+* [FIX] Keep refreshable Google accounts connected when a short-lived access token expires; show automatic renewal separately from required reauthorization.
+* [FIX] Return provider and Remote MCP consent to the originating admin, profile or standalone connection screen using protected OAuth state.
+* [FIX] Keep available Google Ads discovery results when a disabled customer rejects hierarchy access, and explicitly report incomplete coverage.
+* [SECURITY] Prevent personal connection responses from being cached and bypass previously cached status responses in the browser.
 
 = 1.2.0 =
 

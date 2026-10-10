@@ -9,7 +9,7 @@ final class ProviderReadiness {
         $known = ProviderTokens::is_meta( $server ) ? ! empty( $assets['discovery_complete'] ) : isset( $data['scope'] );
         return array(
             'application_configured' => ! empty( $config['client_id'] ) && ! empty( $server->auth_credentials ),
-            'user_connected' => $current && (int) ( $data['expires_at'] ?? 0 ) > time() + 30,
+            'user_connected' => $current && ( (int) ( $data['expires_at'] ?? 0 ) > time() + 30 || ProviderConnections::refresh_available( $server, $data ) ),
             'required_scopes' => $required,
             'required_scopes_present' => $current && $known ? ! array_diff( $required, $granted ) : null,
             'read_verified' => $current && ( ! empty( $data['readiness']['read_verified'] ) || ! empty( $assets['messaging_verified'] ) ),

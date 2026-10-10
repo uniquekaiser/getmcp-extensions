@@ -52,7 +52,8 @@ class FeatureModule {
 			$server = ( new ServerManager() )->get( (int) $r['id'] ); $user = get_current_user_id();
 			if ( ! $server || ! UpstreamConnections::can_connect( $server, $user ) ) { throw new \GetMCP\Remote\RemoteException( 'This upstream connection is not available to you.', -32003 ); }
 			if ( 'DELETE' === $r->get_method() ) { UpstreamConnections::disconnect( $server->id, $user ); return array( 'disconnected' => true ); }
-			return 'native' === $server->server_kind ? \GetMCPExtensions\ProviderConnections::begin( $server, $user ) : UpstreamOAuth::begin( $server, $user );
+			$return_to = $r->get_param( 'return_to' ); $return_to = is_string( $return_to ) ? $return_to : '';
+			return 'native' === $server->server_kind ? \GetMCPExtensions\ProviderConnections::begin( $server, $user, $return_to ) : UpstreamOAuth::begin( $server, $user, $return_to );
 		} ) ) );
 		register_rest_route( 'getmcp/v1', '/upstreams/(?P<uuid>[a-f0-9-]{36})/client-metadata', array( 'methods' => 'GET', 'permission_callback' => '__return_true', 'callback' => fn( $r ) => self::response( function() use ( $r ) {
 			foreach ( FeatureManager::all() as $s ) { if ( $s->uuid === $r['uuid'] && 'remote-mcp' === $s->server_kind && 'active' === $s->status && 'oauth' === ( UpstreamConnections::config( $s )['auth_mode'] ?? '' ) ) { return UpstreamOAuth::client_metadata( $s ); } }
@@ -97,7 +98,7 @@ class FeatureModule {
 	public static function portal(): void {
 		if ( isset( $_GET['getmcp_upstream_callback'] ) ) {
 			self::require_login();
-			try { UpstreamOAuth::complete( wp_unslash( $_GET ), get_current_user_id() ); wp_safe_redirect( UpstreamConnections::portal_url() ); exit; }
+			try { $return_url = UpstreamOAuth::complete( wp_unslash( $_GET ), get_current_user_id() ); wp_safe_redirect( $return_url ); exit; }
 			catch ( \Throwable $e ) { wp_die( esc_html( $e instanceof \GetMCP\Remote\RemoteException ? $e->getMessage() : 'The upstream login failed. Start again from My MCP Connections.' ), 'MCP Connection', array( 'response' => 400 ) ); }
 		}
 		if ( ! isset( $_GET['getmcp_connections'] ) ) { return; }
