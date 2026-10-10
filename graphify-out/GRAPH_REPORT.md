@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 287 nodes · 398 edges · 20 communities (7 shown, 13 thin omitted)
-- Extraction: 79% EXTRACTED · 21% INFERRED · 0% AMBIGUOUS · INFERRED: 82 edges (avg confidence: 0.85)
+- 290 nodes · 406 edges · 19 communities (8 shown, 11 thin omitted)
+- Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 81 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `484ad9cb`
+- Built from commit: `83967bab`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -23,9 +23,8 @@
 - Community 7
 - Community 8
 - Community 10
+- Community 12
 - Community 17
-- Community 18
-- Community 19
 
 ## God Nodes (most connected - your core abstractions)
 1. `AuthenticationSettings` - 26 edges
@@ -54,11 +53,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 13 thin omitted)
+## Communities (19 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.07
-Nodes (6): AuthenticationSettings, SettingsConflict, ConnectionHeaders, {closure#31}(), {closure#35}(), MarketingModule
+Cohesion: 0.10
+Nodes (5): AuthenticationSettings, SettingsConflict, ConnectionHeaders, {closure#31}(), {closure#35}()
 
 ### Community 1 - "Community 1"
 Cohesion: 0.05
@@ -69,8 +68,8 @@ Cohesion: 0.06
 Nodes (4): ConfigurationImport, {closure#11}(), {closure#13}(), {closure#15}()
 
 ### Community 5 - "Community 5"
-Cohesion: 0.12
-Nodes (5): ConfigurationTranscoder, {closure#2}(), {closure#4}(), {closure#5}(), ConnectionScreens
+Cohesion: 0.17
+Nodes (4): ConfigurationTranscoder, {closure#2}(), {closure#4}(), {closure#5}()
 
 ### Community 8 - "Community 8"
 Cohesion: 0.29
@@ -80,24 +79,28 @@ Nodes (6): license, name, require, php, yahnis-elsts/plugin-update-checker, type
 Cohesion: 0.71
 Nodes (6): {closure#1}(), {closure#2}(), getmcp_extensions_guard_has_blocked(), getmcp_extensions_guard_marketing_missing(), getmcp_extensions_guard_ready(), getmcp_extensions_guard_row()
 
-### Community 19 - "Community 19"
-Cohesion: 0.83
-Nodes (3): clientAuthCard(), mount(), syncNativeOAuthSettings()
+### Community 12 - "Community 12"
+Cohesion: 0.62
+Nodes (6): clientAuthCard(), expandNativeAuthMenu(), isWordPressMode(), mount(), scheduleNativeMenuExpansion(), syncNativeOAuthSettings()
+
+### Community 17 - "Community 17"
+Cohesion: 0.08
+Nodes (4): ConnectionScreens, MarketingManagementTool, MarketingModule, MarketingTemplates
 
 ## Knowledge Gaps
 - **5 isolated node(s):** `license`, `name`, `php`, `yahnis-elsts/plugin-update-checker`, `type`
   These have ≤1 connection - possible missing edges. (Counts symbols only; 158 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MarketingModule` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 17`, `Community 18`?**
-  _High betweenness centrality (0.154) - this node is a cross-community bridge._
+- **Why does `MarketingModule` connect `Community 17` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 5`?**
+  _High betweenness centrality (0.151) - this node is a cross-community bridge._
 - **Why does `Runtime` connect `Community 3` to `Community 17`, `Community 5`?**
-  _High betweenness centrality (0.122) - this node is a cross-community bridge._
-- **Why does `AuthenticationSettings` connect `Community 0` to `Community 1`, `Community 5`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
+  _High betweenness centrality (0.120) - this node is a cross-community bridge._
+- **Why does `AuthenticationSettings` connect `Community 0` to `Community 1`, `Community 5`, `Community 17`?**
+  _High betweenness centrality (0.111) - this node is a cross-community bridge._
 - **Are the 18 inferred relationships involving `AuthenticationSettings` (e.g. with `.prepare()` and `.read()`) actually correct?**
   _`AuthenticationSettings` has 18 INFERRED edges - AST-inferred connections that need verification._
 - **Are the 12 inferred relationships involving `PageTokens` (e.g. with `{closure#1}()` and `{closure#2}()`) actually correct?**

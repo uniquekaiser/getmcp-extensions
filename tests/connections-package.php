@@ -14,7 +14,7 @@ $file = '/evidence/connections-package-baseline.json';
 if ( 'before' === ( $args[0] ?? '' ) ) { file_put_contents( $file, wp_json_encode( $state ) ); echo 'Captured owned protected-state hashes.'; return; }
 $before = json_decode( file_get_contents( $file ), true ); $checks = array();
 foreach ( $state as $key => $hash ) { $checks[$key . '_preserved'] = $before[$key] === $hash; }
-$checks['installed_version'] = '1.2.2' === GETMCP_EXTENSIONS_VERSION;
+$checks['installed_version'] = '1.2.3' === GETMCP_EXTENSIONS_VERSION;
 $checks['runtime_ready'] = GetMCPExtensions\Runtime::ready();
 $checks['public_updater_loaded'] = null !== GetMCPExtensions\Updater::checker();
 $checks['installed_bytes_match_package'] = true;

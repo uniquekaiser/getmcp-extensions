@@ -45,7 +45,7 @@ final class Updater {
     public static function normalize( $info ) {
         if ( ! is_object( $info ) || empty( $info->version ) || ! self::valid_package_url( (string) ( $info->download_url ?? '' ), (string) $info->version ) ) { return null; }
         if ( version_compare( $info->version, GETMCP_EXTENSIONS_VERSION, '<' ) ) { return null; }
-        foreach ( array( 'requires' => '6.2', 'requires_php' => '8.2', 'tested' => '7.1.2', 'homepage' => self::REPOSITORY ) as $key => $fallback ) {
+        foreach ( array( 'requires' => '6.2', 'requires_php' => '8.2', 'tested' => '7.1.3', 'homepage' => self::REPOSITORY ) as $key => $fallback ) {
             if ( empty( $info->$key ) ) { $info->$key = $fallback; }
         }
         $info->icons = self::icons( is_array( $info->icons ?? null ) ? $info->icons : array() );
@@ -101,7 +101,7 @@ final class Updater {
                 unset( $transient->$group[$file] ); continue;
             }
             $row->icons = self::icons( is_array( $row->icons ?? null ) ? $row->icons : array() );
-            foreach ( array( 'requires' => '6.2', 'requires_php' => '8.2', 'tested' => '7.1.2' ) as $key => $fallback ) {
+            foreach ( array( 'requires' => '6.2', 'requires_php' => '8.2', 'tested' => '7.1.3' ) as $key => $fallback ) {
                 if ( empty( $row->$key ) ) { $row->$key = $fallback; }
             }
         }

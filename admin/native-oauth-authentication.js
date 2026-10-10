@@ -1,6 +1,5 @@
-/* Restore the add-on's native WordPress sign-in option on the GetMCP 1.7
- * Authentication screen. GetMCP 1.7 removed this choice from its bundled UI;
- * the server-side OAuth provider and access checks remain available. */
+/* Add the add-on's WordPress sign-in mode to GetMCP 1.7's Client Authentication
+ * selector and render its per-user allowlist controls in that same card. */
 (function () {
   'use strict';
 
@@ -13,7 +12,42 @@
   };
   const request = (path, options) => api(Object.assign({path}, options || {}));
   let mounted = '';
+  let loading = '';
   let nativeSignIn = false;
+  const submitBound = new WeakSet();
+  const modeLabel = 'WordPress sign-in (GetMCP)';
+
+  // GetMCP's custom select caps every option menu at 108px. That shows only
+  // three rows and hides the newly added sign-in choice below the scroll.
+  // Expand only this authentication menu, while respecting the available
+  // viewport space when it opens near the top or bottom of the screen.
+  function expandNativeAuthMenu() {
+    Array.from(document.querySelectorAll('ul[role="listbox"]')).forEach(menu => {
+      const hasNativeOption = Array.from(menu.querySelectorAll('[role="option"]'))
+        .some(option => option.textContent.trim() === modeLabel);
+      if (!hasNativeOption) return;
+
+      const popup = menu.parentElement && menu.parentElement.parentElement;
+      if (!popup) return;
+      const rect = popup.getBoundingClientRect();
+      const space = popup.style.bottom
+        ? rect.top - 4
+        : window.innerHeight - rect.top - 4;
+      const height = Math.max(0, Math.min(240, space));
+      const value = height + 'px';
+      if (menu.style.maxHeight !== value) menu.style.maxHeight = value;
+    });
+  }
+
+  let menuAdjustmentQueued = false;
+  function scheduleNativeMenuExpansion() {
+    if (menuAdjustmentQueued) return;
+    menuAdjustmentQueued = true;
+    window.requestAnimationFrame(() => {
+      menuAdjustmentQueued = false;
+      expandNativeAuthMenu();
+    });
+  }
 
   function clientAuthCard(form) {
     const heading = Array.from(form.querySelectorAll('h1,h2,h3,h4,[role="heading"]'))
@@ -24,31 +58,20 @@
     return node.parentElement === form ? node : heading.parentElement;
   }
 
+  function isWordPressMode(form) {
+    const card = clientAuthCard(form);
+    if (!card) return false;
+    const selector = card.querySelector('[role="combobox"]');
+    return !!selector && selector.textContent.includes(modeLabel);
+  }
+
   function syncNativeOAuthSettings(form) {
     const card = clientAuthCard(form);
     if (!card) return;
-    const selector = card.querySelector('[role="combobox"]');
-    const currentMode = selector ? selector.textContent.trim() : '';
-    const oauthDescription = Array.from(card.querySelectorAll('p'))
-      .find(node => node.textContent.trim().startsWith('Each MCP user signs into their own upstream account'));
-    const oauthFields = oauthDescription && oauthDescription.parentElement;
-    let hint = card.querySelector('[data-getmcp-native-oauth-hint]');
-    const nativeOAuthSelected = nativeSignIn && /OAuth\s*2\.0/i.test(currentMode);
-    if (!nativeOAuthSelected) {
-      if (oauthFields && oauthFields.hidden) oauthFields.hidden = false;
-      if (hint) hint.remove();
-      return;
-    }
-    if (oauthFields) {
-      if (!hint) {
-        hint = document.createElement('p');
-        hint.dataset.getmcpNativeOauthHint = '1';
-        hint.className = 'mt-4 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-800';
-        hint.textContent = 'WordPress sign-in is handled by GetMCP for this server. These external identity-provider fields are not needed; manage allowed users in the WordPress sign-in panel above.';
-        oauthFields.parentElement.insertBefore(hint, oauthFields);
-      }
-      if (!oauthFields.hidden) oauthFields.hidden = true;
-    }
+    const controls = card.querySelector('[data-getmcp-native-oauth]');
+    if (controls) controls.hidden = !isWordPressMode(form);
+    const save = form.querySelector('button[type="submit"]');
+    if (save) save.hidden = isWordPressMode(form);
   }
 
   function mount() {
@@ -61,19 +84,33 @@
       syncNativeOAuthSettings(form);
       return;
     }
+    if (loading === serverId) return;
     const stale = panel.querySelector('[data-getmcp-native-oauth]');
     if (stale) stale.remove();
     form.hidden = false;
     mounted = serverId;
     nativeSignIn = false;
+    loading = serverId;
 
     const card = document.createElement('section');
     card.dataset.getmcpNativeOauth = '1';
-    card.className = 'mb-5 rounded-lg border border-blue-200 bg-blue-50 p-4';
-    card.innerHTML = '<h3 class="text-sm font-semibold text-gray-900">WordPress sign-in (GetMCP)</h3>' +
-      '<p class="mt-1 text-sm text-gray-600">Require users to sign in with their WordPress account before they can use this server. Access is limited to the users you select; administrators are not automatically allowed.</p>' +
-      '<div data-native-oauth-content class="mt-3"><p class="text-sm text-gray-500">Loading server authentication…</p></div>';
-    form.parentNode.insertBefore(card, form);
+    card.className = 'mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4';
+    card.innerHTML = '<h4 class="text-sm font-semibold text-gray-900">Allowed WordPress users</h4>' +
+      '<p class="mt-1 text-sm text-gray-600">Users must sign in with WordPress before using this server. Only the users selected here can connect; administrators are not automatically allowed.</p>' +
+      '<div data-native-oauth-content class="mt-3"><p class="text-sm text-gray-500">Loading allowed users…</p></div>';
+    const authCard = clientAuthCard(form);
+    if (authCard) authCard.appendChild(card);
+    else form.appendChild(card);
+    if (!submitBound.has(form)) {
+      form.addEventListener('submit', event => {
+        if (!isWordPressMode(form)) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        const saveUsers = form.querySelector('[data-save-getmcp-users]');
+        if (saveUsers) saveUsers.click();
+      }, true);
+      submitBound.add(form);
+    }
 
     const content = card.querySelector('[data-native-oauth-content]');
     const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
@@ -85,14 +122,10 @@
       let allowed = Array.isArray(config.allowed_user_ids) ? config.allowed_user_ids.map(Number).filter(id => Number.isInteger(id) && id > 0) : [];
       const native = server.auth_type === 'oauth' && config.provider === 'getmcp';
       nativeSignIn = native;
-      // Keep the complete GetMCP Authentication form visible. It contains
-      // native client-authentication choices and the separate server-stored
-      // outbound credential fields; hiding its OAuth card made the add-on
-      // look as if it had replaced part of GetMCP's own settings.
       form.hidden = false;
       content.replaceChildren();
 
-      const status = el('p', native ? 'WordPress sign-in is active for this server. GetMCP’s full Authentication settings remain available below.' : 'Enable WordPress sign-in for this server. This replaces any external OAuth provider configured in Client Authentication; its client credentials will be cleared. GetMCP’s full Authentication settings remain available below.', 'text-sm ' + (native ? 'text-green-700' : 'text-gray-600'));
+      const status = el('p', native ? 'WordPress sign-in is active. Save here to update who may connect.' : 'Choose WordPress sign-in (GetMCP) above, then select who may connect.', 'text-sm ' + (native ? 'text-green-700' : 'text-gray-600'));
       content.appendChild(status);
 
       const selected = el('div', undefined, 'mt-3 flex flex-wrap gap-2');
@@ -102,10 +135,8 @@
       const results = el('div', undefined, 'mt-2 max-h-56 space-y-1 overflow-y-auto');
       const note = el('p', 'An empty list denies everyone, including administrators.', 'mt-2 text-xs text-gray-500');
       const actions = el('div', undefined, 'mt-3 flex flex-wrap gap-2');
-      const save = button(native ? 'Save allowed users' : 'Enable WordPress sign-in', 'button-primary');
-      const viewNative = button('View GetMCP authentication settings');
-      viewNative.addEventListener('click', () => form.scrollIntoView({behavior: 'smooth', block: 'start'}));
-      actions.appendChild(viewNative);
+      const save = button(native ? 'Save allowed users' : 'Save WordPress sign-in', 'button-primary');
+      save.dataset.saveGetmcpUsers = '1';
       actions.appendChild(save);
       content.append(searchLabel, search, selected, results, note, actions);
       syncNativeOAuthSettings(form);
@@ -171,13 +202,20 @@
       });
 
     }).catch(error => {
+      loading = '';
       content.replaceChildren();
       showError(error && error.message ? error.message : 'Could not load server authentication settings.');
-    });
+    }).finally(() => { loading = ''; });
   }
 
-  const observer = new MutationObserver(mount);
+  const observer = new MutationObserver(() => {
+    mount();
+    scheduleNativeMenuExpansion();
+  });
   observer.observe(document.documentElement, {childList: true, subtree: true});
+  window.addEventListener('resize', scheduleNativeMenuExpansion);
+  window.addEventListener('scroll', scheduleNativeMenuExpansion, true);
   window.addEventListener('hashchange', () => { mounted = ''; mount(); });
   mount();
+  scheduleNativeMenuExpansion();
 })();

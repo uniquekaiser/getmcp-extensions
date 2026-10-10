@@ -15,6 +15,21 @@ if version.group(1)=='1.7.0':
     detail_file=next((vendor/'build').glob('890.*.js'))
     detail=detail_file.read_text(encoding='utf-8')
     detail=replace_once(detail,'}),o&&(0,P.jsx)(X','}),(0,P.jsx)(window.GetMCPExtensionsCodexConnect,{serverId:e}),o&&(0,P.jsx)(X')
+    # Add the add-on's first-party WordPress authorization as a native
+    # Client Authentication choice. Store it as OAuth in GetMCP's API, while
+    # keeping a distinct UI value so the external-provider fields stay out of
+    # this flow. Existing GetMCP OAuth records with provider=getmcp select it.
+    client_auth_options='[{value:"none",label:"None"},{value:"bearer",label:"Bearer Token"},{value:"api-key",label:"API Key"},{value:"basic",label:"Basic Auth"},{value:"oauth",label:"OAuth 2.0"}].filter(e=>Q(e.value)||e.value===Z)'
+    native_auth_options='[{value:"none",label:"None"},{value:"bearer",label:"Bearer Token"},{value:"api-key",label:"API Key"},{value:"basic",label:"Basic Auth"},{value:"oauth",label:"OAuth 2.0"},{value:"getmcp",label:"WordPress sign-in (GetMCP)"}].filter(e=>"getmcp"===e.value||Q(e.value)||e.value===Z)'
+    detail=replace_once(detail,client_auth_options,native_auth_options)
+    detail=replace_once(detail,'if("oauth"!==m&&"none"!==m&&!s.credentials)return void r("Please fill the test credential field to save authentication.","error");','if("oauth"!==m&&"none"!==m&&"getmcp"!==m&&!s.credentials)return void r("Please fill the test credential field to save authentication.","error");')
+    first_party_mode='("oauth"===e.auth_type&&(()=>{try{const t="string"==typeof e.auth_config?JSON.parse(e.auth_config):e.auth_config;return"getmcp"===t?.provider}catch{return!1}})()?"getmcp":e.auth_type||"none")'
+    detail=replace_once(detail,'(0,a.useState)(e.auth_type||"none")','(0,a.useState)('+first_party_mode+')')
+    detail=replace_once(detail,'h(e.auth_type||"none")','h('+first_party_mode+')')
+    # The add-on saves its provider and per-user allowlist through its own
+    # endpoint. Do not let the native OAuth submit handler reject the special
+    # UI value or write it as an unsupported GetMCP auth_type.
+    detail=replace_once(detail,'const a={auth_type:m,test_auth_credentials:s.credentials??""};','if("getmcp"===m)return;const a={auth_type:m,test_auth_credentials:s.credentials??""};')
     digest=hashlib.sha256(detail.encode()).hexdigest()[:8]
     index=replace_once(index,'890:"'+detail_file.stem.split('.',1)[1]+'"','890:"'+digest+'"')
     # Register add-on components in the same webpack runtime used by GetMCP 1.7.

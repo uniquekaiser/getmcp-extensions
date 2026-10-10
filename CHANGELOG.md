@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.3 - 2026-10-10
+
+- [FIX] Expand the Client Authentication dropdown so WordPress sign-in (GetMCP) is visible alongside the complete native authentication choices.
+- [FIX] Version every injected JavaScript asset from its file contents so browsers and CDNs fetch changed admin code after maintenance updates.
+
 ## 1.2.2 - 2026-10-10
 
 - [COMPAT] Support GetMCP 1.7.0 with a separately verified compatibility profile and version-specific adapters while retaining GetMCP 1.6.0 support.

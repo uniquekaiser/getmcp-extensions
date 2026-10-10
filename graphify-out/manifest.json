@@ -48,10 +48,10 @@
     "semantic_hash": "0724d40dffe4a3ebfcd040753329a37b"
   },
   "getmcp-extensions.php": {
-    "mtime": 1791585384.7396631,
-    "seen": 1791588433.4932811,
-    "ast_hash": "29f0e9c72a8c245c4bc89b1f93187250",
-    "semantic_hash": "29f0e9c72a8c245c4bc89b1f93187250"
+    "mtime": 1791657753.1307895,
+    "seen": 1791660347.1779916,
+    "ast_hash": "3beb20945605190214d2f93d70cf5440",
+    "semantic_hash": "3beb20945605190214d2f93d70cf5440"
   },
   "includes/class-authentication-settings.php": {
     "mtime": 1791305254.347215,
@@ -138,10 +138,10 @@
     "semantic_hash": "83eac20e7b4f06dfc5b7bf4f5d2eb9ae"
   },
   "includes/class-updater.php": {
-    "mtime": 1791305937.076584,
-    "seen": 1791306305.7254167,
-    "ast_hash": "0f26a93970d7ce019f1d3b7e33ab2083",
-    "semantic_hash": "0f26a93970d7ce019f1d3b7e33ab2083"
+    "mtime": 1791659821.3694053,
+    "seen": 1791660347.1815531,
+    "ast_hash": "0a209415b2e1332cc96cba122ac19361",
+    "semantic_hash": "0a209415b2e1332cc96cba122ac19361"
   },
   "includes/endpoint-guard.php": {
     "mtime": 1791305254.3554666,
@@ -162,10 +162,10 @@
     "semantic_hash": "54ecda1b5f38a4ea99789b0296f33563"
   },
   "tools/verify.py": {
-    "mtime": 1791585372.0076702,
-    "seen": 1791588433.495239,
-    "ast_hash": "0650d44ce753860a7cf0df221124c653",
-    "semantic_hash": "0650d44ce753860a7cf0df221124c653"
+    "mtime": 1791646129.00443,
+    "seen": 1791660347.1851063,
+    "ast_hash": "2b818855a77b30e28ba63035faa2c5ce",
+    "semantic_hash": "2b818855a77b30e28ba63035faa2c5ce"
   },
   "tools/build-release.py": {
     "mtime": 1791588200.84694,
@@ -240,10 +240,10 @@
     "semantic_hash": "b5587a4f33eddcfaaee665b45d1f223b"
   },
   "tools/build-ui.py": {
-    "mtime": 1791588819.4612541,
-    "seen": 1791588927.4866834,
-    "ast_hash": "ab4b0eb7e6bb9485fda7e95a83fe3118",
-    "semantic_hash": "ab4b0eb7e6bb9485fda7e95a83fe3118"
+    "mtime": 1791650423.5224366,
+    "seen": 1791660347.182112,
+    "ast_hash": "67bc05af5d3b9262a74ef228190be38b",
+    "semantic_hash": "67bc05af5d3b9262a74ef228190be38b"
   },
   "tools/test-connections.py": {
     "mtime": 1791587574.716625,
@@ -270,10 +270,10 @@
     "semantic_hash": "f21d1f89bf48d257b1960678901de10d"
   },
   "admin/native-oauth-authentication.js": {
-    "mtime": 1791645478.13988,
-    "seen": 1791645726.3319802,
-    "ast_hash": "771ffce94a72376cb586bcf02ff1dfa3",
-    "semantic_hash": "771ffce94a72376cb586bcf02ff1dfa3"
+    "mtime": 1791657689.9238777,
+    "seen": 1791660347.1306255,
+    "ast_hash": "191e646ff8f251c1eecbb8c427491477",
+    "semantic_hash": "191e646ff8f251c1eecbb8c427491477"
   },
   "tools/build-release-handoff.py": {
     "mtime": 1791644814.473849,

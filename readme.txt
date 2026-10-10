@@ -2,10 +2,10 @@
 Contributors: uniquekaiser
 Tags: mcp, oauth, gateway, automation
 Requires at least: 6.2
-Tested up to: 7.1.2
+Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,11 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.2.3 =
+
+* [FIX] Expand the Client Authentication dropdown so WordPress sign-in (GetMCP) is visible alongside the complete native authentication choices.
+* [FIX] Version injected JavaScript assets from file contents so browsers fetch changed admin code after maintenance updates.
 
 = 1.2.2 =
 

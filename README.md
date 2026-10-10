@@ -2,7 +2,7 @@
 
 Developed by **[Synergetic Dev](https://synergetic.dev/)**.
 
-A standalone WordPress add-on for personal MCP connections, project gateways and controlled access. PHP 8.2+, single-site WordPress 6.2+ and a compatible GetMCP installation are required. Tested on WordPress 7.1.2. Existing GetMCP subscription limits still apply.
+A standalone WordPress add-on for personal MCP connections, project gateways and controlled access. PHP 8.2+, single-site WordPress 6.2+ and a compatible GetMCP installation are required. Tested on WordPress 7.1.3. Existing GetMCP subscription limits still apply.
 
 ## Features
 

@@ -12,12 +12,12 @@ $now = array(
     'guard' => hash( 'sha256', str_replace( "\r\n", "\n", file_get_contents( WPMU_PLUGIN_DIR . '/getmcp-extensions-guard.php' ) ) ),
 );
 $checks = array(); foreach ( $now as $key => $value ) { $checks[$key . '_preserved'] = $baseline[$key] === $value; }
-$checks['installed_version'] = GETMCP_EXTENSIONS_VERSION === '1.2.2';
+$checks['installed_version'] = GETMCP_EXTENSIONS_VERSION === '1.2.3';
 $checks['runtime_ready'] = GetMCPExtensions\Runtime::status()['ready'];
 $checks['updater_loaded'] = GetMCPExtensions\Updater::checker() !== null;
 $manifest = json_decode( file_get_contents( '/packages/files.json' ), true );
 $checks['installed_bytes_equal_published_package'] = true;
 foreach ( $manifest as $file => $hash ) { if ( hash_file( 'sha256', WP_PLUGIN_DIR . '/getmcp-extensions/' . $file ) !== $hash ) { $checks['installed_bytes_equal_published_package'] = false; } }
 if ( in_array( false, $checks, true ) ) { throw new RuntimeException( wp_json_encode( $checks ) ); }
-file_put_contents( '/evidence/upgrade-result.json', wp_json_encode( array( 'passed' => count( $checks ), 'checks' => $checks, 'client' => 'Genuine published 1.2.0 package upgraded normally to 1.2.2.' ), JSON_PRETTY_PRINT ) );
+file_put_contents( '/evidence/upgrade-result.json', wp_json_encode( array( 'passed' => count( $checks ), 'checks' => $checks, 'client' => 'Genuine published 1.2.2 package upgraded normally to 1.2.3.' ), JSON_PRETTY_PRINT ) );
 echo wp_json_encode( array( 'passed' => count( $checks ), 'checks' => $checks ) );
