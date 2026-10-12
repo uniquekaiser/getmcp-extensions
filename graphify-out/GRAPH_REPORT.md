@@ -1,15 +1,15 @@
-# Graph Report - getmcp-extensions  (2026-10-10)
+# Graph Report - getmcp-extensions  (2026-10-11)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
 
 ## Summary
-- 290 nodes · 406 edges · 19 communities (8 shown, 11 thin omitted)
+- 292 nodes · 407 edges · 20 communities (8 shown, 12 thin omitted)
 - Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 81 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `83967bab`
+- Built from commit: `5286d232`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,7 +31,7 @@
 2. `PageTokens` - 26 edges
 3. `ProviderTokens` - 23 edges
 4. `MarketingModule` - 22 edges
-5. `Runtime` - 21 edges
+5. `Runtime` - 22 edges
 6. `ProviderConnections` - 19 edges
 7. `ConfigurationImport` - 10 edges
 8. `Updater` - 10 edges
@@ -53,7 +53,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (19 total, 11 thin omitted)
+## Communities (20 total, 12 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.10
@@ -89,8 +89,8 @@ Nodes (4): ConnectionScreens, MarketingManagementTool, MarketingModule, Marketin
 
 ## Knowledge Gaps
 - **5 isolated node(s):** `license`, `name`, `php`, `yahnis-elsts/plugin-update-checker`, `type`
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 158 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges. (Counts symbols only; 160 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -98,7 +98,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `MarketingModule` connect `Community 17` to `Community 0`, `Community 1`, `Community 2`, `Community 3`, `Community 5`?**
   _High betweenness centrality (0.151) - this node is a cross-community bridge._
 - **Why does `Runtime` connect `Community 3` to `Community 17`, `Community 5`?**
-  _High betweenness centrality (0.120) - this node is a cross-community bridge._
+  _High betweenness centrality (0.123) - this node is a cross-community bridge._
 - **Why does `AuthenticationSettings` connect `Community 0` to `Community 1`, `Community 5`, `Community 17`?**
   _High betweenness centrality (0.111) - this node is a cross-community bridge._
 - **Are the 18 inferred relationships involving `AuthenticationSettings` (e.g. with `.prepare()` and `.read()`) actually correct?**

@@ -48,10 +48,10 @@
     "semantic_hash": "0724d40dffe4a3ebfcd040753329a37b"
   },
   "getmcp-extensions.php": {
-    "mtime": 1791657753.1307895,
-    "seen": 1791660347.1779916,
-    "ast_hash": "3beb20945605190214d2f93d70cf5440",
-    "semantic_hash": "3beb20945605190214d2f93d70cf5440"
+    "mtime": 1791772739.445747,
+    "seen": 1791773463.2921226,
+    "ast_hash": "cdbe19ea02c4ff9cb7dcfc021deed344",
+    "semantic_hash": "cdbe19ea02c4ff9cb7dcfc021deed344"
   },
   "includes/class-authentication-settings.php": {
     "mtime": 1791305254.347215,
@@ -132,10 +132,10 @@
     "semantic_hash": "fdb69545c65c24057b3593b70bc55156"
   },
   "includes/class-runtime.php": {
-    "mtime": 1791593259.4062202,
-    "seen": 1791603691.4875233,
-    "ast_hash": "83eac20e7b4f06dfc5b7bf4f5d2eb9ae",
-    "semantic_hash": "83eac20e7b4f06dfc5b7bf4f5d2eb9ae"
+    "mtime": 1791772390.1679413,
+    "seen": 1791773463.293602,
+    "ast_hash": "b69f0cf75b3c76b9e5aeb99fd8a1ae7b",
+    "semantic_hash": "b69f0cf75b3c76b9e5aeb99fd8a1ae7b"
   },
   "includes/class-updater.php": {
     "mtime": 1791659821.3694053,
@@ -280,5 +280,11 @@
     "seen": 1791645726.335151,
     "ast_hash": "2702cd7ef123838c13a0a374298c624d",
     "semantic_hash": "2702cd7ef123838c13a0a374298c624d"
+  },
+  "admin/marketing-catalogue.js": {
+    "mtime": 1791772739.441013,
+    "seen": 1791773463.2909408,
+    "ast_hash": "6fe30ca18e3cd6371f6777dd129066a6",
+    "semantic_hash": "6fe30ca18e3cd6371f6777dd129066a6"
   }
 }

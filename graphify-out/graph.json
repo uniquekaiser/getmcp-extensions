@@ -731,6 +731,18 @@
       "source_location": "L26"
     },
     {
+      "id": "includes_class_provider_connections_providerconnections_can_connect",
+      "label": ".can_connect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".can_connect()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L15"
+    },
+    {
       "id": "includes_class_provider_connections_providerconnections_complete",
       "label": ".complete()",
       "_callable": true,
@@ -1307,6 +1319,18 @@
       "source_location": "L128"
     },
     {
+      "id": "includes_class_marketing_module_marketingmodule_enabled",
+      "label": ".enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "Community 17",
+      "file_type": "code",
+      "norm_label": ".enabled()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L8"
+    },
+    {
       "id": "includes_class_marketing_module_marketingmodule_personal_no_cache",
       "label": ".personal_no_cache()",
       "_callable": true,
@@ -1401,18 +1425,6 @@
       "norm_label": ".template()",
       "source_file": "includes/class-marketing-templates.php",
       "source_location": "L21"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_can_connect",
-      "label": ".can_connect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".can_connect()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L15"
     },
     {
       "id": "includes_class_runtime_runtime_assets",
@@ -1859,18 +1871,6 @@
       "source_location": "L22"
     },
     {
-      "id": "includes_class_marketing_module_marketingmodule_enabled",
-      "label": ".enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".enabled()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L8"
-    },
-    {
       "id": "includes_class_runtime_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
@@ -1967,6 +1967,18 @@
       "source_location": "L33"
     },
     {
+      "id": "includes_class_runtime_runtime_asset_version",
+      "label": ".asset_version()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Community 3",
+      "file_type": "code",
+      "norm_label": ".asset_version()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L142"
+    },
+    {
       "id": "includes_class_runtime_runtime_enabled",
       "label": ".enabled()",
       "_callable": true,
@@ -2024,7 +2036,7 @@
       "file_type": "code",
       "norm_label": ".notice()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L137"
+      "source_location": "L146"
     },
     {
       "id": "includes_class_runtime_runtime_ready",
@@ -2707,6 +2719,17 @@
       "file_type": "code",
       "norm_label": "getmcp-extensions.php",
       "source_file": "getmcp-extensions.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "admin_marketing_catalogue",
+      "label": "marketing-catalogue.js",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": "marketing-catalogue.js",
+      "source_file": "admin/marketing-catalogue.js",
       "source_location": "L1"
     },
     {
@@ -6806,13 +6829,24 @@
     },
     {
       "source": "includes_class_runtime_runtime",
+      "target": "includes_class_runtime_runtime_asset_version",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_runtime_runtime",
       "target": "includes_class_runtime_runtime_notice",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L137",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -8055,7 +8089,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L130",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -8108,5 +8142,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "83967baba473b18c9d973293db9731679386628a"
+  "built_at_commit": "5286d232f222d04ea71711969fc3420a156cc0df"
 }

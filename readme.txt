@@ -42,8 +42,8 @@ No. Its persistent endpoint guard blocks affected endpoints until a compatible r
 == Changelog ==
 
 = 1.2.4 =
-* [FIX] Show all five marketing integrations in the searchable Templates catalogue on GetMCP 1.7.0.
-* [NEW] Create draft marketing servers with empty allowlists and no stored credentials, then configure Authentication.
+* [FIX] Show Google Ads, Google Analytics, Google Search Console, Meta Ads and Instagram in the searchable Templates catalogue on GetMCP 1.7.0.
+* [NEW] Install marketing templates into new draft servers with empty user allowlists and no stored credentials, then open Authentication for setup.
 
 = 1.2.3 =
 
