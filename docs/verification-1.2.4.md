@@ -17,6 +17,11 @@ No provider credentials, allowed users or gateway membership are migrated.
 - Browser catalogue search renders all five marketing cards; Meta installation
   opens the resulting draft's Authentication page with blank application keys.
 - Existing OAuth and access suites: 62 and 33 assertions on PHP 8.3.28.
+- `python tools/verify.py`: 134 PHP files and 43 JavaScript files checked;
+  PHP 8.2/8.3/8.4 syntax and OAuth/access suites passed; public inventory scan passed.
+- The genuine 1.2.3 packaged updater passed 23 WordPress/PUC contract checks for
+  1.2.4, including fresh/cached metadata, HTML details, icons and rejected archives.
+  This uses synthetic GitHub responses; public readback remains a separate check.
 - JavaScript syntax and install package integrity, root, version and secret-pattern
   checks passed. The source scan and compatibility matrix are recorded by verify.py.
 - The existing tag-only release workflow and both release builders were inspected.
