@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.4 - 2026-10-11
+
+- [FIX] Show Google Ads, Google Analytics, Google Search Console, Meta Ads and Instagram in the searchable Templates catalogue on GetMCP 1.7.0.
+- [NEW] Install marketing templates into new draft servers with empty user allowlists and no stored credentials, then open Authentication for setup.
+
 ## 1.2.3 - 2026-10-10
 
 - [FIX] Expand the Client Authentication dropdown so WordPress sign-in (GetMCP) is visible alongside the complete native authentication choices.

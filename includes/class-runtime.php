@@ -131,6 +131,8 @@ final class Runtime {
             wp_enqueue_script( 'getmcp-native-oauth-authentication', GETMCP_EXTENSIONS_URL . 'admin/native-oauth-authentication.js', array( 'wp-api-fetch' ), self::asset_version( 'admin/native-oauth-authentication.js' ), true );
         }
         wp_add_inline_script( 'getmcp-admin', 'window.getmcpMarketingTemplates=' . wp_json_encode( MarketingTemplates::client_catalogue() ) . ';', 'before' );
+        wp_enqueue_script( 'getmcp-marketing-catalogue', GETMCP_EXTENSIONS_URL . 'admin/marketing-catalogue.js', array(), self::asset_version( 'admin/marketing-catalogue.js' ), true );
+        wp_add_inline_script( 'getmcp-marketing-catalogue', 'window.getmcpMarketingCatalogue=' . wp_json_encode( array( 'templates' => MarketingTemplates::client_catalogue(), 'base' => rest_url( 'getmcp/v1/' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
         // Add-on settings page also works alongside an already integrated snapshot.
         wp_add_inline_script( 'getmcp-admin', 'window.getmcpExtensions=' . wp_json_encode( self::status() + array( 'connectionsUrl' => admin_url( 'admin.php?page=getmcp-connections' ), 'assetUrl' => GETMCP_EXTENSIONS_URL, 'settingsUrl' => rest_url( 'getmcp-extensions/v1/settings' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
         $scripts = wp_scripts();
