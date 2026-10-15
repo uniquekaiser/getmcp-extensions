@@ -1,0 +1,15 @@
+/* Follow the available content width, including both WordPress and GetMCP sidebars. */
+.getmcp-connection-screen { container-type: inline-size; min-width: 0; }
+.getmcp-connections-heading button { max-width: 100%; white-space: normal !important; }
+.getmcp-connections-heading h1 { overflow-wrap: anywhere; }
+@container (max-width: 900px) {
+    .getmcp-connections-heading > div > div:last-child {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    .getmcp-connections-heading > div > div:last-child > div:last-child {
+        flex-shrink: 1 !important;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+}

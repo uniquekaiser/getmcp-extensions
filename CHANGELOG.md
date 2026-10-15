@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0 - 2026-10-15
+
+- [NEW] Browse hosted services in Remote MCP Servers with native card styling, search and categories, separate from Templates.
+- [NEW] Save and authorize personal OAuth connections in one flow, with the creating WordPress user selected by default; test other authentication modes after saving.
+- [FIX] Keep the remote catalogue on its own route and menu selection, preserving gateway and saved-connection views.
+- [FIX] Invalidate cached GetMCP 1.7 admin adapters using the selected bundle content hash.
+- [FIX] Wrap connection header actions to fit narrow screens without squeezing the page title.
+- [SECURITY] Keep other users, gateway membership and original gateway publication opt-in; preserve failed connections for explicit correction and retry.
+- [DEV] Add reviewed catalogue import tooling and local permission and gateway-isolation checks.
+
 ## 1.2.4 - 2026-10-11
 
 - [FIX] Show Google Ads, Google Analytics, Google Search Console, Meta Ads and Instagram in the searchable Templates catalogue on GetMCP 1.7.0.

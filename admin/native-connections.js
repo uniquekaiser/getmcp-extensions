@@ -3,8 +3,10 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
   const {createElement: h, useState, useEffect} = React;
   const {Button, Card, Badge, CopyButton, Input, Select, PageHeader, PageContainer, ConfirmDialog, EmptyState, Skeleton} = UI;
   const Picker = createOAuthUserPicker(React, path => api(path));
+  const Catalogue = window.createGetMCPRemoteCatalogue?.({React,UI,api});
   const words = value => (value || '').replaceAll('_', ' ');
-  return function ConnectionsPage({portal = false}) {
+  return function ConnectionsPage({portal = false, catalogue = false}) {
+    const cataloguePage=!portal&&catalogue;
     const {addToast} = useToast();
     const [items, setItems] = useState([]), [form, setForm] = useState(null);
     const [error, setError] = useState(''), [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
@@ -23,15 +25,30 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
       try { await fn(); } catch (e) { const message = e.message || 'The operation could not be completed.'; setError(message); addToast(message, 'error'); }
       finally { setBusy(false); }
     };
-    useEffect(() => { load().catch(e => setError(e.message || 'Could not load connections.')).finally(() => setLoading(false)); }, [portal]);
-    useEffect(()=>{if(!portal && new URLSearchParams(window.location.hash.split('?')[1]||'').get('add')==='remote-mcp'){edit({kind:'remote-mcp',name:'',slug:'',status:'draft'});window.history.replaceState(null,'',window.location.pathname+window.location.search+'#/connections');}},[portal]);
+    useEffect(() => { setForm(null);setPreview(null);load().catch(e => setError(e.message || 'Could not load connections.')).finally(() => setLoading(false)); }, [portal,catalogue]);
+    useEffect(() => { if(!portal)window.getmcpSyncConnectionNavigation?.(); },[portal,catalogue]);
+    useEffect(()=>{
+      if(portal)return;
+      const params=new URLSearchParams(window.location.hash.split('?')[1]||'');
+      const id=params.get('catalogue');
+      if(id){openCatalogue(id);
+        window.history.replaceState(window.history.state,'',window.location.pathname+window.location.search+(cataloguePage?'#/remote-servers':'#/connections'));
+      }else if(params.get('add')==='remote-mcp'){edit({kind:'remote-mcp',name:'',slug:'',status:'draft'});window.history.replaceState(null,'',window.location.pathname+window.location.search+'#/connections');}
+    },[portal,catalogue]);
+    const openCatalogue=async id=>{
+      setBusy(true);setError('');
+      try{const entry=await api('remote-catalogue/'+encodeURIComponent(id));edit({...entry.draft,catalogue:entry});}
+      catch(e){setError(e.message||'Catalogue entry unavailable.');}
+      finally{setBusy(false);}
+    };
     const update = (key, value) => setForm(p => ({...p, [key]: value}));
     const remote = (key, value) => setForm(p => ({...p, remote: {...p.remote, [key]: value}}));
     const edit = item => { setForm({...item, allowed_user_ids: item.allowed_user_ids || [], server_ids: item.server_ids || [], remote: item.remote || {auth_mode: 'oauth'}}); setSecret(''); setPreview(null); setError(''); setMemberQuery(''); setHeaders((item.header_names || []).map(name=>({name,value:''}))); setEntryMode('url'); setImportPreview(null); setDocument(''); };
     const button = (label, fn, variant = 'outline') => h(Button, {variant, disabled: busy || (label === 'Create gateway' && !available('gateway')) || (label === 'Add Remote MCP' && !available('remote-mcp')), onClick: () => action(fn)}, label);
     const field = (label, value, fn, type = 'text', extra = {}) => h(Input, {label, type, value: value || '', disabled: busy, onChange: e => fn(e.target.value), ...extra});
     const checkbox = (label, checked, fn) => h('label', {className: 'flex items-center gap-2 text-sm text-gray-700'}, h('input', {type: 'checkbox', checked, disabled: busy, className: 'rounded border-gray-300 text-brand-600 focus:ring-brand-500', onChange: e => fn(e.target.checked)}), label);
-    const save = async () => {
+    const save = async (connect=false) => {
+      if(connect&&(form.status!=='active'||!form.allowed_user_ids.includes(window.getmcpRemoteCatalogue?.currentUserId)))throw new Error('Choose Active status and include your WordPress user to authorize or test this connection. You can also save without connecting.');
       const body = {kind: form.kind, name: form.name, slug: form.slug, status: form.status, allowed_user_ids: form.allowed_user_ids};
       if (form.kind === 'gateway') body.server_ids = form.server_ids; else body.remote = form.remote;
       if (form.kind === 'remote-mcp') body.connection_headers = headers.filter(row=>row.name.trim()).map(row=>({name:row.name.trim(),value:row.value}));
@@ -41,7 +58,16 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
         else body.credentials={headers:{[sharedKind==='api-key'?sharedName:'Authorization']:sharedKind==='bearer'?'Bearer '+secret:secret}};
       }
       const saved = form.import_token ? await api('connections/import-confirm',{method:'POST',data:{preview_token:form.import_token,index:form.import_index,configuration:body}}) : await api('connections' + (form.id ? '/' + form.id : ''), {method: form.id ? 'PUT' : 'POST', data: body});
-      setKind(form.kind);setQuery('');edit(saved); await load(); addToast(form.kind === 'gateway' ? 'Gateway saved. Selected servers are available to its allowed users.' : 'Remote MCP connection saved.', 'success');
+      setKind(form.kind);setQuery('');edit({...saved,catalogue:form.catalogue}); await load(); addToast(form.kind === 'gateway' ? 'Gateway saved. Selected servers are available to its allowed users.' : 'Remote MCP connection saved.', 'success');
+      if(connect){
+        if(form.remote.auth_mode==='oauth'){
+          try{const r=await api('my-connections/'+saved.id,{method:'POST',data:{return_to:returnTo()}});window.location.assign(r.authorization_url);}
+          catch(e){throw new Error('Saved, but authorization could not start: '+(e.message||'Provider unavailable.')+' Retry here or use My MCP Connections; the same connection is retained.');}
+        }else{
+          try{setPreview(await api('connections/'+saved.id+'/preview'));await load();addToast('Connection verified. Available capabilities are shown below.','success');}
+          catch(e){throw new Error('Saved, but connection verification failed: '+(e.message||'Provider unavailable.')+' Review the settings and retry; the same connection is retained.');}
+        }
+      }
     };
     const flags = window.getmcpExtensions?.effective_features || {};
     const available = value => value === 'gateway' ? flags.project_gateways !== false : flags.remote_mcp !== false;
@@ -54,9 +80,10 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
       const r=await api('connections/import-batch',{method:'POST',data:{preview_token:importPreview.preview_token,entries:batch.filter(row=>row.selected && row.status!=='created').map(row=>({index:row.index,configuration:{name:row.name,slug:row.slug,status:batchStatus,allowed_user_ids:batchUsers}}))}});
       setBatch(rows=>rows.map(row=>{const result=r.results.find(item=>item.index===row.index);return result?{...row,...result,selected:result.status!=='created'}:row;}));setKind('remote-mcp');setQuery('');await load();addToast(r.created+' Remote MCP connection(s) created.','success');
     };
-    return h(PageContainer, null,
-      h(PageHeader, {title, description: portal ? 'Connect your own upstream accounts for the servers you can access.' : 'Group servers by project and connect remote MCP services.', actions: portal ? canManage && button('Add Remote MCP',()=>window.location.assign(window.getmcpExtensions.connectionsUrl+'#/connections?add=remote-mcp')) : !form && h(React.Fragment, null,
-        button('Create gateway', () => edit({kind: 'gateway', name: '', slug: '', status: 'active'}), 'primary'), button('Add Remote MCP', () => edit({kind: 'remote-mcp', name: '', slug: '', status: 'active'})))}),
+    if(cataloguePage&&!form&&Catalogue)return h(React.Fragment,null,error&&h('div',{role:'alert',className:'m-6 rounded border border-red-300 bg-red-50 p-4'},error),h(Catalogue,{onSelect:openCatalogue}));
+    return h('div',{className:'getmcp-connection-screen'},h(PageContainer, null,
+      h('div',{className:'getmcp-connections-heading'},h(PageHeader, {title, description: portal ? 'Connect your own upstream accounts for the servers you can access.' : 'Group servers by project and connect remote MCP services.', actions: portal ? canManage && button('Add Remote MCP',()=>window.location.assign(window.getmcpExtensions.connectionsUrl+'#/connections?add=remote-mcp')) : !form && h(React.Fragment, null,
+        button('Create gateway', () => edit({kind: 'gateway', name: '', slug: '', status: 'active'}), 'primary'), button('Add Remote MCP', () => edit({kind: 'remote-mcp', name: '', slug: '', status: 'active'})),window.getmcpRemoteCatalogue&&button('Remote MCP Servers',()=>window.location.assign(window.getmcpRemoteCatalogue.catalogueUrl)))})),
       !portal && h('p', {className:'text-sm text-gray-500'}, 'Feature switches and compatibility: ', h('a',{href:'admin.php?page=getmcp-extensions'},'GetMCP Extensions')),
       error && h('div', {role: 'alert', className: 'rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-600'}, error, !form && button('Retry', load)),
       loading ? h(Skeleton, {variant: 'card'}) : h('div', {className: 'space-y-6'},
@@ -97,9 +124,11 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
             h(Select, {label: 'Status', value: form.status, disabled: busy, onChange: e => update('status', e.target.value), options: ['active','paused','draft'].map(value => ({value, label: value[0].toUpperCase() + value.slice(1)}))}),
             form.url && h('code', {className: 'block text-sm font-mono text-gray-700 break-all'}, form.url))),
           h(Card, {title: 'Who can use this endpoint?', subtitle: 'WordPress login is required. Administrators must also be explicitly selected.'}, h(Picker, {value: form.allowed_user_ids, onChange: ids => update('allowed_user_ids', ids)})),
+          form.catalogue && h(Card,{title:'Connect '+form.catalogue.name},h('p',null,form.catalogue.description),h('p',null,'Your WordPress user is selected by default. Save & Authorize opens your personal provider sign-in; other authentication modes use Save & Test. Provider consent must finish before OAuth tools can work. Add this connection to project gateways separately.'),form.catalogue.tokenHint&&h('p',null,form.catalogue.tokenHint),form.catalogue.docs&&h('a',{href:form.catalogue.docs,target:'_blank',rel:'noopener noreferrer'},'Provider documentation')),
           form.kind === 'gateway' ? h(Card, {title: 'Member servers', subtitle: 'Allowed gateway users can use every selected server. Direct-server allowlists apply only to direct connections.'}, h('div', {className: 'space-y-4'},
             field('Search member servers', memberQuery, setMemberQuery, 'search'), h('p', {className: 'text-sm text-gray-500'}, `${form.server_ids.length} selected`),
             h('div', {className: 'max-h-64 overflow-y-auto space-y-3'}, ...candidates.filter(item => item.name.toLowerCase().includes(memberQuery.toLowerCase())).map(item => h('div', {key: item.id}, checkbox(`${item.name} (${item.status})`, form.server_ids.includes(item.id), checked => update('server_ids', checked ? [...form.server_ids, item.id] : form.server_ids.filter(id => id !== item.id)))))),
+            button('Refresh available connections',load),
             !candidates.length && h('p', {className: 'text-sm text-gray-500'}, 'Add a native server or Remote MCP connection first.')))
           : h(Card, {title: 'Upstream connection', subtitle: 'These credentials connect GetMCP to the upstream service. They are separate from WordPress login.'}, h('div', {className: 'space-y-4'},
             field('Public HTTPS MCP endpoint', form.remote.endpoint, v => remote('endpoint', v), 'url', {required: true}),
@@ -108,9 +137,10 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
             form.remote.auth_mode==='shared' && h('div',{className:'space-y-3'},h(Select,{label:'Credential type',value:sharedKind,onChange:e=>{setSharedKind(e.target.value);setSecret('');},options:[{value:'bearer',label:'Bearer token'},{value:'basic',label:'Basic authentication'},{value:'api-key',label:'API key header'}]}),sharedKind==='api-key'&&field('API key header name',sharedName,setSharedName),sharedKind==='basic'&&field('Username',sharedUser,setSharedUser),field(sharedKind==='basic'?'Password':'Token or API key',secret,setSecret,'password',{autoComplete:'new-password',helperText:'Blank keeps the saved credential.'})),
             h('fieldset',null,h('legend',null,'Custom headers'),h('p',{className:'text-sm'},'Headers are encrypted. Saved values stay hidden; a blank value keeps the existing header. Remove a row to delete its saved header.'),headers.map((row,i)=>h('div',{key:i,className:'grid grid-cols-3 gap-2 my-2'},field('Header '+(i+1)+' name',row.name,value=>setHeaders(headers.map((r,j)=>j===i?{...r,name:value}:r))),field('Header '+(i+1)+' value',row.value,value=>setHeaders(headers.map((r,j)=>j===i?{...r,value}:r)),'password',{autoComplete:'new-password'}),button('Remove header '+(i+1),()=>setHeaders(headers.filter((_,j)=>j!==i))))),button('Add custom header',()=>setHeaders([...headers,{name:'',value:''}]))),
             checkbox('Explicitly publish to the original /mcp gateway', !!form.remote.publish_original, v => remote('publish_original', v)))),
-          h('div', {className: 'flex flex-wrap items-center gap-3'}, h(Button, {variant:'primary', loading:busy, disabled:!form.name.trim(), onClick:() => action(save)}, 'Save'),
+          h('div', {className: 'flex flex-wrap items-center gap-3'}, h(Button, {variant:'primary', loading:busy, disabled:busy||!form.name.trim(), onClick:() => action(()=>save(!!form.catalogue))}, form.catalogue?(form.remote.auth_mode==='oauth'?'Save & Authorize':'Save & Test'):'Save'),
+            form.catalogue&&button('Save without connecting',()=>save(false)),
             form.id && button(form.kind === 'gateway' ? 'Preview capabilities' : 'Test & discover capabilities', async () => { setPreview(await api('connections/' + form.id + '/preview')); await load(); addToast('Capability discovery completed.','success'); }),
-            button(form.kind==='gateway'?'Back to gateway list':'Back to Remote MCP list', () => { setKind(form.kind);setQuery('');setForm(null); setPreview(null); }), form.id && button('Delete', () => setConfirm({kind:'delete',item:form}), 'danger')),
+            button(cataloguePage?'Back to catalogue':form.kind==='gateway'?'Back to gateway list':'Back to Remote MCP list', () => { setKind(form.kind);setQuery('');setForm(null); setPreview(null); }), form.id && button('Delete', () => setConfirm({kind:'delete',item:form}), 'danger')),
           preview && h(Card, {title:'Available capabilities'}, h('div',{className:'space-y-6'}, ...previewSections.map(([method,field,label]) => {
             const entries = preview[method]?.[field] || [];
             return h('section',{key:method,'aria-label':label}, h('h3',{className:'text-base font-semibold text-gray-900'}, `${label} (${entries.length})`),
@@ -131,6 +161,6 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
           await api((confirm.kind === 'delete' ? 'connections/':'my-connections/') + confirm.item.id,{method:'DELETE'});
           if (confirm.kind === 'delete') { setForm(null); setPreview(null); }
           setConfirm(null); await load(); addToast(confirm.kind === 'delete' ? 'Endpoint deleted.':'Account disconnected.','success');
-        })}));
+        })})));
   };
 };

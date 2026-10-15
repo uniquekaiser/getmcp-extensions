@@ -5,6 +5,16 @@ ROOT=Path(__file__).resolve().parents[1]
 def replace_once(text,old,new):
     assert text.count(old)==1, 'Reviewed UI anchor changed or is ambiguous: '+old
     return text.replace(old,new,1)
+
+def remote_catalogue_route(index, version):
+    """Distinct owned route and native navigation; do not alias the connection list."""
+    router, icon = ('d', 'N') if version == '1.7.0' else ('m', 'j')
+    route = '(0,u.jsx)(' + router + '.qh,{path:"/connections",element:(0,u.jsx)(nativeConnections,{})})'
+    catalogue = '(0,u.jsx)(' + router + '.qh,{path:"/remote-servers",element:(0,u.jsx)(nativeConnections,{catalogue:!0})})'
+    index = replace_once(index, route, route + ',' + catalogue)
+    nav = '{key:"connections",label:(0,b.__)("Gateways & Remote MCP","getmcp"),icon:(0,u.jsx)(' + icon + '.A,{size:20}),path:"/connections"},'
+    remote = '...(window.getmcpRemoteCatalogue?[{key:"remote-servers",label:(0,b.__)("Remote MCP Servers","getmcp"),icon:(0,u.jsx)(' + icon + '.A,{size:20}),path:"/remote-servers"}]:[]),'
+    return replace_once(index, nav, nav + remote)
 vendor=Path(os.environ.get('GETMCP_UI_VENDOR',''))
 if not vendor.is_dir(): raise SystemExit('Set GETMCP_UI_VENDOR to the separately acquired GetMCP package directory.')
 version=re.search(r"define\(\s*'GETMCP_VERSION',\s*'([^']+)'",(vendor/'getmcp.php').read_text(encoding='utf-8'))
@@ -43,6 +53,7 @@ if version.group(1)=='1.7.0':
     index=replace_once(index,'(0,u.jsx)(d.qh,{path:"/chats",element:', '(0,u.jsx)(d.qh,{path:"/extensions",element:(0,u.jsx)(addonSettings,{})}),(0,u.jsx)(d.qh,{path:"/connections",element:(0,u.jsx)(nativeConnections,{})}),(0,u.jsx)(d.qh,{path:"/my-connections",element:(0,u.jsx)(myConnections,{})}),(0,u.jsx)(d.qh,{path:"/chats",element:')
     # Add navigation entries without changing existing 1.7 items.
     index=replace_once(index,'{key:"gateway",label:(0,b.__)("Gateway","getmcp"),icon:(0,u.jsx)(N.A,{size:20}),path:"/gateway"},','{key:"gateway",label:(0,b.__)("Gateway","getmcp"),icon:(0,u.jsx)(N.A,{size:20}),path:"/gateway"},{key:"extensions",label:(0,b.__)("Extensions","getmcp"),icon:(0,u.jsx)(N.A,{size:20}),path:"/extensions"},{key:"connections",label:(0,b.__)("Gateways & Remote MCP","getmcp"),icon:(0,u.jsx)(N.A,{size:20}),path:"/connections"},{key:"my-connections",label:(0,b.__)("My MCP Connections","getmcp"),icon:(0,u.jsx)(N.A,{size:20}),path:"/my-connections"},')
+    index=remote_catalogue_route(index, '1.7.0')
     # GetMCP 1.7 has a different webpack runtime from the 1.6 app. Keep its
     # patched bundle and lazy chunks isolated so a single add-on ZIP can serve
     # both core versions without loading the wrong SPA on either one.
@@ -83,6 +94,7 @@ else:
     template_hash=hashlib.sha256(templates.encode()).hexdigest()[:8]
     index=replace_once(index,'707:"3612ecad"','707:"'+template_hash+'"')
     index=replace_once(index,'"890.'+digest+'.js"].includes','"890.'+digest+'.js","707.'+template_hash+'.js"].includes')
+    index=remote_catalogue_route(index, '1.6.0')
     (legacy_out/('890.'+digest+'.js')).write_text(chunk,encoding='utf-8',newline='\n')
     (legacy_out/'index.js').write_text(index,encoding='utf-8',newline='\n')
     (legacy_out/('707.'+template_hash+'.js')).write_text(templates,encoding='utf-8',newline='\n')

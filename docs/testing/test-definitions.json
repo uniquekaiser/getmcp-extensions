@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0",
+  "subject": "plugin",
+  "features": [
+    {
+      "id": "remote.catalogue",
+      "title": "Official hosted MCP catalogue",
+      "intent": "Browse hosted MCP servers separately from Templates, save and authorize with the creator selected, and use explicit project gateways without creating native tools.",
+      "provenance": [
+        {
+          "kind": "owner-requirement",
+          "reference": "docs/remote-catalogue.md#requirements",
+          "description": "Owner requested hosted official templates from the supplied catalogues through the gateway module."
+        }
+      ],
+      "dependencies": [
+        {
+          "slug": "getmcp",
+          "version": "1.7.0"
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "catalogue-browse-draft",
+          "title": "Search, save and authorize with creator-only access and responsive layout",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-remote-servers"
+          },
+          "sourceRefs": [
+            {
+              "path": "admin/remote-catalogue.js",
+              "line": 2
+            }
+          ],
+          "inputs": {
+            "query": "notion",
+            "expectedAuth": "oauth",
+            "expectedStatus": "active",
+            "expectedAllowedUsers": "current WordPress user only",
+            "expectedPublishOriginal": false,
+            "expectedNativeTools": 0,
+            "viewportWidths": [
+              390,
+              800,
+              1024,
+              1440
+            ]
+          },
+          "status": "gap",
+          "reason": "Separate local browser and editor tests cover responsive layout and the save/authorize contract. No immutable Studio fixture bindings or execution receipt exist.",
+          "recovery": "Bind an owned disposable GetMCP fixture and catalogue selectors in Studio, execute search, draft save and reload, and retain the result receipt."
+        },
+        {
+          "id": "catalogue-navigation-isolation",
+          "title": "Keep gateway connections and remote catalogue on distinct routes",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-remote-servers#/remote-servers"
+          },
+          "sourceRefs": [
+            {
+              "path": "admin/remote-catalogue.js",
+              "line": 44
+            }
+          ],
+          "inputs": {
+            "connectionsRoute": "#/connections",
+            "catalogueRoute": "#/remote-servers",
+            "historyChecks": [
+              "back",
+              "forward",
+              "reload"
+            ],
+            "fixtures": "owned draft gateway and remote connection without credentials"
+          },
+          "status": "gap",
+          "reason": "Local browser navigation and adapter contracts passed; no bound Studio receipt exists.",
+          "recovery": "Bind disposable records in Studio, click both native and WordPress menus, verify list contents and highlights, reload both routes and use Back/Forward."
+        },
+        {
+          "id": "catalogue-permission-refusal",
+          "title": "Deny unauthorized catalogue access and revoke upstream access on gateway removal",
+          "case": "refusal",
+          "role": "subscriber",
+          "entry": {
+            "surface": "rest",
+            "path": "/wp-json/getmcp/v1/remote-catalogue"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-remote-catalogue.php",
+              "line": 3
+            }
+          ],
+          "inputs": {
+            "anonymousStatus": [
+              401,
+              403
+            ],
+            "subscriberStatus": 403,
+            "administratorDirectBypass": false,
+            "removedMemberCanConnect": false
+          },
+          "status": "gap",
+          "reason": "Local WordPress integration covers these refusals, but Studio has no bound multi-user and gateway fixture for the scenario.",
+          "recovery": "Bind isolated users and gateway membership in Studio; verify refusal before membership, authorized delegation and immediate refusal after removal."
+        },
+        {
+          "id": "provider-oauth-readiness",
+          "title": "Verify an individual provider's personal OAuth, discovery and harmless read",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-my-connections"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-remote-catalogue.php",
+              "line": 4
+            }
+          ],
+          "inputs": {
+            "liveProviderAuthorization": "required separately",
+            "mutatingTools": "fixtures only"
+          },
+          "status": "gap",
+          "reason": "No real provider consent, account changes or exhaustive live compatibility tests were authorized or executed for this catalogue feature.",
+          "recovery": "Obtain a named provider acceptance scope, bind isolated test accounts, and verify consent, refresh, discovery and harmless read separately for that provider."
+        }
+      ]
+    }
+  ],
+  "exclusions": []
+}

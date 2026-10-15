@@ -24,10 +24,10 @@
     "semantic_hash": "57bec33174c7266b66ccc29ce03202fd"
   },
   "admin/native-connections.js": {
-    "mtime": 1791334814.1548133,
-    "seen": 1791335068.0240898,
-    "ast_hash": "37597327147602a5b56a5f2cb1fb4df6",
-    "semantic_hash": "37597327147602a5b56a5f2cb1fb4df6"
+    "mtime": 1792077520.1024075,
+    "seen": 1792077963.1016438,
+    "ast_hash": "33e511334820c432c8575f0c1b852340",
+    "semantic_hash": "33e511334820c432c8575f0c1b852340"
   },
   "admin/oauth-user-picker.js": {
     "mtime": 1791305253.8925683,
@@ -48,10 +48,10 @@
     "semantic_hash": "0724d40dffe4a3ebfcd040753329a37b"
   },
   "getmcp-extensions.php": {
-    "mtime": 1791772739.445747,
-    "seen": 1791773463.2921226,
-    "ast_hash": "cdbe19ea02c4ff9cb7dcfc021deed344",
-    "semantic_hash": "cdbe19ea02c4ff9cb7dcfc021deed344"
+    "mtime": 1792028336.8228202,
+    "seen": 1792076381.7218046,
+    "ast_hash": "790af6c2071e7eb97eb39d41628212b4",
+    "semantic_hash": "790af6c2071e7eb97eb39d41628212b4"
   },
   "includes/class-authentication-settings.php": {
     "mtime": 1791305254.347215,
@@ -132,10 +132,10 @@
     "semantic_hash": "fdb69545c65c24057b3593b70bc55156"
   },
   "includes/class-runtime.php": {
-    "mtime": 1791772390.1679413,
-    "seen": 1791773463.293602,
-    "ast_hash": "b69f0cf75b3c76b9e5aeb99fd8a1ae7b",
-    "semantic_hash": "b69f0cf75b3c76b9e5aeb99fd8a1ae7b"
+    "mtime": 1792077799.9680886,
+    "seen": 1792077963.1043415,
+    "ast_hash": "25849915dac73588cbf0e22ebf7b8e8e",
+    "semantic_hash": "25849915dac73588cbf0e22ebf7b8e8e"
   },
   "includes/class-updater.php": {
     "mtime": 1791659821.3694053,
@@ -240,10 +240,10 @@
     "semantic_hash": "b5587a4f33eddcfaaee665b45d1f223b"
   },
   "tools/build-ui.py": {
-    "mtime": 1791650423.5224366,
-    "seen": 1791660347.182112,
-    "ast_hash": "67bc05af5d3b9262a74ef228190be38b",
-    "semantic_hash": "67bc05af5d3b9262a74ef228190be38b"
+    "mtime": 1792077472.7353556,
+    "seen": 1792077963.104681,
+    "ast_hash": "c16eaf8557887b503c3106fa832e0194",
+    "semantic_hash": "c16eaf8557887b503c3106fa832e0194"
   },
   "tools/test-connections.py": {
     "mtime": 1791587574.716625,
@@ -286,5 +286,41 @@
     "seen": 1791773463.2909408,
     "ast_hash": "6fe30ca18e3cd6371f6777dd129066a6",
     "semantic_hash": "6fe30ca18e3cd6371f6777dd129066a6"
+  },
+  "admin/remote-catalogue.js": {
+    "mtime": 1792077520.1014006,
+    "seen": 1792077963.1018481,
+    "ast_hash": "e10d15ff20542b406a28e0e36177c21a",
+    "semantic_hash": "e10d15ff20542b406a28e0e36177c21a"
+  },
+  "assets/remote-catalogue.json": {
+    "mtime": 1792027064.2227006,
+    "seen": 1792076381.7210767,
+    "ast_hash": "05cc858e843655618507488bb1a0fe9a",
+    "semantic_hash": "05cc858e843655618507488bb1a0fe9a"
+  },
+  "includes/class-remote-catalogue.php": {
+    "mtime": 1792077472.7445705,
+    "seen": 1792077963.1043406,
+    "ast_hash": "ccdeaa5b3ba81c6c6ce20fd7470581ca",
+    "semantic_hash": "ccdeaa5b3ba81c6c6ce20fd7470581ca"
+  },
+  "tools/import-remote-catalogue.py": {
+    "mtime": 1792027063.0575337,
+    "seen": 1792076381.723872,
+    "ast_hash": "9a6c404016666f328ba3a7e17cbe8256",
+    "semantic_hash": "9a6c404016666f328ba3a7e17cbe8256"
+  },
+  "docs/testing/test-definitions.json": {
+    "mtime": 1792077960.3609073,
+    "seen": 1792077963.102592,
+    "ast_hash": "d12fe7c4c23405a53f44bd32c432161c",
+    "semantic_hash": "d12fe7c4c23405a53f44bd32c432161c"
+  },
+  "tools/handoff-catalogue.py": {
+    "mtime": 1792078554.430989,
+    "seen": 1792078590.3854585,
+    "ast_hash": "f40f4b847a670d60923f5c1ea0486cb4",
+    "semantic_hash": "f40f4b847a670d60923f5c1ea0486cb4"
   }
 }

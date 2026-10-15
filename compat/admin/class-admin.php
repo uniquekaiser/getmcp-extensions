@@ -270,6 +270,7 @@ class Admin {
 			'getmcp-mcp-server'    => '/mcp-server',
 			'getmcp-gateway'       => '/gateway',
 			'getmcp-connections'   => '/connections',
+			'getmcp-remote-servers' => '/remote-servers',
 			'getmcp-my-connections' => '/my-connections',
 			'getmcp-chats'         => '/chats',
 			'getmcp-templates'     => '/templates',

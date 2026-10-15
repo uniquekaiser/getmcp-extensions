@@ -14,6 +14,7 @@ A standalone WordPress add-on for personal MCP connections, project gateways and
 - Codex Desktop Quick Connect with direct HTTP and copyable `config.toml` entries.
 - A redacting configuration converter for Claude/Cursor JSON, VS Code JSON and Codex TOML.
 - Five marketing templates that install into empty native servers in draft status.
+- A separate hosted MCP catalogue with native styling, Save & Authorize and current-user access defaults, without creating native tools.
 - Editable authentication fields and encrypted custom headers. Blank saved-secret fields preserve existing values.
 - Personal marketing connections, private Instagram Page selection, provider discovery and readiness checks.
 - Optional modules that can be retired individually as matching functionality becomes available.
@@ -40,6 +41,7 @@ Activation installs an owned persistent endpoint guard in `wp-content/mu-plugins
 
 - [Installation, compatibility and rollback](docs/installation.md)
 - [Bulk import, portal, templates and Codex setup](docs/connections-1.2.0.md)
+- [Hosted MCP catalogue and gateway setup](docs/remote-catalogue.md)
 - [Local 1.2.0 verification](docs/verification-1.2.0.md)
 - [User access API](docs/api-user-access.md) and [gateway API/hooks](docs/api-gateways.md)
 - [Marketing connections and setup API](docs/marketing.md)

@@ -74,6 +74,7 @@ final class Runtime {
         MarketingModule::boot();
         ConnectionScreens::boot();
         MarketingTemplates::boot();
+        RemoteCatalogue::boot();
         add_action( 'init', array( Lifecycle::class, 'migrate' ), 30 );
         add_action( 'admin_enqueue_scripts', array( self::class, 'assets' ), 100 );
         add_action( 'wp_enqueue_scripts', array( self::class, 'assets' ), 100 );
@@ -121,6 +122,7 @@ final class Runtime {
     }
     public static function assets(): void {
         if ( ! wp_script_is( 'getmcp-admin', 'enqueued' ) ) { return; }
+        wp_enqueue_style( 'getmcp-extensions-connections', GETMCP_EXTENSIONS_URL . 'admin/connections.css', array(), self::asset_version( 'admin/connections.css' ) );
         // Use each file's content hash instead of the plugin release number. Admin
         // assets can be refreshed by a maintenance build without changing the plugin
         // version, and long-lived browser/CDN caches must not keep serving old UI.
@@ -133,10 +135,20 @@ final class Runtime {
         wp_add_inline_script( 'getmcp-admin', 'window.getmcpMarketingTemplates=' . wp_json_encode( MarketingTemplates::client_catalogue() ) . ';', 'before' );
         wp_enqueue_script( 'getmcp-marketing-catalogue', GETMCP_EXTENSIONS_URL . 'admin/marketing-catalogue.js', array(), self::asset_version( 'admin/marketing-catalogue.js' ), true );
         wp_add_inline_script( 'getmcp-marketing-catalogue', 'window.getmcpMarketingCatalogue=' . wp_json_encode( array( 'templates' => MarketingTemplates::client_catalogue(), 'base' => rest_url( 'getmcp/v1/' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
+        if ( self::enabled( 'remote_mcp' ) && current_user_can( 'getmcp_manage_servers' ) ) {
+            wp_enqueue_script( 'getmcp-remote-catalogue', GETMCP_EXTENSIONS_URL . 'admin/remote-catalogue.js', array(), self::asset_version( 'admin/remote-catalogue.js' ), true );
+            wp_add_inline_script( 'getmcp-remote-catalogue', 'window.getmcpRemoteCatalogue=' . wp_json_encode( array( 'catalogueUrl' => admin_url( 'admin.php?page=getmcp-remote-servers#/remote-servers' ), 'connectionsUrl' => admin_url( 'admin.php?page=getmcp-connections' ), 'currentUserId' => get_current_user_id() ) ) . ';', 'before' );
+            $scripts = wp_scripts();
+            if ( isset( $scripts->registered['getmcp-native-connections'] ) ) { $scripts->registered['getmcp-native-connections']->deps[] = 'getmcp-remote-catalogue'; }
+        }
         // Add-on settings page also works alongside an already integrated snapshot.
         wp_add_inline_script( 'getmcp-admin', 'window.getmcpExtensions=' . wp_json_encode( self::status() + array( 'connectionsUrl' => admin_url( 'admin.php?page=getmcp-connections' ), 'assetUrl' => GETMCP_EXTENSIONS_URL, 'settingsUrl' => rest_url( 'getmcp-extensions/v1/settings' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
         $scripts = wp_scripts();
-        if ( isset( $scripts->registered['getmcp-admin'] ) ) { $scripts->registered['getmcp-admin']->deps[] = 'getmcp-extensions-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-authentication-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-connection-tools'; if ( 'vendor-original-1.7.0' === self::$profile && self::enabled( 'native_oauth' ) ) { $scripts->registered['getmcp-admin']->deps[] = 'getmcp-native-oauth-authentication'; } if ( 'vendor-original-1.7.0' !== self::$profile ) { $scripts->registered['getmcp-admin']->src = GETMCP_EXTENSIONS_URL . 'build/index.js'; $scripts->registered['getmcp-admin']->ver = self::asset_version( 'build/index.js' ); }
+        if ( isset( $scripts->registered['getmcp-admin'] ) ) { $scripts->registered['getmcp-admin']->deps[] = 'getmcp-extensions-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-authentication-settings'; $scripts->registered['getmcp-admin']->deps[] = 'getmcp-connection-tools'; if ( 'vendor-original-1.7.0' === self::$profile && self::enabled( 'native_oauth' ) ) { $scripts->registered['getmcp-admin']->deps[] = 'getmcp-native-oauth-authentication'; }
+            // Version the selected adapter by its own contents, including 1.7's bundle.
+            $bundle = 'vendor-original-1.7.0' === self::$profile ? 'compat/versions/1.7.0/build/index.js' : 'build/index.js';
+            $scripts->registered['getmcp-admin']->src = GETMCP_EXTENSIONS_URL . $bundle;
+            $scripts->registered['getmcp-admin']->ver = self::asset_version( $bundle );
             foreach ( array( 'getmcp-native-connections' => 'native-connections.js', 'getmcp-app-extension' => 'getmcp-app-extension.js', 'getmcp-oauth-user-picker' => 'oauth-user-picker.js' ) as $handle => $file ) { if ( isset( $scripts->registered[$handle] ) ) { $scripts->registered[$handle]->src = GETMCP_EXTENSIONS_URL . 'admin/' . $file; $scripts->registered[$handle]->ver = self::asset_version( 'admin/' . $file ); } } }
     }
     private static function asset_version( string $relative_path ): string {

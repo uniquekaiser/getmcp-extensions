@@ -14,3 +14,12 @@ David's project policy: run tests locally whenever feasible to keep GitHub Actio
 
 ## Graphify
 Check graphify-out/graph.json before tracing authored-code relationships. Use code-only tools/graph.py after changes. Dependencies and generated adapters are excluded; inspect them directly when needed. Do not imply semantic documentation extraction occurred. Keep machine paths, fixture databases and credentials out of Git. No background hook or hosted workflow is enabled.
+
+## Shared GetMCP local fixture
+
+Reuse Docker Compose project `getmcp-telegram-qa` at `http://localhost:8932` for Extensions and Telegram development. Its canonical Compose file is `../getmcp-telegram/tools/compose.yaml` relative to this repository. Despite its historical name, this is the single shared GetMCP fixture.
+
+- Do not create parallel GetMCP stacks or restart old release/authentication QA projects.
+- Inspect current state first. Preserve connected accounts, sessions, credentials, servers and gateways. Use disposable records for writes and remove only those records.
+- For package or compatibility matrices, snapshot and temporarily reconfigure this one stack, test sequentially, then restore source mounts and data. Keep backups outside Git and packages.
+- Remove temporary overrides after testing. Never prune unrelated Docker resources.

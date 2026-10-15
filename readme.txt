@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.2.4
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,14 +41,25 @@ No. Its persistent endpoint guard blocks affected endpoints until a compatible r
 
 == Changelog ==
 
+= 1.3.0 =
+
+* [NEW] Browse hosted services in Remote MCP Servers with native card styling, search and categories, separate from Templates.
+* [NEW] Save and authorize personal OAuth connections in one flow, with the creating WordPress user selected by default; test other authentication modes after saving.
+* [FIX] Keep the remote catalogue on its own route and menu selection, preserving gateway and saved-connection views.
+* [FIX] Invalidate cached GetMCP 1.7 admin adapters using the selected bundle content hash.
+* [FIX] Wrap connection header actions to fit narrow screens without squeezing the page title.
+* [SECURITY] Keep other users, gateway membership and original gateway publication opt-in; preserve failed connections for explicit correction and retry.
+* [DEV] Add reviewed catalogue import tooling and local permission and gateway-isolation checks.
+
 = 1.2.4 =
+
 * [FIX] Show Google Ads, Google Analytics, Google Search Console, Meta Ads and Instagram in the searchable Templates catalogue on GetMCP 1.7.0.
 * [NEW] Install marketing templates into new draft servers with empty user allowlists and no stored credentials, then open Authentication for setup.
 
 = 1.2.3 =
 
 * [FIX] Expand the Client Authentication dropdown so WordPress sign-in (GetMCP) is visible alongside the complete native authentication choices.
-* [FIX] Version injected JavaScript assets from file contents so browsers fetch changed admin code after maintenance updates.
+* [FIX] Version every injected JavaScript asset from its file contents so browsers and CDNs fetch changed admin code after maintenance updates.
 
 = 1.2.2 =
 
