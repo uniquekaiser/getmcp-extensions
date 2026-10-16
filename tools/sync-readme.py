@@ -4,7 +4,7 @@ import re
 root=Path(__file__).resolve().parents[1]
 out=[]
 for line in (root/'CHANGELOG.md').read_text(encoding='utf-8').splitlines():
- if match:=re.match(r'## (\d+\.\d+\.\d+)\b',line):out.extend(['= '+match.group(1)+' =',''])
+ if match:=re.match(r'## (\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.[1-9]\d*)?)\b',line):out.extend(['= '+match.group(1)+' =',''])
  elif line.startswith('- ['):out.append('* '+line[2:])
  elif not line.strip() and out and out[-1]:out.append('')
 readme=root/'readme.txt';text=readme.read_text(encoding='utf-8')

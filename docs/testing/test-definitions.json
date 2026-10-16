@@ -134,6 +134,98 @@
           "recovery": "Obtain a named provider acceptance scope, bind isolated test accounts, and verify consent, refresh, discovery and harmless read separately for that provider."
         }
       ]
+    },
+    {
+      "id": "google.health",
+      "title": "Google Health personal reads and summaries",
+      "intent": "Install native read tools with personal Google OAuth and privacy-safe daily/weekly summaries, including available nutrition data; preserve unrelated fixture state.",
+      "provenance": [
+        {
+          "kind": "owner-requirement",
+          "reference": "docs/google-health.md#requirements",
+          "description": "Owner authorized native Google Health reads, summaries, available nutrition and local shared-fixture tests."
+        }
+      ],
+      "dependencies": [
+        {
+          "slug": "getmcp",
+          "version": "1.7.0"
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "health-read-summary",
+          "title": "Install read tools and read daily/weekly summaries with available nutrition",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-templates"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-google-health.php",
+              "line": 69
+            }
+          ],
+          "inputs": {
+            "date": "2026-10-15",
+            "timezone": "America/Bogota",
+            "expectedTools": 12,
+            "writes": false
+          },
+          "status": "gap",
+          "reason": "Local synthetic-provider integration checks exist. Studio template-install, personal-consent and MCP tool bindings have not been imported/reviewed.",
+          "recovery": "Import the current immutable plugin snapshot into Studio, inspect supported recipes and bindings, review the preview, then run the bound owned-fixture scenarios and retain execution receipts."
+        },
+        {
+          "id": "health-access-refusal",
+          "title": "Refuse missing nutrition scope, removed user and disconnected grant",
+          "case": "refusal",
+          "role": "subscriber",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/profile.php?page=getmcp-account-connections"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-google-health.php",
+              "line": 70
+            }
+          ],
+          "inputs": {
+            "missingScope": "googlehealth.nutrition.readonly",
+            "expectedHttpRequests": 0,
+            "expectedMutation": false
+          },
+          "status": "gap",
+          "reason": "Local direct executor refusals exist. No Studio recipe binds OAuth grant changes and denied MCP calls to an independent persisted-state oracle.",
+          "recovery": "Import the current immutable plugin snapshot into Studio, inspect supported recipes and bindings, review the preview, then run the bound owned-fixture scenarios and retain execution receipts."
+        },
+        {
+          "id": "health-privacy",
+          "title": "Filter nested identity/location fields and retain no health payload in logs/cache",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-logs"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-google-health.php",
+              "line": 215
+            }
+          ],
+          "inputs": {
+            "retainedHealthPayload": false,
+            "rawMode": false
+          },
+          "status": "gap",
+          "reason": "Real protocol/database assertions exist locally. Studio database/cache assertions and browser log drawer bindings are unavailable.",
+          "recovery": "Import the current immutable plugin snapshot into Studio, inspect supported recipes and bindings, review the preview, then run the bound owned-fixture scenarios and retain execution receipts."
+        }
+      ]
     }
   ],
   "exclusions": []

@@ -44,6 +44,7 @@ final class AuthenticationSettings {
             if ( array_key_exists( $field, $data ) || $mode_changed ) {
                 $config = $replace || $mode_changed || $provider_changed ? $new : self::merge( $old, $new );
                 if ( 'none' === ( $data[$prefix . '_type'] ?? $server->{$prefix . '_type'} ) ) { $config = array(); }
+                if ( 'auth' === $prefix && 'oauth' === ( $data['auth_type'] ?? $server->auth_type ) && class_exists( GoogleHealth::class ) && GoogleHealth::is_server( $server ) ) { $config = GoogleHealth::oauth_config( $config ); }
                 self::validate( $config );
                 $data[$field] = wp_json_encode( $config );
             }

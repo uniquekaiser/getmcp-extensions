@@ -31,7 +31,7 @@ parser.add_argument('--base-tag', required=True,
                     help='Previous public release tag used as the patch baseline.')
 parser.add_argument('--output-dir', default=str(ROOT / 'dist'))
 args = parser.parse_args()
-assert re.fullmatch(r'\d+\.\d+\.\d+', args.version), 'Invalid release version.'
+assert re.fullmatch(r'\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.[1-9]\d*)?', args.version), 'Invalid release version.'
 base = args.base_tag
 head = git('rev-parse', 'HEAD').decode().strip()
 tag = f'v{args.version}'
@@ -71,7 +71,7 @@ files[f'documentation/{verification.name}'] = verification.read_bytes()
 files['documentation/CHANGELOG.md'] = blob(tag, 'CHANGELOG.md') or b''
 files['README-HANDOFF.md'] = (
     f'# GetMCP Extensions {args.version} developer handoff\n\n'
-    'Developed by Synergetic Dev — https://synergetic.dev/\n\n'
+    'Developed by Synergetic Dev â€” https://synergetic.dev/\n\n'
     f'This package contains the tracked source changes from `{base}` through `{tag}`, '
     'a binary-capable patch, baseline/result SHA-256 manifest, install ZIP, changelog, '
     'and verification report. The handoff is built from the tagged Git tree; it does not '

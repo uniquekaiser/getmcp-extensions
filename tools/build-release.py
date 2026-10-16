@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib,json,re,zipfile
 ROOT=Path(__file__).resolve().parents[1]
 version=re.search(r'\* Version:\s*(\S+)',(ROOT/'getmcp-extensions.php').read_text()).group(1)
-assert re.fullmatch(r'\d+\.\d+\.\d+',version)
+assert re.fullmatch(r'\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.[1-9]\d*)?',version)
 assert f'Stable tag: {version}' in (ROOT/'readme.txt').read_text()
 required=['getmcp-extensions.php','includes/class-updater.php','compatibility.json',
  'build/index.js','compat/versions/1.7.0/build/index.js',

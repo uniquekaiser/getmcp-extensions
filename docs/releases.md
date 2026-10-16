@@ -18,3 +18,7 @@ Existing 1.0.0/1.1.0 distributions have no public updater. One manual installati
 8. Report passed, failed, skipped and unavailable coverage separately. Publication does not authorize deployment to customer sites.
 
 The workflow requires only the repository's built-in `GITHUB_TOKEN` with `contents: write`; it uses no stored release secrets. Graphify, tests and tools are public source material but excluded from the installed ZIP.
+
+## Prereleases
+
+Versioned `alpha.N`, `beta.N` and `rc.N` tags use the same single tag-triggered workflow and deterministic package/handoff builders. Prereleases are published with `--prerelease --latest=false`; stable tags retain `--latest`. The normal dashboard updater continues to ignore prereleases. Install the versioned prerelease ZIP manually in the intended test site, preserving credentials, salts, allowed users and gateway membership. Publication does not install or activate it on any site.

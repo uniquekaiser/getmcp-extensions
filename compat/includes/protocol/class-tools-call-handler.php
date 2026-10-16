@@ -287,8 +287,8 @@ class ToolsCallHandler implements HandlerInterface {
 			do_action(
 				'getmcp_after_tool_call',
 				$tool,
-				$arguments,
-				$result,
+				\GetMCPExtensions\GoogleHealth::log_arguments( $tool, $this->server, $arguments ),
+				\GetMCPExtensions\GoogleHealth::log_result( $tool, $this->server, $result ),
 				$response_time_ms,
 				$status_code,
 				array(
@@ -316,7 +316,7 @@ class ToolsCallHandler implements HandlerInterface {
 			$response_time_ms = (int) ( ( microtime( true ) - $start_time ) * 1000 );
 
 			/** This action is documented in includes/protocol/class-tools-call-handler.php */
-			do_action( 'getmcp_tool_call_failed', $tool, $arguments, $e, $response_time_ms );
+			do_action( 'getmcp_tool_call_failed', $tool, \GetMCPExtensions\GoogleHealth::log_arguments( $tool, $this->server, $arguments ), $e, $response_time_ms );
 
 			// A quota refusal is not a tool result. Returned as isError content
 			// it looked to the client like the upstream API had answered, and
@@ -344,7 +344,7 @@ class ToolsCallHandler implements HandlerInterface {
 			 * @param \Throwable           $error            The exception.
 			 * @param int                  $response_time_ms Response time in ms.
 			 */
-			do_action( 'getmcp_tool_call_failed', $tool, $arguments, $e, $response_time_ms );
+			do_action( 'getmcp_tool_call_failed', $tool, \GetMCPExtensions\GoogleHealth::log_arguments( $tool, $this->server, $arguments ), $e, $response_time_ms );
 
 			return array(
 				'content' => array(

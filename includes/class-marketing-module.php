@@ -22,8 +22,8 @@ final class MarketingModule {
         }
         return $response;
     }
-    public static function response( callable $callback ) {
-        try { if ( ! self::enabled() ) { throw new RemoteException( 'Marketing extensions are disabled.', -32003 ); } return rest_ensure_response( $callback() ); }
+    public static function response( callable $callback, bool $health = false ) {
+        try { if ( ! self::enabled() && ! ( $health && GoogleHealth::enabled() ) ) { throw new RemoteException( 'Marketing extensions are disabled.', -32003 ); } return rest_ensure_response( $callback() ); }
         catch ( SettingsConflict $e ) { return new \WP_Error( 'getmcp_settings_conflict', $e->getMessage(), array( 'status' => 409 ) ); }
         catch ( RemoteException $e ) { return new \WP_Error( 'getmcp_provider_error', $e->getMessage(), array( 'status' => -32003 === $e->get_rpc_code() ? 403 : 400 ) ); }
         catch ( \Throwable $e ) { return new \WP_Error( 'getmcp_provider_invalid', 'The configuration or connection operation could not be completed. Reload and check the supplied fields.', array( 'status' => 400 ) ); }
@@ -45,10 +45,10 @@ final class MarketingModule {
         register_rest_route( 'getmcp/v1', '/connections/import-preview', array( 'methods' => 'POST', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => ConfigurationImport::preview( (string) $r->get_param( 'document' ), get_current_user_id() ) ) ) );
         register_rest_route( 'getmcp/v1', '/connections/import-confirm', array( 'methods' => 'POST', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => ConfigurationImport::commit( $r->get_json_params() ?: array(), get_current_user_id() ) ) ) );
         register_rest_route( 'getmcp/v1', '/connections/import-batch', array( 'methods' => 'POST', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => ConfigurationImport::commit_batch( $r->get_json_params() ?: array(), get_current_user_id() ) ) ) );
-        register_rest_route( 'getmcp/v1', '/provider-presets', array( 'methods' => 'GET', 'permission_callback' => $manage, 'callback' => fn() => self::response( fn() => ProviderDiscovery::presets() ) ) );
+        register_rest_route( 'getmcp/v1', '/provider-presets', array( 'methods' => 'GET', 'permission_callback' => $manage, 'callback' => fn() => self::response( fn() => self::enabled() ? ProviderDiscovery::presets() : array( 'google-health' => GoogleHealth::preset() ), true ) ) );
         register_rest_route( 'getmcp/v1', '/servers/(?P<uuid>[a-f0-9-]{36})/provider-configuration', array(
-            array( 'methods' => 'GET', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => self::configuration( $r['uuid'] ) ) ),
-            array( 'methods' => 'PUT', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => self::configure( $r['uuid'], $r->get_json_params() ?: array() ) ) ),
+            array( 'methods' => 'GET', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => self::configuration( $r['uuid'] ), GoogleHealth::is_server( ( new ServerManager() )->get_by_uuid( $r['uuid'] ) ) ) ),
+            array( 'methods' => 'PUT', 'permission_callback' => $manage, 'callback' => fn( $r ) => self::response( fn() => self::configure( $r['uuid'], $r->get_json_params() ?: array() ), GoogleHealth::is_server( ( new ServerManager() )->get_by_uuid( $r['uuid'] ) ) ) ),
         ) );
         register_rest_route( 'getmcp/v1', '/my-connections/(?P<id>\d+)/assets', array( 'methods' => 'GET, POST, PUT', 'permission_callback' => $personal, 'callback' => fn( $r ) => self::response( function() use ( $r ) {
             $server = ( new ServerManager() )->get( (int) $r['id'] ); $g = ProviderConnections::grant( $server, get_current_user_id() );
@@ -62,7 +62,7 @@ final class MarketingModule {
             $d = $g['data']; $d['readiness'] = array( 'read_verified' => true, 'checked_at' => time(), 'discovery_complete' => $result['complete'], 'reporting_verified' => false );
             \GetMCP\Remote\UpstreamConnections::save( $server->id, get_current_user_id(), $d, $g['version'] );
             return $result;
-        } ) ) );
+        }, true ) ) );
         register_rest_route( 'getmcp/v1', '/servers/(?P<uuid>[a-f0-9-]{36})/enable-messaging', array( 'methods' => 'POST', 'permission_callback' => fn() => current_user_can( 'getmcp_manage_servers' ) && current_user_can( 'getmcp_manage_tools' ), 'callback' => fn( $r ) => self::response( function() use ( $r ) {
             $s = ( new ServerManager() )->get_by_uuid( $r['uuid'] ); $g = ProviderConnections::grant( $s, get_current_user_id() );
             if ( ! PageTokens::present( $s, 'user:' . get_current_user_id(), $g['data']['access_token'] )['messaging_verified'] ) { throw new RemoteException( 'Verify the selected Page with a harmless conversation read before enabling messaging.', -32003 ); }
@@ -175,7 +175,7 @@ final class MarketingModule {
         $query = array(); wp_parse_str( (string) ( $_SERVER['QUERY_STRING'] ?? '' ), $query );
         if ( ! is_string( $query['state'] ?? null ) || ! str_starts_with( $query['state'], 'gxp_' ) ) { return; }
         if ( ! is_user_logged_in() ) { wp_safe_redirect( wp_login_url( home_url( $_SERVER['REQUEST_URI'] ) ) ); exit; }
-        try { if ( ! self::enabled() ) { throw new RemoteException( 'Provider connections are disabled.' ); } $return_url = ProviderConnections::complete( $query, get_current_user_id(), (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ); wp_safe_redirect( $return_url ); exit; }
+        try { $return_url = ProviderConnections::complete( $query, get_current_user_id(), (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) ); wp_safe_redirect( $return_url ); exit; }
         catch ( \Throwable $e ) { wp_die( 'The provider connection could not be completed. Start again from My MCP Connections.', 'MCP Connection', array( 'response' => 400 ) ); }
     }
     public static function cleanup(): void {

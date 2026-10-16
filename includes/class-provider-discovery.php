@@ -7,6 +7,7 @@ final class ProviderDiscovery {
     public static function presets(): array {
         $google = array( 'provider' => 'external', 'authorize_url' => 'https://accounts.google.com/o/oauth2/v2/auth', 'token_url' => 'https://oauth2.googleapis.com/token', 'extra_authorize_params' => array( 'access_type' => 'offline', 'prompt' => 'consent' ) );
         return array(
+            'google-health' => GoogleHealth::preset(),
             'google-ads' => array( 'label' => 'Google Ads', 'auth_config' => $google + array( 'scope' => 'https://www.googleapis.com/auth/adwords' ), 'requirements' => 'OAuth application and owning Cloud project Ads access; no developer-token header.' ),
             'google-analytics' => array( 'label' => 'Google Analytics', 'auth_config' => $google + array( 'scope' => 'https://www.googleapis.com/auth/analytics.readonly' ), 'requirements' => 'Analytics Admin and Data APIs, plus property access.' ),
             'google-search-console' => array( 'label' => 'Google Search Console', 'auth_config' => $google + array( 'scope' => 'https://www.googleapis.com/auth/webmasters.readonly' ), 'requirements' => 'Use webmasters only for explicitly enabled property/sitemap writes.' ),
@@ -26,6 +27,7 @@ final class ProviderDiscovery {
         return $items;
     }
     public static function discover( $server, string $token, int $user ): array {
+        if ( GoogleHealth::is_server( $server ) ) { return GoogleHealth::discover( $server, $token, $user ); }
         $settings = AuthenticationSettings::object( $server->settings ); $preset = $settings['personal_provider']['preset'] ?? '';
         $scope = ProviderTokens::config( $server )['scope'] ?? '';
         if ( ! $preset ) { $preset = str_contains( $scope, '/adwords' ) ? 'google-ads' : ( str_contains( $scope, '/analytics' ) ? 'google-analytics' : ( str_contains( $scope, '/webmasters' ) ? 'google-search-console' : ( ProviderTokens::is_meta( $server ) ? 'instagram-facebook-login' : '' ) ) ); }

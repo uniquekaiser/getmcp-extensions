@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.3.0
+Stable tag: 1.4.0-beta.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,14 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.4.0-beta.1 =
+
+* [NEW] Add a Google Health native template with personal OAuth, read tools, daily/weekly summaries and available nutrition/hydration data.
+* [FIX] Retain Google Health offline consent parameters when the native Authentication editor saves a new client ID.
+* [SECURITY] Enforce health scopes and reviewed endpoints; omit health payloads from response caches, replay and protocol logs.
+* [DEV] Add self-cleaning shared-fixture checks and explicit live-provider acceptance gaps.
+* [DEV] Publish test prereleases separately from stable releases and dashboard updates.
 
 = 1.3.0 =
 

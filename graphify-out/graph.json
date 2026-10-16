@@ -27,7 +27,7 @@
       "file_type": "code",
       "norm_label": "settingsconflict",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L109"
+      "source_location": "L110"
     },
     {
       "id": "includes_class_connection_headers_connectionheaders",
@@ -40,6 +40,19 @@
       "file_type": "code",
       "norm_label": "connectionheaders",
       "source_file": "includes/class-connection-headers.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule",
+      "label": "MarketingModule",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": "marketingmodule",
+      "source_file": "includes/class-marketing-module.php",
       "source_location": "L7"
     },
     {
@@ -61,12 +74,77 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
       "norm_label": "providerconnections",
       "source_file": "includes/class-provider-connections.php",
       "source_location": "L9"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution",
+      "label": "ProviderExecution",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "providerexecution",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L6"
+    },
+    {
+      "id": "includes_class_provider_readiness_providerreadiness",
+      "label": "ProviderReadiness",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "providerreadiness",
+      "source_file": "includes/class-provider-readiness.php",
+      "source_location": "L4"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens",
+      "label": "ProviderTokens",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "providertokens",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L8"
+    },
+    {
+      "id": "includes_class_runtime_runtime",
+      "label": "Runtime",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": "runtime",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates",
+      "label": "MarketingTemplates",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
+      "file_type": "code",
+      "norm_label": "marketingtemplates",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L8"
     },
     {
       "id": "includes_class_connection_screens_connectionscreens",
@@ -82,43 +160,17 @@
       "source_location": "L7"
     },
     {
-      "id": "includes_class_marketing_module_marketingmodule",
-      "label": "MarketingModule",
+      "id": "includes_class_remote_catalogue_remotecatalogue",
+      "label": "RemoteCatalogue",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
+      "community": 19,
+      "community_name": "Community 19",
       "file_type": "code",
-      "norm_label": "marketingmodule",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "includes_class_marketing_templates_marketingtemplates",
-      "label": "MarketingTemplates",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "marketingtemplates",
-      "source_file": "includes/class-marketing-templates.php",
+      "norm_label": "remotecatalogue",
+      "source_file": "includes/class-remote-catalogue.php",
       "source_location": "L8"
-    },
-    {
-      "id": "includes_class_runtime_runtime",
-      "label": "Runtime",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "runtime",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L5"
     },
     {
       "id": "includes_class_configuration_import_configurationimport",
@@ -134,19 +186,6 @@
       "source_location": "L8"
     },
     {
-      "id": "includes_class_provider_tokens_providertokens",
-      "label": "ProviderTokens",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": "providertokens",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L8"
-    },
-    {
       "id": "includes_class_lifecycle_lifecycle",
       "label": "Lifecycle",
       "_callable": true,
@@ -158,6 +197,19 @@
       "norm_label": "lifecycle",
       "source_file": "includes/class-lifecycle.php",
       "source_location": "L4"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth",
+      "label": "GoogleHealth",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "googlehealth",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L12"
     },
     {
       "id": "includes_class_marketing_management_tool_marketingmanagementtool",
@@ -178,51 +230,12 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": "providerdiscovery",
       "source_file": "includes/class-provider-discovery.php",
       "source_location": "L6"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution",
-      "label": "ProviderExecution",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": "providerexecution",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L6"
-    },
-    {
-      "id": "includes_class_provider_readiness_providerreadiness",
-      "label": "ProviderReadiness",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "providerreadiness",
-      "source_file": "includes/class-provider-readiness.php",
-      "source_location": "L4"
-    },
-    {
-      "id": "includes_class_remote_catalogue_remotecatalogue",
-      "label": "RemoteCatalogue",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "remotecatalogue",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L8"
     },
     {
       "id": "includes_class_protocol_envelope_protocolenvelope",
@@ -309,7 +322,7 @@
       "file_type": "code",
       "norm_label": ".public_config()",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L96"
+      "source_location": "L97"
     },
     {
       "id": "includes_class_authentication_settings_authenticationsettings_public_credentials",
@@ -321,7 +334,7 @@
       "file_type": "code",
       "norm_label": ".public_credentials()",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L91"
+      "source_location": "L92"
     },
     {
       "id": "includes_class_authentication_settings_authenticationsettings_revision",
@@ -345,7 +358,7 @@
       "file_type": "code",
       "norm_label": ".validate()",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L74"
+      "source_location": "L75"
     },
     {
       "id": "includes_class_authentication_settings_closure_1",
@@ -357,7 +370,7 @@
       "file_type": "code",
       "norm_label": "{closure#1}()",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L60"
+      "source_location": "L61"
     },
     {
       "id": "includes_class_authentication_settings_closure_2",
@@ -369,7 +382,7 @@
       "file_type": "code",
       "norm_label": "{closure#2}()",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L75"
+      "source_location": "L76"
     },
     {
       "id": "includes_class_authentication_settings_closure_3",
@@ -381,7 +394,7 @@
       "file_type": "code",
       "norm_label": "{closure#3}()",
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L98"
+      "source_location": "L99"
     },
     {
       "id": "includes_class_connection_headers_connectionheaders_names",
@@ -444,6 +457,54 @@
       "source_location": "L163"
     },
     {
+      "id": "includes_class_marketing_module_marketingmodule_assets",
+      "label": ".assets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".assets()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L118"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L9"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_callback",
+      "label": ".callback()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".callback()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L174"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_cleanup",
+      "label": ".cleanup()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".cleanup()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L181"
+    },
+    {
       "id": "includes_class_marketing_module_marketingmodule_configuration",
       "label": ".configuration()",
       "_callable": true,
@@ -480,6 +541,78 @@
       "source_location": "L129"
     },
     {
+      "id": "includes_class_marketing_module_marketingmodule_enabled",
+      "label": ".enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".enabled()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L8"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_personal_no_cache",
+      "label": ".personal_no_cache()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".personal_no_cache()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L19"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_public_response",
+      "label": ".public_response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".public_response()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L154"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_response",
+      "label": ".response()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".response()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L25"
+    },
+    {
+      "id": "includes_class_marketing_module_marketingmodule_routes",
+      "label": ".routes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".routes()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L31"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_config",
+      "label": ".config()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".config()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L9"
+    },
+    {
       "id": "includes_class_provider_tokens_providertokens_secret",
       "label": ".secret()",
       "_callable": true,
@@ -490,6 +623,54 @@
       "norm_label": ".secret()",
       "source_file": "includes/class-provider-tokens.php",
       "source_location": "L14"
+    },
+    {
+      "id": "includes_class_runtime_runtime_server_enabled",
+      "label": ".server_enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".server_enabled()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L24"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_discover",
+      "label": ".discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".discover()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L38"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_execute",
+      "label": ".execute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".execute()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L71"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_is_server",
+      "label": ".is_server()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".is_server()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L17"
     },
     {
       "id": "includes_class_marketing_module_closure_1",
@@ -516,6 +697,30 @@
       "source_location": "L13"
     },
     {
+      "id": "includes_class_marketing_module_closure_23",
+      "label": "{closure#23}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "{closure#23}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L53"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_28",
+      "label": "{closure#28}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "{closure#28}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L66"
+    },
+    {
       "id": "includes_class_marketing_module_closure_3",
       "label": "{closure#3}()",
       "_callable": true,
@@ -540,6 +745,18 @@
       "source_location": "L103"
     },
     {
+      "id": "includes_class_page_tokens_pagetokens_discover",
+      "label": ".discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".discover()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L25"
+    },
+    {
       "id": "includes_class_page_tokens_pagetokens_epoch",
       "label": ".epoch()",
       "_callable": true,
@@ -550,6 +767,18 @@
       "norm_label": ".epoch()",
       "source_file": "includes/class-page-tokens.php",
       "source_location": "L8"
+    },
+    {
+      "id": "includes_class_page_tokens_pagetokens_fingerprint",
+      "label": ".fingerprint()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".fingerprint()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L10"
     },
     {
       "id": "includes_class_page_tokens_pagetokens_forget",
@@ -648,76 +877,472 @@
       "source_location": "L86"
     },
     {
-      "id": "includes_endpoint_guard_closure_1",
-      "label": "{closure#1}()",
+      "id": "includes_class_page_tokens_pagetokens_verify",
+      "label": ".verify()",
       "_callable": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L39"
+      "norm_label": ".verify()",
+      "source_file": "includes/class-page-tokens.php",
+      "source_location": "L58"
     },
     {
-      "id": "includes_endpoint_guard_closure_2",
-      "label": "{closure#2}()",
+      "id": "includes_class_provider_connections_providerconnections_begin",
+      "label": ".begin()",
       "_callable": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "{closure#2}()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L49"
+      "norm_label": ".begin()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L28"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_has_blocked",
-      "label": "getmcp_extensions_guard_has_blocked()",
+      "id": "includes_class_provider_connections_providerconnections_callback",
+      "label": ".callback()",
       "_callable": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_has_blocked()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L33"
+      "norm_label": ".callback()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L27"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_marketing_missing",
-      "label": "getmcp_extensions_guard_marketing_missing()",
+      "id": "includes_class_provider_connections_providerconnections_can_connect",
+      "label": ".can_connect()",
       "_callable": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_marketing_missing()",
-      "source_file": "includes/endpoint-guard.php",
+      "norm_label": ".can_connect()",
+      "source_file": "includes/class-provider-connections.php",
       "source_location": "L15"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_ready",
-      "label": "getmcp_extensions_guard_ready()",
+      "id": "includes_class_provider_connections_providerconnections_complete",
+      "label": ".complete()",
       "_callable": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_ready()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L12"
+      "norm_label": ".complete()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L39"
     },
     {
-      "id": "includes_endpoint_guard_getmcp_extensions_guard_row",
-      "label": "getmcp_extensions_guard_row()",
+      "id": "includes_class_provider_connections_providerconnections_fingerprint",
+      "label": ".fingerprint()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".fingerprint()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L26"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_grant",
+      "label": ".grant()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".grant()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L67"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_listing",
+      "label": ".listing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".listing()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L83"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_refresh_available",
+      "label": ".refresh_available()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".refresh_available()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L64"
+    },
+    {
+      "id": "includes_class_provider_connections_providerconnections_supported",
+      "label": ".supported()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".supported()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L10"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_context",
+      "label": ".context()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".context()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_identity",
+      "label": ".identity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".identity()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L51"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_inject",
+      "label": ".inject()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".inject()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L27"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_record",
+      "label": ".record()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".record()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L61"
+    },
+    {
+      "id": "includes_class_provider_execution_providerexecution_retries",
+      "label": ".retries()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".retries()",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L55"
+    },
+    {
+      "id": "includes_class_provider_readiness_providerreadiness_accounts",
+      "label": ".accounts()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".accounts()",
+      "source_file": "includes/class-provider-readiness.php",
+      "source_location": "L21"
+    },
+    {
+      "id": "includes_class_provider_readiness_providerreadiness_connection",
+      "label": ".connection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".connection()",
+      "source_file": "includes/class-provider-readiness.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_after_exchange",
+      "label": ".after_exchange()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".after_exchange()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L28"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_graph_base",
+      "label": ".graph_base()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".graph_base()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L44"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_is_meta",
+      "label": ".is_meta()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".is_meta()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L10"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_read",
+      "label": ".read()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".read()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L48"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_refresh",
+      "label": ".refresh()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".refresh()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L36"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_request",
+      "label": ".request()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".request()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L18"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_enabled",
+      "label": ".enabled()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": "getmcp_extensions_guard_row()",
-      "source_file": "includes/endpoint-guard.php",
-      "source_location": "L21"
+      "norm_label": ".enabled()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L16"
+    },
+    {
+      "id": "includes_class_runtime_runtime_assert_enabled",
+      "label": ".assert_enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".assert_enabled()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L36"
+    },
+    {
+      "id": "includes_class_runtime_runtime_assert_server",
+      "label": ".assert_server()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".assert_server()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L33"
+    },
+    {
+      "id": "includes_class_runtime_runtime_asset_version",
+      "label": ".asset_version()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".asset_version()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L154"
+    },
+    {
+      "id": "includes_class_runtime_runtime_enabled",
+      "label": ".enabled()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".enabled()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L15"
+    },
+    {
+      "id": "includes_class_runtime_runtime_inspect",
+      "label": ".inspect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".inspect()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L39"
+    },
+    {
+      "id": "includes_class_runtime_runtime_menu",
+      "label": ".menu()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".menu()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L115"
+    },
+    {
+      "id": "includes_class_runtime_runtime_native_features",
+      "label": ".native_features()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".native_features()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L20"
+    },
+    {
+      "id": "includes_class_runtime_runtime_notice",
+      "label": ".notice()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".notice()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L158"
+    },
+    {
+      "id": "includes_class_runtime_runtime_ready",
+      "label": ".ready()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".ready()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L23"
+    },
+    {
+      "id": "includes_class_runtime_runtime_render",
+      "label": ".render()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L119"
+    },
+    {
+      "id": "includes_class_runtime_runtime_rest_guard",
+      "label": ".rest_guard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".rest_guard()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L109"
+    },
+    {
+      "id": "includes_class_runtime_runtime_routes",
+      "label": ".routes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".routes()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L103"
+    },
+    {
+      "id": "includes_class_runtime_runtime_save",
+      "label": ".save()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".save()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L88"
+    },
+    {
+      "id": "includes_class_runtime_runtime_settings",
+      "label": ".settings()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".settings()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L11"
+    },
+    {
+      "id": "includes_class_runtime_runtime_status",
+      "label": ".status()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "Community 10",
+      "file_type": "code",
+      "norm_label": ".status()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L84"
     },
     {
       "id": "admin_oauth_user_picker_createoauthuserpicker",
@@ -804,172 +1429,88 @@
       "source_location": "L68"
     },
     {
-      "id": "includes_class_marketing_module_closure_23",
-      "label": "{closure#23}()",
+      "id": "includes_class_marketing_templates_marketingtemplates_boot",
+      "label": ".boot()",
       "_callable": true,
       "_origin": "ast",
       "community": 14,
       "community_name": "Community 14",
       "file_type": "code",
-      "norm_label": "{closure#23}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L53"
+      "norm_label": ".boot()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L11"
     },
     {
-      "id": "includes_class_marketing_module_closure_28",
-      "label": "{closure#28}()",
+      "id": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
+      "label": ".client_catalogue()",
       "_callable": true,
       "_origin": "ast",
       "community": 14,
       "community_name": "Community 14",
       "file_type": "code",
-      "norm_label": "{closure#28}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L66"
-    },
-    {
-      "id": "includes_class_page_tokens_pagetokens_fingerprint",
-      "label": ".fingerprint()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".fingerprint()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L10"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_begin",
-      "label": ".begin()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".begin()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L27"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_callback",
-      "label": ".callback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".callback()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L26"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_can_connect",
-      "label": ".can_connect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".can_connect()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L15"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_complete",
-      "label": ".complete()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".complete()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L38"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_fingerprint",
-      "label": ".fingerprint()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".fingerprint()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L25"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_grant",
-      "label": ".grant()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".grant()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L66"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_supported",
-      "label": ".supported()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "Community 14",
-      "file_type": "code",
-      "norm_label": ".supported()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L10"
-    },
-    {
-      "id": "includes_class_connection_screens_closure_1",
-      "label": "{closure#1}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "includes/class-connection-screens.php",
+      "norm_label": ".client_catalogue()",
+      "source_file": "includes/class-marketing-templates.php",
       "source_location": "L13"
     },
     {
-      "id": "includes_class_connection_screens_closure_2",
-      "label": "{closure#2}()",
+      "id": "includes_class_marketing_templates_marketingtemplates_install",
+      "label": ".install()",
       "_callable": true,
       "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
+      "community": 14,
+      "community_name": "Community 14",
       "file_type": "code",
-      "norm_label": "{closure#2}()",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L14"
+      "norm_label": ".install()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L44"
     },
     {
-      "id": "includes_class_connection_screens_closure_3",
-      "label": "{closure#3}()",
+      "id": "includes_class_marketing_templates_marketingtemplates_response",
+      "label": ".response()",
       "_callable": true,
       "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
+      "community": 14,
+      "community_name": "Community 14",
       "file_type": "code",
-      "norm_label": "{closure#3}()",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L26"
-    },
-    {
-      "id": "includes_class_connection_screens_closure_4",
-      "label": "{closure#4}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "{closure#4}()",
-      "source_file": "includes/class-connection-screens.php",
+      "norm_label": ".response()",
+      "source_file": "includes/class-marketing-templates.php",
       "source_location": "L27"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_slugs",
+      "label": ".slugs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
+      "file_type": "code",
+      "norm_label": ".slugs()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L10"
+    },
+    {
+      "id": "includes_class_marketing_templates_marketingtemplates_template",
+      "label": ".template()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
+      "file_type": "code",
+      "norm_label": ".template()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L22"
+    },
+    {
+      "id": "includes_class_runtime_runtime_assets",
+      "label": ".assets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
+      "file_type": "code",
+      "norm_label": ".assets()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L123"
     },
     {
       "id": "includes_class_connection_screens_connectionscreens_boot",
@@ -996,222 +1537,6 @@
       "source_location": "L11"
     },
     {
-      "id": "includes_class_marketing_module_marketingmodule_assets",
-      "label": ".assets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".assets()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L118"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_boot",
-      "label": ".boot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L9"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_callback",
-      "label": ".callback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".callback()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L174"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_cleanup",
-      "label": ".cleanup()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".cleanup()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L181"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_enabled",
-      "label": ".enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".enabled()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L8"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_personal_no_cache",
-      "label": ".personal_no_cache()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".personal_no_cache()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L19"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_public_response",
-      "label": ".public_response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".public_response()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L154"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_response",
-      "label": ".response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".response()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L25"
-    },
-    {
-      "id": "includes_class_marketing_module_marketingmodule_routes",
-      "label": ".routes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".routes()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L31"
-    },
-    {
-      "id": "includes_class_marketing_templates_marketingtemplates_boot",
-      "label": ".boot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L10"
-    },
-    {
-      "id": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
-      "label": ".client_catalogue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".client_catalogue()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L12"
-    },
-    {
-      "id": "includes_class_marketing_templates_marketingtemplates_install",
-      "label": ".install()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".install()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L43"
-    },
-    {
-      "id": "includes_class_marketing_templates_marketingtemplates_response",
-      "label": ".response()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".response()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L26"
-    },
-    {
-      "id": "includes_class_marketing_templates_marketingtemplates_template",
-      "label": ".template()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".template()",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L21"
-    },
-    {
-      "id": "includes_class_runtime_runtime_assert_enabled",
-      "label": ".assert_enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".assert_enabled()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L36"
-    },
-    {
-      "id": "includes_class_runtime_runtime_assert_server",
-      "label": ".assert_server()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".assert_server()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L33"
-    },
-    {
-      "id": "includes_class_runtime_runtime_asset_version",
-      "label": ".asset_version()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".asset_version()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L154"
-    },
-    {
-      "id": "includes_class_runtime_runtime_assets",
-      "label": ".assets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".assets()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L123"
-    },
-    {
       "id": "includes_class_runtime_runtime_boot",
       "label": ".boot()",
       "_callable": true,
@@ -1224,162 +1549,6 @@
       "source_location": "L53"
     },
     {
-      "id": "includes_class_runtime_runtime_enabled",
-      "label": ".enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".enabled()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L15"
-    },
-    {
-      "id": "includes_class_runtime_runtime_inspect",
-      "label": ".inspect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".inspect()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L39"
-    },
-    {
-      "id": "includes_class_runtime_runtime_menu",
-      "label": ".menu()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".menu()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L115"
-    },
-    {
-      "id": "includes_class_runtime_runtime_native_features",
-      "label": ".native_features()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".native_features()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L20"
-    },
-    {
-      "id": "includes_class_runtime_runtime_notice",
-      "label": ".notice()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".notice()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L158"
-    },
-    {
-      "id": "includes_class_runtime_runtime_ready",
-      "label": ".ready()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".ready()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L23"
-    },
-    {
-      "id": "includes_class_runtime_runtime_render",
-      "label": ".render()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L119"
-    },
-    {
-      "id": "includes_class_runtime_runtime_rest_guard",
-      "label": ".rest_guard()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".rest_guard()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L109"
-    },
-    {
-      "id": "includes_class_runtime_runtime_routes",
-      "label": ".routes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".routes()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L103"
-    },
-    {
-      "id": "includes_class_runtime_runtime_save",
-      "label": ".save()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".save()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L88"
-    },
-    {
-      "id": "includes_class_runtime_runtime_server_enabled",
-      "label": ".server_enabled()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".server_enabled()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L24"
-    },
-    {
-      "id": "includes_class_runtime_runtime_settings",
-      "label": ".settings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".settings()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L11"
-    },
-    {
-      "id": "includes_class_runtime_runtime_status",
-      "label": ".status()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": ".status()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L84"
-    },
-    {
       "id": "getmcp_extensions_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
@@ -1390,6 +1559,78 @@
       "norm_label": "{closure#1}()",
       "source_file": "getmcp-extensions.php",
       "source_location": "L24"
+    },
+    {
+      "id": "includes_class_remote_catalogue_remotecatalogue_boot",
+      "label": ".boot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": ".boot()",
+      "source_file": "includes/class-remote-catalogue.php",
+      "source_location": "L9"
+    },
+    {
+      "id": "includes_class_remote_catalogue_remotecatalogue_data",
+      "label": ".data()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": ".data()",
+      "source_file": "includes/class-remote-catalogue.php",
+      "source_location": "L25"
+    },
+    {
+      "id": "includes_class_remote_catalogue_remotecatalogue_draft",
+      "label": ".draft()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": ".draft()",
+      "source_file": "includes/class-remote-catalogue.php",
+      "source_location": "L41"
+    },
+    {
+      "id": "includes_class_remote_catalogue_remotecatalogue_get",
+      "label": ".get()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": ".get()",
+      "source_file": "includes/class-remote-catalogue.php",
+      "source_location": "L30"
+    },
+    {
+      "id": "includes_class_remote_catalogue_remotecatalogue_menu",
+      "label": ".menu()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": ".menu()",
+      "source_file": "includes/class-remote-catalogue.php",
+      "source_location": "L17"
+    },
+    {
+      "id": "includes_class_remote_catalogue_remotecatalogue_search",
+      "label": ".search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Community 19",
+      "file_type": "code",
+      "norm_label": ".search()",
+      "source_file": "includes/class-remote-catalogue.php",
+      "source_location": "L34"
     },
     {
       "id": "includes_class_configuration_import_configurationimport_commit",
@@ -1536,18 +1777,6 @@
       "source_location": "L48"
     },
     {
-      "id": "includes_class_marketing_module_closure_18",
-      "label": "{closure#18}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "{closure#18}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L50"
-    },
-    {
       "id": "includes_class_marketing_module_closure_19",
       "label": "{closure#19}()",
       "_callable": true,
@@ -1558,18 +1787,6 @@
       "norm_label": "{closure#19}()",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L50"
-    },
-    {
-      "id": "includes_class_marketing_module_closure_20",
-      "label": "{closure#20}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "{closure#20}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L51"
     },
     {
       "id": "includes_class_marketing_module_closure_21",
@@ -1764,124 +1981,76 @@
       "source_location": "L36"
     },
     {
-      "id": "includes_class_page_tokens_pagetokens_discover",
-      "label": ".discover()",
+      "id": "includes_class_runtime_closure_1",
+      "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": ".discover()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L25"
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L67"
     },
     {
-      "id": "includes_class_page_tokens_pagetokens_verify",
-      "label": ".verify()",
+      "id": "includes_class_runtime_closure_2",
+      "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": ".verify()",
-      "source_file": "includes/class-page-tokens.php",
-      "source_location": "L58"
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L82"
     },
     {
-      "id": "includes_class_provider_connections_providerconnections_refresh_available",
-      "label": ".refresh_available()",
+      "id": "includes_class_runtime_closure_3",
+      "label": "{closure#3}()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": ".refresh_available()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L63"
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L105"
     },
     {
-      "id": "includes_class_provider_tokens_providertokens_after_exchange",
-      "label": ".after_exchange()",
+      "id": "includes_class_runtime_closure_4",
+      "label": "{closure#4}()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": ".after_exchange()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L28"
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L105"
     },
     {
-      "id": "includes_class_provider_tokens_providertokens_config",
-      "label": ".config()",
+      "id": "includes_class_runtime_closure_5",
+      "label": "{closure#5}()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": ".config()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L9"
+      "norm_label": "{closure#5}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L106"
     },
     {
-      "id": "includes_class_provider_tokens_providertokens_graph_base",
-      "label": ".graph_base()",
+      "id": "includes_class_runtime_closure_6",
+      "label": "{closure#6}()",
       "_callable": true,
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": ".graph_base()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L44"
-    },
-    {
-      "id": "includes_class_provider_tokens_providertokens_is_meta",
-      "label": ".is_meta()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".is_meta()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L10"
-    },
-    {
-      "id": "includes_class_provider_tokens_providertokens_read",
-      "label": ".read()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".read()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L48"
-    },
-    {
-      "id": "includes_class_provider_tokens_providertokens_refresh",
-      "label": ".refresh()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".refresh()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L36"
-    },
-    {
-      "id": "includes_class_provider_tokens_providertokens_request",
-      "label": ".request()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".request()",
-      "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L18"
+      "norm_label": "{closure#6}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L106"
     },
     {
       "id": "tools_import_remote_catalogue_build",
@@ -1968,6 +2137,174 @@
       "source_location": "L22"
     },
     {
+      "id": "includes_class_google_health_googlehealth_asset",
+      "label": ".asset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".asset()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L25"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_civil",
+      "label": ".civil()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".civil()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L123"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_date",
+      "label": ".date()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".date()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L118"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_definition",
+      "label": ".definition()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".definition()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L103"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_inventory",
+      "label": ".inventory()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".inventory()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L51"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_log_arguments",
+      "label": ".log_arguments()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".log_arguments()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L226"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_log_result",
+      "label": ".log_result()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".log_result()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L227"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_need_scope",
+      "label": ".need_scope()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".need_scope()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L115"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_oauth_config",
+      "label": ".oauth_config()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".oauth_config()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L31"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_preset",
+      "label": ".preset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".preset()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L28"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_protects",
+      "label": ".protects()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".protects()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L22"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_read",
+      "label": ".read()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".read()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L125"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_redact",
+      "label": ".redact()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".redact()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L216"
+    },
+    {
+      "id": "includes_class_google_health_googlehealth_summary",
+      "label": ".summary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".summary()",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L182"
+    },
+    {
       "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
       "label": ".call()",
       "_callable": true,
@@ -2008,20 +2345,44 @@
       "label": "{closure#17}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": "{closure#17}()",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L48"
     },
     {
+      "id": "includes_class_marketing_module_closure_18",
+      "label": "{closure#18}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "{closure#18}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L50"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_20",
+      "label": "{closure#20}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "{closure#20}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L51"
+    },
+    {
       "id": "includes_class_marketing_module_closure_25",
       "label": "{closure#25}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": "{closure#25}()",
       "source_file": "includes/class-marketing-module.php",
@@ -2032,216 +2393,120 @@
       "label": ".ads()",
       "_callable": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": ".ads()",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L46"
+      "source_location": "L48"
     },
     {
       "id": "includes_class_provider_discovery_providerdiscovery_discover",
       "label": ".discover()",
       "_callable": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": ".discover()",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "includes_class_provider_discovery_providerdiscovery_pages",
       "label": ".pages()",
       "_callable": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": ".pages()",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "includes_class_provider_discovery_providerdiscovery_presets",
       "label": ".presets()",
       "_callable": true,
       "_origin": "ast",
-      "community": 24,
-      "community_name": "Community 24",
+      "community": 23,
+      "community_name": "Community 23",
       "file_type": "code",
       "norm_label": ".presets()",
       "source_file": "includes/class-provider-discovery.php",
       "source_location": "L7"
     },
     {
-      "id": "includes_class_runtime_closure_1",
+      "id": "includes_endpoint_guard_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 24,
+      "community_name": "Community 24",
       "file_type": "code",
       "norm_label": "{closure#1}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L67"
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L39"
     },
     {
-      "id": "includes_class_runtime_closure_2",
+      "id": "includes_endpoint_guard_closure_2",
       "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 24,
+      "community_name": "Community 24",
       "file_type": "code",
       "norm_label": "{closure#2}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L82"
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L49"
     },
     {
-      "id": "includes_class_runtime_closure_3",
-      "label": "{closure#3}()",
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_has_blocked",
+      "label": "getmcp_extensions_guard_has_blocked()",
       "_callable": true,
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 24,
+      "community_name": "Community 24",
       "file_type": "code",
-      "norm_label": "{closure#3}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L105"
+      "norm_label": "getmcp_extensions_guard_has_blocked()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L33"
     },
     {
-      "id": "includes_class_runtime_closure_4",
-      "label": "{closure#4}()",
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_marketing_missing",
+      "label": "getmcp_extensions_guard_marketing_missing()",
       "_callable": true,
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 24,
+      "community_name": "Community 24",
       "file_type": "code",
-      "norm_label": "{closure#4}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L105"
+      "norm_label": "getmcp_extensions_guard_marketing_missing()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L15"
     },
     {
-      "id": "includes_class_runtime_closure_5",
-      "label": "{closure#5}()",
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_ready",
+      "label": "getmcp_extensions_guard_ready()",
       "_callable": true,
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 24,
+      "community_name": "Community 24",
       "file_type": "code",
-      "norm_label": "{closure#5}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L106"
+      "norm_label": "getmcp_extensions_guard_ready()",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L12"
     },
     {
-      "id": "includes_class_runtime_closure_6",
-      "label": "{closure#6}()",
+      "id": "includes_endpoint_guard_getmcp_extensions_guard_row",
+      "label": "getmcp_extensions_guard_row()",
       "_callable": true,
       "_origin": "ast",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 24,
+      "community_name": "Community 24",
       "file_type": "code",
-      "norm_label": "{closure#6}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L106"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_context",
-      "label": ".context()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".context()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_identity",
-      "label": ".identity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".identity()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L51"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_inject",
-      "label": ".inject()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".inject()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L27"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_record",
-      "label": ".record()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".record()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L61"
-    },
-    {
-      "id": "includes_class_provider_execution_providerexecution_retries",
-      "label": ".retries()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".retries()",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L55"
-    },
-    {
-      "id": "includes_class_provider_connections_providerconnections_listing",
-      "label": ".listing()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": ".listing()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L82"
-    },
-    {
-      "id": "includes_class_provider_readiness_providerreadiness_accounts",
-      "label": ".accounts()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": ".accounts()",
-      "source_file": "includes/class-provider-readiness.php",
+      "norm_label": "getmcp_extensions_guard_row()",
+      "source_file": "includes/endpoint-guard.php",
       "source_location": "L21"
-    },
-    {
-      "id": "includes_class_provider_readiness_providerreadiness_connection",
-      "label": ".connection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": ".connection()",
-      "source_file": "includes/class-provider-readiness.php",
-      "source_location": "L5"
     },
     {
       "id": "includes_class_remote_catalogue_closure_1",
@@ -2316,78 +2581,6 @@
       "source_location": "L36"
     },
     {
-      "id": "includes_class_remote_catalogue_remotecatalogue_boot",
-      "label": ".boot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".boot()",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L9"
-    },
-    {
-      "id": "includes_class_remote_catalogue_remotecatalogue_data",
-      "label": ".data()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".data()",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L25"
-    },
-    {
-      "id": "includes_class_remote_catalogue_remotecatalogue_draft",
-      "label": ".draft()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".draft()",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L41"
-    },
-    {
-      "id": "includes_class_remote_catalogue_remotecatalogue_get",
-      "label": ".get()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".get()",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L30"
-    },
-    {
-      "id": "includes_class_remote_catalogue_remotecatalogue_menu",
-      "label": ".menu()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".menu()",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L17"
-    },
-    {
-      "id": "includes_class_remote_catalogue_remotecatalogue_search",
-      "label": ".search()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": ".search()",
-      "source_file": "includes/class-remote-catalogue.php",
-      "source_location": "L34"
-    },
-    {
       "id": "includes_class_configuration_import_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
@@ -2445,7 +2638,19 @@
       "file_type": "code",
       "norm_label": "{closure#1}()",
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L17"
+      "source_location": "L10"
+    },
+    {
+      "id": "includes_class_marketing_templates_closure_2",
+      "label": "{closure#2}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L18"
     },
     {
       "id": "includes_class_protocol_envelope_protocolenvelope_decode",
@@ -2520,6 +2725,54 @@
       "source_location": "L6"
     },
     {
+      "id": "includes_class_connection_screens_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L13"
+    },
+    {
+      "id": "includes_class_connection_screens_closure_2",
+      "label": "{closure#2}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L14"
+    },
+    {
+      "id": "includes_class_connection_screens_closure_3",
+      "label": "{closure#3}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L26"
+    },
+    {
+      "id": "includes_class_connection_screens_closure_4",
+      "label": "{closure#4}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27"
+    },
+    {
       "id": "includes_class_connection_screens_closure_5",
       "label": "{closure#5}()",
       "_callable": true,
@@ -2530,6 +2783,42 @@
       "norm_label": "{closure#5}()",
       "source_file": "includes/class-connection-screens.php",
       "source_location": "L27"
+    },
+    {
+      "id": "tools_build_google_health_template_mapping",
+      "label": "mapping()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "mapping()",
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L36"
+    },
+    {
+      "id": "tools_build_google_health_template_string",
+      "label": "string()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "string()",
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L13"
+    },
+    {
+      "id": "tools_build_google_health_template_tool",
+      "label": "tool()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "tool()",
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L24"
     },
     {
       "id": "tools_build_release_handoff_blob",
@@ -2842,14 +3131,14 @@
       "source_location": ""
     },
     {
-      "id": "includes_endpoint_guard",
-      "label": "endpoint-guard.php",
+      "id": "includes_class_provider_readiness",
+      "label": "class-provider-readiness.php",
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
+      "community": 1,
+      "community_name": "Community 1",
       "file_type": "code",
-      "norm_label": "endpoint-guard.php",
-      "source_file": "includes/endpoint-guard.php",
+      "norm_label": "class-provider-readiness.php",
+      "source_file": "includes/class-provider-readiness.php",
       "source_location": "L1"
     },
     {
@@ -2886,6 +3175,17 @@
       "source_location": "L1"
     },
     {
+      "id": "wp_rest_response",
+      "label": "WP_REST_Response",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "Community 14",
+      "file_type": "code",
+      "norm_label": "wp_rest_response",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "admin_getmcp_app_extension",
       "label": "getmcp-app-extension.js",
       "_origin": "ast",
@@ -2908,39 +3208,6 @@
       "source_location": "L1"
     },
     {
-      "id": "getmcp_auth_firstpartyoauth",
-      "label": "GetMCP\\Auth\\FirstPartyOAuth",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "getmcp\\auth\\firstpartyoauth",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "includes_class_connection_screens",
-      "label": "class-connection-screens.php",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "class-connection-screens.php",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L1"
-    },
-    {
-      "id": "wp_rest_response",
-      "label": "WP_REST_Response",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Community 17",
-      "file_type": "code",
-      "norm_label": "wp_rest_response",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "getmcp_extensions",
       "label": "getmcp-extensions.php",
       "_origin": "ast",
@@ -2952,17 +3219,6 @@
       "source_location": "L1"
     },
     {
-      "id": "admin_marketing_catalogue",
-      "label": "marketing-catalogue.js",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "Community 19",
-      "file_type": "code",
-      "norm_label": "marketing-catalogue.js",
-      "source_file": "admin/marketing-catalogue.js",
-      "source_location": "L1"
-    },
-    {
       "id": "includes_class_marketing_module",
       "label": "class-marketing-module.php",
       "_origin": "ast",
@@ -2971,6 +3227,17 @@
       "file_type": "code",
       "norm_label": "class-marketing-module.php",
       "source_file": "includes/class-marketing-module.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "includes_class_runtime",
+      "label": "class-runtime.php",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Community 20",
+      "file_type": "code",
+      "norm_label": "class-runtime.php",
+      "source_file": "includes/class-runtime.php",
       "source_location": "L1"
     },
     {
@@ -3007,6 +3274,17 @@
       "source_location": "L1"
     },
     {
+      "id": "datetimeimmutable",
+      "label": "DateTimeImmutable",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "datetimeimmutable",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "includes_class_marketing_management_tool",
       "label": "class-marketing-management-tool.php",
       "_origin": "ast",
@@ -3018,25 +3296,25 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_runtime",
-      "label": "class-runtime.php",
+      "id": "includes_endpoint_guard",
+      "label": "endpoint-guard.php",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "Community 24",
+      "file_type": "code",
+      "norm_label": "endpoint-guard.php",
+      "source_file": "includes/endpoint-guard.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "admin_marketing_catalogue",
+      "label": "marketing-catalogue.js",
       "_origin": "ast",
       "community": 25,
       "community_name": "Community 25",
       "file_type": "code",
-      "norm_label": "class-runtime.php",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L1"
-    },
-    {
-      "id": "includes_class_provider_readiness",
-      "label": "class-provider-readiness.php",
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "class-provider-readiness.php",
-      "source_file": "includes/class-provider-readiness.php",
+      "norm_label": "marketing-catalogue.js",
+      "source_file": "admin/marketing-catalogue.js",
       "source_location": "L1"
     },
     {
@@ -3084,6 +3362,17 @@
       "source_location": ""
     },
     {
+      "id": "getmcp_core_tool",
+      "label": "GetMCP\\Core\\Tool",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "getmcp\\core\\tool",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "getmcp_core_toolmanager",
       "label": "GetMCP\\Core\\ToolManager",
       "_origin": "ast",
@@ -3091,6 +3380,17 @@
       "community_name": "Community 4",
       "file_type": "code",
       "norm_label": "getmcp\\core\\toolmanager",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "getmcp_execution_parameterresolver",
+      "label": "GetMCP\\Execution\\ParameterResolver",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "getmcp\\execution\\parameterresolver",
       "source_file": "",
       "source_location": ""
     },
@@ -3172,6 +3472,17 @@
       "source_location": "L1"
     },
     {
+      "id": "includes_class_google_health",
+      "label": "class-google-health.php",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "class-google-health.php",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L1"
+    },
+    {
       "id": "includes_class_marketing_templates",
       "label": "class-marketing-templates.php",
       "_origin": "ast",
@@ -3249,6 +3560,17 @@
       "source_location": "L1"
     },
     {
+      "id": "getmcp_auth_firstpartyoauth",
+      "label": "GetMCP\\Auth\\FirstPartyOAuth",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "getmcp\\auth\\firstpartyoauth",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "includes_class_configuration_transcoder",
       "label": "class-configuration-transcoder.php",
       "_origin": "ast",
@@ -3260,6 +3582,17 @@
       "source_location": "L1"
     },
     {
+      "id": "includes_class_connection_screens",
+      "label": "class-connection-screens.php",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "Community 5",
+      "file_type": "code",
+      "norm_label": "class-connection-screens.php",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_build",
       "label": "build.py",
       "_origin": "ast",
@@ -3268,6 +3601,17 @@
       "file_type": "code",
       "norm_label": "build.py",
       "source_file": "tools/build.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_build_google_health_template",
+      "label": "build-google-health-template.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "build-google-health-template.py",
+      "source_file": "tools/build-google-health-template.py",
       "source_location": "L1"
     },
     {
@@ -3370,6 +3714,17 @@
       "source_location": "L1"
     },
     {
+      "id": "tools_test_google_health",
+      "label": "test-google-health.py",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "code",
+      "norm_label": "test-google-health.py",
+      "source_file": "tools/test-google-health.py",
+      "source_location": "L1"
+    },
+    {
       "id": "tools_verify",
       "label": "verify.py",
       "_origin": "ast",
@@ -3378,6 +3733,17 @@
       "file_type": "code",
       "norm_label": "verify.py",
       "source_file": "tools/verify.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_build_google_health_template_rationale_1",
+      "label": "Build the fixed, read-only native Google Health template. No HTTP or\u2026",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "build the fixed, read-only native google health template. no http or...",
+      "source_file": "tools/build-google-health-template.py",
       "source_location": "L1"
     },
     {
@@ -3499,6 +3865,17 @@
       "file_type": "rationale",
       "norm_label": "run feasible acceptance/regressions in the two owned docker fixtures, locally...",
       "source_file": "tools/test-connections.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tools_test_google_health_rationale_1",
+      "label": "Local Google Health and connection regressions on the single shared fixture.",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "Community 6",
+      "file_type": "rationale",
+      "norm_label": "local google health and connection regressions on the single shared fixture.",
+      "source_file": "tools/test-google-health.py",
       "source_location": "L1"
     },
     {
@@ -4177,6 +4554,78 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_google_health",
+      "target": "getmcp_remote_safehttp",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health",
+      "target": "getmcp_core_servermanager",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health",
+      "target": "getmcp_core_tool",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health",
+      "target": "getmcp_core_toolmanager",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health",
+      "target": "getmcp_execution_parameterresolver",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health",
+      "target": "getmcp_remote_remoteexception",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_marketing_module",
       "target": "getmcp_core_servermanager",
       "relation": "imports",
@@ -4401,6 +4850,18 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/build.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_google_health_template",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-google-health-template.py",
       "source_location": "L3",
       "weight": 1.0
     },
@@ -4981,6 +5442,42 @@
       "weight": 1.0
     },
     {
+      "source": "tools_test_google_health",
+      "target": "json",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-google-health.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_test_google_health",
+      "target": "subprocess",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-google-health.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_test_google_health",
+      "target": "sys",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-google-health.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "tools_verify",
       "target": "json",
       "relation": "imports",
@@ -5073,6 +5570,18 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tools/build.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_google_health_template",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/build-google-health-template.py",
       "source_location": "L2",
       "weight": 1.0
     },
@@ -5209,6 +5718,18 @@
       "weight": 1.0
     },
     {
+      "source": "tools_test_google_health",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tools/test-google-health.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "tools_verify",
       "target": "pathlib",
       "relation": "imports_from",
@@ -5221,6 +5742,30 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_google_health_googlehealth_civil",
+      "target": "datetimeimmutable",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_date",
+      "target": "datetimeimmutable",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_marketing_templates_marketingtemplates_install",
       "target": "wp_rest_response",
       "relation": "references",
@@ -5229,7 +5774,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -5416,7 +5961,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L109",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -5438,7 +5983,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -5449,7 +5994,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -5460,7 +6005,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L98",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -5615,6 +6160,17 @@
       "confidence_score": 1.0,
       "source_file": "includes/class-connection-screens.php",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -6043,7 +6599,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L17",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates",
+      "target": "includes_class_marketing_templates_closure_2",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6377,6 +6944,39 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_google_health_template",
+      "target": "tools_build_google_health_template_string",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_google_health_template",
+      "target": "tools_build_google_health_template_tool",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "tools_build_google_health_template",
+      "target": "tools_build_google_health_template_mapping",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
       "source": "tools_build_release_handoff",
       "target": "tools_build_release_handoff_git",
       "relation": "contains",
@@ -6560,7 +7160,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L109",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -6604,7 +7204,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -6626,7 +7226,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -6637,7 +7237,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-authentication-settings.php",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -6770,6 +7370,204 @@
       "confidence_score": 1.0,
       "source_file": "includes/class-connection-screens.php",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_definition",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_need_scope",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_date",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_civil",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L123",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_read",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_enabled",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_is_server",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_summary",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_redact",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L216",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_protects",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_log_arguments",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L226",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_log_result",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L227",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_asset",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_preset",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_oauth_config",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_discover",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_inventory",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth",
+      "target": "includes_class_google_health_googlehealth_execute",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -6972,7 +7770,7 @@
     },
     {
       "source": "includes_class_marketing_templates_marketingtemplates",
-      "target": "includes_class_marketing_templates_marketingtemplates_boot",
+      "target": "includes_class_marketing_templates_marketingtemplates_slugs",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6983,13 +7781,24 @@
     },
     {
       "source": "includes_class_marketing_templates_marketingtemplates",
+      "target": "includes_class_marketing_templates_marketingtemplates_boot",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates",
       "target": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -7000,7 +7809,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -7011,7 +7820,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -7022,7 +7831,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -7231,7 +8040,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -7242,7 +8051,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -7253,7 +8062,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -7264,7 +8073,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L38",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -7275,7 +8084,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L63",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -7286,7 +8095,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L66",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -7297,7 +8106,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L82",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -7308,7 +8117,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -7319,7 +8128,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -7330,7 +8139,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L46",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -7873,6 +8682,17 @@
       "weight": 1.0
     },
     {
+      "source": "tools_build_google_health_template_rationale_1",
+      "target": "tools_build_google_health_template",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/build-google-health-template.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tools_build_rationale_1",
       "target": "tools_build",
       "relation": "rationale_for",
@@ -8005,6 +8825,17 @@
       "weight": 1.0
     },
     {
+      "source": "tools_test_google_health_rationale_1",
+      "target": "tools_test_google_health",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tools/test-google-health.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "tools_verify_rationale_1",
       "target": "tools_verify",
       "relation": "rationale_for",
@@ -8013,6 +8844,29 @@
       "confidence_score": 1.0,
       "source_file": "tools/verify.py",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_template",
+      "target": "includes_class_marketing_templates_marketingtemplates_slugs",
+      "relation": "references_constant",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_authentication_settings_authenticationsettings_prepare",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-authentication-settings.php",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -8097,6 +8951,90 @@
       "context": "call",
       "source_file": "includes/class-connection-screens.php",
       "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_discover",
+      "target": "includes_class_provider_connections_providerconnections",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_enabled",
+      "target": "includes_class_runtime_runtime",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_execute",
+      "target": "includes_class_provider_connections_providerconnections",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_execute",
+      "target": "includes_class_runtime_runtime",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_execute",
+      "target": "includes_class_provider_execution_providerexecution",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_is_server",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_google_health_googlehealth_is_server",
+      "target": "includes_class_provider_tokens_providertokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-google-health.php",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -8185,6 +9123,18 @@
     },
     {
       "source": "includes_class_marketing_module_closure_17",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_17",
       "target": "includes_class_provider_discovery_providerdiscovery",
       "relation": "calls",
       "_origin": "ast",
@@ -8193,6 +9143,18 @@
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_18",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -8205,6 +9167,18 @@
       "context": "call",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_module_closure_20",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -8460,19 +9434,31 @@
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
-      "target": "includes_class_marketing_module_marketingmodule",
+      "source": "includes_class_marketing_module_marketingmodule_response",
+      "target": "includes_class_google_health_googlehealth",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "context": "call",
-      "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L13",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
-      "source": "includes_class_marketing_templates_marketingtemplates_install",
+      "source": "includes_class_marketing_templates_closure_1",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_closure_1",
       "target": "includes_class_marketing_module_marketingmodule",
       "relation": "calls",
       "_origin": "ast",
@@ -8480,7 +9466,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L45",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_marketing_templates_marketingtemplates_client_catalogue",
+      "target": "includes_class_runtime_runtime",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-marketing-templates.php",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -8492,19 +9490,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
       "source": "includes_class_marketing_templates_marketingtemplates_response",
-      "target": "includes_class_marketing_module_marketingmodule",
+      "target": "includes_class_runtime_runtime",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-marketing-templates.php",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -8564,7 +9562,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -8576,7 +9574,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L30",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_connections_providerconnections_can_connect",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -8600,7 +9610,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -8612,7 +9622,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L53",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -8624,7 +9634,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -8636,7 +9646,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L74",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -8648,7 +9658,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L90",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -8660,7 +9670,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -8672,7 +9682,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -8684,7 +9694,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L64",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -8708,24 +9718,12 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L52",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
       "source": "includes_class_provider_discovery_providerdiscovery_discover",
-      "target": "includes_class_authentication_settings_authenticationsettings",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "call",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L29",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_provider_discovery_providerdiscovery_discover",
-      "target": "includes_class_provider_tokens_providertokens",
+      "target": "includes_class_google_health_googlehealth",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -8737,6 +9735,30 @@
     },
     {
       "source": "includes_class_provider_discovery_providerdiscovery_discover",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_discovery_providerdiscovery_discover",
+      "target": "includes_class_provider_tokens_providertokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_discovery_providerdiscovery_discover",
       "target": "includes_class_page_tokens_pagetokens",
       "relation": "calls",
       "_origin": "ast",
@@ -8744,7 +9766,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L33",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -8756,7 +9778,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L20",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_discovery_providerdiscovery_presets",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -9013,6 +10047,18 @@
     },
     {
       "source": "includes_class_runtime_runtime_server_enabled",
+      "target": "includes_class_google_health_googlehealth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_runtime_runtime_server_enabled",
       "target": "includes_class_marketing_module_marketingmodule",
       "relation": "calls",
       "_origin": "ast",
@@ -9025,5 +10071,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0e796ae32345a0a71ab18a08373bce6ac8486314"
+  "built_at_commit": "d6337bd130e65a3ae4689709d165a3adc96d685e"
 }

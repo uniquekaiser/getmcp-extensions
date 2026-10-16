@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0-beta.1 - 2026-10-16
+
+- [NEW] Add a Google Health native template with personal OAuth, read tools, daily/weekly summaries and available nutrition/hydration data.
+- [FIX] Retain Google Health offline consent parameters when the native Authentication editor saves a new client ID.
+- [SECURITY] Enforce health scopes and reviewed endpoints; omit health payloads from response caches, replay and protocol logs.
+- [DEV] Add self-cleaning shared-fixture checks and explicit live-provider acceptance gaps.
+- [DEV] Publish test prereleases separately from stable releases and dashboard updates.
+
 ## 1.3.0 - 2026-10-15
 
 - [NEW] Browse hosted services in Remote MCP Servers with native card styling, search and categories, separate from Templates.

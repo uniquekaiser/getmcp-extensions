@@ -13,7 +13,8 @@ final class ProviderConnections {
         return ProviderTokens::is_meta( $server ) || ( 'oauth2.googleapis.com' === wp_parse_url( $c['token_url'] ?? '', PHP_URL_HOST ) && 'accounts.google.com' === wp_parse_url( $c['authorize_url'] ?? '', PHP_URL_HOST ) );
     }
     public static function can_connect( $server, int $user ): bool {
-        if ( ! MarketingModule::enabled() || ! self::supported( $server ) || $user < 1 || ! get_userdata( $user ) || ! user_can( $user, 'read' ) || 'active' !== $server->status ) { return false; }
+        $enabled = GoogleHealth::is_server( $server ) ? GoogleHealth::enabled() : MarketingModule::enabled();
+        if ( ! $enabled || ! self::supported( $server ) || $user < 1 || ! get_userdata( $user ) || ! user_can( $user, 'read' ) || 'active' !== $server->status ) { return false; }
         $settings = AuthenticationSettings::object( $server->settings );
         if ( in_array( $user, $settings['personal_provider']['allowed_user_ids'] ?? array(), true ) ) { return true; }
         foreach ( \GetMCP\Gateway\FeatureManager::all() as $gateway ) {

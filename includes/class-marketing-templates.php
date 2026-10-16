@@ -6,13 +6,14 @@ use GetMCP\Core\ToolManager;
 use GetMCP\Licensing\LicenseTier;
 
 final class MarketingTemplates {
-    private const SLUGS = array( 'google-ads', 'google-analytics', 'google-search-console', 'meta-ads', 'instagram' );
+    private const SLUGS = array( 'google-ads', 'google-analytics', 'google-search-console', 'meta-ads', 'instagram', 'google-health' );
+    private static function slugs(): array { return array_values( array_filter( self::SLUGS, static fn( $s ) => 'google-health' === $s ? GoogleHealth::enabled() : MarketingModule::enabled() ) ); }
     public static function boot(): void { add_filter( 'rest_request_after_callbacks', array( self::class, 'response' ), 20, 3 ); }
     /** Metadata for the vendor's static template UI, without credentials or tool execution data. */
     public static function client_catalogue(): array {
-        if ( ! MarketingModule::enabled() ) { return array(); }
+        if ( ! Runtime::ready() ) { return array(); }
         $out = array();
-        foreach ( self::SLUGS as $slug ) {
+        foreach ( self::slugs() as $slug ) {
             $t = self::template( $slug );
             $out[] = array( 'slug' => $t['slug'], 'name' => $t['name'], 'description' => $t['description'], 'category' => $t['category'], 'icon' => $t['icon'], 'authLabel' => 'Configure OAuth application after draft installation', 'authType' => 'none', 'website' => $t['website'], 'tools' => array_map( static fn( $tool ) => array_intersect_key( $tool, array_flip( array( 'name', 'description' ) ) ), $t['tools'] ) );
         }
@@ -21,18 +22,18 @@ final class MarketingTemplates {
     public static function template( string $slug ): array {
         if ( ! in_array( $slug, self::SLUGS, true ) ) { throw new \InvalidArgumentException( 'Unknown marketing template.' ); }
         $d = json_decode( file_get_contents( GETMCP_EXTENSIONS_PATH . 'assets/templates/' . $slug . '.json' ), true, 32, JSON_THROW_ON_ERROR );
-        return array( 'slug' => 'synergetic-' . $slug, 'name' => $d['server']['name'] . ' · Synergetic', 'description' => 'Marketing integration. Install into an empty server; configure application credentials, personal access and provider verification before publishing.', 'category' => 'Marketing', 'icon' => 'Megaphone', 'auth_type' => 'oauth', 'website' => 'https://synergetic.dev/', 'tags' => array( 'marketing', 'synergetic' ), 'tool_count' => count( $d['tools'] ), 'tools' => $d['tools'] );
+        return array( 'slug' => 'synergetic-' . $slug, 'name' => $d['server']['name'] . ' · Synergetic', 'description' => 'google-health' === $slug ? 'Read health, sleep, activity and available nutrition data, with daily and weekly summaries. Configure personal Google OAuth before publishing.' : 'Marketing integration. Install into an empty server; configure application credentials, personal access and provider verification before publishing.', 'category' => 'google-health' === $slug ? 'Health' : 'Marketing', 'icon' => 'google-health' === $slug ? 'Heart' : 'Megaphone', 'auth_type' => 'oauth', 'website' => 'https://synergetic.dev/', 'tags' => array( 'marketing', 'synergetic' ), 'tool_count' => count( $d['tools'] ), 'tools' => $d['tools'] );
     }
     public static function response( $response, $handler, $request ) {
-        if ( ! MarketingModule::enabled() || ! current_user_can( 'manage_options' ) ) { return $response; }
+        if ( ! Runtime::ready() || ! current_user_can( 'manage_options' ) ) { return $response; }
         $route = $request->get_route();
         if ( '/getmcp/v1/templates' === $route && 'GET' === $request->get_method() && $response instanceof \WP_REST_Response && 200 === $response->get_status() ) {
             $items = $response->get_data(); $known = array_column( $items, 'slug' );
-            foreach ( self::SLUGS as $slug ) { $t = self::template( $slug ); unset( $t['tools'] ); if ( ! in_array( $t['slug'], $known, true ) ) { $items[] = $t; } }
+            foreach ( self::slugs() as $slug ) { $t = self::template( $slug ); unset( $t['tools'] ); if ( ! in_array( $t['slug'], $known, true ) ) { $items[] = $t; } }
             $response->set_data( $items ); return $response;
         }
         // Only fill a missing owned template. Preserve all vendor permission/tier failures.
-        if ( ! is_wp_error( $response ) || 'template_not_found' !== $response->get_error_code() || ! preg_match( '~^/getmcp/v1/templates/synergetic-([a-z-]+)(/install)?$~D', $route, $match ) || ! in_array( $match[1], self::SLUGS, true ) ) { return $response; }
+        if ( ! is_wp_error( $response ) || 'template_not_found' !== $response->get_error_code() || ! preg_match( '~^/getmcp/v1/templates/synergetic-([a-z-]+)(/install)?$~D', $route, $match ) || ! in_array( $match[1], self::slugs(), true ) ) { return $response; }
         if ( 'GET' === $request->get_method() && empty( $match[2] ) ) { return rest_ensure_response( self::template( $match[1] ) ); }
         if ( 'POST' === $request->get_method() && ! empty( $match[2] ) ) {
             try { return self::install( $match[1], (string) $request->get_param( 'server_id' ), $request ); }
@@ -42,7 +43,7 @@ final class MarketingTemplates {
     }
     public static function install( string $slug, string $uuid, $request ): \WP_REST_Response {
         global $wpdb;
-        if ( ! MarketingModule::enabled() || ! current_user_can( 'manage_options' ) || ! current_user_can( 'getmcp_manage_servers' ) || ! current_user_can( 'getmcp_manage_tools' ) || ! LicenseTier::current()->allows_templates() ) { throw new \InvalidArgumentException( 'Template installation is unavailable.' ); }
+        if ( ! in_array( $slug, self::slugs(), true ) || ! current_user_can( 'manage_options' ) || ! current_user_can( 'getmcp_manage_servers' ) || ! current_user_can( 'getmcp_manage_tools' ) || ! LicenseTier::current()->allows_templates() ) { throw new \InvalidArgumentException( 'Template installation is unavailable.' ); }
         self::template( $slug ); // Validate the fixed asset path before loading it.
         $sm = new ServerManager(); $tm = new ToolManager();
         $wpdb->query( 'START TRANSACTION' );
@@ -59,7 +60,7 @@ final class MarketingTemplates {
             $settings = array_replace( $prior_settings, $d['server']['settings'] );
             $settings['personal_provider'] = array( 'enabled' => true, 'preset' => 'instagram' === $slug ? 'instagram-facebook-login' : $slug, 'allowed_user_ids' => array() );
             $settings['getmcp_extensions_required'] = true;
-            $settings['instructions'] .= "\nInstalled by GetMCP Extensions. Configure application credentials and permitted personal users; verify harmless reads before activation. Instagram Page tokens are selected per user in My MCP Connections. Messaging stays inactive until verified.";
+            $settings['instructions'] .= 'google-health' === $slug ? "\nConnect each permitted user in My MCP Connections. Publish through a WordPress OAuth project gateway." : "\nInstalled by GetMCP Extensions. Configure application credentials and permitted personal users; verify harmless reads before activation. Instagram Page tokens are selected per user in My MCP Connections. Messaging stays inactive until verified.";
             $created = array();
             foreach ( $d['tools'] as $data ) {
                 if ( ! LicenseTier::current()->can_create_tool( count( $created ) ) ) { throw new \InvalidArgumentException( 'Tool quota exceeded.' ); }

@@ -43,6 +43,9 @@ class ToolExecutor {
 			self::enforce_call_quota();
 		}
 
+		// Health tools retain the quota gate and use native definitions without persisting payloads.
+		if ( \GetMCPExtensions\GoogleHealth::protects( $tool, $server ) ) { return \GetMCPExtensions\GoogleHealth::execute( $tool, $arguments, $use_test, $server ); }
+
 		/*
 		 * Connector tools (mailbox, database) reach something that is not a
 		 * REST API, so steps 1, 2 and 4 — parameter resolution into
@@ -234,6 +237,10 @@ class ToolExecutor {
 	 */
 	public function execute_test( Tool $tool, array $arguments, ?Server $server = null ): array {
 		$start_time = microtime( true );
+		if ( \GetMCPExtensions\GoogleHealth::protects( $tool, $server ) ) {
+			$result = \GetMCPExtensions\GoogleHealth::execute( $tool, $arguments, true, $server );
+			return array( 'outbound_request' => array( 'privacy' => 'Health request omitted.' ), 'raw_response' => null, 'mcp_output' => $result, 'timing' => array( 'total_ms' => (int) ( ( microtime( true ) - $start_time ) * 1000 ) ) );
+		}
 
 		// A connector tool has no URL to resolve and no HTTP auth to inject;
 		// the Test panel runs it through the same executor production does,

@@ -10,7 +10,8 @@ $assert = function( $ok, $name ) use ( &$checks ) { $checks[$name] = (bool) $ok;
 $reject = function( $fn, $name ) use ( $assert ) { try { $fn(); } catch ( Throwable $e ) { $assert( true, $name ); return; } $assert( false, $name ); };
 $rest = function( $method, $path, $data = null ) { $r = new WP_REST_Request( $method, '/getmcp/v1/' . $path ); if ( null !== $data ) { $r->set_header( 'content-type', 'application/json' ); $r->set_body( wp_json_encode( $data ) ); } return rest_do_request( $r ); };
 $moduleBefore = get_option( 'getmcp_extensions_marketing_module', false );
-$user = (int) ( username_exists( 'connections-qa' ) ?: wp_create_user( 'connections-qa', 'disposable-fixture-only', 'connections-qa@example.invalid' ) );
+$userExisted = username_exists( 'connections-qa' );
+$user = (int) ( $userExisted ?: wp_create_user( 'connections-qa', 'disposable-fixture-only', 'connections-qa@example.invalid' ) );
 wp_set_current_user( 1 );
 try {
     $p = Importer::preview( wp_json_encode( array( 'mcpServers' => array(
@@ -70,7 +71,7 @@ try {
     $command = Converter::convert( '{"mcpServers":{"text":{"command":"node","args":["--token","synthetic-secret"],"env":{"KEY":"synthetic-env-secret"}}}}', 'codex' );
     $assert( ! str_contains( wp_json_encode( $command ), 'synthetic-secret' ) && ! str_contains( wp_json_encode( $command ), 'synthetic-env-secret' ) && $command['warnings'], 'command_conversion_is_redacted_text_only' );
     $templates = $rest( 'GET', 'templates' )->get_data();
-    $assert( 5 === count( array_filter( $templates, fn( $t ) => str_starts_with( $t['slug'], 'synergetic-' ) ) ), 'five_marketing_templates_visible_in_native_index' );
+    $assert( 5 === count( array_filter( $templates, fn( $t ) => str_starts_with( $t['slug'], 'synergetic-' ) && 'Marketing' === $t['category'] ) ) && count( array_filter( $templates, fn( $t ) => 'synergetic-google-health' === $t['slug'] ) ) === 1, 'five_marketing_and_one_health_template_visible_in_native_index' );
     $created = $rest( 'POST', 'servers', array( 'name' => 'Connections QA UI Template', 'description' => 'Synthetic presentation description', 'auth_type' => 'none' ) );
     $assert( 201 === $created->get_status(), 'native_ui_server_creation_route_accepted' );
     $s = $sm->get_by_uuid( $created->get_data()['id'] ); $ids[] = $s->id;
@@ -98,7 +99,7 @@ try {
         $assert( 403 === $rest( 'POST', 'templates/synergetic-google-ads/install', array( 'server_id' => $protected->uuid ) )->get_status(), 'marketing_template_cannot_bypass_vendor_license_gate' );
     } finally { $GLOBALS['getmcp_license'] = $license; GetMCP\Licensing\LicenseTier::clear_cache(); }
     update_option( 'getmcp_extensions_marketing_module', array( 'enabled' => false ) );
-    $assert( ! array_filter( $rest( 'GET', 'templates' )->get_data(), fn( $t ) => str_starts_with( $t['slug'], 'synergetic-' ) ), 'disabled_module_removes_owned_templates' );
+    $assert( ! array_filter( $rest( 'GET', 'templates' )->get_data(), fn( $t ) => str_starts_with( $t['slug'], 'synergetic-' ) && 'Marketing' === $t['category'] ), 'disabled_marketing_module_removes_marketing_templates' );
     update_option( 'getmcp_extensions_marketing_module', array( 'enabled' => true ) );
     echo wp_json_encode( array( 'passed' => count( $checks ), 'checks' => $checks ) );
     file_put_contents( '/evidence/connections.json', wp_json_encode( array( 'passed' => count( $checks ), 'checks' => $checks, 'live_provider_writes' => false ), JSON_PRETTY_PRINT ) );
@@ -106,4 +107,5 @@ try {
     false === $moduleBefore ? delete_option( 'getmcp_extensions_marketing_module' ) : update_option( 'getmcp_extensions_marketing_module', $moduleBefore );
     wp_set_current_user( 1 ); foreach ( array_reverse( $ids ) as $id ) { $s = $sm->get( $id ); if ( $s && str_starts_with( $s->name, 'Connections QA ' ) ) { $sm->delete( $id ); } }
     foreach ( $tokens as $token ) { delete_option( 'getmcp_import_preview_' . hash( 'sha256', $token ) ); }
+    if ( ! $userExisted ) { require_once ABSPATH . 'wp-admin/includes/user.php'; wp_delete_user( $user ); }
 }

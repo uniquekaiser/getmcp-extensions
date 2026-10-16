@@ -1,0 +1,876 @@
+{
+  "format": "getmcp/server-v1",
+  "server": {
+    "name": "Google Health",
+    "slug": "google-health",
+    "status": "draft",
+    "server_kind": "native",
+    "transport_type": "streamable-http",
+    "auth_type": "oauth",
+    "auth_config": {
+      "provider": "external",
+      "authorize_url": "https://accounts.google.com/o/oauth2/v2/auth",
+      "token_url": "https://oauth2.googleapis.com/token",
+      "client_id": "",
+      "scope": "https://www.googleapis.com/auth/googlehealth.profile.readonly https://www.googleapis.com/auth/googlehealth.settings.readonly https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly https://www.googleapis.com/auth/googlehealth.sleep.readonly https://www.googleapis.com/auth/googlehealth.nutrition.readonly",
+      "extra_authorize_params": {
+        "access_type": "offline",
+        "prompt": "consent",
+        "include_granted_scopes": "true"
+      }
+    },
+    "settings": {
+      "google_health": true,
+      "getmcp_extensions_required": true,
+      "instructions": "Read-only Google Health API v4, including available nutrition data. Configure a Google web OAuth application; allow personal users and connect in My MCP Connections. Publish through a WordPress OAuth project gateway. Summaries report observed civil-day metrics and explicit gaps; no medical assessment. Health payload caching and replay are disabled."
+    }
+  },
+  "tools": [
+    {
+      "name": "google_health_get_identity",
+      "slug": "google_health_get_identity",
+      "description": "Read authorized Google Health identity. Identity and location fields are filtered.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/identity",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 0
+    },
+    {
+      "name": "google_health_get_profile",
+      "slug": "google_health_get_profile",
+      "description": "Read authorized Google Health profile. Identity and location fields are filtered.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/profile",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 1
+    },
+    {
+      "name": "google_health_get_settings",
+      "slug": "google_health_get_settings",
+      "description": "Read authorized Google Health settings. Identity and location fields are filtered.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/settings",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 2
+    },
+    {
+      "name": "google_health_list_data_points",
+      "slug": "google_health_list_data_points",
+      "description": "Read one page of Google Health data. Follow nextPageToken explicitly. No data is unknown, never zero.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/dataTypes/{{data_type}}/dataPoints",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "description": "Curated data type. Consult the inventory for supported operations.",
+            "enum": [
+              "steps",
+              "distance",
+              "total-calories",
+              "active-zone-minutes",
+              "heart-rate",
+              "daily-resting-heart-rate",
+              "daily-heart-rate-variability",
+              "weight",
+              "body-fat",
+              "sleep",
+              "nutrition-log",
+              "hydration-log",
+              "food",
+              "food-measurement-unit"
+            ]
+          },
+          "page_size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum points per page. Sleep is capped at 25."
+          },
+          "page_token": {
+            "type": "string",
+            "description": "Opaque nextPageToken from the previous response; keep all other inputs identical.",
+            "maxLength": 2048
+          },
+          "filter": {
+            "type": "string",
+            "description": "Google AIP-160 filter. Sleep uses sleep.interval.civil_end_time; daily metrics use their snake_case date field.",
+            "maxLength": 2048
+          },
+          "data_source_family": {
+            "type": "string",
+            "description": "Optional source family.",
+            "enum": [
+              "users/me/dataSourceFamilies/all-sources",
+              "users/me/dataSourceFamilies/google-wearables",
+              "users/me/dataSourceFamilies/google-sources",
+              "users/me/dataSourceFamilies/self-sources"
+            ]
+          }
+        },
+        "required": [
+          "data_type"
+        ],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {
+        "data_type": {
+          "target": "path",
+          "key": "data_type"
+        },
+        "page_size": {
+          "target": "query",
+          "key": "pageSize"
+        },
+        "page_token": {
+          "target": "query",
+          "key": "pageToken"
+        },
+        "filter": {
+          "target": "query",
+          "key": "filter"
+        },
+        "data_source_family": {
+          "target": "query",
+          "key": "dataSourceFamily"
+        }
+      },
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 3
+    },
+    {
+      "name": "google_health_reconcile_data_points",
+      "slug": "google_health_reconcile_data_points",
+      "description": "Read one page of Google Health data. Follow nextPageToken explicitly. No data is unknown, never zero.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/dataTypes/{{data_type}}/dataPoints:reconcile",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "description": "Curated data type. Consult the inventory for supported operations.",
+            "enum": [
+              "steps",
+              "distance",
+              "total-calories",
+              "active-zone-minutes",
+              "heart-rate",
+              "daily-resting-heart-rate",
+              "daily-heart-rate-variability",
+              "weight",
+              "body-fat",
+              "sleep",
+              "nutrition-log",
+              "hydration-log",
+              "food",
+              "food-measurement-unit"
+            ]
+          },
+          "page_size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum points per page. Sleep is capped at 25."
+          },
+          "page_token": {
+            "type": "string",
+            "description": "Opaque nextPageToken from the previous response; keep all other inputs identical.",
+            "maxLength": 2048
+          },
+          "filter": {
+            "type": "string",
+            "description": "Google AIP-160 filter. Sleep uses sleep.interval.civil_end_time; daily metrics use their snake_case date field.",
+            "maxLength": 2048
+          },
+          "data_source_family": {
+            "type": "string",
+            "description": "Optional source family.",
+            "enum": [
+              "users/me/dataSourceFamilies/all-sources",
+              "users/me/dataSourceFamilies/google-wearables",
+              "users/me/dataSourceFamilies/google-sources",
+              "users/me/dataSourceFamilies/self-sources"
+            ]
+          }
+        },
+        "required": [
+          "data_type"
+        ],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {
+        "data_type": {
+          "target": "path",
+          "key": "data_type"
+        },
+        "page_size": {
+          "target": "query",
+          "key": "pageSize"
+        },
+        "page_token": {
+          "target": "query",
+          "key": "pageToken"
+        },
+        "filter": {
+          "target": "query",
+          "key": "filter"
+        },
+        "data_source_family": {
+          "target": "query",
+          "key": "dataSourceFamily"
+        }
+      },
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 4
+    },
+    {
+      "name": "google_health_daily_rollup",
+      "slug": "google_health_daily_rollup",
+      "description": "Read daily aggregates. Valid civil date range required; data-type limits apply. This POST is read-only.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/dataTypes/{{data_type}}/dataPoints:dailyRollUp",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "description": "Curated data type. Consult the inventory for supported operations.",
+            "enum": [
+              "steps",
+              "distance",
+              "total-calories",
+              "active-zone-minutes",
+              "heart-rate",
+              "daily-resting-heart-rate",
+              "daily-heart-rate-variability",
+              "weight",
+              "body-fat",
+              "sleep",
+              "nutrition-log",
+              "hydration-log",
+              "food",
+              "food-measurement-unit"
+            ]
+          },
+          "page_size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum points per page. Sleep is capped at 25."
+          },
+          "page_token": {
+            "type": "string",
+            "description": "Opaque nextPageToken from the previous response; keep all other inputs identical.",
+            "maxLength": 2048
+          },
+          "data_source_family": {
+            "type": "string",
+            "description": "Optional source family.",
+            "enum": [
+              "users/me/dataSourceFamilies/all-sources",
+              "users/me/dataSourceFamilies/google-wearables",
+              "users/me/dataSourceFamilies/google-sources",
+              "users/me/dataSourceFamilies/self-sources"
+            ]
+          },
+          "start_date": {
+            "type": "string",
+            "description": "Inclusive civil YYYY-MM-DD."
+          },
+          "end_date": {
+            "type": "string",
+            "description": "Exclusive civil YYYY-MM-DD."
+          },
+          "window_size_days": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 90
+          }
+        },
+        "required": [
+          "data_type",
+          "start_date",
+          "end_date"
+        ],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {
+        "data_type": {
+          "target": "path",
+          "key": "data_type"
+        },
+        "page_size": {
+          "target": "body",
+          "key": "pageSize"
+        },
+        "page_token": {
+          "target": "body",
+          "key": "pageToken"
+        },
+        "data_source_family": {
+          "target": "body",
+          "key": "dataSourceFamily"
+        },
+        "window_size_days": {
+          "target": "body",
+          "key": "windowSizeDays"
+        }
+      },
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 5
+    },
+    {
+      "name": "google_health_rollup",
+      "slug": "google_health_rollup",
+      "description": "Read aggregates over exact timestamps, at most 14 days. This POST is read-only.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/dataTypes/{{data_type}}/dataPoints:rollUp",
+      "http_method": "POST",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "description": "Curated data type. Consult the inventory for supported operations.",
+            "enum": [
+              "steps",
+              "distance",
+              "total-calories",
+              "active-zone-minutes",
+              "heart-rate",
+              "daily-resting-heart-rate",
+              "daily-heart-rate-variability",
+              "weight",
+              "body-fat",
+              "sleep",
+              "nutrition-log",
+              "hydration-log",
+              "food",
+              "food-measurement-unit"
+            ]
+          },
+          "page_size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum points per page. Sleep is capped at 25."
+          },
+          "page_token": {
+            "type": "string",
+            "description": "Opaque nextPageToken from the previous response; keep all other inputs identical.",
+            "maxLength": 2048
+          },
+          "data_source_family": {
+            "type": "string",
+            "description": "Optional source family.",
+            "enum": [
+              "users/me/dataSourceFamilies/all-sources",
+              "users/me/dataSourceFamilies/google-wearables",
+              "users/me/dataSourceFamilies/google-sources",
+              "users/me/dataSourceFamilies/self-sources"
+            ]
+          },
+          "start_time": {
+            "type": "string",
+            "description": "Inclusive RFC3339 timestamp with timezone."
+          },
+          "end_time": {
+            "type": "string",
+            "description": "Exclusive RFC3339 timestamp with timezone."
+          },
+          "window_size": {
+            "type": "string",
+            "description": "Positive duration, e.g. 86400s."
+          }
+        },
+        "required": [
+          "data_type",
+          "start_time",
+          "end_time",
+          "window_size"
+        ],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {
+        "data_type": {
+          "target": "path",
+          "key": "data_type"
+        },
+        "page_size": {
+          "target": "body",
+          "key": "pageSize"
+        },
+        "page_token": {
+          "target": "body",
+          "key": "pageToken"
+        },
+        "data_source_family": {
+          "target": "body",
+          "key": "dataSourceFamily"
+        },
+        "window_size": {
+          "target": "body",
+          "key": "windowSize"
+        }
+      },
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 6
+    },
+    {
+      "name": "google_health_nutrition",
+      "slug": "google_health_nutrition",
+      "description": "Read one page of nutrition-log records if nutrition.readonly is granted and the account has data. Does not write food logs.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/dataTypes/nutrition-log/dataPoints",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "page_size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "description": "Maximum points per page. Sleep is capped at 25."
+          },
+          "page_token": {
+            "type": "string",
+            "description": "Opaque nextPageToken from the previous response; keep all other inputs identical.",
+            "maxLength": 2048
+          },
+          "filter": {
+            "type": "string",
+            "description": "Google AIP-160 filter. Sleep uses sleep.interval.civil_end_time; daily metrics use their snake_case date field.",
+            "maxLength": 2048
+          },
+          "data_source_family": {
+            "type": "string",
+            "description": "Optional source family.",
+            "enum": [
+              "users/me/dataSourceFamilies/all-sources",
+              "users/me/dataSourceFamilies/google-wearables",
+              "users/me/dataSourceFamilies/google-sources",
+              "users/me/dataSourceFamilies/self-sources"
+            ]
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {
+        "page_size": {
+          "target": "query",
+          "key": "pageSize"
+        },
+        "page_token": {
+          "target": "query",
+          "key": "pageToken"
+        },
+        "filter": {
+          "target": "query",
+          "key": "filter"
+        },
+        "data_source_family": {
+          "target": "query",
+          "key": "dataSourceFamily"
+        },
+        "data_type": {
+          "target": "path",
+          "key": "data_type"
+        }
+      },
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 7
+    },
+    {
+      "name": "google_health_daily_summary",
+      "slug": "google_health_daily_summary",
+      "description": "Observed daily health metrics including available nutrition/hydration. Weekly covers seven civil dates ending on date. Returns per-domain missing scopes, errors and pagination completeness; no medical inference.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/profile",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Daily date, or final date of the seven-day summary. YYYY-MM-DD; defaults to today in timezone."
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone, e.g. America/Bogota. Defaults to the WordPress timezone."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 8
+    },
+    {
+      "name": "google_health_weekly_summary",
+      "slug": "google_health_weekly_summary",
+      "description": "Observed daily health metrics including available nutrition/hydration. Weekly covers seven civil dates ending on date. Returns per-domain missing scopes, errors and pagination completeness; no medical inference.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/profile",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Daily date, or final date of the seven-day summary. YYYY-MM-DD; defaults to today in timezone."
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone, e.g. America/Bogota. Defaults to the WordPress timezone."
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 9
+    },
+    {
+      "name": "google_health_data_inventory",
+      "slug": "google_health_data_inventory",
+      "description": "Read the curated local data-type/operation/scope inventory. Does not probe your account.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/profile",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 10
+    },
+    {
+      "name": "google_health_connection_status",
+      "slug": "google_health_connection_status",
+      "description": "Read personal connection and granted-scope status without exposing credentials. Does not prove a live data read.",
+      "endpoint_url": "https://health.googleapis.com/v4/users/me/profile",
+      "http_method": "GET",
+      "tool_type": "http",
+      "handler": "",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "parameter_mapping": {},
+      "body_template": null,
+      "response_mapping": null,
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "timeout": 30,
+      "cache_ttl": 0,
+      "retry_count": 0,
+      "retry_backoff": "exponential",
+      "ssl_verify": true,
+      "rate_limit_per_min": 0,
+      "status": "active",
+      "tags": [
+        "google-health",
+        "read-only"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "sort_order": 11
+    }
+  ]
+}

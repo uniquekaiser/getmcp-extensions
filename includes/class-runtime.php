@@ -23,7 +23,7 @@ final class Runtime {
     public static function ready(): bool { return self::$ready; }
     public static function server_enabled( $server ): bool {
         $settings = json_decode( $server->settings ?? '{}', true ) ?: array();
-        if ( ! empty( $settings['getmcp_extensions_required'] ) && ! MarketingModule::enabled() ) { return false; }
+        if ( ! empty( $settings['getmcp_extensions_required'] ) && ! ( GoogleHealth::is_server( $server ) ? GoogleHealth::enabled() : MarketingModule::enabled() ) ) { return false; }
         $kind = $server->server_kind ?? 'native';
         if ( 'gateway' === $kind ) { return self::enabled( 'project_gateways' ); }
         if ( 'remote-mcp' === $kind ) { return self::enabled( 'remote_mcp' ); }

@@ -26,7 +26,7 @@ function getmcp_extensions_guard_row( object $row ): bool {
     $managed = $requires_marketing || 'native' !== $kind || ( 'oauth' === ( $row->auth_type ?? '' ) && 'getmcp' === ( $config['provider'] ?? '' ) );
     if ( ! $managed ) { return false; }
     if ( ! getmcp_extensions_guard_ready() ) { return true; }
-    if ( $requires_marketing && ( ! class_exists( '\GetMCPExtensions\MarketingModule' ) || ! \GetMCPExtensions\MarketingModule::enabled() ) ) { return true; }
+    if ( $requires_marketing && empty( $settings['google_health'] ) && 'google-health' !== ( $settings['personal_provider']['preset'] ?? '' ) && ( ! class_exists( '\GetMCPExtensions\MarketingModule' ) || ! \GetMCPExtensions\MarketingModule::enabled() ) ) { return true; }
     if ( 'gateway' === $kind && getmcp_extensions_guard_marketing_missing() ) { return true; }
     return ! \GetMCPExtensions\Runtime::server_enabled( $row );
 }

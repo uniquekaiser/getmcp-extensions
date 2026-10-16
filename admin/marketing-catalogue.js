@@ -38,11 +38,11 @@
     if (!heading) { document.querySelectorAll('[data-marketing-template]').forEach(el => el.remove()); return; }
     const content = heading.closest('main'); if (!content) return;
     const summary = [...content.querySelectorAll('p')].find(el => el.textContent.includes('pre-built tool configurations for popular APIs'));
-    if (summary && !summary.textContent.includes('marketing extension templates')) summary.textContent += ' · 5 marketing extension templates';
+    if (summary && !summary.textContent.includes('extension templates')) summary.textContent += ` · ${config.templates.length} extension templates`;
     // Integrated bundles already render the five templates; do not duplicate them.
     const query = (content.querySelector('input[placeholder="Search templates..."]')?.value || '').trim().toLowerCase();
     const category = content.querySelector('button[aria-label="Filter by category"]')?.textContent.trim() || 'All';
-    const visible = config.templates.filter(t => (!query || `${t.name} ${t.description} marketing synergetic`.toLowerCase().includes(query)) && ['All','Marketing'].includes(category));
+    const visible = config.templates.filter(t => (!query || `${t.name} ${t.description} ${t.category} synergetic`.toLowerCase().includes(query)) && ['All',t.category].includes(category));
     document.querySelectorAll('[data-marketing-template]').forEach(el => { if (!visible.some(t => t.slug === el.dataset.marketingTemplate)) el.remove(); });
     const empty = [...content.querySelectorAll('h3')].find(el => el.textContent === 'No templates found')?.parentElement;
     if (empty && visible.length) empty.style.setProperty('display','none','important');
@@ -53,7 +53,7 @@
     visible.forEach(template => {
       if (content.querySelector(`[data-marketing-template="${template.slug}"]`) || [...content.querySelectorAll('h3')].some(el => el.textContent === template.name)) return;
       const card = document.createElement('section'); card.dataset.marketingTemplate = template.slug; card.className = 'bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col';
-      const badge = document.createElement('span'); badge.className = 'text-xs text-gray-500 mb-4'; badge.textContent = 'Marketing · Extension';
+      const badge = document.createElement('span'); badge.className = 'text-xs text-gray-500 mb-4'; badge.textContent = `${template.category} · Extension`;
       const title = document.createElement('h3'); title.className = 'text-base font-semibold mb-1'; title.textContent = template.name;
       const description = document.createElement('p'); description.className = 'text-sm text-gray-500 flex-1 mb-4'; description.textContent = template.description;
       const count = document.createElement('p'); count.className = 'text-xs text-gray-400 mb-4'; count.textContent = `${template.tools.length} tools · Configure personal OAuth after installation`;

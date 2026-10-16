@@ -13,6 +13,7 @@ A standalone WordPress add-on for personal MCP connections, project gateways and
 - Select and import up to 100 Remote MCP entries with individual results, renaming and retry support.
 - Codex Desktop Quick Connect with direct HTTP and copyable `config.toml` entries.
 - A redacting configuration converter for Claude/Cursor JSON, VS Code JSON and Codex TOML.
+- Google Health native read tools, personal Google OAuth, daily/weekly summaries and available nutrition reads.
 - Five marketing templates that install into empty native servers in draft status.
 - A separate hosted MCP catalogue with native styling, Save & Authorize and current-user access defaults, without creating native tools.
 - Editable authentication fields and encrypted custom headers. Blank saved-secret fields preserve existing values.
@@ -44,6 +45,7 @@ Activation installs an owned persistent endpoint guard in `wp-content/mu-plugins
 - [Hosted MCP catalogue and gateway setup](docs/remote-catalogue.md)
 - [Local 1.2.0 verification](docs/verification-1.2.0.md)
 - [User access API](docs/api-user-access.md) and [gateway API/hooks](docs/api-gateways.md)
+- [Google Health setup and boundaries](docs/google-health.md)
 - [Marketing connections and setup API](docs/marketing.md)
 - [Token-free updates and releases](docs/releases.md)
 - [Architecture and Graphify](docs/architecture.md)

@@ -48,16 +48,16 @@
     "semantic_hash": "0724d40dffe4a3ebfcd040753329a37b"
   },
   "getmcp-extensions.php": {
-    "mtime": 1792028336.8228202,
-    "seen": 1792076381.7218046,
-    "ast_hash": "790af6c2071e7eb97eb39d41628212b4",
-    "semantic_hash": "790af6c2071e7eb97eb39d41628212b4"
+    "mtime": 1792158756.9637063,
+    "seen": 1792158929.8717673,
+    "ast_hash": "824207ddc2108dc2ab40987e39d05e09",
+    "semantic_hash": "824207ddc2108dc2ab40987e39d05e09"
   },
   "includes/class-authentication-settings.php": {
-    "mtime": 1791305254.347215,
-    "seen": 1791306305.7254012,
-    "ast_hash": "74a027bf6c2f77ce536131f793cd987b",
-    "semantic_hash": "74a027bf6c2f77ce536131f793cd987b"
+    "mtime": 1792123334.2032025,
+    "seen": 1792123544.2436657,
+    "ast_hash": "89a5662794221a020cd5eb7480205eed",
+    "semantic_hash": "89a5662794221a020cd5eb7480205eed"
   },
   "includes/class-configuration-import.php": {
     "mtime": 1791308987.8773017,
@@ -84,10 +84,10 @@
     "semantic_hash": "866df4cf21bd315b95005102dd0839cc"
   },
   "includes/class-marketing-module.php": {
-    "mtime": 1791334813.9601693,
-    "seen": 1791335068.02596,
-    "ast_hash": "a40f8fdcb1aecc2f719ae7b86960f11d",
-    "semantic_hash": "a40f8fdcb1aecc2f719ae7b86960f11d"
+    "mtime": 1792122578.1030855,
+    "seen": 1792123005.9436836,
+    "ast_hash": "d1c38ea2c7e28dc493f6411da8b077d1",
+    "semantic_hash": "d1c38ea2c7e28dc493f6411da8b077d1"
   },
   "includes/class-page-tokens.php": {
     "mtime": 1791305254.351467,
@@ -102,16 +102,16 @@
     "semantic_hash": "ab56eca96625d5345c83f053c8cc41a5"
   },
   "includes/class-provider-connections.php": {
-    "mtime": 1791334813.4763973,
-    "seen": 1791335068.0261927,
-    "ast_hash": "2dd125af380298f7af0f0e1514cd3307",
-    "semantic_hash": "2dd125af380298f7af0f0e1514cd3307"
+    "mtime": 1792122523.0011883,
+    "seen": 1792123005.9439354,
+    "ast_hash": "31403938e4d2d0351c4449060efaccf2",
+    "semantic_hash": "31403938e4d2d0351c4449060efaccf2"
   },
   "includes/class-provider-discovery.php": {
-    "mtime": 1791335149.5353575,
-    "seen": 1791335434.893843,
-    "ast_hash": "f9adff702faa25af865b37f42e80c939",
-    "semantic_hash": "f9adff702faa25af865b37f42e80c939"
+    "mtime": 1792122577.519045,
+    "seen": 1792123005.943937,
+    "ast_hash": "7b6d15c324a9bc613e01a36f0e1f4598",
+    "semantic_hash": "7b6d15c324a9bc613e01a36f0e1f4598"
   },
   "includes/class-provider-execution.php": {
     "mtime": 1791305254.353469,
@@ -132,10 +132,10 @@
     "semantic_hash": "fdb69545c65c24057b3593b70bc55156"
   },
   "includes/class-runtime.php": {
-    "mtime": 1792077799.9680886,
-    "seen": 1792077963.1043415,
-    "ast_hash": "25849915dac73588cbf0e22ebf7b8e8e",
-    "semantic_hash": "25849915dac73588cbf0e22ebf7b8e8e"
+    "mtime": 1792122523.0021884,
+    "seen": 1792123005.944514,
+    "ast_hash": "8951296d2006d780a081ad8fef26f004",
+    "semantic_hash": "8951296d2006d780a081ad8fef26f004"
   },
   "includes/class-updater.php": {
     "mtime": 1791659821.3694053,
@@ -144,10 +144,10 @@
     "semantic_hash": "0a209415b2e1332cc96cba122ac19361"
   },
   "includes/endpoint-guard.php": {
-    "mtime": 1791305254.3554666,
-    "seen": 1791306305.7254174,
-    "ast_hash": "12e65f1d675484657653e6826f1aa9a3",
-    "semantic_hash": "12e65f1d675484657653e6826f1aa9a3"
+    "mtime": 1792122523.0021884,
+    "seen": 1792123005.9451072,
+    "ast_hash": "14476db8347b7f41efb1fb7f5d834c52",
+    "semantic_hash": "14476db8347b7f41efb1fb7f5d834c52"
   },
   "tools/build.py": {
     "mtime": 1791305254.3666868,
@@ -168,16 +168,16 @@
     "semantic_hash": "2b818855a77b30e28ba63035faa2c5ce"
   },
   "tools/build-release.py": {
-    "mtime": 1791588200.84694,
-    "seen": 1791588433.494891,
-    "ast_hash": "bc294b31d81d1010a13daccd478450f8",
-    "semantic_hash": "bc294b31d81d1010a13daccd478450f8"
+    "mtime": 1792158765.8875294,
+    "seen": 1792158929.8735192,
+    "ast_hash": "288ada23f815713f38bb5faf518a9e41",
+    "semantic_hash": "288ada23f815713f38bb5faf518a9e41"
   },
   "tools/sync-readme.py": {
-    "mtime": 1791305937.733711,
-    "seen": 1791306305.725422,
-    "ast_hash": "a2fd6f857d604db05976ab377ba5bb5a",
-    "semantic_hash": "a2fd6f857d604db05976ab377ba5bb5a"
+    "mtime": 1792158756.9787114,
+    "seen": 1792158929.8741784,
+    "ast_hash": "3e806a7bc5bd63881cc8ec480abd218d",
+    "semantic_hash": "3e806a7bc5bd63881cc8ec480abd218d"
   },
   "admin/connection-tools.js": {
     "mtime": 1791309088.5354612,
@@ -234,10 +234,10 @@
     "semantic_hash": "e5f409f2e914b9a8cc6c645ac554f2a2"
   },
   "includes/class-marketing-templates.php": {
-    "mtime": 1791310121.7810075,
-    "seen": 1791310310.4516063,
-    "ast_hash": "b5587a4f33eddcfaaee665b45d1f223b",
-    "semantic_hash": "b5587a4f33eddcfaaee665b45d1f223b"
+    "mtime": 1792122543.029531,
+    "seen": 1792123005.9436858,
+    "ast_hash": "4f4b9d19487bfeb9881eb1379069dd38",
+    "semantic_hash": "4f4b9d19487bfeb9881eb1379069dd38"
   },
   "tools/build-ui.py": {
     "mtime": 1792077472.7353556,
@@ -276,16 +276,16 @@
     "semantic_hash": "191e646ff8f251c1eecbb8c427491477"
   },
   "tools/build-release-handoff.py": {
-    "mtime": 1791644814.473849,
-    "seen": 1791645726.335151,
-    "ast_hash": "2702cd7ef123838c13a0a374298c624d",
-    "semantic_hash": "2702cd7ef123838c13a0a374298c624d"
+    "mtime": 1792158765.9184155,
+    "seen": 1792158929.8735175,
+    "ast_hash": "01f3c2f4adebb021cdf942ae91f88ecc",
+    "semantic_hash": "01f3c2f4adebb021cdf942ae91f88ecc"
   },
   "admin/marketing-catalogue.js": {
-    "mtime": 1791772739.441013,
-    "seen": 1791773463.2909408,
-    "ast_hash": "6fe30ca18e3cd6371f6777dd129066a6",
-    "semantic_hash": "6fe30ca18e3cd6371f6777dd129066a6"
+    "mtime": 1792122543.0305405,
+    "seen": 1792123005.9391246,
+    "ast_hash": "8f7d0bf9ad5a1492802df6516bc6f94d",
+    "semantic_hash": "8f7d0bf9ad5a1492802df6516bc6f94d"
   },
   "admin/remote-catalogue.js": {
     "mtime": 1792077520.1014006,
@@ -312,15 +312,39 @@
     "semantic_hash": "9a6c404016666f328ba3a7e17cbe8256"
   },
   "docs/testing/test-definitions.json": {
-    "mtime": 1792077960.3609073,
-    "seen": 1792077963.102592,
-    "ast_hash": "d12fe7c4c23405a53f44bd32c432161c",
-    "semantic_hash": "d12fe7c4c23405a53f44bd32c432161c"
+    "mtime": 1792123509.3892162,
+    "seen": 1792123544.243395,
+    "ast_hash": "2cb3b75066760df3aa4716f1fc1bf3f8",
+    "semantic_hash": "2cb3b75066760df3aa4716f1fc1bf3f8"
   },
   "tools/handoff-catalogue.py": {
     "mtime": 1792078554.430989,
     "seen": 1792078590.3854585,
     "ast_hash": "f40f4b847a670d60923f5c1ea0486cb4",
     "semantic_hash": "f40f4b847a670d60923f5c1ea0486cb4"
+  },
+  "assets/templates/google-health.json": {
+    "mtime": 1792122479.7261827,
+    "seen": 1792123005.9408119,
+    "ast_hash": "1a8dfcf6571b7e93aec1dab9dd2253ee",
+    "semantic_hash": "1a8dfcf6571b7e93aec1dab9dd2253ee"
+  },
+  "includes/class-google-health.php": {
+    "mtime": 1792123334.2021132,
+    "seen": 1792123544.2440207,
+    "ast_hash": "07d7e1a0818f49c584a2ed160fb654b0",
+    "semantic_hash": "07d7e1a0818f49c584a2ed160fb654b0"
+  },
+  "tools/build-google-health-template.py": {
+    "mtime": 1792122479.309059,
+    "seen": 1792123005.94511,
+    "ast_hash": "720d553d76bc780706266925e4ea147c",
+    "semantic_hash": "720d553d76bc780706266925e4ea147c"
+  },
+  "tools/test-google-health.py": {
+    "mtime": 1792122943.566341,
+    "seen": 1792123005.9516294,
+    "ast_hash": "219980ae20ef222afbd80d065285b559",
+    "semantic_hash": "219980ae20ef222afbd80d065285b559"
   }
 }
