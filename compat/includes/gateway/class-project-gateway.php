@@ -10,7 +10,7 @@ use GetMCP\Remote\RemoteException;
 class ProjectGateway {
 
 	public static function members( Server $gateway ): array {
-		if ( McpGateway::is_gateway( $gateway ) ) { $included = McpGateway::included_servers(); return \GetMCPExtensions\LegacyBridge::is_180() ? \GetMCPExtensions\LegacyGateway180::members( $included ) : $included; }
+if ( McpGateway::is_gateway( $gateway ) ) { $included = McpGateway::included_servers(); return \GetMCPExtensions\LegacyBridge::is_180() ? \GetMCPExtensions\GatewayPersonal180::members( \GetMCPExtensions\LegacyGateway180::members( $included ) ) : $included; }
 		$live = ( new ServerManager() )->get( $gateway->id );
 		if ( ! $live || 'gateway' !== \GetMCPExtensions\LegacyBridge::kind( $live ) || 'active' !== $live->status ) { throw new RemoteException( 'This gateway is unavailable.', -32003 ); }
 		$settings = json_decode( $live->settings ?? '{}', true ) ?: array();

@@ -17,6 +17,7 @@ final class ProviderConnections {
         $enabled = GoogleHealth::is_server( $server ) ? GoogleHealth::enabled() : MarketingModule::enabled();
         if ( ! $enabled || ! self::supported( $server ) || $user < 1 || ! get_userdata( $user ) || ! user_can( $user, 'read' ) || 'active' !== $server->status ) { return false; }
         $settings = AuthenticationSettings::object( $server->settings );
+if ( true === ( $settings['personal_provider']['allow_all_users'] ?? false ) ) { return true; }
         if ( in_array( $user, $settings['personal_provider']['allowed_user_ids'] ?? array(), true ) ) { return true; }
         foreach ( \GetMCP\Gateway\FeatureManager::all() as $gateway ) {
 			if ( 'gateway' !== LegacyBridge::kind( $gateway ) || ! LegacyBridge::can_user_access( $user, $gateway ) ) { continue; }

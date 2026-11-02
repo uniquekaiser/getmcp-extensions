@@ -13,7 +13,7 @@ final class MarketingManagementTool {
             'clear_credentials' => array( 'type' => 'array', 'items' => array( 'type' => 'string', 'enum' => AuthenticationSettings::CREDENTIALS ) ),
             'auth_credentials' => $object + array( 'description' => 'Write-only encrypted application credentials; prefer private user entry.' ),
             'outbound_auth_type' => $text, 'outbound_auth_config' => $object, 'outbound_auth_credentials' => $object,
-            'personal_provider' => $object + array( 'additionalProperties' => false, 'properties' => array( 'allowed_user_ids' => array( 'type' => 'array', 'uniqueItems' => true, 'items' => array( 'type' => 'integer', 'minimum' => 1 ) ), 'preset' => $text ) ),
+            'personal_provider' => $object + array( 'additionalProperties' => false, 'properties' => array( 'allowed_user_ids' => array( 'type' => 'array', 'uniqueItems' => true, 'items' => array( 'type' => 'integer', 'minimum' => 1 ) ), 'allow_all_users' => array( 'type' => 'boolean', 'description' => 'Allow eligible WordPress users to connect their own provider accounts.' ), 'enabled' => array( 'type' => 'boolean' ), 'preset' => $text ) ),
             'token_sources' => $object + array( 'additionalProperties' => array( 'type' => 'string', 'enum' => array( 'user', 'page' ) ) ),
             'revision' => $text, 'body_template' => array( 'type' => array( 'object', 'null' ) ),
             'annotations' => $object, 'headers' => $object + array( 'additionalProperties' => $text, 'description' => 'Static noncredential headers. Store credentials at connection level.' ),

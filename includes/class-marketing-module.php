@@ -148,7 +148,7 @@ final class MarketingModule {
         if ( isset( $args['personal_provider'] ) ) {
             $p = AuthenticationSettings::object( $args['personal_provider'] );
             $ids = \GetMCP\Auth\OAuthUserAccess::validate_ids( $p['allowed_user_ids'] ?? array() );
-            if ( is_wp_error( $ids ) || array_diff( array_keys( $p ), array( 'allowed_user_ids', 'preset' ) ) ) { throw new \InvalidArgumentException( 'Invalid personal connection allowlist.' ); }
+if ( is_wp_error( $ids ) || array_diff( array_keys( $p ), array( 'allowed_user_ids', 'preset', 'allow_all_users', 'enabled' ) ) || ( isset( $p['allow_all_users'] ) && ! is_bool( $p['allow_all_users'] ) ) || ( isset( $p['enabled'] ) && ! is_bool( $p['enabled'] ) ) ) { throw new \InvalidArgumentException( 'Invalid personal connection allowlist.' ); }
             if ( isset( $p['preset'] ) && ! array_key_exists( $p['preset'], ProviderDiscovery::presets() ) ) { throw new \InvalidArgumentException( 'Unknown provider preset.' ); }
             $settings['personal_provider'] = $p;
         }

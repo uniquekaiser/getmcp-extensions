@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,16 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.5.0 =
+
+* [NEW] Allow all eligible WordPress users to connect their own provider accounts when an administrator enables that policy.
+* [IMPROVE] Restore eligible personal OAuth provider tools to the GetMCP 1.8 account Gateway using each caller’s own saved grant.
+* [FIX] Migrate eligible paused project gateways that retain supported provider timeout and disabled privacy settings without changing their status or membership.
+* [FIX] Automatically migrate eligible legacy native and mailbox servers with supported timeout settings while preserving their credentials and access rules.
+* [FIX] Report gateway and remote connection readiness using their actual configuration and make pending migration reviews easier to locate.
+* [SECURITY] Keep unreviewed endpoints, unavailable grants and accounts without permission out of the account Gateway; preserve prior access rules when migration history cannot be verified.
+* [DEV] Add disposable migration, readiness and personal OAuth isolation regression checks.
 
 = 1.4.0 =
 

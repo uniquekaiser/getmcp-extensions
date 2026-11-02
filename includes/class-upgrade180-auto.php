@@ -28,15 +28,17 @@ final class Upgrade180Auto {
 		if ( ! current_user_can( 'manage_options' ) || ! Runtime::ready() || 'vendor-original-1.8.0' !== Runtime::profile() ) { return; }
 		$scope = self::scope(); if ( is_wp_error( $scope ) || array() === $scope ) { return; }
 		global $wpdb; $where = self::scope_sql( $scope );
-		$rows = $wpdb->get_col( $wpdb->prepare( "SELECT auth_config FROM {$wpdb->prefix}getmcp_servers WHERE auth_type='oauth' AND server_kind IN ('native','remote-mcp','gateway') AND auth_config LIKE %s {$where}", '%getmcp%' ) );
+		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT id,name,status,auth_config FROM {$wpdb->prefix}getmcp_servers WHERE auth_type='oauth' AND server_kind IN ('native','remote-mcp','gateway') AND auth_config LIKE %s {$where} ORDER BY name,id", '%getmcp%' ), ARRAY_A );
 		if ( ! is_array( $rows ) ) { return; }
-		foreach ( $rows as $raw ) {
-			$config = json_decode( (string) $raw, true );
+		$affected = array();
+		foreach ( $rows as $row ) {
+			$config = json_decode( (string) $row['auth_config'], true );
 			if ( is_array( $config ) && 'getmcp' !== ( $config['provider'] ?? null ) ) { continue; }
-			$url = esc_url( admin_url( 'admin.php?page=getmcp-extensions' ) );
-			echo '<div class="notice notice-warning"><p>One or more legacy servers could not be migrated automatically. Their existing settings and credentials have been kept and affected endpoints remain protected. Please review the servers and any pending authorization. <a href="' . $url . '">Open Extensions</a>.</p></div>';
-			return;
+			$affected[] = esc_html( (string) $row['name'] ) . ' (ID ' . (int) $row['id'] . ', ' . esc_html( (string) $row['status'] ) . ')';
 		}
+		if ( ! $affected ) { return; }
+		$url = esc_url( admin_url( 'admin.php?page=getmcp-extensions' ) );
+		echo '<div class="notice notice-warning"><p>Some legacy servers still need a safe migration. Their existing settings and credentials have been kept and affected endpoints remain protected. Affected servers: ' . implode( ', ', $affected ) . '. Migration is retried automatically; review their configuration and any pending authorization before making changes. <a href="' . $url . '">Open Extensions</a>.</p></div>';
 	}
 
 	/** Convert only the currently reviewed legacy remote/gateway sign-in shape. */
@@ -148,8 +150,10 @@ final class Upgrade180Auto {
 		return true;
 	}
 
+	/** @wp-test feature=upgrade.180 scenario=native-timeout-migration */
 	private static function safe_native_settings( array $settings ): bool {
 		foreach ( $settings as $key => $value ) {
+			if ( 'default_timeout' === $key && is_int( $value ) && $value >= 1 && $value <= 300 ) { continue; }
 			if ( in_array( $key, array( 'description', 'instructions', 'logo_url', 'icon_data' ), true ) && is_string( $value ) ) { continue; }
 			if ( 'logo_id' === $key && is_int( $value ) && $value >= 0 ) { continue; }
 			if ( 'launch_kit' === $key && is_array( $value ) && ( ! $value || ! array_is_list( $value ) ) && ! array_diff( array_keys( $value ), array_keys( \GetMCP\LaunchKit\LaunchKitSettings::defaults() ) ) ) { continue; }
@@ -252,15 +256,22 @@ final class Upgrade180Auto {
 	}
 
 	/** Allow only reviewed personal-provider hosts and user-token tools. */
-	private static function safe_personal_provider_member( array $row ): bool {
+public static function safe_personal_provider_member( array $row ): bool {
 		if ( 'standard' !== ( $row['kind'] ?? null ) || 'oauth' !== ( $row['auth_type'] ?? null ) || ! MarketingModule::enabled() ) { return false; }
 		$raw = json_decode( (string) $row['settings'] ); $settings = json_decode( (string) $row['settings'], true );
-		if ( ! is_object( $raw ) || ! is_array( $settings ) || array_diff( array_keys( $settings ), array( 'getmcp_extensions_required', 'instructions', 'description', 'personal_provider', 'provider_token_sources' ) ) ) { return false; }
+		if ( ! is_object( $raw ) || ! is_array( $settings ) || array_diff( array_keys( $settings ), array( 'getmcp_extensions_required', 'instructions', 'description', 'personal_provider', 'provider_token_sources', 'default_timeout', 'pii_redaction' ) ) ) { return false; }
 		if ( isset( $settings['getmcp_extensions_required'] ) && ! is_bool( $settings['getmcp_extensions_required'] ) ) { return false; }
 		foreach ( array( 'instructions', 'description' ) as $key ) { if ( isset( $settings[$key] ) && ! is_string( $settings[$key] ) ) { return false; } }
+		// These existing execution preferences do not change provider access. Keep
+		// the reviewed disabled-redaction shape intact; unknown policies defer.
+		if ( array_key_exists( 'default_timeout', $settings ) && ( ! is_int( $settings['default_timeout'] ) || $settings['default_timeout'] < 1 || $settings['default_timeout'] > 300 ) ) { return false; }
+		if ( array_key_exists( 'pii_redaction', $settings ) ) {
+			$pii = $settings['pii_redaction'];
+			if ( ! is_object( $raw->pii_redaction ?? null ) || ! is_array( $pii ) || array_diff( array_keys( $pii ), array( 'enabled', 'scope', 'presets', 'custom' ) ) || false !== ( $pii['enabled'] ?? null ) || 'both' !== ( $pii['scope'] ?? null ) || array() !== ( $pii['presets'] ?? null ) || array() !== ( $pii['custom'] ?? null ) ) { return false; }
+		}
 		if ( isset( $settings['personal_provider'] ) ) {
 			$personal = $settings['personal_provider'];
-			if ( ! is_object( $raw->personal_provider ?? null ) || ! is_array( $personal ) || array_diff( array_keys( $personal ), array( 'allowed_user_ids', 'preset', 'enabled' ) ) || ( isset( $personal['enabled'] ) && ! is_bool( $personal['enabled'] ) ) ) { return false; }
+if ( ! is_object( $raw->personal_provider ?? null ) || ! is_array( $personal ) || array_diff( array_keys( $personal ), array( 'allowed_user_ids', 'preset', 'enabled', 'allow_all_users' ) ) || ( isset( $personal['enabled'] ) && ! is_bool( $personal['enabled'] ) ) || ( isset( $personal['allow_all_users'] ) && ! is_bool( $personal['allow_all_users'] ) ) ) { return false; }
 			if ( isset( $personal['preset'] ) && ( ! is_string( $personal['preset'] ) || ! array_key_exists( $personal['preset'], ProviderDiscovery::presets() ) ) ) { return false; }
 			if ( isset( $personal['allowed_user_ids'] ) ) {
 				if ( ! is_array( $personal['allowed_user_ids'] ) || ! array_is_list( $personal['allowed_user_ids'] ) ) { return false; }
@@ -312,7 +323,7 @@ final class Upgrade180Auto {
 		foreach ( array( 'instructions', 'description' ) as $key ) { if ( isset( $settings[$key] ) && ! is_string( $settings[$key] ) ) { return false; } }
 		if ( isset( $settings['personal_provider'] ) ) {
 			$personal = $settings['personal_provider'];
-			if ( ! is_object( $raw->personal_provider ?? null ) || ! is_array( $personal ) || array_diff( array_keys( $personal ), array( 'allowed_user_ids', 'preset', 'enabled' ) ) || ( isset( $personal['enabled'] ) && ! is_bool( $personal['enabled'] ) ) || ( isset( $personal['preset'] ) && 'google-health' !== $personal['preset'] ) ) { return false; }
+if ( ! is_object( $raw->personal_provider ?? null ) || ! is_array( $personal ) || array_diff( array_keys( $personal ), array( 'allowed_user_ids', 'preset', 'enabled', 'allow_all_users' ) ) || ( isset( $personal['enabled'] ) && ! is_bool( $personal['enabled'] ) ) || ( isset( $personal['allow_all_users'] ) && ! is_bool( $personal['allow_all_users'] ) ) || ( isset( $personal['preset'] ) && 'google-health' !== $personal['preset'] ) ) { return false; }
 			if ( isset( $personal['allowed_user_ids'] ) ) {
 				if ( ! is_array( $personal['allowed_user_ids'] ) || ! array_is_list( $personal['allowed_user_ids'] ) ) { return false; }
 				foreach ( $personal['allowed_user_ids'] as $user_id ) { if ( ! is_int( $user_id ) || $user_id < 1 ) { return false; } }

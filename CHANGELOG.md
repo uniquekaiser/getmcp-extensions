@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0 - 2026-11-01
+
+- [NEW] Allow all eligible WordPress users to connect their own provider accounts when an administrator enables that policy.
+- [IMPROVE] Restore eligible personal OAuth provider tools to the GetMCP 1.8 account Gateway using each caller’s own saved grant.
+- [FIX] Migrate eligible paused project gateways that retain supported provider timeout and disabled privacy settings without changing their status or membership.
+- [FIX] Automatically migrate eligible legacy native and mailbox servers with supported timeout settings while preserving their credentials and access rules.
+- [FIX] Report gateway and remote connection readiness using their actual configuration and make pending migration reviews easier to locate.
+- [SECURITY] Keep unreviewed endpoints, unavailable grants and accounts without permission out of the account Gateway; preserve prior access rules when migration history cannot be verified.
+- [DEV] Add disposable migration, readiness and personal OAuth isolation regression checks.
+
 ## 1.4.0 - 2026-11-01
 
 - [COMPAT] Support the reviewed GetMCP 1.8.0 release while retaining compatibility with supported earlier installations.

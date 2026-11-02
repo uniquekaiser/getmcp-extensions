@@ -8,7 +8,7 @@ final class Upgrade180 {
 		'\\GetMCP\\Protocol\\JsonRpcRouter' => array( 'compat/versions/1.8.0/includes/protocol/class-json-rpc-router.php', 'aad5de890f9fb2f6ed8a0ca7c707770fd55f5a02a8712860b2ff9be92c6d24cb' ),
 		'\\GetMCP\\Execution\\ToolExecutor' => array( 'compat/versions/1.8.0/includes/execution/class-tool-executor.php', '3a425e30af7c824a77e86817c3625a902e6474c824c64c8e75588bdff9429be6' ),
 		'\\GetMCP\\Protocol\\ToolsCallHandler' => array( 'compat/versions/1.8.0/includes/protocol/class-tools-call-handler.php', '59ab605f61b814690af27777575fa95b3a7fe3340de896be648cbf77c95c2124' ),
-		'\\GetMCP\\Api\\ServersController' => array( 'compat/versions/1.8.0/includes/api/class-servers-controller.php', 'ea4df4a75b632c4542292192175abc4596a3a86e55065f7b7887fbaa5d6d6e66' ),
+		'\\GetMCP\\Api\\ServersController' => array( 'compat/versions/1.8.0/includes/api/class-servers-controller.php', '0f79a5f1d234edb330bcc9cda6dc76522177c4089654685c1c9e3c7f6f87f7cf' ),
 		'\\GetMCP\\Builtin\\BuiltinTools' => array( 'compat/versions/1.8.0/includes/builtin/class-builtin-tools.php', '1f2769370078257aa02fdbe505e942780f0557b6718413c66d04721568f9dfa8' ),
 	);
     /** @wp-test feature=upgrade.180 scenario=preview-refusal */

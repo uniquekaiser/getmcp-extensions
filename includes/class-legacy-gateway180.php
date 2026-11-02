@@ -95,10 +95,16 @@ final class LegacyGateway180 {
 	 * @wp-test feature=upgrade.180 scenario=gateway-history-notice
 	 */
 	public static function review_required(): bool {
-		if ( ! Runtime::ready() || 'vendor-original-1.8.0' !== Runtime::profile() || ! \GetMCP\Gateway\McpGateway::is_enabled() ) { return false; }
+		return (bool) self::review_items();
+	}
+
+	/** Describe the review without exposing credentials or changing current access. */
+	private static function review_items(): array {
+		if ( ! Runtime::ready() || 'vendor-original-1.8.0' !== Runtime::profile() || ! \GetMCP\Gateway\McpGateway::is_enabled() ) { return array(); }
 		$raw = get_option( self::OPTION, false ); $snapshot = is_string( $raw ) ? json_decode( $raw, true ) : null;
 		$valid = is_array( $snapshot ) && is_array( $snapshot['members'] ?? null ) && is_array( $snapshot['keys'] ?? null ) && is_bool( $snapshot['boundary_ambiguous'] ?? false ) && is_string( $snapshot['signature'] ?? null ) && preg_match( '/\A[a-f0-9]{64}\z/D', $snapshot['signature'] ) && hash_equals( self::signature( $snapshot['members'], $snapshot['keys'], $snapshot['boundary_ambiguous'] ?? false ), $snapshot['signature'] );
-		if ( $valid && ! empty( $snapshot['boundary_ambiguous'] ) ) { return true; }
+		$items = array();
+		if ( $valid && ! empty( $snapshot['boundary_ambiguous'] ) ) { $items[] = 'Previous Gateway policy'; }
 		$raw_ledger = get_option( Upgrade180Auto::LEDGER, false ); $ledger = is_string( $raw_ledger ) ? json_decode( $raw_ledger, true ) : null;
 		if ( ! is_array( $ledger ) ) { $ledger = array(); }
 		$gateway = \GetMCP\Gateway\McpGateway::class; $mode = $gateway::mode(); $auth_type = $gateway::auth_type(); $selected = $gateway::selected_server_ids();
@@ -107,21 +113,29 @@ final class LegacyGateway180 {
 			$id = (int) $server->id; $explicit = in_array( $id, $selected, true );
 			if ( $id <= 0 || \GetMCP\Builtin\BuiltinServer::slug_is_reserved( $server->slug ) || ( 'selected' === $mode && ! $explicit ) || ( 'none' === $auth_type && 'none' !== $server->auth_type && ! $explicit ) ) { continue; }
 			$kind = LegacyBridge::kind( $server ); $auth = json_decode( (string) $server->auth_config, true );
-			if ( ! in_array( $kind, array( 'native', 'remote-mcp', 'gateway' ), true ) || ! is_array( $auth ) || 'getmcp' !== ( $auth['provider'] ?? null ) ) { continue; }
-			if ( 'oauth' === $server->auth_type ) { return true; }
+			// Project gateways were never nested in the account Gateway. Remote
+			// servers were included only when explicitly published there.
+			if ( ! in_array( $kind, array( 'native', 'remote-mcp' ), true ) || ! is_array( $auth ) || 'getmcp' !== ( $auth['provider'] ?? null ) ) { continue; }
+			if ( 'remote-mcp' === $kind ) {
+				$settings = json_decode( (string) $server->settings, true );
+				if ( ! is_array( $settings ) || empty( $settings['remote_mcp']['publish_original'] ) || ! Runtime::server_enabled( $server ) ) { continue; }
+			}
+			if ( 'oauth' === $server->auth_type ) { $items[] = $server->name . ' (ID ' . $id . ')'; continue; }
 			if ( 'wordpress' !== $server->auth_type || 'oauth' !== ( $ledger[(string) $id] ?? null ) ) { continue; }
 			$identity = $server->uuid;
 			if ( 'oauth' !== $auth_type && 'remote-mcp' === $kind ) { $identity .= '|' . self::remote_digest( (string) $server->settings, (string) $server->outbound_auth_credentials ); }
 			$captured = $valid ? ( $snapshot['members'][(string) $id] ?? null ) : null;
-			if ( ! is_string( $captured ) || ! hash_equals( $captured, $identity ) ) { return true; }
+			if ( ! is_string( $captured ) || ! hash_equals( $captured, $identity ) ) { $items[] = $server->name . ' (ID ' . $id . ')'; }
 		}
-		return false;
+		return $items;
 	}
 
 	public static function notice(): void {
-		if ( ! current_user_can( 'manage_options' ) || ! self::review_required() ) { return; }
-		$url = esc_url( admin_url( 'admin.php?page=getmcp' ) );
-		echo '<div class="notice notice-warning"><p>GetMCP Extensions could not verify the previous access for one or more built-in Gateway members. Current access rules have been kept. Please review the Gateway and its member permissions. <a href="' . $url . '">Open GetMCP</a>.</p></div>';
+		if ( ! current_user_can( 'manage_options' ) ) { return; }
+		$items = self::review_items();
+		if ( ! $items ) { return; }
+		$url = esc_url( admin_url( 'admin.php?page=getmcp-gateway#/gateway' ) );
+		echo '<div class="notice notice-warning"><p>GetMCP Extensions could not verify previous access for these built-in Gateway items: ' . implode( ', ', array_map( 'esc_html', $items ) ) . '. Current access rules have been kept. Please review the Gateway and compare member permissions with a pre-upgrade record before changing access. <a href="' . $url . '">Open Gateway</a>.</p></div>';
 	}
 
 	/** A current managed key must also be one captured before the upgrade. */

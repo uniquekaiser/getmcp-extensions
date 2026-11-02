@@ -11,7 +11,7 @@ $asset = \GetMCPExtensions\GoogleHealth::asset(); $data = $asset['server'];
 $data['name'] = 'QA 180 health migration member'; $data['slug'] = 'qa-180-health-member-' . substr( wp_generate_uuid4(), 0, 8 ); $data['status'] = 'active';
 $data['auth_config']['client_id'] = 'synthetic-health-client'; $data['auth_config'] = wp_json_encode( $data['auth_config'] );
 $data['auth_credentials'] = wp_json_encode( array( 'client_secret' => 'synthetic-health-secret' ) );
-$data['settings']['personal_provider'] = array( 'enabled' => true, 'preset' => 'google-health', 'allowed_user_ids' => array() ); $data['settings'] = wp_json_encode( $data['settings'] );
+$data['settings']['personal_provider'] = array( 'enabled' => true, 'preset' => 'google-health', 'allowed_user_ids' => array(), 'allow_all_users' => true ); $data['settings'] = wp_json_encode( $data['settings'] );
 $server = $manager->create( $data );
 if ( ! $server || $server->slug !== $data['slug'] ) { throw new RuntimeException( 'Could not create synthetic health server.' ); }
 $gateway_id = 0; $tool_id = 0; $scope = array(); $checks = 0; $previous_user = get_current_user_id();

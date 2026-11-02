@@ -1752,6 +1752,37 @@ class ServersController extends WP_REST_Controller {
 			),
 		);
 
+		// Legacy add-on gateways and remotes retain their own kind in the
+		// server_kind column, which native 1.8 Server objects do not hydrate.
+		// @wp-test feature=upgrade.180 scenario=legacy-gateway-readiness
+		// @wp-test feature=upgrade.180 scenario=legacy-gateway-readiness-refusal
+		$legacy_kind = \GetMCPExtensions\LegacyBridge::kind( $server );
+		if ( ! $server->is_bundle() && ! $server->is_remote() && 'gateway' === $legacy_kind ) {
+			$settings = json_decode( (string) $server->settings, true );
+			$configured = is_array( $settings['gateway']['server_ids'] ?? null ) ? count( $settings['gateway']['server_ids'] ) : 0;
+			$published = 0;
+			if ( 'active' === $server->status && \GetMCPExtensions\Runtime::enabled( 'project_gateways' ) ) {
+				try { $published = count( \GetMCP\Gateway\ProjectGateway::members( $server ) ); } catch ( \Throwable $e ) { $published = 0; }
+			}
+			$capabilities_check = array(
+				'id' => 'capabilities', 'label' => __( 'Has servers', 'getmcp' ),
+				'status' => $published > 0 ? 'pass' : 'fail',
+				'message' => sprintf( __( '%1$d of %2$d servers in this project gateway are published.', 'getmcp' ), $published, $configured ),
+			);
+		} elseif ( ! $server->is_bundle() && ! $server->is_remote() && 'remote-mcp' === $legacy_kind ) {
+			$settings = json_decode( (string) $server->settings, true );
+			$remote = $settings['remote_mcp'] ?? null;
+			$valid = \GetMCPExtensions\Runtime::enabled( 'remote_mcp' ) && is_array( $remote ) && is_string( $remote['endpoint'] ?? null ) && in_array( $remote['auth_mode'] ?? null, array( 'none', 'shared', 'oauth' ), true );
+			if ( $valid ) {
+				try { \GetMCP\Remote\SafeHttp::validate_url( $remote['endpoint'] ); } catch ( \Throwable $e ) { $valid = false; }
+			}
+			$capabilities_check = array(
+				'id' => 'capabilities', 'label' => __( 'Has an upstream', 'getmcp' ),
+				'status' => $valid ? 'pass' : 'fail',
+				'message' => $valid ? __( 'Tools come from the connected MCP server.', 'getmcp' ) : __( 'The remote connection is unavailable or needs a valid URL.', 'getmcp' ),
+			);
+		}
+
 		// A bundle owns no tools of its own; what it serves is its members.
 		// Counting its own rows would mark every bundle "not ready".
 		if ( $server->is_bundle() ) {
