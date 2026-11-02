@@ -89,6 +89,7 @@ final class Runtime {
         if ( ! defined( 'GETMCP_EXTENSIONS_READY' ) ) { define( 'GETMCP_EXTENSIONS_READY', true ); }
         if ( ! $native ) { \GetMCP\Gateway\FeatureModule::register(); }
         MarketingModule::boot();
+        add_action( 'rest_api_init', array( PublicGateway180::class, 'routes' ), 40 );
         ConnectionScreens::boot();
         MarketingTemplates::boot();
         RemoteCatalogue::boot();

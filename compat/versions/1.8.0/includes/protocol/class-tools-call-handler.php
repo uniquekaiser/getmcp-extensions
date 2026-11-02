@@ -210,7 +210,7 @@ class ToolsCallHandler implements HandlerInterface {
 		// and its return value replaces ours. A health tool's arguments and
 		// answer describe the user's health, so health calls skip all three
 		// third-party filters below. This is why the lookup runs first.
-		$health         = HealthData::is_health_tool( $tool ) || \GetMCPExtensions\GoogleHealth::protects( $tool, $this->server );
+		$health         = HealthData::is_health_tool( $tool ) || \GetMCPExtensions\GoogleHealth::protects( $tool, $this->server ) || \GetMCPExtensions\ProviderPrivacy::sensitive( $tool, $this->server );
 		$progress_token = null;
 
 		if ( ! $health ) {
@@ -396,7 +396,8 @@ class ToolsCallHandler implements HandlerInterface {
 			$response_time_ms = (int) ( ( microtime( true ) - $start_time ) * 1000 );
 
 			/** This action is documented in includes/protocol/class-tools-call-handler.php */
-			do_action( 'getmcp_tool_call_failed', $tool, $hook_args, $e, $response_time_ms );
+			$hook_error = \GetMCPExtensions\ProviderPrivacy::sensitive( $tool, $this->server ) ? new \RuntimeException( 'Personal health request failed.' ) : $e;
+			do_action( 'getmcp_tool_call_failed', $tool, $hook_args, $hook_error, $response_time_ms );
 
 			// A quota refusal is not a tool result. Returned as isError content
 			// it looked to the client like the upstream API had answered, and
@@ -424,7 +425,8 @@ class ToolsCallHandler implements HandlerInterface {
 			 * @param \Throwable           $error            The exception.
 			 * @param int                  $response_time_ms Response time in ms.
 			 */
-			do_action( 'getmcp_tool_call_failed', $tool, $hook_args, $e, $response_time_ms );
+			$hook_error = \GetMCPExtensions\ProviderPrivacy::sensitive( $tool, $this->server ) ? new \RuntimeException( 'Personal health request failed.' ) : $e;
+			do_action( 'getmcp_tool_call_failed', $tool, $hook_args, $hook_error, $response_time_ms );
 
 			return array(
 				'content' => array(

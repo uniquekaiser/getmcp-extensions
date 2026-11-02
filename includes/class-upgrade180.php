@@ -6,8 +6,8 @@ final class Upgrade180 {
 	private const ADAPTERS_180 = array(
 		'\\GetMCP\\Core\\ServerManager' => array( 'compat/versions/1.8.0/includes/core/class-server-manager.php', '297a8916c6e50dd11b7eb97fa5be92464d581e33dbdcea3148f42226514659eb' ),
 		'\\GetMCP\\Protocol\\JsonRpcRouter' => array( 'compat/versions/1.8.0/includes/protocol/class-json-rpc-router.php', 'aad5de890f9fb2f6ed8a0ca7c707770fd55f5a02a8712860b2ff9be92c6d24cb' ),
-		'\\GetMCP\\Execution\\ToolExecutor' => array( 'compat/versions/1.8.0/includes/execution/class-tool-executor.php', '3a425e30af7c824a77e86817c3625a902e6474c824c64c8e75588bdff9429be6' ),
-		'\\GetMCP\\Protocol\\ToolsCallHandler' => array( 'compat/versions/1.8.0/includes/protocol/class-tools-call-handler.php', '59ab605f61b814690af27777575fa95b3a7fe3340de896be648cbf77c95c2124' ),
+		'\\GetMCP\\Execution\\ToolExecutor' => array( 'compat/versions/1.8.0/includes/execution/class-tool-executor.php', '6e8e9040cd503dd522b6cc2e5b9306130db9447decd1e06971909ade1c3ad6cc' ),
+		'\\GetMCP\\Protocol\\ToolsCallHandler' => array( 'compat/versions/1.8.0/includes/protocol/class-tools-call-handler.php', '1b52b00d1990efddd02b20bc23631cefe42d51b76b33d565bff1c2c8cac80390' ),
 		'\\GetMCP\\Api\\ServersController' => array( 'compat/versions/1.8.0/includes/api/class-servers-controller.php', '0f79a5f1d234edb330bcc9cda6dc76522177c4089654685c1c9e3c7f6f87f7cf' ),
 		'\\GetMCP\\Builtin\\BuiltinTools' => array( 'compat/versions/1.8.0/includes/builtin/class-builtin-tools.php', '1f2769370078257aa02fdbe505e942780f0557b6718413c66d04721568f9dfa8' ),
 	);

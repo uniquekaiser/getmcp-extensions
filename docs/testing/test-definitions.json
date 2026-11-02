@@ -388,6 +388,72 @@
           "status": "gap",
           "reason": "Synthetic local migration tests pass; browser-based upgrade verification remains pending.",
           "recovery": "Run a disposable 1.7 to 1.8 upgrade through the admin UI."
+        },
+        {
+          "id": "oura-personal-grant",
+          "title": "Keep Oura authorization and rotation bound to each user",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-provider-connections.php",
+              "line": 70
+            }
+          ],
+          "inputs": {
+            "fixture": "Two eligible users and synthetic Oura tokens with single-use refresh"
+          },
+          "status": "gap",
+          "reason": "Disposable WordPress runtime checks passed locally; Studio browser execution and real-provider acceptance are not established.",
+          "recovery": "Connect separately, call through a Gateway, rotate a token and confirm independent encrypted grants."
+        },
+        {
+          "id": "oura-personal-privacy",
+          "title": "Refuse cross-user Oura access and omit health payloads from logs",
+          "case": "refusal",
+          "role": "subscriber",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-provider-privacy.php",
+              "line": 5
+            }
+          ],
+          "inputs": {
+            "fixture": "Two users with distinct health responses, an invalid endpoint and an interrupted refresh"
+          },
+          "status": "gap",
+          "reason": "Disposable WordPress runtime checks passed locally; Studio browser execution and real-provider acceptance are not established.",
+          "recovery": "Exercise direct denied calls and inspect caches, logs, hooks and saved token state."
+        },
+        {
+          "id": "public-gateway-access",
+          "title": "Restore only explicitly granted public read-only Gateway access",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-public-gateway180.php",
+              "line": 61
+            }
+          ],
+          "inputs": {
+            "fixture": "An opted-in public origin, one granted and one ungranted user, and an active project gateway"
+          },
+          "status": "gap",
+          "reason": "Disposable WordPress runtime checks passed locally; Studio browser execution and real-provider acceptance are not established.",
+          "recovery": "Verify both gateway routes, stripped credentials, revocation, and refusal after an endpoint or method change."
         }
       ]
     },

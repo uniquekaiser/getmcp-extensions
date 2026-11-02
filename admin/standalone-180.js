@@ -63,6 +63,7 @@
       const [servers, setServers] = React.useState([]), [page, setPage] = React.useState(1), [more, setMore] = React.useState(false);
       const [selected, setSelected] = React.useState(''), [data, setData] = React.useState(null), [sources, setSources] = React.useState([]);
       const [dirty, setDirty] = React.useState(false), [busy, setBusy] = React.useState(false), [error, setError] = React.useState('');
+      const [publicServer, setPublicServer] = React.useState(''), [publicPolicy, setPublicPolicy] = React.useState(null), [publicBusy, setPublicBusy] = React.useState(false);
       React.useEffect(() => {
         let active = true;
         api('servers', {params: {page, per_page: 50}}).then(result => {
@@ -82,6 +83,19 @@
         }).catch(e => { if (active) setError(e.message || 'Could not load provider settings.'); });
         return () => { active = false; };
       }, [selected]);
+      React.useEffect(() => {
+        let active = true; setPublicPolicy(null);
+        if (publicServer) wp.apiFetch({path: '/getmcp-extensions/v1/servers/' + encodeURIComponent(publicServer) + '/public-upstream'}).then(value => { if (active) setPublicPolicy(value); }).catch(e => { if (active) setError(e.message || 'Could not load public upstream settings.'); });
+        return () => { active = false; };
+      }, [publicServer]);
+      const savePublic = async () => {
+        setPublicBusy(true); setError('');
+        try {
+          const value = await wp.apiFetch({path: '/getmcp-extensions/v1/servers/' + encodeURIComponent(publicServer) + '/public-upstream', method: 'PUT', data: publicPolicy});
+          setPublicPolicy(value); announce('Public upstream settings saved.', 'success');
+        } catch (e) { setError(e.message || 'Could not save public upstream settings.'); }
+        finally { setPublicBusy(false); }
+      };
       const save = async () => {
         setBusy(true); setError('');
         try {
@@ -115,7 +129,13 @@
             h(Select, {label: 'Token source ' + (index + 1), value: row.source, options: [{value: 'user', label: 'User'}, {value: 'page', label: 'Selected Page'}], onChange: e => { setSources(sources.map((item, i) => i === index ? {...item, source: e.target.value} : item)); setDirty(true); }}),
             h(Button, {onClick: () => { setSources(sources.filter((_, i) => i !== index)); setDirty(true); }}, 'Remove token source'))),
           h(Button, {onClick: () => { setSources([...sources, {slug: '', source: 'user'}]); setDirty(true); }}, 'Add token source')),
-        data && h(Button, {variant: 'primary', loading: busy, onClick: save}, 'Save provider access'));
+        data && h(Button, {variant: 'primary', loading: busy, onClick: save}, 'Save provider access'),
+        h(Card, {title: 'Public read-only upstream'},
+          h('p', null, 'For an API that is publicly readable without credentials, allow existing project Gateway members to use its GET tools without forwarding Gateway credentials. Every tool must use the same HTTPS origin.'),
+          h(Select, {label: 'API-key server', value: publicServer, onChange: e => setPublicServer(e.target.value), options: [{value: '', label: 'Choose a server'}, ...servers.filter(server => server.auth_type === 'api-key' && server.id).map(server => ({value: String(server.id), label: server.name}))]}),
+          publicPolicy && h(React.Fragment, null,
+            h(Input, {label: 'Public HTTPS origin', value: publicPolicy.origin, placeholder: 'https://api.example.com', onChange: e => setPublicPolicy({...publicPolicy, origin: e.target.value}), helperText: 'Leave empty to disable this access. Existing server sign-in and project permissions stay in effect.'}),
+            h(Button, {variant: 'primary', loading: publicBusy, onClick: savePublic}, 'Save public upstream'))));
     }
     window.getmcpExtensions = config.extensions;
     window.getmcpRemoteCatalogue = config.catalogue;

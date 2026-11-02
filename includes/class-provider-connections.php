@@ -11,7 +11,7 @@ final class ProviderConnections {
 		$auth = $server ? json_decode( $server->auth_config ?? '{}', true ) : null;
 		if ( ! $server || 'native' !== LegacyBridge::kind( $server ) || 'oauth' !== $server->auth_type || ( is_array( $auth ) && 'getmcp' === ( $auth['provider'] ?? '' ) ) ) { return false; }
         $c = ProviderTokens::config( $server );
-        return ProviderTokens::is_meta( $server ) || ( 'oauth2.googleapis.com' === wp_parse_url( $c['token_url'] ?? '', PHP_URL_HOST ) && 'accounts.google.com' === wp_parse_url( $c['authorize_url'] ?? '', PHP_URL_HOST ) );
+		return ProviderTokens::is_meta( $server ) || ( LegacyBridge::is_180() && ProviderTokens::is_oura( $server ) ) || ( 'oauth2.googleapis.com' === wp_parse_url( $c['token_url'] ?? '', PHP_URL_HOST ) && 'accounts.google.com' === wp_parse_url( $c['authorize_url'] ?? '', PHP_URL_HOST ) );
     }
     public static function can_connect( $server, int $user ): bool {
         $enabled = GoogleHealth::is_server( $server ) ? GoogleHealth::enabled() : MarketingModule::enabled();
@@ -64,9 +64,10 @@ if ( true === ( $settings['personal_provider']['allow_all_users'] ?? false ) ) {
         return Store::portal_url( $r['return_to'] ?? '' );
     }
     public static function refresh_available( $server, array $data ): bool {
-        return ! ProviderTokens::is_meta( $server ) && ! empty( $data['refresh_token'] );
+		return ! ProviderTokens::is_meta( $server ) && ! empty( $data['refresh_token'] ) && ( ! ProviderTokens::is_oura( $server ) || empty( $data['refresh_attempted'] ) );
     }
     public static function grant( $server, int $user ): array {
+		/** @wp-test feature=upgrade.180 scenario=oura-personal-grant */
         if ( ! self::can_connect( $server, $user ) ) { throw new RemoteException( 'Provider access has been removed.', -32003 ); }
         $grant = Store::get( $server->id, $user );
         if ( ! $grant || 'rest-provider' !== ( $grant['data']['kind'] ?? '' ) || self::fingerprint( $server ) !== ( $grant['data']['config_hash'] ?? '' ) ) { throw new RemoteException( 'Connect or reconnect your provider account on My MCP Connections.', -32001 ); }
@@ -74,6 +75,12 @@ if ( true === ( $settings['personal_provider']['allow_all_users'] ?? false ) ) {
             $lock = 'getmcp_upstream_refresh_' . hash( 'sha256', $server->id . '|' . $user );
             if ( ! add_option( $lock, time() + 60, '', false ) ) { throw new RemoteException( 'A provider refresh is already running. Try again shortly.' ); }
             try {
+				if ( ProviderTokens::is_oura( $server ) ) {
+					if ( ! self::refresh_available( $server, $grant['data'] ) ) { throw new RemoteException( 'Reconnect your Oura account to continue.', -32001 ); }
+					// Reserve the single-use token before dispatch. An uncertain outcome must not retry it.
+					$grant['data']['refresh_attempted'] = true;
+					$grant['version'] = Store::save( $server->id, $user, $grant['data'], $grant['version'] );
+				}
                 $next = ProviderTokens::refresh( $server, $grant['data'] );
                 $live = ( new ServerManager() )->get( $server->id );
                 if ( ! $live || ! self::can_connect( $live, $user ) || self::fingerprint( $live ) !== $grant['data']['config_hash'] ) { throw new RemoteException( 'Provider access changed during refresh.' ); }
@@ -91,7 +98,7 @@ if ( true === ( $settings['personal_provider']['allow_all_users'] ?? false ) ) {
             $expired = (int) ( $d['expires_at'] ?? 0 ) < time() + 30;
             $refresh_pending = $current && $expired && self::refresh_available( $server, $d );
             $assets = PageTokens::present( $server, 'user:' . $user, $current ? $d['access_token'] : '' );
-            $items[] = array( 'id' => $server->id, 'uuid' => $server->uuid, 'can_enable_messaging' => user_can( $user, 'getmcp_manage_servers' ) && user_can( $user, 'getmcp_manage_tools' ), 'name' => $server->name, 'kind' => 'rest-provider', 'connected' => $current, 'expires_at' => $current ? $d['expires_at'] : null, 'scope_status' => $d['scope_status'] ?? 'not_connected', 'scope' => $d['scope'] ?? '', 'readiness' => ProviderReadiness::connection( $server, $d, $current, $assets ), 'refresh_pending' => $refresh_pending, 'reconnect_required' => ! $current || ( $expired && ! $refresh_pending ), 'has_application_credentials' => ! empty( ProviderTokens::config( $server )['client_id'] ) && ! empty( $server->auth_credentials ), 'supports_pages' => ProviderTokens::is_meta( $server ), 'assets' => $assets );
+            $items[] = array( 'id' => $server->id, 'uuid' => $server->uuid, 'can_enable_messaging' => user_can( $user, 'getmcp_manage_servers' ) && user_can( $user, 'getmcp_manage_tools' ), 'name' => $server->name, 'kind' => 'rest-provider', 'connected' => $current, 'expires_at' => $current ? $d['expires_at'] : null, 'scope_status' => $d['scope_status'] ?? 'not_connected', 'scope' => $d['scope'] ?? '', 'readiness' => ProviderReadiness::connection( $server, $d, $current, $assets ), 'refresh_pending' => $refresh_pending, 'reconnect_required' => ! $current || ( $expired && ! $refresh_pending ), 'has_application_credentials' => ! empty( ProviderTokens::config( $server )['client_id'] ) && ! empty( $server->auth_credentials ), 'supports_pages' => ProviderTokens::is_meta( $server ), 'supports_discovery' => ! ProviderTokens::is_oura( $server ), 'assets' => $assets );
         }
         return $items;
     }

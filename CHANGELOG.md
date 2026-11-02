@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.0 - 2026-11-02
+- [NEW] Connect individual Oura accounts on GetMCP 1.8 using personal OAuth grants.
+- [NEW] Allow explicitly configured public, read-only upstreams through existing authorized project and account gateways without forwarding gateway credentials.
+- [SECURITY] Keep Oura health responses out of shared caches, replay records, and third-party protocol filters; protect single-use refresh tokens against uncertain retries.
+- [FIX] Preserve existing Gateway permissions when restoring access to reviewed public upstreams.
+- [DEV] Add isolated consent, token rotation, privacy, and Gateway refusal checks.
+
 ## 1.5.0 - 2026-11-01
 
 - [NEW] Allow all eligible WordPress users to connect their own provider accounts when an administrator enables that policy.

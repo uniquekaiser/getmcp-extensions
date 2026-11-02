@@ -12,6 +12,7 @@ public static function members( array $included ): array {
  if ( $user < 1 || ! get_userdata( $user ) || ! user_can( $user, 'read' ) || ( ! is_int( $client ) && ! is_string( $client ) ) || ! ctype_digit( (string) $client ) || ! in_array( (int) $client, array( 0, $gateway::SERVER_ID ), true ) || ! is_string( $row->resource ?? null ) || \GetMCP\Auth\OAuthProvider::canonicalize_resource( $row->resource ) !== \GetMCP\Auth\OAuthProvider::canonicalize_resource( $gateway::resource() ) ) { return $included; }
  $selected = $gateway::selected_server_ids(); $candidates = array();
  foreach ( ( new \GetMCP\Core\ServerManager() )->list_all( array( 'status' => 'active', 'orderby' => 'name', 'order' => 'ASC' ) ) as $server ) {
+			if ( ( 'selected' !== $gateway::mode() || in_array( (int) $server->id, $selected, true ) ) && PublicGateway180::permits( $server, $user ) ) { $candidates[(int) $server->id] = $server; continue; }
   if ( LegacyBridge::kind( $server ) !== 'native' || $server->is_bundle() || $server->is_remote() || \GetMCP\Builtin\BuiltinServer::slug_is_reserved( $server->slug ) || ! Runtime::server_enabled( $server ) || ( 'selected' === $gateway::mode() && ! in_array( (int) $server->id, $selected, true ) ) || ! ProviderConnections::can_connect( $server, $user ) ) { continue; }
   $spec = array( 'id' => $server->id, 'kind' => 'standard', 'auth_type' => $server->auth_type, 'settings' => $server->settings );
   if ( ! Upgrade180Auto::safe_personal_provider_member( $spec ) ) { continue; }

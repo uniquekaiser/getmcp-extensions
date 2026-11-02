@@ -14,6 +14,8 @@ A standalone WordPress add-on for personal MCP connections, project gateways and
 - Codex Desktop Quick Connect with direct HTTP and copyable `config.toml` entries.
 - A redacting configuration converter for Claude/Cursor JSON, VS Code JSON and Codex TOML.
 - Google Health native read tools, personal Google OAuth, daily/weekly summaries and available nutrition reads.
+- Personal Oura OAuth connections on GetMCP 1.8, with health-data privacy protections.
+- Optional credential-free public GET upstreams for users already granted access through an active project gateway.
 - Five marketing templates that install into empty native servers in draft status.
 - A separate hosted MCP catalogue with native styling, Save & Authorize and current-user access defaults, without creating native tools.
 - Editable authentication fields and encrypted custom headers. Blank saved-secret fields preserve existing values.
@@ -33,6 +35,10 @@ Command-only server configurations are flagged for a reviewed native port. Impor
 The first updater-enabled version requires one manual ZIP installation on older installations. GitHub source archives and Git checkouts are development material and do not enable self-updates. The install ZIP includes a distribution marker and the update-checker runtime.
 
 ## Access and safe retirement
+On GetMCP 1.8, configure personal Oura access in **Extensions → Personal provider access**. Each eligible user connects their own account in **My MCP Connections**. Health responses are excluded from shared response caches, protocol filters and replay logs. An interrupted single-use refresh requires the affected user to reconnect.
+
+For a server whose upstream is publicly readable, an administrator can select it under **Personal provider access → Public read-only upstream**, enter its HTTPS origin and save. All of its tools must be HTTPS GET requests to that origin with certificate verification enabled. The account gateway publishes it only to users already allowed by an active project gateway containing that server. Clear the origin to disable this path. Gateway and custom credential headers are not sent to the public upstream.
+
 
 Empty gateway allowlists deny everyone, including administrators. Gateway membership deliberately delegates access to its selected servers; direct connections retain their own restrictions. Gateway credentials are never sent upstream. Existing credentials, routing and user selections are preserved during an add-on update.
 

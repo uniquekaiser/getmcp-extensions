@@ -292,9 +292,10 @@ if ( ! is_object( $raw->personal_provider ?? null ) || ! is_array( $personal ) |
 			$config = ProviderTokens::config( $server );
 			$google = 'https://accounts.google.com/o/oauth2/v2/auth' === ( $config['authorize_url'] ?? null ) && 'https://oauth2.googleapis.com/token' === ( $config['token_url'] ?? null );
 			$meta = is_string( $config['authorize_url'] ?? null ) && is_string( $config['token_url'] ?? null ) && preg_match( '#\Ahttps://www\.facebook\.com/v[0-9]+\.[0-9]+/dialog/oauth\z#D', $config['authorize_url'] ) && preg_match( '#\Ahttps://graph\.facebook\.com/v[0-9]+\.[0-9]+/oauth/access_token\z#D', $config['token_url'] );
-			if ( ( ! $google && ! $meta ) || ( $page_sources && ! $meta ) ) { return false; }
+			$oura = ProviderTokens::is_oura( $server );
+			if ( ( ! $google && ! $meta && ! $oura ) || ( $page_sources && ! $meta ) ) { return false; }
 		} catch ( \Throwable $e ) { return false; }
-		$hosts = $google ? array( 'www.googleapis.com', 'searchconsole.googleapis.com', 'googleads.googleapis.com', 'analyticsadmin.googleapis.com', 'analyticsdata.googleapis.com' ) : array( 'graph.facebook.com', 'mcp.facebook.com' );
+		$hosts = $google ? array( 'www.googleapis.com', 'searchconsole.googleapis.com', 'googleads.googleapis.com', 'analyticsadmin.googleapis.com', 'analyticsdata.googleapis.com' ) : ( $oura ? array( 'api.ouraring.com' ) : array( 'graph.facebook.com', 'mcp.facebook.com' ) );
 		$page_tools = array();
 		if ( $meta ) {
 			$asset = json_decode( (string) file_get_contents( GETMCP_EXTENSIONS_PATH . 'assets/templates/instagram.json' ), true );

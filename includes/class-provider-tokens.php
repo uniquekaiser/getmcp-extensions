@@ -7,6 +7,11 @@ use GetMCP\Utils\Encryption;
 
 final class ProviderTokens {
     public static function config( $server ): array { return AuthenticationSettings::object( $server->auth_config ); }
+	public static function is_oura( $server ): bool {
+		if ( ! $server ) { return false; }
+		$config = self::config( $server );
+		return 'https://cloud.ouraring.com/oauth/authorize' === ( $config['authorize_url'] ?? null ) && 'https://api.ouraring.com/oauth/token' === ( $config['token_url'] ?? null );
+	}
     public static function is_meta( $server ): bool {
         $url = self::config( $server )['token_url'] ?? '';
         return 'graph.facebook.com' === strtolower( (string) wp_parse_url( $url, PHP_URL_HOST ) ) && preg_match( '#^/v\d+\.\d+/oauth/access_token$#D', (string) wp_parse_url( $url, PHP_URL_PATH ) );
@@ -39,6 +44,11 @@ final class ProviderTokens {
         if ( self::is_meta( $server ) || empty( $data['refresh_token'] ) ) { throw new RemoteException( 'This provider requires reconnection. Open My MCP Connections.', -32001 ); }
         $c = self::config( $server );
         $next = self::request( $c['token_url'], array( 'grant_type' => 'refresh_token', 'refresh_token' => $data['refresh_token'], 'client_id' => $c['client_id'], 'client_secret' => self::secret( $server ) ) );
+		if ( self::is_oura( $server ) && ( ! is_string( $next['refresh_token'] ?? null ) || '' === $next['refresh_token'] || hash_equals( (string) $data['refresh_token'], $next['refresh_token'] ) ) ) {
+			throw new RemoteException( 'Provider refresh could not be confirmed. Reconnect your account.', -32001 );
+		}
+		if ( self::is_oura( $server ) ) { $next = array_intersect_key( $next, array_flip( array( 'access_token', 'refresh_token', 'expires_in', 'token_type', 'scope' ) ) ); }
+		unset( $data['refresh_attempted'] );
         return array_merge( $data, $next, array( 'expires_at' => time() + $next['expires_in'] ) );
     }
     public static function graph_base( $server ): string {

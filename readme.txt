@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,13 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.6.0 =
+* [NEW] Connect individual Oura accounts on GetMCP 1.8 using personal OAuth grants.
+* [NEW] Allow explicitly configured public, read-only upstreams through existing authorized project and account gateways without forwarding gateway credentials.
+* [SECURITY] Keep Oura health responses out of shared caches, replay records, and third-party protocol filters; protect single-use refresh tokens against uncertain retries.
+* [FIX] Preserve existing Gateway permissions when restoring access to reviewed public upstreams.
+* [DEV] Add isolated consent, token rotation, privacy, and Gateway refusal checks.
 
 = 1.5.0 =
 

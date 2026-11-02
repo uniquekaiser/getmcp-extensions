@@ -80,7 +80,8 @@ class ToolExecutor {
 			$auth_injector = new AuthInjector();
 			// A personal provider grant is independently bound to the member and
 			// WordPress user. Otherwise retain core's delegated-auth safeguards.
-			$personal = \GetMCPExtensions\ProviderExecution::inject( $request, $server, $tool, $arguments, $use_test );
+			$personal = \GetMCPExtensions\PublicGateway180::inject( $request, $server, $tool, $delegated );
+			if ( null === $personal ) { $personal = \GetMCPExtensions\ProviderExecution::inject( $request, $server, $tool, $arguments, $use_test ); }
 			$request  = null !== $personal ? $personal : $auth_injector->inject( $request, $use_test, $server, $delegated );
 		}
 
@@ -92,7 +93,7 @@ class ToolExecutor {
 		// Caching would hand one user's result to the next caller.
 		// WHY: health records must not outlive the call, and a cached copy
 		// sits in wp_options where any backup or DB dump carries it.
-		$is_health = HealthData::is_health_tool( $tool );
+		$is_health = HealthData::is_health_tool( $tool ) || \GetMCPExtensions\ProviderPrivacy::sensitive( $tool, $server );
 		if ( 'ability' === $tool->tool_type || $is_health ) {
 			$effective_cache = 0;
 		}

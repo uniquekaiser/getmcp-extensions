@@ -28,6 +28,7 @@ final class ProviderDiscovery {
     }
     public static function discover( $server, string $token, int $user ): array {
         if ( GoogleHealth::is_server( $server ) ) { return GoogleHealth::discover( $server, $token, $user ); }
+		if ( ProviderTokens::is_oura( $server ) ) { throw new RemoteException( 'Use the Oura tools to access your own authorized data.' ); }
         $settings = AuthenticationSettings::object( $server->settings ); $preset = $settings['personal_provider']['preset'] ?? '';
         $scope = ProviderTokens::config( $server )['scope'] ?? '';
         if ( ! $preset ) { $preset = str_contains( $scope, '/adwords' ) ? 'google-ads' : ( str_contains( $scope, '/analytics' ) ? 'google-analytics' : ( str_contains( $scope, '/webmasters' ) ? 'google-search-console' : ( ProviderTokens::is_meta( $server ) ? 'instagram-facebook-login' : '' ) ) ); }

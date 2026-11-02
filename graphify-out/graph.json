@@ -30,6 +30,19 @@
       "source_location": "L7"
     },
     {
+      "id": "includes_class_legacy_gateway180_legacygateway180",
+      "label": "LegacyGateway180",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "legacygateway180",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L5"
+    },
+    {
       "id": "includes_class_upgrade180_store_upgrade180store",
       "label": "Upgrade180Store",
       "_callable": true,
@@ -43,17 +56,17 @@
       "source_location": "L5"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180",
-      "label": "LegacyGateway180",
+      "id": "includes_class_public_gateway180_publicgateway180",
+      "label": "PublicGateway180",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": "legacygateway180",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L5"
+      "norm_label": "publicgateway180",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L7"
     },
     {
       "id": "includes_class_marketing_module_marketingmodule",
@@ -126,24 +139,11 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
+      "community": 21,
+      "community_name": "Community 21",
       "file_type": "code",
       "norm_label": "configurationtranscoder",
       "source_file": "includes/class-configuration-transcoder.php",
-      "source_location": "L5"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180",
-      "label": "Upgrade180",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": "upgrade180",
-      "source_file": "includes/class-upgrade180.php",
       "source_location": "L5"
     },
     {
@@ -173,6 +173,32 @@
       "source_location": "L12"
     },
     {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool",
+      "label": "MarketingManagementTool",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "marketingmanagementtool",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L4"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery",
+      "label": "ProviderDiscovery",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "providerdiscovery",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L6"
+    },
+    {
       "id": "includes_class_page_tokens_pagetokens",
       "label": "PageTokens",
       "_callable": true,
@@ -199,19 +225,6 @@
       "source_location": "L9"
     },
     {
-      "id": "includes_class_provider_discovery_providerdiscovery",
-      "label": "ProviderDiscovery",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": "providerdiscovery",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L6"
-    },
-    {
       "id": "includes_class_provider_execution_providerexecution",
       "label": "ProviderExecution",
       "_callable": true,
@@ -223,6 +236,19 @@
       "norm_label": "providerexecution",
       "source_file": "includes/class-provider-execution.php",
       "source_location": "L6"
+    },
+    {
+      "id": "includes_class_provider_privacy_providerprivacy",
+      "label": "ProviderPrivacy",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "Community 26",
+      "file_type": "code",
+      "norm_label": "providerprivacy",
+      "source_file": "includes/class-provider-privacy.php",
+      "source_location": "L4"
     },
     {
       "id": "includes_class_provider_readiness_providerreadiness",
@@ -251,6 +277,19 @@
       "source_location": "L8"
     },
     {
+      "id": "includes_class_gateway_personal180_gatewaypersonal180",
+      "label": "GatewayPersonal180",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Community 27",
+      "file_type": "code",
+      "norm_label": "gatewaypersonal180",
+      "source_file": "includes/class-gateway-personal180.php",
+      "source_location": "L5"
+    },
+    {
       "id": "includes_class_lifecycle_lifecycle",
       "label": "Lifecycle",
       "_callable": true,
@@ -264,16 +303,42 @@
       "source_location": "L4"
     },
     {
-      "id": "includes_class_gateway_personal180_gatewaypersonal180",
-      "label": "GatewayPersonal180",
+      "id": "includes_class_upgrade180_codes_upgrade180codes",
+      "label": "Upgrade180Codes",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
+      "community": 28,
+      "community_name": "Community 28",
       "file_type": "code",
-      "norm_label": "gatewaypersonal180",
-      "source_file": "includes/class-gateway-personal180.php",
+      "norm_label": "upgrade180codes",
+      "source_file": "includes/class-upgrade180-codes.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_upgrade180_plan_upgrade180plan",
+      "label": "Upgrade180Plan",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "upgrade180plan",
+      "source_file": "includes/class-upgrade180-plan.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180",
+      "label": "Upgrade180",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "upgrade180",
+      "source_file": "includes/class-upgrade180.php",
       "source_location": "L5"
     },
     {
@@ -290,19 +355,6 @@
       "source_location": "L5"
     },
     {
-      "id": "includes_class_upgrade180_plan_upgrade180plan",
-      "label": "Upgrade180Plan",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "Community 31",
-      "file_type": "code",
-      "norm_label": "upgrade180plan",
-      "source_file": "includes/class-upgrade180-plan.php",
-      "source_location": "L5"
-    },
-    {
       "id": "includes_class_connection_screens_connectionscreens",
       "label": "ConnectionScreens",
       "_callable": true,
@@ -316,19 +368,6 @@
       "source_location": "L7"
     },
     {
-      "id": "includes_class_upgrade180_codes_upgrade180codes",
-      "label": "Upgrade180Codes",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "Community 37",
-      "file_type": "code",
-      "norm_label": "upgrade180codes",
-      "source_file": "includes/class-upgrade180-codes.php",
-      "source_location": "L5"
-    },
-    {
       "id": "includes_class_protocol_envelope_protocolenvelope",
       "label": "ProtocolEnvelope",
       "_callable": true,
@@ -340,19 +379,6 @@
       "norm_label": "protocolenvelope",
       "source_file": "includes/class-protocol-envelope.php",
       "source_location": "L6"
-    },
-    {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool",
-      "label": "MarketingManagementTool",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "Community 40",
-      "file_type": "code",
-      "norm_label": "marketingmanagementtool",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L4"
     },
     {
       "id": "includes_class_runtime_runtime",
@@ -502,18 +528,6 @@
       "source_location": "L8"
     },
     {
-      "id": "includes_class_marketing_module_closure_28",
-      "label": "{closure#28}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "Community 0",
-      "file_type": "code",
-      "norm_label": "{closure#28}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L66"
-    },
-    {
       "id": "includes_class_marketing_module_closure_36",
       "label": "{closure#36}()",
       "_callable": true,
@@ -526,6 +540,18 @@
       "source_location": "L175"
     },
     {
+      "id": "includes_class_provider_connections_providerconnections_begin",
+      "label": ".begin()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "Community 0",
+      "file_type": "code",
+      "norm_label": ".begin()",
+      "source_file": "includes/class-provider-connections.php",
+      "source_location": "L30"
+    },
+    {
       "id": "includes_class_provider_tokens_providertokens_secret",
       "label": ".secret()",
       "_callable": true,
@@ -535,7 +561,127 @@
       "file_type": "code",
       "norm_label": ".secret()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L14"
+      "source_location": "L19"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_authorized_key",
+      "label": ".authorized_key()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".authorized_key()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L142"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_error",
+      "label": ".error()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".error()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L181"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_key_digest",
+      "label": ".key_digest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".key_digest()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L91"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_members",
+      "label": ".members()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".members()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L156"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_notice",
+      "label": ".notice()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".notice()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L133"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_prepare",
+      "label": ".prepare()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".prepare()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L21"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_remote_digest",
+      "label": ".remote_digest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".remote_digest()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L92"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_review_items",
+      "label": ".review_items()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".review_items()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L102"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_review_required",
+      "label": ".review_required()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".review_required()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L97"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_legacygateway180_signature",
+      "label": ".signature()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": ".signature()",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L7"
     },
     {
       "id": "includes_class_upgrade180_store_closure_1",
@@ -658,124 +804,88 @@
       "source_location": "L177"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_authorized_key",
-      "label": ".authorized_key()",
+      "id": "includes_class_public_gateway180_publicgateway180_acceptable",
+      "label": ".acceptable()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".authorized_key()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L142"
+      "norm_label": ".acceptable()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L31"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_error",
-      "label": ".error()",
+      "id": "includes_class_public_gateway180_publicgateway180_allowed_origin",
+      "label": ".allowed_origin()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".error()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L181"
+      "norm_label": ".allowed_origin()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L55"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_key_digest",
-      "label": ".key_digest()",
+      "id": "includes_class_public_gateway180_publicgateway180_inject",
+      "label": ".inject()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".key_digest()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L91"
+      "norm_label": ".inject()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L71"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_members",
-      "label": ".members()",
+      "id": "includes_class_public_gateway180_publicgateway180_origin",
+      "label": ".origin()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".members()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L156"
+      "norm_label": ".origin()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L25"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_notice",
-      "label": ".notice()",
+      "id": "includes_class_public_gateway180_publicgateway180_permits",
+      "label": ".permits()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".notice()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L133"
+      "norm_label": ".permits()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L62"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_prepare",
-      "label": ".prepare()",
+      "id": "includes_class_public_gateway180_publicgateway180_revision",
+      "label": ".revision()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".prepare()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L21"
+      "norm_label": ".revision()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L24"
     },
     {
-      "id": "includes_class_legacy_gateway180_legacygateway180_remote_digest",
-      "label": ".remote_digest()",
+      "id": "includes_class_public_gateway180_publicgateway180_routes",
+      "label": ".routes()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "Community 10",
       "file_type": "code",
-      "norm_label": ".remote_digest()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L92"
-    },
-    {
-      "id": "includes_class_legacy_gateway180_legacygateway180_review_items",
-      "label": ".review_items()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
-      "file_type": "code",
-      "norm_label": ".review_items()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_legacy_gateway180_legacygateway180_review_required",
-      "label": ".review_required()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
-      "file_type": "code",
-      "norm_label": ".review_required()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L97"
-    },
-    {
-      "id": "includes_class_legacy_gateway180_legacygateway180_signature",
-      "label": ".signature()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
-      "file_type": "code",
-      "norm_label": ".signature()",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L7"
+      "norm_label": ".routes()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L8"
     },
     {
       "id": "admin_oauth_user_picker_createoauthuserpicker",
@@ -1015,7 +1125,7 @@
       "file_type": "code",
       "norm_label": "{closure#11}()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L145"
+      "source_location": "L146"
     },
     {
       "id": "includes_class_runtime_runtime_render",
@@ -1027,7 +1137,7 @@
       "file_type": "code",
       "norm_label": ".render()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L149"
+      "source_location": "L150"
     },
     {
       "id": "includes_class_standalone180_closure_1",
@@ -1135,7 +1245,7 @@
       "file_type": "code",
       "norm_label": ".assets()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L165"
+      "source_location": "L166"
     },
     {
       "id": "includes_class_remote_catalogue_closure_1",
@@ -1340,54 +1450,6 @@
       "norm_label": ".preview()",
       "source_file": "includes/class-configuration-import.php",
       "source_location": "L89"
-    },
-    {
-      "id": "includes_class_configuration_transcoder_closure_1",
-      "label": "{closure#1}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "includes/class-configuration-transcoder.php",
-      "source_location": "L41"
-    },
-    {
-      "id": "includes_class_configuration_transcoder_configurationtranscoder_convert",
-      "label": ".convert()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": ".convert()",
-      "source_file": "includes/class-configuration-transcoder.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "includes_class_configuration_transcoder_configurationtranscoder_quote",
-      "label": ".quote()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": ".quote()",
-      "source_file": "includes/class-configuration-transcoder.php",
-      "source_location": "L6"
-    },
-    {
-      "id": "includes_class_connection_screens_closure_5",
-      "label": "{closure#5}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "{closure#5}()",
-      "source_file": "includes/class-connection-screens.php",
-      "source_location": "L27"
     },
     {
       "id": "includes_class_marketing_module_closure_10",
@@ -1690,136 +1752,76 @@
       "source_location": "L36"
     },
     {
-      "id": "includes_class_upgrade180_auto_upgrade180auto_convert",
+      "id": "admin_standalone_180_apipath",
+      "label": "apiPath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Community 20",
+      "file_type": "code",
+      "norm_label": "apipath()",
+      "source_file": "admin/standalone-180.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "admin_standalone_180_mount",
+      "label": "mount()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Community 20",
+      "file_type": "code",
+      "norm_label": "mount()",
+      "source_file": "admin/standalone-180.js",
+      "source_location": "L17"
+    },
+    {
+      "id": "admin_standalone_180_mount_provideraccess",
+      "label": "ProviderAccess()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "Community 20",
+      "file_type": "code",
+      "norm_label": "provideraccess()",
+      "source_file": "admin/standalone-180.js",
+      "source_location": "L62"
+    },
+    {
+      "id": "includes_class_configuration_transcoder_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "Community 21",
+      "file_type": "code",
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L41"
+    },
+    {
+      "id": "includes_class_configuration_transcoder_configurationtranscoder_convert",
       "label": ".convert()",
       "_callable": true,
       "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
+      "community": 21,
+      "community_name": "Community 21",
       "file_type": "code",
       "norm_label": ".convert()",
-      "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L45"
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L7"
     },
     {
-      "id": "includes_class_upgrade180_auto_upgrade180auto_maybe_migrate",
-      "label": ".maybe_migrate()",
+      "id": "includes_class_configuration_transcoder_configurationtranscoder_quote",
+      "label": ".quote()",
       "_callable": true,
       "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
+      "community": 21,
+      "community_name": "Community 21",
       "file_type": "code",
-      "norm_label": ".maybe_migrate()",
-      "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L9"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_exists",
-      "label": ".exists()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".exists()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L105"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_migrate",
-      "label": ".migrate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".migrate()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L25"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_option",
-      "label": ".option()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".option()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L112"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_preview",
-      "label": ".preview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".preview()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L15"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_reviewed_adapter",
-      "label": ".reviewed_adapter()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".reviewed_adapter()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L171"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_reviewed_adapter_files",
-      "label": ".reviewed_adapter_files()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".reviewed_adapter_files()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L180"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_reviewed_core",
-      "label": ".reviewed_core()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".reviewed_core()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L142"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_reviewed_core_files",
-      "label": ".reviewed_core_files()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".reviewed_core_files()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L130"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_transactional_tables",
-      "label": ".transactional_tables()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 20,
-      "community_name": "Community 20",
-      "file_type": "code",
-      "norm_label": ".transactional_tables()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L119"
+      "norm_label": ".quote()",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L6"
     },
     {
       "id": "includes_class_connection_screens_closure_1",
@@ -1870,6 +1872,18 @@
       "source_location": "L27"
     },
     {
+      "id": "includes_class_connection_screens_closure_5",
+      "label": "{closure#5}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "Community 21",
+      "file_type": "code",
+      "norm_label": "{closure#5}()",
+      "source_file": "includes/class-connection-screens.php",
+      "source_location": "L27"
+    },
+    {
       "id": "includes_class_authentication_settings_authenticationsettings_prepare",
       "label": ".prepare()",
       "_callable": true,
@@ -1916,6 +1930,18 @@
       "norm_label": ".configure_locked()",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L140"
+    },
+    {
+      "id": "includes_class_public_gateway180_publicgateway180_configure",
+      "label": ".configure()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 22,
+      "community_name": "Community 22",
+      "file_type": "code",
+      "norm_label": ".configure()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L42"
     },
     {
       "id": "includes_class_google_health_googlehealth_asset",
@@ -2098,6 +2124,54 @@
       "source_location": "L182"
     },
     {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
+      "label": ".call()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".call()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L27"
+    },
+    {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_configuration_schema",
+      "label": ".configuration_schema()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".configuration_schema()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L5"
+    },
+    {
+      "id": "includes_class_marketing_management_tool_marketingmanagementtool_definition",
+      "label": ".definition()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".definition()",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L24"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_17",
+      "label": "{closure#17}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "{closure#17}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L48"
+    },
+    {
       "id": "includes_class_marketing_module_closure_18",
       "label": "{closure#18}()",
       "_callable": true,
@@ -2120,6 +2194,78 @@
       "norm_label": "{closure#20}()",
       "source_file": "includes/class-marketing-module.php",
       "source_location": "L51"
+    },
+    {
+      "id": "includes_class_marketing_module_closure_25",
+      "label": "{closure#25}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "{closure#25}()",
+      "source_file": "includes/class-marketing-module.php",
+      "source_location": "L57"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_ads",
+      "label": ".ads()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".ads()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L49"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_discover",
+      "label": ".discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".discover()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L29"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_pages",
+      "label": ".pages()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".pages()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L18"
+    },
+    {
+      "id": "includes_class_provider_discovery_providerdiscovery_presets",
+      "label": ".presets()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".presets()",
+      "source_file": "includes/class-provider-discovery.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_upgrade180_auto_upgrade180auto_safe_personal_provider_member",
+      "label": ".safe_personal_provider_member()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": ".safe_personal_provider_member()",
+      "source_file": "includes/class-upgrade180-auto.php",
+      "source_location": "L259"
     },
     {
       "id": "includes_endpoint_guard_closure_1",
@@ -2242,18 +2388,6 @@
       "source_location": "L12"
     },
     {
-      "id": "includes_class_marketing_module_closure_17",
-      "label": "{closure#17}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": "{closure#17}()",
-      "source_file": "includes/class-marketing-module.php",
-      "source_location": "L48"
-    },
-    {
       "id": "includes_class_marketing_module_closure_2",
       "label": "{closure#2}()",
       "_callable": true,
@@ -2278,16 +2412,16 @@
       "source_location": "L53"
     },
     {
-      "id": "includes_class_marketing_module_closure_25",
-      "label": "{closure#25}()",
+      "id": "includes_class_marketing_module_closure_28",
+      "label": "{closure#28}()",
       "_callable": true,
       "_origin": "ast",
       "community": 26,
       "community_name": "Community 26",
       "file_type": "code",
-      "norm_label": "{closure#25}()",
+      "norm_label": "{closure#28}()",
       "source_file": "includes/class-marketing-module.php",
-      "source_location": "L57"
+      "source_location": "L66"
     },
     {
       "id": "includes_class_marketing_module_closure_3",
@@ -2458,18 +2592,6 @@
       "source_location": "L58"
     },
     {
-      "id": "includes_class_provider_connections_providerconnections_begin",
-      "label": ".begin()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".begin()",
-      "source_file": "includes/class-provider-connections.php",
-      "source_location": "L30"
-    },
-    {
       "id": "includes_class_provider_connections_providerconnections_callback",
       "label": ".callback()",
       "_callable": true,
@@ -2527,7 +2649,7 @@
       "file_type": "code",
       "norm_label": ".listing()",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L85"
+      "source_location": "L92"
     },
     {
       "id": "includes_class_provider_connections_providerconnections_refresh_available",
@@ -2540,54 +2662,6 @@
       "norm_label": ".refresh_available()",
       "source_file": "includes/class-provider-connections.php",
       "source_location": "L66"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_ads",
-      "label": ".ads()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".ads()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L48"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_discover",
-      "label": ".discover()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".discover()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L29"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_pages",
-      "label": ".pages()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".pages()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L18"
-    },
-    {
-      "id": "includes_class_provider_discovery_providerdiscovery_presets",
-      "label": ".presets()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".presets()",
-      "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L7"
     },
     {
       "id": "includes_class_provider_execution_providerexecution_context",
@@ -2611,7 +2685,7 @@
       "file_type": "code",
       "norm_label": ".identity()",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L51"
+      "source_location": "L57"
     },
     {
       "id": "includes_class_provider_execution_providerexecution_inject",
@@ -2635,7 +2709,7 @@
       "file_type": "code",
       "norm_label": ".record()",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L61"
+      "source_location": "L68"
     },
     {
       "id": "includes_class_provider_execution_providerexecution_retries",
@@ -2647,7 +2721,19 @@
       "file_type": "code",
       "norm_label": ".retries()",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L55"
+      "source_location": "L61"
+    },
+    {
+      "id": "includes_class_provider_privacy_providerprivacy_sensitive",
+      "label": ".sensitive()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "Community 26",
+      "file_type": "code",
+      "norm_label": ".sensitive()",
+      "source_file": "includes/class-provider-privacy.php",
+      "source_location": "L6"
     },
     {
       "id": "includes_class_provider_readiness_providerreadiness_accounts",
@@ -2683,7 +2769,7 @@
       "file_type": "code",
       "norm_label": ".after_exchange()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L28"
+      "source_location": "L33"
     },
     {
       "id": "includes_class_provider_tokens_providertokens_config",
@@ -2707,7 +2793,7 @@
       "file_type": "code",
       "norm_label": ".graph_base()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L44"
+      "source_location": "L54"
     },
     {
       "id": "includes_class_provider_tokens_providertokens_is_meta",
@@ -2718,6 +2804,18 @@
       "community_name": "Community 26",
       "file_type": "code",
       "norm_label": ".is_meta()",
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L15"
+    },
+    {
+      "id": "includes_class_provider_tokens_providertokens_is_oura",
+      "label": ".is_oura()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "Community 26",
+      "file_type": "code",
+      "norm_label": ".is_oura()",
       "source_file": "includes/class-provider-tokens.php",
       "source_location": "L10"
     },
@@ -2731,7 +2829,7 @@
       "file_type": "code",
       "norm_label": ".read()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L48"
+      "source_location": "L58"
     },
     {
       "id": "includes_class_provider_tokens_providertokens_refresh",
@@ -2743,7 +2841,7 @@
       "file_type": "code",
       "norm_label": ".refresh()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L36"
+      "source_location": "L41"
     },
     {
       "id": "includes_class_provider_tokens_providertokens_request",
@@ -2755,22 +2853,10 @@
       "file_type": "code",
       "norm_label": ".request()",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L18"
+      "source_location": "L23"
     },
     {
-      "id": "includes_class_upgrade180_auto_upgrade180auto_safe_personal_provider_member",
-      "label": ".safe_personal_provider_member()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "Community 26",
-      "file_type": "code",
-      "norm_label": ".safe_personal_provider_member()",
-      "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L259"
-    },
-    {
-      "id": "includes_class_runtime_closure_1",
+      "id": "includes_class_gateway_personal180_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
@@ -2778,116 +2864,20 @@
       "community_name": "Community 27",
       "file_type": "code",
       "norm_label": "{closure#1}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L84"
+      "source_file": "includes/class-gateway-personal180.php",
+      "source_location": "L27"
     },
     {
-      "id": "includes_class_runtime_closure_10",
-      "label": "{closure#10}()",
+      "id": "includes_class_gateway_personal180_gatewaypersonal180_members",
+      "label": ".members()",
       "_callable": true,
       "_origin": "ast",
       "community": 27,
       "community_name": "Community 27",
       "file_type": "code",
-      "norm_label": "{closure#10}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L133"
-    },
-    {
-      "id": "includes_class_runtime_closure_2",
-      "label": "{closure#2}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#2}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L102"
-    },
-    {
-      "id": "includes_class_runtime_closure_3",
-      "label": "{closure#3}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#3}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L125"
-    },
-    {
-      "id": "includes_class_runtime_closure_4",
-      "label": "{closure#4}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#4}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L125"
-    },
-    {
-      "id": "includes_class_runtime_closure_5",
-      "label": "{closure#5}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#5}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L126"
-    },
-    {
-      "id": "includes_class_runtime_closure_6",
-      "label": "{closure#6}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#6}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L126"
-    },
-    {
-      "id": "includes_class_runtime_closure_7",
-      "label": "{closure#7}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#7}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L132"
-    },
-    {
-      "id": "includes_class_runtime_closure_8",
-      "label": "{closure#8}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#8}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L132"
-    },
-    {
-      "id": "includes_class_runtime_closure_9",
-      "label": "{closure#9}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "Community 27",
-      "file_type": "code",
-      "norm_label": "{closure#9}()",
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L133"
+      "norm_label": ".members()",
+      "source_file": "includes/class-gateway-personal180.php",
+      "source_location": "L8"
     },
     {
       "id": "includes_class_lifecycle_lifecycle_activate",
@@ -2938,28 +2928,316 @@
       "source_location": "L55"
     },
     {
-      "id": "includes_class_gateway_personal180_closure_1",
+      "id": "includes_class_runtime_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
+      "community": 28,
+      "community_name": "Community 28",
       "file_type": "code",
       "norm_label": "{closure#1}()",
-      "source_file": "includes/class-gateway-personal180.php",
-      "source_location": "L26"
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L84"
     },
     {
-      "id": "includes_class_gateway_personal180_gatewaypersonal180_members",
-      "label": ".members()",
+      "id": "includes_class_runtime_closure_10",
+      "label": "{closure#10}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
+      "community": 28,
+      "community_name": "Community 28",
       "file_type": "code",
-      "norm_label": ".members()",
-      "source_file": "includes/class-gateway-personal180.php",
-      "source_location": "L8"
+      "norm_label": "{closure#10}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L134"
+    },
+    {
+      "id": "includes_class_runtime_closure_2",
+      "label": "{closure#2}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L103"
+    },
+    {
+      "id": "includes_class_runtime_closure_3",
+      "label": "{closure#3}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L126"
+    },
+    {
+      "id": "includes_class_runtime_closure_4",
+      "label": "{closure#4}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L126"
+    },
+    {
+      "id": "includes_class_runtime_closure_5",
+      "label": "{closure#5}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#5}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L127"
+    },
+    {
+      "id": "includes_class_runtime_closure_6",
+      "label": "{closure#6}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#6}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L127"
+    },
+    {
+      "id": "includes_class_runtime_closure_7",
+      "label": "{closure#7}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#7}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L133"
+    },
+    {
+      "id": "includes_class_runtime_closure_8",
+      "label": "{closure#8}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#8}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L133"
+    },
+    {
+      "id": "includes_class_runtime_closure_9",
+      "label": "{closure#9}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#9}()",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L134"
+    },
+    {
+      "id": "includes_class_upgrade180_auto_upgrade180auto_convert",
+      "label": ".convert()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".convert()",
+      "source_file": "includes/class-upgrade180-auto.php",
+      "source_location": "L45"
+    },
+    {
+      "id": "includes_class_upgrade180_auto_upgrade180auto_maybe_migrate",
+      "label": ".maybe_migrate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".maybe_migrate()",
+      "source_file": "includes/class-upgrade180-auto.php",
+      "source_location": "L9"
+    },
+    {
+      "id": "includes_class_upgrade180_codes_upgrade180codes_maybe_migrate",
+      "label": ".maybe_migrate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".maybe_migrate()",
+      "source_file": "includes/class-upgrade180-codes.php",
+      "source_location": "L7"
+    },
+    {
+      "id": "includes_class_upgrade180_plan_closure_1",
+      "label": "{closure#1}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-upgrade180-plan.php",
+      "source_location": "L18"
+    },
+    {
+      "id": "includes_class_upgrade180_plan_upgrade180plan_classify",
+      "label": ".classify()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".classify()",
+      "source_file": "includes/class-upgrade180-plan.php",
+      "source_location": "L17"
+    },
+    {
+      "id": "includes_class_upgrade180_plan_upgrade180plan_object",
+      "label": ".object()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".object()",
+      "source_file": "includes/class-upgrade180-plan.php",
+      "source_location": "L49"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_exists",
+      "label": ".exists()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".exists()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L105"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_inspect",
+      "label": ".inspect()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".inspect()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L54"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_migrate",
+      "label": ".migrate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".migrate()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L25"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_option",
+      "label": ".option()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".option()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L112"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_preview",
+      "label": ".preview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".preview()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L15"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_reviewed_adapter",
+      "label": ".reviewed_adapter()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".reviewed_adapter()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L171"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_reviewed_adapter_files",
+      "label": ".reviewed_adapter_files()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".reviewed_adapter_files()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L180"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_reviewed_core",
+      "label": ".reviewed_core()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".reviewed_core()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L142"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_reviewed_core_files",
+      "label": ".reviewed_core_files()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".reviewed_core_files()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L130"
+    },
+    {
+      "id": "includes_class_upgrade180_upgrade180_transactional_tables",
+      "label": ".transactional_tables()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": ".transactional_tables()",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L119"
     },
     {
       "id": "includes_class_upgrade180_auto_closure_1",
@@ -2983,7 +3261,7 @@
       "file_type": "code",
       "norm_label": ".clear_cache()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L446"
+      "source_location": "L447"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_error",
@@ -2995,7 +3273,7 @@
       "file_type": "code",
       "norm_label": ".error()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L453"
+      "source_location": "L454"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_locked_ledger",
@@ -3007,7 +3285,7 @@
       "file_type": "code",
       "norm_label": ".locked_ledger()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L426"
+      "source_location": "L427"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_notice",
@@ -3031,7 +3309,7 @@
       "file_type": "code",
       "norm_label": ".restore_17()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L369"
+      "source_location": "L370"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_safe_database_settings",
@@ -3079,7 +3357,7 @@
       "file_type": "code",
       "norm_label": ".safe_health_member()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L318"
+      "source_location": "L319"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_safe_mailbox_settings",
@@ -3115,7 +3393,7 @@
       "file_type": "code",
       "norm_label": ".safe_native_tools()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L352"
+      "source_location": "L353"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_safe_server",
@@ -3139,7 +3417,7 @@
       "file_type": "code",
       "norm_label": ".scope()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L412"
+      "source_location": "L413"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_scope_sql",
@@ -3151,7 +3429,7 @@
       "file_type": "code",
       "norm_label": ".scope_sql()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L420"
+      "source_location": "L421"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_transactional",
@@ -3163,7 +3441,7 @@
       "file_type": "code",
       "norm_label": ".transactional()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L401"
+      "source_location": "L402"
     },
     {
       "id": "includes_class_upgrade180_auto_upgrade180auto_write_ledger",
@@ -3175,7 +3453,7 @@
       "file_type": "code",
       "norm_label": ".write_ledger()",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L438"
+      "source_location": "L439"
     },
     {
       "id": "includes_class_authentication_settings_closure_1",
@@ -3214,7 +3492,7 @@
       "source_location": "L99"
     },
     {
-      "id": "includes_class_upgrade180_plan_closure_1",
+      "id": "getmcp_extensions_closure_1",
       "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
@@ -3222,44 +3500,8 @@
       "community_name": "Community 31",
       "file_type": "code",
       "norm_label": "{closure#1}()",
-      "source_file": "includes/class-upgrade180-plan.php",
-      "source_location": "L18"
-    },
-    {
-      "id": "includes_class_upgrade180_plan_upgrade180plan_classify",
-      "label": ".classify()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "Community 31",
-      "file_type": "code",
-      "norm_label": ".classify()",
-      "source_file": "includes/class-upgrade180-plan.php",
-      "source_location": "L17"
-    },
-    {
-      "id": "includes_class_upgrade180_plan_upgrade180plan_object",
-      "label": ".object()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "Community 31",
-      "file_type": "code",
-      "norm_label": ".object()",
-      "source_file": "includes/class-upgrade180-plan.php",
-      "source_location": "L49"
-    },
-    {
-      "id": "includes_class_upgrade180_upgrade180_inspect",
-      "label": ".inspect()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "Community 31",
-      "file_type": "code",
-      "norm_label": ".inspect()",
-      "source_file": "includes/class-upgrade180.php",
-      "source_location": "L54"
+      "source_file": "getmcp-extensions.php",
+      "source_location": "L24"
     },
     {
       "id": "admin_upgrade_180_request",
@@ -3332,66 +3574,6 @@
       "norm_label": "projectgateways()",
       "source_file": "admin/connection-tools.js",
       "source_location": "L25"
-    },
-    {
-      "id": "admin_standalone_180_apipath",
-      "label": "apiPath()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "Community 35",
-      "file_type": "code",
-      "norm_label": "apipath()",
-      "source_file": "admin/standalone-180.js",
-      "source_location": "L5"
-    },
-    {
-      "id": "admin_standalone_180_mount",
-      "label": "mount()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "Community 35",
-      "file_type": "code",
-      "norm_label": "mount()",
-      "source_file": "admin/standalone-180.js",
-      "source_location": "L17"
-    },
-    {
-      "id": "admin_standalone_180_mount_provideraccess",
-      "label": "ProviderAccess()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 35,
-      "community_name": "Community 35",
-      "file_type": "code",
-      "norm_label": "provideraccess()",
-      "source_file": "admin/standalone-180.js",
-      "source_location": "L62"
-    },
-    {
-      "id": "includes_class_upgrade180_codes_upgrade180codes_maybe_migrate",
-      "label": ".maybe_migrate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "Community 37",
-      "file_type": "code",
-      "norm_label": ".maybe_migrate()",
-      "source_file": "includes/class-upgrade180-codes.php",
-      "source_location": "L7"
-    },
-    {
-      "id": "getmcp_extensions_closure_1",
-      "label": "{closure#1}()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "Community 38",
-      "file_type": "code",
-      "norm_label": "{closure#1}()",
-      "source_file": "getmcp-extensions.php",
-      "source_location": "L24"
     },
     {
       "id": "includes_class_configuration_import_closure_1",
@@ -3502,40 +3684,52 @@
       "source_location": "L7"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_call",
-      "label": ".call()",
+      "id": "includes_class_public_gateway180_closure_1",
+      "label": "{closure#1}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 40,
-      "community_name": "Community 40",
+      "community": 4,
+      "community_name": "Community 4",
       "file_type": "code",
-      "norm_label": ".call()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L27"
+      "norm_label": "{closure#1}()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L10"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_configuration_schema",
-      "label": ".configuration_schema()",
+      "id": "includes_class_public_gateway180_closure_2",
+      "label": "{closure#2}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 40,
-      "community_name": "Community 40",
+      "community": 4,
+      "community_name": "Community 4",
       "file_type": "code",
-      "norm_label": ".configuration_schema()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L5"
+      "norm_label": "{closure#2}()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L12"
     },
     {
-      "id": "includes_class_marketing_management_tool_marketingmanagementtool_definition",
-      "label": ".definition()",
+      "id": "includes_class_public_gateway180_closure_3",
+      "label": "{closure#3}()",
       "_callable": true,
       "_origin": "ast",
-      "community": 40,
-      "community_name": "Community 40",
+      "community": 4,
+      "community_name": "Community 4",
       "file_type": "code",
-      "norm_label": ".definition()",
-      "source_file": "includes/class-marketing-management-tool.php",
-      "source_location": "L24"
+      "norm_label": "{closure#3}()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L18"
+    },
+    {
+      "id": "includes_class_public_gateway180_closure_4",
+      "label": "{closure#4}()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "{closure#4}()",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L45"
     },
     {
       "id": "includes_class_runtime_runtime_assert_enabled",
@@ -3571,7 +3765,7 @@
       "file_type": "code",
       "norm_label": ".asset_version()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L199"
+      "source_location": "L200"
     },
     {
       "id": "includes_class_runtime_runtime_enabled",
@@ -3607,7 +3801,7 @@
       "file_type": "code",
       "norm_label": ".menu()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L142"
+      "source_location": "L143"
     },
     {
       "id": "includes_class_runtime_runtime_native_features",
@@ -3631,7 +3825,7 @@
       "file_type": "code",
       "norm_label": ".notice()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L203"
+      "source_location": "L204"
     },
     {
       "id": "includes_class_runtime_runtime_profile",
@@ -3667,7 +3861,7 @@
       "file_type": "code",
       "norm_label": ".rest_guard()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L136"
+      "source_location": "L137"
     },
     {
       "id": "includes_class_runtime_runtime_routes",
@@ -3679,7 +3873,7 @@
       "file_type": "code",
       "norm_label": ".routes()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L123"
+      "source_location": "L124"
     },
     {
       "id": "includes_class_runtime_runtime_save",
@@ -3691,7 +3885,7 @@
       "file_type": "code",
       "norm_label": ".save()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L108"
+      "source_location": "L109"
     },
     {
       "id": "includes_class_runtime_runtime_settings",
@@ -3715,7 +3909,7 @@
       "file_type": "code",
       "norm_label": ".status()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L104"
+      "source_location": "L105"
     },
     {
       "id": "includes_class_runtime_runtime_upgrade_assets",
@@ -3727,7 +3921,7 @@
       "file_type": "code",
       "norm_label": ".upgrade_assets()",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L160"
+      "source_location": "L161"
     },
     {
       "id": "tools_build_google_health_template_mapping",
@@ -4186,6 +4380,28 @@
       "source_location": "L25"
     },
     {
+      "id": "includes_class_legacy_gateway180",
+      "label": "class-legacy-gateway180.php",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "class-legacy-gateway180.php",
+      "source_file": "includes/class-legacy-gateway180.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "includes_class_legacy_gateway180_php_wp_error",
+      "label": "WP_Error",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "Community 1",
+      "file_type": "code",
+      "norm_label": "wp_error",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "includes_class_upgrade180_store",
       "label": "class-upgrade180-store.php",
       "_origin": "ast",
@@ -4202,28 +4418,6 @@
       "_origin": "ast",
       "community": 1,
       "community_name": "Community 1",
-      "file_type": "code",
-      "norm_label": "wp_error",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "includes_class_legacy_gateway180",
-      "label": "class-legacy-gateway180.php",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
-      "file_type": "code",
-      "norm_label": "class-legacy-gateway180.php",
-      "source_file": "includes/class-legacy-gateway180.php",
-      "source_location": "L1"
-    },
-    {
-      "id": "includes_class_legacy_gateway180_php_wp_error",
-      "label": "WP_Error",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Community 10",
       "file_type": "code",
       "norm_label": "wp_error",
       "source_file": "",
@@ -4296,17 +4490,6 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_configuration_transcoder",
-      "label": "class-configuration-transcoder.php",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "Community 2",
-      "file_type": "code",
-      "norm_label": "class-configuration-transcoder.php",
-      "source_file": "includes/class-configuration-transcoder.php",
-      "source_location": "L1"
-    },
-    {
       "id": "includes_class_marketing_module",
       "label": "class-marketing-module.php",
       "_origin": "ast",
@@ -4318,14 +4501,14 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_upgrade180",
-      "label": "class-upgrade180.php",
+      "id": "admin_standalone_180",
+      "label": "standalone-180.js",
       "_origin": "ast",
       "community": 20,
       "community_name": "Community 20",
       "file_type": "code",
-      "norm_label": "class-upgrade180.php",
-      "source_file": "includes/class-upgrade180.php",
+      "norm_label": "standalone-180.js",
+      "source_file": "admin/standalone-180.js",
       "source_location": "L1"
     },
     {
@@ -4338,6 +4521,17 @@
       "norm_label": "getmcp\\auth\\firstpartyoauth",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "includes_class_configuration_transcoder",
+      "label": "class-configuration-transcoder.php",
+      "_origin": "ast",
+      "community": 21,
+      "community_name": "Community 21",
+      "file_type": "code",
+      "norm_label": "class-configuration-transcoder.php",
+      "source_file": "includes/class-configuration-transcoder.php",
+      "source_location": "L1"
     },
     {
       "id": "includes_class_connection_screens",
@@ -4373,6 +4567,17 @@
       "source_location": ""
     },
     {
+      "id": "includes_class_marketing_management_tool",
+      "label": "class-marketing-management-tool.php",
+      "_origin": "ast",
+      "community": 23,
+      "community_name": "Community 23",
+      "file_type": "code",
+      "norm_label": "class-marketing-management-tool.php",
+      "source_file": "includes/class-marketing-management-tool.php",
+      "source_location": "L1"
+    },
+    {
       "id": "includes_endpoint_guard",
       "label": "endpoint-guard.php",
       "_origin": "ast",
@@ -4395,6 +4600,17 @@
       "source_location": "L1"
     },
     {
+      "id": "includes_class_provider_privacy",
+      "label": "class-provider-privacy.php",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "Community 26",
+      "file_type": "code",
+      "norm_label": "class-provider-privacy.php",
+      "source_file": "includes/class-provider-privacy.php",
+      "source_location": "L1"
+    },
+    {
       "id": "includes_class_provider_readiness",
       "label": "class-provider-readiness.php",
       "_origin": "ast",
@@ -4406,14 +4622,14 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_runtime",
-      "label": "class-runtime.php",
+      "id": "includes_class_gateway_personal180",
+      "label": "class-gateway-personal180.php",
       "_origin": "ast",
       "community": 27,
       "community_name": "Community 27",
       "file_type": "code",
-      "norm_label": "class-runtime.php",
-      "source_file": "includes/class-runtime.php",
+      "norm_label": "class-gateway-personal180.php",
+      "source_file": "includes/class-gateway-personal180.php",
       "source_location": "L1"
     },
     {
@@ -4428,6 +4644,50 @@
       "source_location": "L1"
     },
     {
+      "id": "includes_class_runtime",
+      "label": "class-runtime.php",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "class-runtime.php",
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "includes_class_upgrade180",
+      "label": "class-upgrade180.php",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "class-upgrade180.php",
+      "source_file": "includes/class-upgrade180.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "includes_class_upgrade180_codes",
+      "label": "class-upgrade180-codes.php",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "class-upgrade180-codes.php",
+      "source_file": "includes/class-upgrade180-codes.php",
+      "source_location": "L1"
+    },
+    {
+      "id": "includes_class_upgrade180_plan",
+      "label": "class-upgrade180-plan.php",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Community 28",
+      "file_type": "code",
+      "norm_label": "class-upgrade180-plan.php",
+      "source_file": "includes/class-upgrade180-plan.php",
+      "source_location": "L1"
+    },
+    {
       "id": "admin_remote_catalogue",
       "label": "remote-catalogue.js",
       "_origin": "ast",
@@ -4436,17 +4696,6 @@
       "file_type": "code",
       "norm_label": "remote-catalogue.js",
       "source_file": "admin/remote-catalogue.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "includes_class_gateway_personal180",
-      "label": "class-gateway-personal180.php",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Community 3",
-      "file_type": "code",
-      "norm_label": "class-gateway-personal180.php",
-      "source_file": "includes/class-gateway-personal180.php",
       "source_location": "L1"
     },
     {
@@ -4483,14 +4732,14 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_upgrade180_plan",
-      "label": "class-upgrade180-plan.php",
+      "id": "getmcp_extensions",
+      "label": "getmcp-extensions.php",
       "_origin": "ast",
       "community": 31,
       "community_name": "Community 31",
       "file_type": "code",
-      "norm_label": "class-upgrade180-plan.php",
-      "source_file": "includes/class-upgrade180-plan.php",
+      "norm_label": "getmcp-extensions.php",
+      "source_file": "getmcp-extensions.php",
       "source_location": "L1"
     },
     {
@@ -4516,47 +4765,14 @@
       "source_location": "L1"
     },
     {
-      "id": "admin_standalone_180",
-      "label": "standalone-180.js",
+      "id": "admin_native_connections",
+      "label": "native-connections.js",
       "_origin": "ast",
       "community": 35,
       "community_name": "Community 35",
       "file_type": "code",
-      "norm_label": "standalone-180.js",
-      "source_file": "admin/standalone-180.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "admin_native_connections",
-      "label": "native-connections.js",
-      "_origin": "ast",
-      "community": 36,
-      "community_name": "Community 36",
-      "file_type": "code",
       "norm_label": "native-connections.js",
       "source_file": "admin/native-connections.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "includes_class_upgrade180_codes",
-      "label": "class-upgrade180-codes.php",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "Community 37",
-      "file_type": "code",
-      "norm_label": "class-upgrade180-codes.php",
-      "source_file": "includes/class-upgrade180-codes.php",
-      "source_location": "L1"
-    },
-    {
-      "id": "getmcp_extensions",
-      "label": "getmcp-extensions.php",
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "Community 38",
-      "file_type": "code",
-      "norm_label": "getmcp-extensions.php",
-      "source_file": "getmcp-extensions.php",
       "source_location": "L1"
     },
     {
@@ -4611,6 +4827,17 @@
       "community_name": "Community 4",
       "file_type": "code",
       "norm_label": "getmcp\\execution\\parameterresolver",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "getmcp_gateway_projectgateway",
+      "label": "GetMCP\\Gateway\\ProjectGateway",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Community 4",
+      "file_type": "code",
+      "norm_label": "getmcp\\gateway\\projectgateway",
       "source_file": "",
       "source_location": ""
     },
@@ -4780,14 +5007,14 @@
       "source_location": "L1"
     },
     {
-      "id": "includes_class_marketing_management_tool",
-      "label": "class-marketing-management-tool.php",
+      "id": "includes_class_public_gateway180",
+      "label": "class-public-gateway180.php",
       "_origin": "ast",
-      "community": 40,
-      "community_name": "Community 40",
+      "community": 4,
+      "community_name": "Community 4",
       "file_type": "code",
-      "norm_label": "class-marketing-management-tool.php",
-      "source_file": "includes/class-marketing-management-tool.php",
+      "norm_label": "class-public-gateway180.php",
+      "source_file": "includes/class-public-gateway180.php",
       "source_location": "L1"
     },
     {
@@ -5563,7 +5790,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "admin/standalone-180.js",
-      "source_location": "L138",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -6139,6 +6366,42 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "getmcp_core_servermanager",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "getmcp_gateway_projectgateway",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "getmcp_remote_remoteexception",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "includes/class-public-gateway180.php",
       "source_location": "L6",
       "weight": 1.0
     },
@@ -7123,7 +7386,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L453",
+      "source_location": "L454",
       "weight": 1.0
     },
     {
@@ -7575,7 +7838,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-gateway-personal180.php",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -8140,6 +8403,17 @@
       "weight": 1.0
     },
     {
+      "source": "includes_class_provider_privacy",
+      "target": "includes_class_provider_privacy_providerprivacy",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-provider-privacy.php",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "includes_class_provider_readiness",
       "target": "includes_class_provider_readiness_providerreadiness",
       "relation": "contains",
@@ -8159,6 +8433,61 @@
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "includes_class_public_gateway180_closure_1",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "includes_class_public_gateway180_closure_2",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "includes_class_public_gateway180_closure_3",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "includes_class_public_gateway180_closure_4",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180",
+      "target": "includes_class_public_gateway180_publicgateway180",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -8257,7 +8586,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L102",
+      "source_location": "L103",
       "weight": 1.0
     },
     {
@@ -8268,7 +8597,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L125",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -8279,7 +8608,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L125",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -8290,7 +8619,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L126",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -8301,7 +8630,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L126",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -8312,7 +8641,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L132",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -8323,7 +8652,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L132",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -8334,7 +8663,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L133",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -8345,7 +8674,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L133",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -8356,7 +8685,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L145",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -9951,7 +10280,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L85",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -9984,7 +10313,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -10017,7 +10346,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L51",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -10028,7 +10357,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L55",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -10039,7 +10368,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L61",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -10051,6 +10380,17 @@
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-execution.php",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_privacy_providerprivacy",
+      "target": "includes_class_provider_privacy_providerprivacy_sensitive",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-provider-privacy.php",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -10077,7 +10417,7 @@
     },
     {
       "source": "includes_class_provider_tokens_providertokens",
-      "target": "includes_class_provider_tokens_providertokens_is_meta",
+      "target": "includes_class_provider_tokens_providertokens_is_oura",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -10088,13 +10428,24 @@
     },
     {
       "source": "includes_class_provider_tokens_providertokens",
+      "target": "includes_class_provider_tokens_providertokens_is_meta",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-provider-tokens.php",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_tokens_providertokens",
       "target": "includes_class_provider_tokens_providertokens_secret",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L14",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -10105,7 +10456,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L18",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -10116,7 +10467,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L28",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -10127,7 +10478,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L36",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -10138,7 +10489,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L44",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -10149,7 +10500,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L48",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -10161,6 +10512,94 @@
       "confidence_score": 1.0,
       "source_file": "includes/class-provider-tokens.php",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_revision",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_origin",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_acceptable",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_configure",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_allowed_origin",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_permits",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_inject",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180",
+      "target": "includes_class_public_gateway180_publicgateway180_routes",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -10237,7 +10676,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L104",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -10248,7 +10687,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L108",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -10270,7 +10709,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L123",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -10281,7 +10720,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L136",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -10292,18 +10731,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L142",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_runtime_runtime",
-      "target": "includes_class_runtime_runtime_render",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L149",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -10319,13 +10747,24 @@
     },
     {
       "source": "includes_class_runtime_runtime",
+      "target": "includes_class_runtime_runtime_render",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_runtime_runtime",
       "target": "includes_class_runtime_runtime_upgrade_assets",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L160",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -10336,18 +10775,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L165",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_runtime_runtime",
-      "target": "includes_class_runtime_runtime_asset_version",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "includes/class-runtime.php",
-      "source_location": "L199",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -10363,13 +10791,24 @@
     },
     {
       "source": "includes_class_runtime_runtime",
+      "target": "includes_class_runtime_runtime_asset_version",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "includes/class-runtime.php",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_runtime_runtime",
       "target": "includes_class_runtime_runtime_notice",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-runtime.php",
-      "source_location": "L203",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -10666,7 +11105,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L318",
+      "source_location": "L319",
       "weight": 1.0
     },
     {
@@ -10677,7 +11116,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L352",
+      "source_location": "L353",
       "weight": 1.0
     },
     {
@@ -10688,7 +11127,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L369",
+      "source_location": "L370",
       "weight": 1.0
     },
     {
@@ -10699,7 +11138,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L401",
+      "source_location": "L402",
       "weight": 1.0
     },
     {
@@ -10710,7 +11149,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L412",
+      "source_location": "L413",
       "weight": 1.0
     },
     {
@@ -10721,7 +11160,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L420",
+      "source_location": "L421",
       "weight": 1.0
     },
     {
@@ -10732,7 +11171,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L426",
+      "source_location": "L427",
       "weight": 1.0
     },
     {
@@ -10743,7 +11182,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L438",
+      "source_location": "L439",
       "weight": 1.0
     },
     {
@@ -10754,7 +11193,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L446",
+      "source_location": "L447",
       "weight": 1.0
     },
     {
@@ -10776,7 +11215,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L453",
+      "source_location": "L454",
       "weight": 1.0
     },
     {
@@ -11206,7 +11645,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "admin/standalone-180.js",
-      "source_location": "L137",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -11343,7 +11782,7 @@
     },
     {
       "source": "includes_class_gateway_personal180_gatewaypersonal180_members",
-      "target": "includes_class_provider_connections_providerconnections",
+      "target": "includes_class_public_gateway180_publicgateway180",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -11355,6 +11794,18 @@
     },
     {
       "source": "includes_class_gateway_personal180_gatewaypersonal180_members",
+      "target": "includes_class_provider_connections_providerconnections",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-gateway-personal180.php",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_gateway_personal180_gatewaypersonal180_members",
       "target": "includes_class_upgrade180_auto_upgrade180auto",
       "relation": "calls",
       "_origin": "ast",
@@ -11362,7 +11813,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-gateway-personal180.php",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -12238,7 +12689,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L77",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -12250,7 +12701,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L93",
+      "source_location": "L100",
       "weight": 1.0
     },
     {
@@ -12262,7 +12713,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L94",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -12274,7 +12725,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-connections.php",
-      "source_location": "L94",
+      "source_location": "L101",
       "weight": 1.0
     },
     {
@@ -12322,7 +12773,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -12339,7 +12790,7 @@
     },
     {
       "source": "includes_class_provider_discovery_providerdiscovery_discover",
-      "target": "includes_class_authentication_settings_authenticationsettings",
+      "target": "includes_class_provider_tokens_providertokens",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -12351,7 +12802,7 @@
     },
     {
       "source": "includes_class_provider_discovery_providerdiscovery_discover",
-      "target": "includes_class_provider_tokens_providertokens",
+      "target": "includes_class_authentication_settings_authenticationsettings",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -12370,7 +12821,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-discovery.php",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -12418,7 +12869,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L53",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -12459,18 +12910,6 @@
     },
     {
       "source": "includes_class_provider_execution_providerexecution_inject",
-      "target": "includes_class_page_tokens_pagetokens",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "context": "call",
-      "source_file": "includes/class-provider-execution.php",
-      "source_location": "L39",
-      "weight": 1.0
-    },
-    {
-      "source": "includes_class_provider_execution_providerexecution_inject",
       "target": "includes_class_provider_tokens_providertokens",
       "relation": "calls",
       "_origin": "ast",
@@ -12478,7 +12917,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L41",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_execution_providerexecution_inject",
+      "target": "includes_class_page_tokens_pagetokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -12490,7 +12941,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L62",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_execution_providerexecution_record",
+      "target": "includes_class_provider_tokens_providertokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-execution.php",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -12502,7 +12965,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L64",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -12514,7 +12977,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-execution.php",
-      "source_location": "L58",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_provider_privacy_providerprivacy_sensitive",
+      "target": "includes_class_provider_tokens_providertokens",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-provider-privacy.php",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -12562,7 +13037,115 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-provider-tokens.php",
-      "source_location": "L16",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_closure_2",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_acceptable",
+      "target": "includes_class_legacy_bridge_legacybridge",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_acceptable",
+      "target": "includes_class_runtime_runtime",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_allowed_origin",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_configure",
+      "target": "includes_class_legacy_bridge_legacybridge",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_configure",
+      "target": "includes_class_authentication_settings_settingsconflict",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_inject",
+      "target": "includes_class_authentication_settings_authenticationsettings",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_permits",
+      "target": "includes_class_legacy_bridge_legacybridge",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "includes_class_public_gateway180_publicgateway180_routes",
+      "target": "includes_class_legacy_bridge_legacybridge",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "includes/class-public-gateway180.php",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -12634,7 +13217,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L145",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -12646,7 +13229,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L125",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -12658,7 +13241,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L128",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -12670,7 +13253,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L180",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -12706,7 +13289,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L92",
+      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -12718,7 +13301,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L93",
+      "source_location": "L94",
       "weight": 1.0
     },
     {
@@ -12730,7 +13313,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L94",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -12742,7 +13325,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-runtime.php",
-      "source_location": "L157",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -12862,7 +13445,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L319",
+      "source_location": "L320",
       "weight": 1.0
     },
     {
@@ -12874,7 +13457,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L338",
+      "source_location": "L339",
       "weight": 1.0
     },
     {
@@ -12886,7 +13469,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "includes/class-upgrade180-auto.php",
-      "source_location": "L339",
+      "source_location": "L340",
       "weight": 1.0
     },
     {
@@ -13035,5 +13618,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "45fc3644d18e979696620e01f8580835c4990778"
+  "built_at_commit": "83f13e75892258bcc7bc4524dc736d17c8144070"
 }

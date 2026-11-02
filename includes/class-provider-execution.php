@@ -31,6 +31,12 @@ final class ProviderExecution {
         $page = 'page' === ( $settings['provider_token_sources'][$slug] ?? '' ) || in_array( $slug, array( 'get_conversations', 'get_conversation_messages', 'send_dm' ), true );
         if ( $page && ( ! MarketingModule::enabled() || ! ProviderConnections::supported( $server ) ) ) { throw new RemoteException( 'Page-token tools require an enabled, supported provider connection.', -32003 ); }
         if ( ! ProviderConnections::supported( $server ) || ! MarketingModule::enabled() ) { return null; }
+		if ( ProviderTokens::is_oura( $server ) ) {
+			$url = wp_parse_url( (string) ( $request['url'] ?? '' ) );
+			if ( ! is_array( $url ) || 'https' !== strtolower( $url['scheme'] ?? '' ) || 'api.ouraring.com' !== strtolower( $url['host'] ?? '' ) || isset( $url['user'] ) || isset( $url['pass'] ) || ( isset( $url['port'] ) && 443 !== (int) $url['port'] ) ) {
+				throw new RemoteException( 'Oura requests must use the official API endpoint.', -32003 );
+			}
+		}
         $row = \GetMCP\Auth\McpAuth::current_token_row();
         // Existing broker User-token and operator/test paths remain unchanged for ordinary tools.
         if ( ! $page && ( $test || (int) ( $row->user_id ?? 0 ) < 1 ) ) { return null; }
@@ -54,12 +60,13 @@ final class ProviderExecution {
     }
     public static function retries( $tool ): int {
         if ( 'graph.facebook.com' === wp_parse_url( $tool->endpoint_url, PHP_URL_HOST ) && 'GET' !== strtoupper( $tool->http_method ?? '' ) ) { return 0; }
-        if ( ! in_array( wp_parse_url( $tool->endpoint_url, PHP_URL_HOST ), array( 'graph.facebook.com', 'mcp.facebook.com', 'googleads.googleapis.com', 'analyticsadmin.googleapis.com', 'analyticsdata.googleapis.com', 'www.googleapis.com' ), true ) ) { return (int) $tool->retry_count; }
+		if ( 'api.ouraring.com' === wp_parse_url( $tool->endpoint_url, PHP_URL_HOST ) && 'GET' !== strtoupper( $tool->http_method ?? '' ) ) { return 0; }
+		if ( ! in_array( wp_parse_url( $tool->endpoint_url, PHP_URL_HOST ), array( 'graph.facebook.com', 'mcp.facebook.com', 'googleads.googleapis.com', 'analyticsadmin.googleapis.com', 'analyticsdata.googleapis.com', 'www.googleapis.com', 'api.ouraring.com' ), true ) ) { return (int) $tool->retry_count; }
         $annotations = AuthenticationSettings::object( $tool->annotations ?? null );
         return ( $annotations['readOnlyHint'] ?? false ) === true || 'GET' === strtoupper( $tool->http_method ?? '' ) ? (int) $tool->retry_count : 0;
     }
     public static function record( $server, $tool, array $arguments, array $response, bool $test = false ): void {
-        if ( ! $server || ! ProviderConnections::supported( $server ) || 'get_conversations' !== $tool->slug || (int) ( $response['status_code'] ?? 0 ) >= 400 ) { return; }
+		if ( ! $server || ! ProviderTokens::is_meta( $server ) || ! ProviderConnections::supported( $server ) || 'get_conversations' !== $tool->slug || (int) ( $response['status_code'] ?? 0 ) >= 400 ) { return; }
         $data = json_decode( $response['body'] ?? '', true ); if ( ! is_array( $data['data'] ?? null ) ) { return; }
         $c = self::context( $server, $test ); PageTokens::record_conversations( $c['server'], $c['identity'], $c['token'], (string) ( $arguments['page_id'] ?? '' ), array_column( $data['data'], 'id' ) );
     }
