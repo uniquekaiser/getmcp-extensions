@@ -28,6 +28,17 @@ class SafeHttp {
 
 	/** Redirects are deliberately refused: token endpoints and MCP URLs must be exact. */
 	public static function request( string $url, string $method = 'GET', array $headers = array(), ?string $body = null ): array {
+		// 1.8's transport pins the validated DNS answers to the actual cURL
+		// connection. Reuse it instead of resolving a second time after checking.
+		if ( defined( 'GETMCP_VERSION' ) && '1.8.0' === GETMCP_VERSION && class_exists( '\\GetMCP\\RemoteMcp\\SafeHttp' ) ) {
+			self::validate_headers( $headers );
+			try {
+				$result = \GetMCP\RemoteMcp\SafeHttp::request( $method, $url, $headers, $body );
+			} catch ( \GetMCP\RemoteMcp\RemoteException $e ) {
+				throw new RemoteException( 'The upstream connection could not be completed safely.' );
+			}
+			return array( 'status' => $result['status'], 'body' => $result['body'], 'headers' => wp_remote_retrieve_headers( $result['response'] ) );
+		}
 		self::validate_url( $url, true );
 		self::validate_headers( $headers );
 		$args = array( 'method' => $method, 'headers' => $headers, 'timeout' => 30, 'redirection' => 0, 'sslverify' => true, 'reject_unsafe_urls' => true, 'limit_response_size' => self::MAX_BYTES + 1, 'cookies' => array() );

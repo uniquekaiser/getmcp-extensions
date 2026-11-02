@@ -17,10 +17,14 @@ final class RemoteCatalogue {
     public static function menu(): void {
         if ( ! Runtime::enabled( 'remote_mcp' ) ) { return; }
         $admin = new \GetMCP\Admin\Admin();
-        $hook = add_submenu_page( 'getmcp', 'Remote MCP Servers', 'Remote MCP Servers', 'getmcp_manage_servers', 'getmcp-remote-servers', static function(): void {
+        $hook = add_submenu_page( 'getmcp', 'Remote MCP Servers', 'Remote MCP Servers', 'getmcp_manage_servers', 'vendor-original-1.8.0' === Runtime::profile() ? 'getmcp-extensions-remote-servers' : 'getmcp-remote-servers', static function(): void {
+			if ( 'vendor-original-1.8.0' === Runtime::profile() ) { Standalone180::render( 'catalogue' ); return; }
             echo '<div class="getmcp-wrap"><div id="getmcp-admin-root"></div></div><script>if(!location.hash||location.hash==="#/connections")location.hash="/remote-servers";</script>';
         } );
-        if ( $hook ) { add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
+		if ( $hook ) {
+			if ( 'vendor-original-1.8.0' === Runtime::profile() ) { add_action( 'load-' . $hook, static fn() => Standalone180::enqueue( 'catalogue' ) ); }
+			else { add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
+		}
     }
     public static function data(): array {
         static $data;

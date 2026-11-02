@@ -1,0 +1,15 @@
+.gme180-page { max-width: 1200px; margin: 24px auto; padding: 0 16px; color: #1d2327; }
+.gme180-heading, .gme180-card-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.gme180-heading { margin-bottom: 22px; }
+.gme180-card { background: #fff; border: 1px solid #dcdcde; border-radius: 4px; padding: 20px; margin: 16px 0; }
+.gme180-card h2 { margin-top: 0; }
+.gme180-field { display: grid; gap: 6px; margin: 12px 0; max-width: 640px; font-weight: 600; }
+.gme180-field input, .gme180-field select { width: 100%; max-width: 100%; font-weight: 400; }
+.gme180-field small { font-weight: 400; color: #50575e; }
+.gme180-badge { display: inline-block; padding: 2px 8px; background: #f0f0f1; border-radius: 12px; }
+.gme180-page code { overflow-wrap: anywhere; }
+.gme180-page textarea { max-width: 100%; }
+.gme180-dialog-backdrop { position: fixed; z-index: 100000; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.5); }
+.gme180-dialog { width: min(90vw, 480px); padding: 24px; background: #fff; border-radius: 4px; }
+#getmcp-extensions-180-notice:not(:empty) { margin: 12px 16px; padding: 10px; background: #fff; border-left: 4px solid #2271b1; }
+#getmcp-extensions-180-notice[data-kind="error"] { border-left-color: #d63638; }

@@ -23,7 +23,8 @@ class FeatureHandler {
 	}
 
 	public static function handles( Server $server, string $method ): bool {
-		return 'native' !== $server->server_kind || ( McpGateway::is_gateway( $server ) && ( isset( self::LISTS[ $method ] ) || in_array( $method, array( 'tools/call', 'resources/read', 'prompts/get' ), true ) ) );
+		if ( McpGateway::is_gateway( $server ) ) { return isset( self::LISTS[ $method ] ) || in_array( $method, array( 'tools/call', 'resources/read', 'prompts/get' ), true ); }
+		return 'native' !== \GetMCPExtensions\LegacyBridge::kind( $server );
 	}
 
 	public function handle( string $method, array $params ): array {
@@ -31,7 +32,10 @@ class FeatureHandler {
 		$current = McpGateway::is_gateway( $this->server ) ? $this->server : ( new ServerManager() )->get( $this->server->id );
 		if ( ! $current || 'active' !== $current->status ) { throw new RemoteException( 'This MCP endpoint is unavailable.', -32003 ); }
 		$this->server = $current;
-		if ( 'gateway' === $current->server_kind ) { ProjectGateway::authorize( $current, $this->user ); }
+		$kind = \GetMCPExtensions\LegacyBridge::kind( $current );
+		if ( 'unknown' === $kind && ! McpGateway::is_gateway( $current ) ) { throw new RemoteException( 'This server is unavailable.', -32003 ); }
+		if ( 'gateway' === $kind ) { ProjectGateway::authorize( $current, $this->user ); }
+		if ( 'remote-mcp' === $kind && ! \GetMCPExtensions\LegacyBridge::can_user_access( $this->user, $current ) ) { throw new RemoteException( 'You no longer have direct access to this server.', -32003 ); }
 		if ( isset( self::LISTS[ $method ] ) ) {
 			$entries = $this->catalogue( $method );
 			$items = array_column( $entries, 'definition' );
@@ -46,7 +50,7 @@ class FeatureHandler {
 		if ( ! is_string( $params[ $key ] ?? null ) || '' === $params[ $key ] ) { throw new RemoteException( 'A string name or URI is required.', -32602 ); }
 		if ( isset( $params['arguments'] ) && ! is_array( $params['arguments'] ) ) { throw new RemoteException( 'arguments must be an object.', -32602 ); }
 		$member = $current; $definition = array();
-		$aggregate = 'gateway' === $current->server_kind || McpGateway::is_gateway( $current );
+		$aggregate = 'gateway' === $kind || McpGateway::is_gateway( $current );
 		if ( 'resources/read' === $method && $aggregate ) {
 			$resolved = ProjectGateway::resolve_uri( $current, $params['uri'] );
 			if ( ! $resolved ) { throw new RemoteException( 'This resource is not available in the gateway.', -32602 ); }
@@ -67,17 +71,23 @@ class FeatureHandler {
 			if ( ! in_array( $member->id, $allowed, true ) ) { throw new RemoteException( 'Gateway membership changed. Refresh the capability list.', -32003 ); }
 		}
 		$member = ( new ServerManager() )->get( $member->id );
-		if ( ! $member || 'active' !== $member->status || 'gateway' === $member->server_kind ) { throw new RemoteException( 'The selected server is unavailable.', -32003 ); }
+		if ( ! $member || 'active' !== $member->status || ! in_array( \GetMCPExtensions\LegacyBridge::kind( $member ), array( 'native', 'remote-mcp' ), true ) ) { throw new RemoteException( 'The selected server is unavailable.', -32003 ); }
 		if ( $aggregate && ! RateLimiter::allow( $member ) ) { throw new RemoteException( 'The member server rate limit was reached.' ); }
-		if ( 'remote-mcp' !== $member->server_kind ) {
+		if ( 'remote-mcp' !== \GetMCPExtensions\LegacyBridge::kind( $member ) ) {
 			$class = array( 'tools/call' => '\\GetMCP\\Protocol\\ToolsCallHandler', 'resources/read' => '\\GetMCP\\Protocol\\ResourcesReadHandler', 'prompts/get' => '\\GetMCP\\Protocol\\PromptsGetHandler' )[ $method ];
-			$delegate = fn() => ( new $class( $member, $this->session ) )->handle( $method, $params );
+			$delegate = fn() => \GetMCPExtensions\LegacyBridge::native_handler( $class, $member, $this->session, $aggregate )->handle( $method, $params );
 			$result = $aggregate ? Delegation::run( $delegate ) : $delegate();
 		} else {
 			if ( 'tools/call' === $method ) {
 				$annotations = (array) ( $definition['annotations'] ?? array() );
 				$scope = ! empty( $annotations['readOnlyHint'] ) ? 'mcp:read' : 'mcp:write';
-				if ( McpAuth::is_native_server_request() && ! McpAuth::has_scope( $scope ) ) { McpAuth::record_insufficient_scope( $scope ); throw new RemoteException( 'Insufficient OAuth scope for this tool.', -32003 ); }
+				if ( method_exists( McpAuth::class, 'default_tool_scope' ) ) {
+					$scope = McpAuth::default_tool_scope( ! empty( $annotations['readOnlyHint'] ) );
+					$enforce_scope = '' !== $scope;
+				} else {
+					$enforce_scope = McpAuth::is_native_server_request();
+				}
+				if ( $enforce_scope && ! McpAuth::has_scope( $scope ) ) { McpAuth::record_insufficient_scope( $scope ); throw new RemoteException( 'Insufficient OAuth scope for this tool.', -32003 ); }
 				\GetMCP\Execution\ToolExecutor::enforce_call_quota();
 			}
 			$start = microtime( true );
@@ -93,17 +103,17 @@ class FeatureHandler {
 	}
 
 	private function catalogue( string $method ): array {
-		$aggregate = 'gateway' === $this->server->server_kind || McpGateway::is_gateway( $this->server );
+		$aggregate = 'gateway' === \GetMCPExtensions\LegacyBridge::kind( $this->server ) || McpGateway::is_gateway( $this->server );
 		$servers = $aggregate ? ProjectGateway::members( $this->server ) : array( $this->server );
 		$entries = array(); $seen = array();
 		foreach ( $servers as $server ) {
-			$items = 'remote-mcp' === $server->server_kind ? ( new McpClient( $server, $this->user, $aggregate ? $this->server->id : 0 ) )->catalogue( $method ) : self::native_catalogue( $server, $method );
+			$items = 'remote-mcp' === \GetMCPExtensions\LegacyBridge::kind( $server ) ? ( new McpClient( $server, $this->user, $aggregate ? $this->server->id : 0 ) )->catalogue( $method ) : self::native_catalogue( $server, $method );
 			foreach ( $items as $item ) {
 				$key = 'resources/list' === $method ? 'uri' : ( 'resources/templates/list' === $method ? 'uriTemplate' : 'name' );
 				if ( ! is_string( $item[ $key ] ?? null ) || '' === $item[ $key ] ) { throw new RemoteException( 'The upstream returned an invalid capability identifier.' ); }
 				$original = $item[ $key ];
 				if ( $aggregate ) {
-					$item[ $key ] = 'uri' === $key || 'uriTemplate' === $key ? ProjectGateway::uri( $this->server, $server, $original ) : ( McpGateway::is_gateway( $this->server ) && 'tools/list' === $method && 'native' === $server->server_kind ? McpGateway::published_name( $server, $original ) : ProjectGateway::name( $server, $original ) );
+					$item[ $key ] = 'uri' === $key || 'uriTemplate' === $key ? ProjectGateway::uri( $this->server, $server, $original ) : ( McpGateway::is_gateway( $this->server ) && 'tools/list' === $method && 'native' === \GetMCPExtensions\LegacyBridge::kind( $server ) ? McpGateway::published_name( $server, $original ) : ProjectGateway::name( $server, $original ) );
 				}
 				if ( isset( $seen[ $item[ $key ] ] ) ) { throw new RemoteException( 'Duplicate capability identifiers were returned. Publication was refused.' ); }
 				$seen[ $item[ $key ] ] = true;
@@ -114,6 +124,27 @@ class FeatureHandler {
 	}
 
 	private static function native_catalogue( Server $server, string $method ): array {
+		if ( \GetMCPExtensions\LegacyBridge::is_180() ) {
+			$classes = array(
+				'tools/list' => '\\GetMCP\\Protocol\\ToolsListHandler',
+				'resources/list' => '\\GetMCP\\Protocol\\ResourcesListHandler',
+				'resources/templates/list' => '\\GetMCP\\Protocol\\ResourcesTemplatesListHandler',
+				'prompts/list' => '\\GetMCP\\Protocol\\PromptsListHandler',
+			);
+			$class = $classes[$method]; $handler = new $class( $server, null );
+			$field = self::LISTS[$method]; $items = array(); $cursor = null; $seen = array();
+			for ( $page = 0; $page < 200; ++$page ) {
+				$result = $handler->handle( $method, null === $cursor ? array() : array( 'cursor' => $cursor ) );
+				if ( ! is_array( $result[$field] ?? null ) ) { throw new RemoteException( 'The native member returned an invalid catalogue.' ); }
+				$items = array_merge( $items, $result[$field] );
+				if ( count( $items ) > 10000 ) { throw new RemoteException( 'The native member catalogue exceeds the supported limit.' ); }
+				$cursor = $result['nextCursor'] ?? null;
+				if ( null === $cursor || '' === $cursor ) { return $items; }
+				if ( ! is_string( $cursor ) || isset( $seen[$cursor] ) ) { throw new RemoteException( 'The native member returned an invalid catalogue cursor.' ); }
+				$seen[$cursor] = true;
+			}
+			throw new RemoteException( 'The native member catalogue exceeds the supported page limit.' );
+		}
 		$type = 'tools/list' === $method ? 'Tool' : ( 'prompts/list' === $method ? 'Prompt' : 'Resource' );
 		$class = '\\GetMCP\\Core\\' . $type . 'Manager'; $manager = new $class();
 		$items = array(); $page = 1;

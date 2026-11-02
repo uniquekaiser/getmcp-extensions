@@ -10,14 +10,14 @@ use GetMCP\Remote\RemoteException;
 class ProjectGateway {
 
 	public static function members( Server $gateway ): array {
-		if ( McpGateway::is_gateway( $gateway ) ) { return McpGateway::included_servers(); }
+		if ( McpGateway::is_gateway( $gateway ) ) { $included = McpGateway::included_servers(); return \GetMCPExtensions\LegacyBridge::is_180() ? \GetMCPExtensions\LegacyGateway180::members( $included ) : $included; }
 		$live = ( new ServerManager() )->get( $gateway->id );
-		if ( ! $live || 'gateway' !== $live->server_kind || 'active' !== $live->status ) { throw new RemoteException( 'This gateway is unavailable.', -32003 ); }
+		if ( ! $live || 'gateway' !== \GetMCPExtensions\LegacyBridge::kind( $live ) || 'active' !== $live->status ) { throw new RemoteException( 'This gateway is unavailable.', -32003 ); }
 		$settings = json_decode( $live->settings ?? '{}', true ) ?: array();
 		$result = array();
 		foreach ( $settings['gateway']['server_ids'] ?? array() as $id ) {
 			$server = ( new ServerManager() )->get( (int) $id );
-			if ( $server && $server->id > 0 && $server->id !== McpGateway::SERVER_ID && 'gateway' !== $server->server_kind && 'active' === $server->status && \GetMCPExtensions\Runtime::server_enabled( $server ) && ! \GetMCP\Builtin\BuiltinServer::slug_is_reserved( $server->slug ) ) { $result[] = $server; }
+			if ( $server && $server->id > 0 && $server->id !== McpGateway::SERVER_ID && in_array( \GetMCPExtensions\LegacyBridge::kind( $server ), array( 'native', 'remote-mcp' ), true ) && 'active' === $server->status && \GetMCPExtensions\Runtime::server_enabled( $server ) && ! \GetMCP\Builtin\BuiltinServer::slug_is_reserved( $server->slug ) ) { $result[] = $server; }
 		}
 		return $result;
 	}
@@ -25,7 +25,7 @@ class ProjectGateway {
 	public static function authorize( Server $gateway, int $user ): void {
 		if ( McpGateway::is_gateway( $gateway ) ) { return; }
 		$live = ( new ServerManager() )->get( $gateway->id );
-		if ( ! $live || ! FirstPartyOAuth::can_user_access( $user, $live ) ) { throw new RemoteException( 'You no longer have access to this gateway.', -32003 ); }
+		if ( ! $live || 'gateway' !== \GetMCPExtensions\LegacyBridge::kind( $live ) || ! \GetMCPExtensions\LegacyBridge::can_user_access( $user, $live ) ) { throw new RemoteException( 'You no longer have access to this gateway.', -32003 ); }
 	}
 
 	public static function name( Server $server, string $name ): string {

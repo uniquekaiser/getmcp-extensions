@@ -50,6 +50,7 @@ window.createGetMCPConnectionsPage = function({React, UI, api, useToast}) {
     const save = async (connect=false) => {
       if(connect&&(form.status!=='active'||!form.allowed_user_ids.includes(window.getmcpRemoteCatalogue?.currentUserId)))throw new Error('Choose Active status and include your WordPress user to authorize or test this connection. You can also save without connecting.');
       const body = {kind: form.kind, name: form.name, slug: form.slug, status: form.status, allowed_user_ids: form.allowed_user_ids};
+      if (form.id && form.revision) body.revision = form.revision;
       if (form.kind === 'gateway') body.server_ids = form.server_ids; else body.remote = form.remote;
       if (form.kind === 'remote-mcp') body.connection_headers = headers.filter(row=>row.name.trim()).map(row=>({name:row.name.trim(),value:row.value}));
       if (secret && form.remote.auth_mode !== 'none') {

@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 version=re.search(r'\* Version:\s*(\S+)',(ROOT/'getmcp-extensions.php').read_text()).group(1)
 assert re.fullmatch(r'\d+\.\d+\.\d+(?:-(?:alpha|beta|rc)\.[1-9]\d*)?',version)
 assert f'Stable tag: {version}' in (ROOT/'readme.txt').read_text()
-required=['getmcp-extensions.php','includes/class-updater.php','compatibility.json',
+required=['getmcp-extensions.php','includes/class-updater.php','compatibility.json','compatibility-1.8-migration.json',
  'build/index.js','compat/versions/1.7.0/build/index.js',
  'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php','vendor/yahnis-elsts/plugin-update-checker/license.txt']
 assert all((ROOT/p).is_file() for p in required),'Missing runtime or legal dependency.'
@@ -13,7 +13,7 @@ files={}
 for folder in ['admin','build','compat','includes','assets','vendor']:
  for p in (ROOT/folder).rglob('*'):
   if p.is_file(): files[p.relative_to(ROOT).as_posix()]=p.read_bytes()
-for name in ['getmcp-extensions.php','compatibility.json','readme.txt','CHANGELOG.md','README.md','LICENSE','LICENSE-NOTICE.md']:
+for name in ['getmcp-extensions.php','compatibility.json','compatibility-1.8-migration.json','readme.txt','CHANGELOG.md','README.md','LICENSE','LICENSE-NOTICE.md']:
  files[name]=(ROOT/name).read_bytes()
 files['DISTRIBUTION']=f'GetMCP Extensions {version}\n'.encode()
 assert all(not any(x in p.split('/') for x in ['.git','.github','tests','tools','docs','graphify-out','evidence']) for p in files)

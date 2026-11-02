@@ -7,7 +7,7 @@ window.createGetMCPConnectionTools = function({React, api}) {
     const load=async()=>{setOpen(!open);if(!data){try{setData(await api('connection-config/'+serverId));}catch(e){setError(e.message||'Could not load connection settings.');}}};
     const slug=data?.slug || 'getmcp';
     const auth=data?.auth_type || 'oauth';
-    const tokenAuth=data && !['oauth','none'].includes(auth);
+    const tokenAuth=data && !['oauth','wordpress','none'].includes(auth);
     const unsupported=tokenAuth && (data.auth_location==='query' || !['basic','bearer','api-key'].includes(auth));
     const authConfig=auth==='bearer'?'bearer_token_env_var = "GETMCP_TOKEN"\n':tokenAuth && !unsupported?`[mcp_servers.${quote(slug)}.env_http_headers]\n${quote(data.auth_header || 'Authorization')} = "GETMCP_AUTH_HEADER"\n`:'';
     const text=data ? `[mcp_servers.${quote(slug)}]\nurl = ${quote(data.url)}\n`+authConfig : '';

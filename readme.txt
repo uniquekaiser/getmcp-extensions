@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.4.0-beta.1
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,18 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.4.0 =
+
+* [COMPAT] Support the reviewed GetMCP 1.8.0 release while retaining compatibility with supported earlier installations.
+* [IMPROVE] Automatically transition eligible existing WordPress sign-in settings and personal grants while preserving server identities, credentials and access rules.
+* [IMPROVE] Keep existing remote connections and project gateways working during migration, including gateway access to remote tools, resources and prompts.
+* [SECURITY] Preserve existing gateway grants where their prior access can be verified; keep current rules and flag gateways for review when earlier access cannot be established.
+* [FIX] Preserve protected settings and defer unsupported or conflicting migrations for administrator review instead of overwriting existing configuration.
+* [NEW] Add a Google Health template with personal OAuth, read tools, daily and weekly summaries, and available nutrition and hydration data.
+* [FIX] Retain Google Health offline consent parameters when saving a new authentication client ID.
+* [SECURITY] Enforce reviewed health scopes and endpoints and keep health payloads out of response caches, replay and protocol logs.
+* [DEV] Add migration, gateway, connector and access regression checks using disposable local fixtures.
 
 = 1.4.0-beta.1 =
 

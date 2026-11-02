@@ -8,18 +8,22 @@ use GetMCP\Auth\FirstPartyOAuth;
 use GetMCP\Utils\Encryption;
 
 class UpstreamConnections {
+	/** The add-on-owned store survives native upgrades and core rollbacks. */
+	public static function table(): string {
+		return \GetMCPExtensions\Upgrade180Store::legacy_table();
+	}
 
 	public static function can_connect( Server $server, int $user ): bool {
-		if ( 'native' === $server->server_kind ) { return \GetMCPExtensions\ProviderConnections::can_connect( $server, $user ); }
+		if ( 'native' === \GetMCPExtensions\LegacyBridge::kind( $server ) ) { return \GetMCPExtensions\ProviderConnections::can_connect( $server, $user ); }
 		if ( ! \GetMCPExtensions\Runtime::enabled( 'remote_mcp' ) ) { return false; }
-		if ( $user < 1 || ! get_userdata( $user ) || ! user_can( $user, 'read' ) || 'active' !== $server->status || 'remote-mcp' !== $server->server_kind ) { return false; }
-		if ( FirstPartyOAuth::can_user_access( $user, $server ) ) { return true; }
+		if ( $user < 1 || ! get_userdata( $user ) || ! user_can( $user, 'read' ) || 'active' !== $server->status || 'remote-mcp' !== \GetMCPExtensions\LegacyBridge::kind( $server ) ) { return false; }
+		if ( \GetMCPExtensions\LegacyBridge::can_user_access( $user, $server ) ) { return true; }
 		$page = 1;
 		do {
 			$result = ( new ServerManager() )->list( array( 'per_page' => 100, 'page' => $page, 'status' => 'active' ) );
 			foreach ( $result['items'] as $gateway ) {
 				$settings = json_decode( $gateway->settings ?? '{}', true ) ?: array();
-				if ( 'gateway' === $gateway->server_kind && FirstPartyOAuth::can_user_access( $user, $gateway ) && in_array( $server->id, $settings['gateway']['server_ids'] ?? array(), true ) ) { return true; }
+				if ( 'gateway' === \GetMCPExtensions\LegacyBridge::kind( $gateway ) && \GetMCPExtensions\LegacyBridge::can_user_access( $user, $gateway ) && in_array( $server->id, $settings['gateway']['server_ids'] ?? array(), true ) ) { return true; }
 			}
 			++$page;
 		} while ( ( $page - 1 ) * 100 < (int) $result['total'] );
@@ -28,7 +32,8 @@ class UpstreamConnections {
 
 	public static function get( int $server_id, int $user ): ?array {
 		global $wpdb;
-		$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}getmcp_upstream_connections WHERE server_id = %d AND user_id = %d", $server_id, $user ), ARRAY_A );
+		$table = self::table();
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE server_id = %d AND user_id = %d", $server_id, $user ), ARRAY_A );
 		if ( ! $row ) { return null; }
 		try { $data = json_decode( Encryption::decrypt_strict( $row['credentials'] ), true, 512, JSON_THROW_ON_ERROR ); }
 		catch ( \Throwable $e ) { throw new RemoteException( 'The upstream credential cannot be decrypted. Reconnect your account.' ); }
@@ -39,14 +44,15 @@ class UpstreamConnections {
 	/** Includes disconnected tombstones so a callback cannot resurrect an account. */
 	public static function version( int $server_id, int $user ): ?string {
 		global $wpdb;
-		$value = $wpdb->get_var( $wpdb->prepare( "SELECT version FROM {$wpdb->prefix}getmcp_upstream_connections WHERE server_id = %d AND user_id = %d", $server_id, $user ) );
+		$table = self::table();
+		$value = $wpdb->get_var( $wpdb->prepare( "SELECT version FROM {$table} WHERE server_id = %d AND user_id = %d", $server_id, $user ) );
 		return null === $value ? null : (string) $value;
 	}
 
 	/** Compare-and-swap prevents concurrent refreshes from replacing rotated grants. */
 	public static function save( int $server_id, int $user, array $data, ?string $expected = null ): string {
 		global $wpdb;
-		$table = $wpdb->prefix . 'getmcp_upstream_connections';
+		$table = self::table();
 		$version = wp_generate_uuid4();
 		$fields = array( 'credentials' => Encryption::encrypt( wp_json_encode( $data ) ), 'version' => $version, 'updated_at' => gmdate( 'Y-m-d H:i:s' ) );
 		if ( null !== $expected ) {
@@ -65,7 +71,7 @@ class UpstreamConnections {
 
 	public static function disconnect( int $server_id, int $user ): void {
 		global $wpdb;
-		$table = $wpdb->prefix . 'getmcp_upstream_connections';
+		$table = self::table();
 		$credentials = Encryption::encrypt( wp_json_encode( array( 'disconnected' => true ) ) );
 		$version = wp_generate_uuid4(); $now = gmdate( 'Y-m-d H:i:s' );
 		// One atomic upsert removes secrets and changes the version even before the first connection.
@@ -77,12 +83,12 @@ class UpstreamConnections {
 
 	public static function delete_server( int $server_id ): void {
 		global $wpdb;
-		$wpdb->delete( $wpdb->prefix . 'getmcp_upstream_connections', array( 'server_id' => $server_id ), array( '%d' ) );
+		$wpdb->delete( self::table(), array( 'server_id' => $server_id ), array( '%d' ) );
 	}
 
 	public static function delete_user( int $user ): void {
 		global $wpdb;
-		$wpdb->delete( $wpdb->prefix . 'getmcp_upstream_connections', array( 'user_id' => $user ), array( '%d' ) );
+		$wpdb->delete( self::table(), array( 'user_id' => $user ), array( '%d' ) );
 	}
 
 	public static function headers( Server $server, int $user ): array {
@@ -118,7 +124,10 @@ class UpstreamConnections {
 	/** Only fixed, capability-checked destinations; never accept a caller-supplied URL. */
 	public static function portal_url( string $context = '' ): string {
 		if ( 'portal' === $context ) { return add_query_arg( 'getmcp_connections', '1', home_url( '/' ) ); }
-		if ( 'profile' !== $context && current_user_can( 'getmcp_manage_servers' ) ) { return admin_url( 'admin.php?page=getmcp-my-connections' ); }
+		if ( 'profile' !== $context && current_user_can( 'getmcp_manage_servers' ) ) {
+			$page = \GetMCPExtensions\LegacyBridge::is_180() ? 'getmcp-extensions-my-connections' : 'getmcp-my-connections';
+			return admin_url( 'admin.php?page=' . $page );
+		}
 		if ( current_user_can( 'read' ) ) { return admin_url( 'profile.php?page=getmcp-account-connections' ); }
 		return add_query_arg( 'getmcp_connections', '1', home_url( '/' ) );
 	}

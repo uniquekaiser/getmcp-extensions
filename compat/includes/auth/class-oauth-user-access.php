@@ -71,6 +71,10 @@ class OAuthUserAccess {
 		if ( is_wp_error( $permission ) ) { return $permission; }
 		$server = ( new ServerManager() )->get( $server_id );
 		if ( ! $server ) { return new WP_Error( 'getmcp_not_found', 'Server not found.', array( 'status' => 404 ) ); }
+		if ( \GetMCPExtensions\LegacyBridge::is_180() ) {
+			if ( ServerUserAccess::AUTH_TYPE !== $server->auth_type ) { return new WP_Error( 'getmcp_not_native_oauth', 'This endpoint requires a server using WordPress login.', array( 'status' => 400 ) ); }
+			return array( 'server_id' => $server_id, 'allowed_user_ids' => ServerUserAccess::allowed_ids( $server ) );
+		}
 		if ( ! FirstPartyOAuth::is_custom( $server ) ) {
 			return new WP_Error( 'getmcp_not_native_oauth', 'This endpoint requires a custom server using GetMCP / WordPress login.', array( 'status' => 400 ) );
 		}
@@ -90,6 +94,15 @@ class OAuthUserAccess {
 		$old_ids = $current['allowed_user_ids'];
 		if ( null !== $expected && $expected !== $old_ids ) {
 			return new WP_Error( 'getmcp_access_conflict', 'The allowlist changed. Fetch it again before updating.', array( 'status' => 409 ) );
+		}
+		if ( \GetMCPExtensions\LegacyBridge::is_180() ) {
+			$server = ( new ServerManager() )->get( $server_id );
+			if ( ! $server || ServerUserAccess::AUTH_TYPE !== $server->auth_type || ServerUserAccess::allowed_ids( $server ) !== $old_ids ) { return new WP_Error( 'getmcp_access_conflict', 'Server authentication changed. Fetch it again before updating.', array( 'status' => 409 ) ); }
+			$normal = ServerUserAccess::normalise( $ids ); if ( is_wp_error( $normal ) ) { return $normal; }
+			$result = ServerUserAccess::set( $server, $normal, ServerUserAccess::revision( $old_ids ) );
+			if ( is_wp_error( $result ) ) { return $result; }
+			do_action( 'getmcp_oauth_allowed_users_updated', $server_id, $result, $old_ids, $actor_id );
+			return array( 'server_id' => $server_id, 'allowed_user_ids' => $result );
 		}
 		$server = ( new ServerManager() )->get( $server_id );
 		$config = json_decode( $server->auth_config, true );

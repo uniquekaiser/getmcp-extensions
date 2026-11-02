@@ -1,0 +1,14 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+const window = {};
+const document = {readyState: 'complete', getElementById: () => null};
+vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../admin/standalone-180.js'), 'utf8'), {window, document, URLSearchParams});
+const route = window.getmcpExtensions180ApiPath;
+assert.equal(route('oauth-users?search=ana%20m&page=2&per_page=20'), '/getmcp/v1/allowed-users/search?search=ana+m&page=2&per_page=20');
+assert.equal(route('oauth-users?include=1%2C4'), '/getmcp/v1/allowed-users/search?include=1%2C4');
+assert.equal(route('remote-catalogue', {q: 'a&b', page: 2, category: ''}), '/getmcp/v1/remote-catalogue?q=a%26b&page=2&category=');
+assert.equal(route('my-connections/42'), '/getmcp/v1/my-connections/42');
+console.log(JSON.stringify({passed: 4, fixture: 'standalone 1.8 routes'}));

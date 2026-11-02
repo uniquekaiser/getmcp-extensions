@@ -132,10 +132,10 @@
     "semantic_hash": "fdb69545c65c24057b3593b70bc55156"
   },
   "includes/class-runtime.php": {
-    "mtime": 1792122523.0021884,
-    "seen": 1792123005.944514,
-    "ast_hash": "8951296d2006d780a081ad8fef26f004",
-    "semantic_hash": "8951296d2006d780a081ad8fef26f004"
+    "mtime": 1793491598.9412975,
+    "seen": 1793491762.3934996,
+    "ast_hash": "102de0af9352d2c627dce121ad26bada",
+    "semantic_hash": "102de0af9352d2c627dce121ad26bada"
   },
   "includes/class-updater.php": {
     "mtime": 1791659821.3694053,
@@ -168,10 +168,10 @@
     "semantic_hash": "2b818855a77b30e28ba63035faa2c5ce"
   },
   "tools/build-release.py": {
-    "mtime": 1792158765.8875294,
-    "seen": 1792158929.8735192,
-    "ast_hash": "288ada23f815713f38bb5faf518a9e41",
-    "semantic_hash": "288ada23f815713f38bb5faf518a9e41"
+    "mtime": 1793490089.7147665,
+    "seen": 1793491507.7783484,
+    "ast_hash": "09021518da5df0b2bfae45441055a52c",
+    "semantic_hash": "09021518da5df0b2bfae45441055a52c"
   },
   "tools/sync-readme.py": {
     "mtime": 1792158756.9787114,
@@ -312,10 +312,10 @@
     "semantic_hash": "9a6c404016666f328ba3a7e17cbe8256"
   },
   "docs/testing/test-definitions.json": {
-    "mtime": 1792123509.3892162,
-    "seen": 1792123544.243395,
-    "ast_hash": "2cb3b75066760df3aa4716f1fc1bf3f8",
-    "semantic_hash": "2cb3b75066760df3aa4716f1fc1bf3f8"
+    "mtime": 1793491101.2637172,
+    "seen": 1793491507.7763417,
+    "ast_hash": "3215c6076ce26b16c43df645cd5e083b",
+    "semantic_hash": "3215c6076ce26b16c43df645cd5e083b"
   },
   "tools/handoff-catalogue.py": {
     "mtime": 1792078554.430989,
@@ -346,5 +346,29 @@
     "seen": 1792123005.9516294,
     "ast_hash": "219980ae20ef222afbd80d065285b559",
     "semantic_hash": "219980ae20ef222afbd80d065285b559"
+  },
+  "admin/upgrade-180.js": {
+    "mtime": 1793490437.2257712,
+    "seen": 1793491507.7756383,
+    "ast_hash": "41d948fff5fa40634058c9539ee852cf",
+    "semantic_hash": "41d948fff5fa40634058c9539ee852cf"
+  },
+  "compatibility-1.8-migration.json": {
+    "mtime": 1793490345.4089656,
+    "seen": 1793491507.7761903,
+    "ast_hash": "3bb679aeee1eae152635260ffc2f9889",
+    "semantic_hash": "3bb679aeee1eae152635260ffc2f9889"
+  },
+  "includes/class-upgrade180-plan.php": {
+    "mtime": 1793490979.089349,
+    "seen": 1793491507.7781174,
+    "ast_hash": "a18ae4cdfc194943f8442e60ae61ecec",
+    "semantic_hash": "a18ae4cdfc194943f8442e60ae61ecec"
+  },
+  "includes/class-upgrade180.php": {
+    "mtime": 1793491049.3991904,
+    "seen": 1793491507.7781184,
+    "ast_hash": "9f1b2c02678a265644b74dbbe6f90c7e",
+    "semantic_hash": "9f1b2c02678a265644b74dbbe6f90c7e"
   }
 }

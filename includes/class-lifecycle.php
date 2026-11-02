@@ -32,10 +32,12 @@ final class Lifecycle {
             }
         }
         if ( get_option( 'getmcp_extensions_schema_version' ) === '1' ) { return; }
+		if ( defined( 'GETMCP_VERSION' ) && version_compare( GETMCP_VERSION, '1.8.0', '>=' ) && ! Upgrade180::reviewed_core_files() ) { throw new \RuntimeException( 'An unreviewed GetMCP grant schema cannot be changed.' ); }
         $table = $wpdb->prefix . 'getmcp_servers';
         $columns = $wpdb->get_col( "SHOW COLUMNS FROM {$table}", 0 );
         if ( ! $columns ) { return; } // GetMCP's own activation/migration must create its tables first.
         if ( ! in_array( 'server_kind', $columns, true ) && false === $wpdb->query( "ALTER TABLE {$table} ADD server_kind VARCHAR(20) NOT NULL DEFAULT 'native'" ) ) { throw new \RuntimeException( 'Could not add the server kind column.' ); }
+		if ( defined( 'GETMCP_VERSION' ) && '1.8.0' === GETMCP_VERSION ) { self::prepare_180_store(); return; }
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         $charset = $wpdb->get_charset_collate();
         dbDelta( "CREATE TABLE {$wpdb->prefix}getmcp_upstream_connections (
@@ -50,6 +52,17 @@ KEY user_id (user_id)
         if ( ! $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $wpdb->prefix . 'getmcp_upstream_connections' ) ) ) ) { throw new \RuntimeException( 'Upstream account schema could not be created.' ); }
         update_option( 'getmcp_extensions_schema_version', '1', false );
     }
+	private static function prepare_180_store(): void {
+		if ( ! Upgrade180::reviewed_core_files() ) { throw new \RuntimeException( 'An unreviewed GetMCP grant schema cannot be changed.' ); }
+		$prior = get_option( Upgrade180Store::OPTION, false );
+		if ( false !== $prior && Upgrade180Store::SEPARATE !== $prior ) { throw new \RuntimeException( 'The add-on grant store marker needs review.' ); }
+		$result = Upgrade180Store::split_tables( true );
+		if ( is_wp_error( $result ) || 'nothing' === ( $result['state'] ?? 'nothing' ) ) { throw new \RuntimeException( 'The add-on grant store could not be safely prepared.' ); }
+		if ( false === $prior ) { add_option( Upgrade180Store::OPTION, Upgrade180Store::SEPARATE, '', false ); }
+		if ( Upgrade180Store::SEPARATE !== get_option( Upgrade180Store::OPTION ) ) { throw new \RuntimeException( 'The add-on grant store marker could not be recorded.' ); }
+		update_option( 'getmcp_extensions_schema_version', '1', false );
+		if ( '1' !== get_option( 'getmcp_extensions_schema_version' ) ) { throw new \RuntimeException( 'The add-on schema marker could not be recorded.' ); }
+	}
     public static function deactivate(): void {
         // No deletion or credential migration. Persistent MU guard refuses affected endpoints.
         update_option( 'getmcp_extensions_deactivated', 1, false );

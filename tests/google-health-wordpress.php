@@ -69,6 +69,21 @@ try {
     $native_save->set_header( 'content-type', 'application/json' ); $native_save->set_body( wp_json_encode( array( 'auth_type' => 'oauth', 'auth_config' => $edited, 'auth_credentials' => array( 'client_secret' => 'fixture-health-edited-secret' ) ) ) );
     $saved = rest_do_request( $native_save ); $server = $sm->get( $server->id );
     $assert( 200 === $saved->get_status() && 'offline' === ( GetMCPExtensions\ProviderTokens::config( $server )['extra_authorize_params']['access_type'] ?? '' ), 'native_editor_client_change_retains_offline_consent' );
+    if ( '1.8.0' === GETMCP_VERSION ) {
+        $auth_before = $server->auth_config; $secret_before = $server->auth_credentials;
+        $invalid = $edited; $invalid['authorize_url'] = 'https://example.org/authorize';
+        $bad_save = new WP_REST_Request( 'PATCH', '/getmcp/v1/servers/' . $server->uuid );
+        $bad_save->set_header( 'Content-Type', 'application/json' );
+        $bad_save->set_body( wp_json_encode( array( 'auth_type' => 'oauth', 'auth_config' => $invalid ) ) );
+        $bad_response = rest_do_request( $bad_save ); $after_bad = $sm->get( $server->id );
+        $assert( 400 === $bad_response->get_status() && $auth_before === $after_bad->auth_config && $secret_before === $after_bad->auth_credentials, 'health_editor_rejects_unreviewed_oauth_endpoint_without_changes' );
+        $stale = new WP_REST_Request( 'PATCH', '/getmcp/v1/servers/' . $server->uuid );
+        $stale->set_header( 'Content-Type', 'application/json' );
+        $stale->set_body( wp_json_encode( array( 'auth_type' => 'oauth', 'auth_config' => $edited, 'expected_auth_revision' => str_repeat( '0', 64 ) ) ) );
+        $stale_response = rest_do_request( $stale ); $after_stale = $sm->get( $server->id );
+        $assert( 409 === $stale_response->get_status() && $auth_before === $after_stale->auth_config && $secret_before === $after_stale->auth_credentials, 'health_editor_preserves_core_revision_conflict_guard' );
+        $assert( ! str_contains( wp_json_encode( $saved->get_data() ), 'fixture-health-edited-secret' ), 'health_editor_response_does_not_expose_credentials' );
+    }
     $full_scope = $config['scope'];
     $save = static function( $user, $scope, $expiry = null ) use ( &$server ) {
         Store::save( $server->id, $user, array( 'kind' => 'rest-provider', 'config_hash' => Connections::fingerprint( $server ), 'access_token' => 'fixture-health-' . ( $user % 2 ? 'a' : 'b' ), 'refresh_token' => 'fixture-health-refresh', 'expires_at' => $expiry ?? time() + 3600, 'scope' => $scope ), Store::version( $server->id, $user ) );
@@ -115,8 +130,11 @@ try {
     $cache_key = 'getmcp_resp_' . md5( $tools['nutrition']->id . '|' . wp_json_encode( array() ) . '|' . GetMCPExtensions\ProviderExecution::identity( $server ) ); $assert( false === get_transient( $cache_key ), 'health_bypasses_response_cache' );
     $logging_settings = GetMCPExtensions\AuthenticationSettings::object( $prior_settings ); $logging_settings['log_response_data'] = true; $logging_settings['default_cache_ttl'] = 3600; update_option( 'getmcp_settings', $logging_settings );
     $handler = new GetMCP\Protocol\ToolsCallHandler( $server, null ); $r = $handler->handle( 'tools/call', array( 'name' => 'google_health_nutrition', 'arguments' => array() ) ); $assert( empty( $r['isError'] ), 'real_protocol_handler_read' );
-    $logs = wp_json_encode( $wpdb->get_results( $wpdb->prepare( "SELECT arguments,response_data,replay_data FROM {$wpdb->prefix}getmcp_call_logs WHERE server_id=%d", $server->id ), ARRAY_A ) );
-    $assert( '[]' !== $logs && str_contains( $logs, 'Health payload omitted' ) && ! str_contains( $logs, 'countSum' ) && ! str_contains( $logs, 'fixture-health-' ) && ! str_contains( $logs, 'nutritionLog' ), 'database_logs_do_not_retain_health_payload' );
+    $log_rows = $wpdb->get_results( $wpdb->prepare( "SELECT arguments,response_data,replay_data FROM {$wpdb->prefix}getmcp_call_logs WHERE server_id=%d", $server->id ), ARRAY_A );
+    $logs = wp_json_encode( $log_rows );
+    $native_privacy = '1.8.0' === GETMCP_VERSION && ! empty( $log_rows );
+    foreach ( $log_rows as $log_row ) { $native_privacy = $native_privacy && null === $log_row['arguments'] && null === $log_row['response_data'] && null === $log_row['replay_data']; }
+    $assert( '[]' !== $logs && ( $native_privacy || str_contains( $logs, 'Health payload omitted' ) ) && ! str_contains( $logs, 'countSum' ) && ! str_contains( $logs, 'fixture-health-' ) && ! str_contains( $logs, 'nutritionLog' ), 'database_logs_do_not_retain_health_payload' );
     wp_set_current_user( 1 );
     $g = GetMCP\Gateway\FeatureManager::run( 'save', array( 'kind' => 'gateway', 'name' => 'Google Health Disposable Gateway', 'server_ids' => array( $server->id ), 'allowed_user_ids' => array( $user_ids[0] ) ) ); $gateway = $sm->get( $g['id'] );
     $settings['personal_provider']['allowed_user_ids'] = array(); $sm->update( $server->id, array( 'settings' => wp_json_encode( $settings ) ) );

@@ -7,6 +7,7 @@ class ManagementTool {
 		return array( 'name' => 'manage_mcp_connections', 'title' => 'Manage remote MCP connections and project gateways', 'description' => 'List, get, save, delete, or preview a remote MCP connection or project gateway. save configures membership and allowed_user_ids; selecting servers delegates their capabilities to every allowed gateway user. Configuration changes require server-management permission and explicit user authorization. Credential fields are write-only. preview also requires endpoint membership.', 'inputSchema' => array( 'type' => 'object', 'properties' => array(
 			'operation' => array( 'type' => 'string', 'enum' => array( 'list', 'get', 'save', 'delete', 'preview' ) ),
 			'id' => array( 'type' => 'integer', 'minimum' => 1 ), 'kind' => array( 'type' => 'string', 'enum' => array( 'gateway', 'remote-mcp' ) ),
+			'revision' => array( 'type' => 'string', 'pattern' => '^[a-f0-9]{64}$', 'description' => 'Optional revision returned by get; reject a save if the connection has changed.' ),
 			'name' => array( 'type' => 'string' ), 'slug' => array( 'type' => 'string' ), 'status' => array( 'type' => 'string', 'enum' => array( 'active', 'paused', 'draft' ) ),
 			'allowed_user_ids' => array( 'type' => 'array', 'items' => array( 'type' => 'integer', 'minimum' => 1 ) ),
 			'server_ids' => array( 'type' => 'array', 'items' => array( 'type' => 'integer', 'minimum' => 1 ) ),

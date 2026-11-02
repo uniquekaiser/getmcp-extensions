@@ -1,0 +1,16 @@
+{
+  "getmcp.php": "6c8c53ac47d34e608a78b58e1ca8affafcf8d842089f4c071a5ae18ca0397cbb",
+  "includes/class-get-mcp.php": "85864fc66cc3bbdeb52d4fa03d9c8541a5659c138c81bd01c4dc26eda470502f",
+  "includes/core/class-server.php": "321d4c09dbb7592bd9c372cc5bf48c6cd0093107e6d236afcad1783f46ac440d",
+  "includes/core/class-server-manager.php": "27656d5072b5e71c7f20f40fb34d13e708288f4e8d5ff4c55aee72b33480b733",
+  "includes/auth/class-server-user-access.php": "2d16188ef2bd19c2c58187bf9b5011e59222876d6133fb437444920ae51f0f82",
+  "includes/auth/class-mcp-auth.php": "284e7b105cb69279c5e7d8a5bd0ed88e01f4b094187ccacd4c851377891737d3",
+  "includes/auth/class-first-party-oauth.php": "e992d3ef1c7fdc8f6c4ea4f8a7784e137a450097319b3f1d08ec9c0c262fbede",
+  "includes/auth/class-oauth-provider.php": "6bbaf15851e2e164c735ae8d7b26b3eba8676c5a4e71dc808e8143206c72e678",
+  "includes/auth/class-oauth-proxy.php": "bbcf591c888ecdccbe5947cc441e34c4c3ff151670024dadb77693160dd8a9dd",
+  "includes/database/class-schema.php": "d5fec42c38d64da73284438cbf93708562d48c442b7b249f62fb7bc806dedd33",
+  "includes/database/class-migrator.php": "0ec34296cedc53443a7ff0977c0c9d14b8ee01a0d3c4bb24d2fc9be6ad9a5407",
+  "includes/transport/class-streamable-http.php": "e2d710326c262403bdb207428f3276b1c850a7326e2c15acafb149ea46f3d287",
+  "includes/gateway/class-mcp-gateway.php": "b8b0f148838192710fe29daaac9ab79b4c39b9776482f68e2df19a27f427868d",
+  "includes/gateway/class-bundle.php": "66c548e937bde38031d4140d753af0f01913aa8cad6d748d203ca61f703bb637"
+}

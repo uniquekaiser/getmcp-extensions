@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.4.0 - 2026-11-01
+
+- [COMPAT] Support the reviewed GetMCP 1.8.0 release while retaining compatibility with supported earlier installations.
+- [IMPROVE] Automatically transition eligible existing WordPress sign-in settings and personal grants while preserving server identities, credentials and access rules.
+- [IMPROVE] Keep existing remote connections and project gateways working during migration, including gateway access to remote tools, resources and prompts.
+- [SECURITY] Preserve existing gateway grants where their prior access can be verified; keep current rules and flag gateways for review when earlier access cannot be established.
+- [FIX] Preserve protected settings and defer unsupported or conflicting migrations for administrator review instead of overwriting existing configuration.
+- [NEW] Add a Google Health template with personal OAuth, read tools, daily and weekly summaries, and available nutrition and hydration data.
+- [FIX] Retain Google Health offline consent parameters when saving a new authentication client ID.
+- [SECURITY] Enforce reviewed health scopes and endpoints and keep health payloads out of response caches, replay and protocol logs.
+- [DEV] Add migration, gateway, connector and access regression checks using disposable local fixtures.
+
 ## 1.4.0-beta.1 - 2026-10-16
 
 - [NEW] Add a Google Health native template with personal OAuth, read tools, daily/weekly summaries and available nutrition/hydration data.

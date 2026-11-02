@@ -14,7 +14,7 @@ final class ConnectionScreens {
             'callback' => static function( $r ) {
                 $m = new ServerManager(); $id = $r['id'];
                 $s = ctype_digit( $id ) ? $m->get( (int) $id ) : $m->get_by_uuid( $id );
-                if ( ! $s || ! Runtime::server_enabled( $s ) || ( ! current_user_can( 'getmcp_manage_servers' ) && ( 'active' !== $s->status || ! FirstPartyOAuth::can_user_access( get_current_user_id(), $s ) ) ) ) {
+				if ( ! $s || ! Runtime::server_enabled( $s ) || ( ! current_user_can( 'getmcp_manage_servers' ) && ( 'active' !== $s->status || ! LegacyBridge::can_user_access( get_current_user_id(), $s ) ) ) ) {
                     return new \WP_Error( 'connection_forbidden', 'This connection is unavailable.', array( 'status' => 403 ) );
                 }
                 // Never return upstream URLs, headers, secrets, tokens or user credentials.

@@ -3,6 +3,225 @@
   "subject": "plugin",
   "features": [
     {
+  "id": "upgrade.180",
+  "title": "GetMCP 1.8.0 migration and guarded compatibility",
+  "intent": "Preserve existing server settings, credentials, grants and access while migrating reviewed legacy records; keep unsupported paths guarded.",
+  "provenance": [
+    {
+      "kind": "owner-requirement",
+      "reference": "docs/verification-1.8.0-upgrade-assessment.md",
+      "description": "Preserve existing settings, credentials and access during an upgrade; retain the guard for unsupported dependencies."
+    }
+  ],
+  "dependencies": [
+    {
+      "slug": "getmcp",
+      "version": "1.8.0"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "standalone-signin",
+      "title": "Review and migrate an eligible empty sign-in server",
+      "case": "positive",
+      "role": "administrator",
+      "entry": {
+        "surface": "admin",
+        "path": "/wp-admin/admin.php?page=getmcp-extensions"
+      },
+      "sourceRefs": [
+        {
+          "path": "includes/class-upgrade180.php",
+          "line": 16
+        }
+      ],
+      "inputs": {
+        "fixture": "isolated synthetic server without tools, custom settings, grants or gateway dependencies",
+        "expectedAuthType": "wordpress",
+        "expectedOtherFields": "byte-identical"
+      },
+      "status": "gap",
+      "reason": "Local database and synthetic OAuth HTTP checks are separate from a Studio browser execution.",
+      "recovery": "Bind an owned disposable 1.8.0 fixture, review and migrate the synthetic server in the admin interface, and verify the independently stored row and access."
+    },
+    {
+      "id": "preview-refusal",
+      "title": "Refuse dependent or unauthorized migration",
+      "case": "refusal",
+      "role": "subscriber",
+      "entry": {
+        "surface": "admin",
+        "path": "/wp-admin/admin.php?page=getmcp-extensions"
+      },
+      "sourceRefs": [
+        {
+          "path": "includes/class-upgrade180.php",
+          "line": 7
+        }
+      ],
+      "inputs": {
+        "fixture": "synthetic server with a tool, grant or gateway dependency",
+        "expectedMutation": false
+      },
+      "status": "gap",
+      "reason": "Local direct and REST refusal checks exist; no Studio browser and independent state binding is recorded.",
+      "recovery": "Bind the protected fixture and denied role in Studio, submit the direct request, and compare the persisted server and credential state."
+    },
+    {
+      "id": "automatic-legacy-migration",
+      "title": "Automatically migrate reviewed legacy servers and retain grants",
+      "case": "positive",
+      "role": "administrator",
+      "entry": {
+        "surface": "admin",
+        "path": "/wp-admin/admin.php?page=getmcp-extensions"
+      },
+      "sourceRefs": [
+        {
+          "path": "includes/class-upgrade180-auto.php",
+          "line": 8
+        }
+      ],
+      "inputs": {
+        "fixture": "owned 1.7 snapshot with a standard server, gateway, remote server and synthetic grants",
+        "expectedOtherFields": "byte-identical"
+      },
+      "status": "gap",
+      "reason": "The actual reviewed compatibility profile passed local HTTP rehearsal; Studio and real-provider acceptance are incomplete.",
+      "recovery": "Bind an isolated supported fixture and verify automatic upgrade, real client authorization, saved records and rollback."
+    },
+    {
+      "id": "legacy-grant-preservation",
+      "title": "Refuse conflicting upstream grant stores",
+      "case": "refusal",
+      "role": "administrator",
+      "entry": {
+        "surface": "admin",
+        "path": "/wp-admin/admin.php?page=getmcp-extensions"
+      },
+      "sourceRefs": [
+        {
+          "path": "includes/class-upgrade180-store.php",
+          "line": 34
+        }
+      ],
+      "inputs": {
+        "fixture": "owned legacy grant and conflicting synthetic destination",
+        "expectedMutation": false
+      },
+      "status": "gap",
+      "reason": "Local database conflict and retry tests passed; no Studio fixture is bound.",
+      "recovery": "Bind a disposable fixture, introduce a conflicting grant store and independently compare both records after refusal."
+    },
+    {
+      "id": "native-schema-recovery",
+      "title": "Recover an already-upgraded native grant table",
+      "case": "positive",
+      "role": "administrator",
+      "entry": { "surface": "admin", "path": "/wp-admin/admin.php?page=getmcp-extensions" },
+      "sourceRefs": [{ "path": "includes/class-upgrade180-store.php", "line": 52 }],
+      "inputs": { "fixture": "owned old-primary-key table with separated legacy and native synthetic grants", "expectedCredentials": "byte-identical" },
+      "status": "gap",
+      "reason": "Local schema and already-upgraded HTTP rehearsals passed; no Studio fixture is bound.",
+      "recovery": "Bind a disposable mixed-store fixture and independently verify both grants, the native key and repeated activation."
+    },
+    {
+      "id": "native-schema-refusal",
+      "title": "Leave unknown or referenced grant-table schemas unchanged",
+      "case": "refusal",
+      "role": "administrator",
+      "entry": { "surface": "admin", "path": "/wp-admin/admin.php?page=getmcp-extensions" },
+      "sourceRefs": [{ "path": "includes/class-upgrade180-store.php", "line": 52 }],
+      "inputs": { "fixture": "owned synthetic grant table with an unreviewed column or foreign-key reference", "expectedMutation": false },
+      "status": "gap",
+      "reason": "Local refusal checks passed; no Studio fixture is bound.",
+      "recovery": "Bind a disposable fixture and independently compare the table definition and grant rows after refusal."
+    },
+    {
+      "id": "deferred-migration-notice",
+      "title": "Alert administrators when a legacy server is deferred",
+      "case": "refusal",
+      "role": "administrator",
+      "entry": { "surface": "admin", "path": "/wp-admin/admin.php?page=getmcp-extensions" },
+      "sourceRefs": [{ "path": "includes/class-upgrade180-auto.php", "line": 25 }],
+      "inputs": { "fixture": "owned legacy server with an unreviewed setting", "expectedMutation": false },
+      "status": "gap",
+      "reason": "Local WordPress refusal and notice checks passed; no Studio fixture is bound.",
+      "recovery": "Bind a disposable deferred server and verify the notice, stored settings, authorization and automatic retry."
+    },
+    {
+      "id": "gateway-history-notice",
+      "title": "Flag a Gateway whose prior delegation cannot be verified",
+      "case": "refusal",
+      "role": "administrator",
+      "entry": { "surface": "admin", "path": "/wp-admin/admin.php?page=getmcp-extensions" },
+      "sourceRefs": [{ "path": "includes/class-legacy-gateway180.php", "line": 95 }],
+      "inputs": { "fixture": "owned already-upgraded Gateway without a pre-upgrade snapshot", "expectedAccessChange": false },
+      "status": "gap",
+      "reason": "Local WordPress review and authorization checks passed; no Studio fixture is bound.",
+      "recovery": "Bind a disposable Gateway without history and verify the administrator warning and unchanged member access."
+    },
+    {
+      "id": "builtin-gateway-boundary",
+      "title": "Preserve proven Gateway members at the old 500-server boundary",
+      "case": "refusal",
+      "role": "administrator",
+      "entry": { "surface": "admin", "path": "/wp-admin/admin.php?page=getmcp-extensions" },
+      "sourceRefs": [{ "path": "includes/class-legacy-gateway180.php", "line": 19 }],
+      "inputs": { "fixture": "owned synthetic Gateway with more than 500 active servers and names tied across the boundary", "expectedAmbiguousAccess": false },
+      "status": "gap",
+      "reason": "Local synthetic database checks passed; no Studio fixture is bound.",
+      "recovery": "Bind a disposable large Gateway, verify known members and independently confirm tied boundary members were not guessed."
+    },
+    {
+      "id": "legacy-gateway-access",
+      "title": "Preserve gateway delegation without widening direct access",
+      "case": "refusal",
+      "role": "administrator",
+      "entry": {
+        "surface": "admin",
+        "path": "/wp-admin/admin.php?page=getmcp-extensions"
+      },
+      "sourceRefs": [
+        {
+          "path": "compat/versions/1.8.0/includes/protocol/class-json-rpc-router.php",
+          "line": 456
+        }
+      ],
+      "inputs": {
+        "fixture": "gateway user, denied user, remote member and synthetic personal grant",
+        "expectedUnauthorizedCalls": 0
+      },
+      "status": "gap",
+      "reason": "Local HTTP and isolated router checks passed; Studio and real-provider acceptance remain open.",
+      "recovery": "Use separate fixture users and a disposable upstream to verify delegation, direct denial, scope and immediate revocation."
+    },
+    {
+      "id": "legacy-metadata-routing",
+      "title": "Keep legacy and native OAuth client metadata routes separate",
+      "case": "positive",
+      "role": "administrator",
+      "entry": {
+        "surface": "admin",
+        "path": "/wp-admin/admin.php?page=getmcp-extensions"
+      },
+      "sourceRefs": [
+        {
+          "path": "compat/includes/gateway/class-feature-module.php",
+          "line": 89
+        }
+      ],
+      "inputs": {
+        "fixture": "one legacy remote and one native 1.8 remote",
+        "expectedRoutes": "both metadata documents"
+      },
+      "status": "gap",
+      "reason": "Local REST checks passed; public HTTPS/provider discovery is not verified.",
+      "recovery": "Bind disposable legacy and native OAuth servers and verify metadata discovery from an authorized provider."
+    }
+  ]
+},
+    {
       "id": "remote.catalogue",
       "title": "Official hosted MCP catalogue",
       "intent": "Browse hosted MCP servers separately from Templates, save and authorize with the creator selected, and use explicit project gateways without creating native tools.",

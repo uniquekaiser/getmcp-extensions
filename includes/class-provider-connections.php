@@ -8,7 +8,8 @@ use GetMCP\Utils\Encryption;
 
 final class ProviderConnections {
     public static function supported( $server ): bool {
-        if ( ! $server || 'native' !== $server->server_kind || 'oauth' !== $server->auth_type || \GetMCP\Auth\FirstPartyOAuth::is_custom( $server ) ) { return false; }
+		$auth = $server ? json_decode( $server->auth_config ?? '{}', true ) : null;
+		if ( ! $server || 'native' !== LegacyBridge::kind( $server ) || 'oauth' !== $server->auth_type || ( is_array( $auth ) && 'getmcp' === ( $auth['provider'] ?? '' ) ) ) { return false; }
         $c = ProviderTokens::config( $server );
         return ProviderTokens::is_meta( $server ) || ( 'oauth2.googleapis.com' === wp_parse_url( $c['token_url'] ?? '', PHP_URL_HOST ) && 'accounts.google.com' === wp_parse_url( $c['authorize_url'] ?? '', PHP_URL_HOST ) );
     }
@@ -18,7 +19,7 @@ final class ProviderConnections {
         $settings = AuthenticationSettings::object( $server->settings );
         if ( in_array( $user, $settings['personal_provider']['allowed_user_ids'] ?? array(), true ) ) { return true; }
         foreach ( \GetMCP\Gateway\FeatureManager::all() as $gateway ) {
-            if ( 'gateway' !== $gateway->server_kind || ! \GetMCP\Auth\FirstPartyOAuth::can_user_access( $user, $gateway ) ) { continue; }
+			if ( 'gateway' !== LegacyBridge::kind( $gateway ) || ! LegacyBridge::can_user_access( $user, $gateway ) ) { continue; }
             foreach ( \GetMCP\Gateway\ProjectGateway::members( $gateway ) as $member ) { if ( $server->id === $member->id ) { return true; } }
         }
         return false;

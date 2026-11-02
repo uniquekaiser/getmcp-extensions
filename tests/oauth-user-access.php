@@ -1,4 +1,5 @@
 <?php
+namespace GetMCPExtensions { class LegacyBridge { static function is_180() { return false; } } }
 namespace GetMCP\Core {
     class ServerManager { function get($id) { return $id === 9 ? clone $GLOBALS['server'] : false; } }
 }

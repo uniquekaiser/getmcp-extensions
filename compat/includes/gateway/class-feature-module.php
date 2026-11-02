@@ -14,13 +14,35 @@ class FeatureModule {
 		add_action( 'admin_menu', array( self::class, 'menu' ), 30 );
 		add_action( 'template_redirect', array( self::class, 'portal' ), -5 );
 		add_action( 'deleted_user', array( UpstreamConnections::class, 'delete_user' ) );
+		add_action( 'getmcp_server_deleted', array( self::class, 'delete_legacy_server_grants' ) );
 		add_action( 'getmcp_daily_cleanup', array( self::class, 'cleanup' ) );
 		add_filter( 'getmcp_server_capabilities', array( self::class, 'capabilities' ), PHP_INT_MAX, 2 );
+		add_filter( 'getmcp_gateway_servers', array( self::class, 'gateway_members' ), PHP_INT_MAX );
+		add_filter( 'rest_pre_dispatch', array( self::class, 'legacy_metadata_dispatch' ), -50, 3 );
+	}
+
+	/** Core 1.8 cleans its own table; the add-on still owns its separate grants. */
+	public static function delete_legacy_server_grants( int $server_id ): void {
+		if ( \GetMCPExtensions\LegacyBridge::is_180() ) { UpstreamConnections::delete_server( $server_id ); }
+	}
+
+	/** Retain the old explicit-publication rule without weakening native caller checks. */
+	public static function gateway_members( array $servers ): array {
+		if ( ! \GetMCPExtensions\LegacyBridge::is_180() ) { return $servers; }
+		return array_values( array_filter( $servers, static function ( $server ): bool {
+			if ( ! $server instanceof Server ) { return false; }
+			$kind = \GetMCPExtensions\LegacyBridge::kind( $server );
+			if ( 'gateway' === $kind || 'unknown' === $kind ) { return false; }
+			if ( 'remote-mcp' !== $kind ) { return true; }
+			$settings = json_decode( $server->settings ?? '{}', true ) ?: array();
+			return ! empty( $settings['remote_mcp']['publish_original'] ) && \GetMCPExtensions\Runtime::server_enabled( $server );
+		} ) );
 	}
 
 	public static function cleanup(): void {
 		global $wpdb;
-		$wpdb->query( "DELETE c FROM {$wpdb->prefix}getmcp_upstream_connections c LEFT JOIN {$wpdb->prefix}getmcp_servers s ON s.id=c.server_id LEFT JOIN {$wpdb->users} u ON u.ID=c.user_id WHERE s.id IS NULL OR u.ID IS NULL" );
+		$table = UpstreamConnections::table();
+		$wpdb->query( "DELETE c FROM {$table} c LEFT JOIN {$wpdb->prefix}getmcp_servers s ON s.id=c.server_id LEFT JOIN {$wpdb->users} u ON u.ID=c.user_id WHERE s.id IS NULL OR u.ID IS NULL" );
 		$names = $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s LIMIT 1000", $wpdb->esc_like( 'getmcp_upstream_state_' ) . '%' ) );
 		foreach ( $names as $name ) {
 			try { $state = json_decode( \GetMCP\Utils\Encryption::decrypt_strict( get_option( $name ) ), true ); if ( (int) ( $state['expires_at'] ?? 0 ) >= time() ) { continue; } }
@@ -32,7 +54,7 @@ class FeatureModule {
 	}
 
 	public static function capabilities( array $caps, Server $server ): array {
-		return 'native' === $server->server_kind ? $caps : array( 'tools' => new \stdClass(), 'resources' => new \stdClass(), 'prompts' => new \stdClass() );
+		return in_array( \GetMCPExtensions\LegacyBridge::kind( $server ), array( 'gateway', 'remote-mcp' ), true ) ? array( 'tools' => new \stdClass(), 'resources' => new \stdClass(), 'prompts' => new \stdClass() ) : $caps;
 	}
 
 	public static function routes(): void {
@@ -53,16 +75,31 @@ class FeatureModule {
 			if ( ! $server || ! UpstreamConnections::can_connect( $server, $user ) ) { throw new \GetMCP\Remote\RemoteException( 'This upstream connection is not available to you.', -32003 ); }
 			if ( 'DELETE' === $r->get_method() ) { UpstreamConnections::disconnect( $server->id, $user ); return array( 'disconnected' => true ); }
 			$return_to = $r->get_param( 'return_to' ); $return_to = is_string( $return_to ) ? $return_to : '';
-			return 'native' === $server->server_kind ? \GetMCPExtensions\ProviderConnections::begin( $server, $user, $return_to ) : UpstreamOAuth::begin( $server, $user, $return_to );
+			return 'native' === \GetMCPExtensions\LegacyBridge::kind( $server ) ? \GetMCPExtensions\ProviderConnections::begin( $server, $user, $return_to ) : UpstreamOAuth::begin( $server, $user, $return_to );
 		} ) ) );
-		register_rest_route( 'getmcp/v1', '/upstreams/(?P<uuid>[a-f0-9-]{36})/client-metadata', array( 'methods' => 'GET', 'permission_callback' => '__return_true', 'callback' => fn( $r ) => self::response( function() use ( $r ) {
-			foreach ( FeatureManager::all() as $s ) { if ( $s->uuid === $r['uuid'] && 'remote-mcp' === $s->server_kind && 'active' === $s->status && 'oauth' === ( UpstreamConnections::config( $s )['auth_mode'] ?? '' ) ) { return UpstreamOAuth::client_metadata( $s ); } }
-			throw new \GetMCP\Remote\RemoteException( 'Connection not found.', -32602 );
-		} ) ) );
+		if ( ! \GetMCPExtensions\LegacyBridge::is_180() ) {
+			register_rest_route( 'getmcp/v1', '/upstreams/(?P<uuid>[a-f0-9-]{36})/client-metadata', array( 'methods' => 'GET', 'permission_callback' => '__return_true', 'callback' => fn( $r ) => self::response( function() use ( $r ) {
+				foreach ( FeatureManager::all() as $s ) { if ( $s->uuid === $r['uuid'] && 'remote-mcp' === \GetMCPExtensions\LegacyBridge::kind( $s ) && 'active' === $s->status && 'oauth' === ( UpstreamConnections::config( $s )['auth_mode'] ?? '' ) ) { return UpstreamOAuth::client_metadata( $s ); } }
+				throw new \GetMCP\Remote\RemoteException( 'Connection not found.', -32602 );
+			} ) ) );
+		}
+	}
+
+	/** Keep legacy OAuth client URLs while allowing native 1.8 metadata to route normally. */
+	/** @wp-test feature=upgrade.180 scenario=legacy-metadata-routing */
+	public static function legacy_metadata_dispatch( $result, $rest, $request ) {
+		if ( null !== $result || ! \GetMCPExtensions\LegacyBridge::is_180() || ! \GetMCPExtensions\Runtime::ready() || 'GET' !== $request->get_method() || ! preg_match( '#\A/getmcp/v1/upstreams/([a-f0-9-]{36})/client-metadata\z#D', $request->get_route(), $match ) ) { return $result; }
+		$server = ( new ServerManager() )->get_by_uuid( $match[1] );
+		if ( ! $server || 'remote-mcp' !== \GetMCPExtensions\LegacyBridge::kind( $server ) ) { return $result; }
+		if ( 'active' !== $server->status || 'wordpress' !== $server->auth_type || ! \GetMCPExtensions\Runtime::server_enabled( $server ) || 'oauth' !== ( UpstreamConnections::config( $server )['auth_mode'] ?? '' ) ) {
+			return new \WP_Error( 'getmcp_connection_not_found', 'Connection not found.', array( 'status' => 404 ) );
+		}
+		return self::response( fn() => UpstreamOAuth::client_metadata( $server ) );
 	}
 
 	private static function response( callable $callback ) {
 		try { return rest_ensure_response( $callback() ); }
+		catch ( \GetMCPExtensions\SettingsConflict $e ) { return new \WP_Error( 'getmcp_connection_conflict', $e->getMessage(), array( 'status' => 409 ) ); }
 		catch ( \GetMCP\Remote\RemoteException $e ) { return new \WP_Error( 'getmcp_connection_error', $e->getMessage(), array( 'status' => -32003 === $e->get_rpc_code() ? 403 : 400 ) ); }
 		catch ( \InvalidArgumentException $e ) { return new \WP_Error( 'getmcp_invalid_connection', $e->getMessage(), array( 'status' => 400 ) ); }
 		catch ( \Throwable $e ) { return new \WP_Error( 'getmcp_connection_error', 'The connection operation could not be completed.', array( 'status' => 500 ) ); }
@@ -78,7 +115,7 @@ class FeatureModule {
 		}
 		$endpoints = array();
 		foreach ( FeatureManager::all() as $server ) {
-			if ( 'native' !== $server->server_kind && 'active' === $server->status && \GetMCPExtensions\Runtime::server_enabled( $server ) && \GetMCP\Auth\FirstPartyOAuth::can_user_access( $user, $server ) ) {
+			if ( in_array( \GetMCPExtensions\LegacyBridge::kind( $server ), array( 'gateway', 'remote-mcp' ), true ) && 'active' === $server->status && \GetMCPExtensions\Runtime::server_enabled( $server ) && \GetMCPExtensions\LegacyBridge::can_user_access( $user, $server ) ) {
 				$endpoints[] = array_intersect_key( FeatureManager::present( $server ), array_flip( array( 'id', 'kind', 'name', 'slug', 'status', 'url' ) ) );
 			}
 		}
@@ -87,12 +124,17 @@ class FeatureModule {
 
 	public static function menu(): void {
 		$admin = new \GetMCP\Admin\Admin();
-		$hook = add_submenu_page( 'getmcp', 'Gateways & Remote MCP', 'Gateways & Remote MCP', 'getmcp_manage_servers', 'getmcp-connections', array( $admin, 'render_app' ) );
-		if ( $hook ) { add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
-		$hook = add_submenu_page( 'getmcp', 'My MCP Connections', 'My MCP Connections', 'getmcp_manage_servers', 'getmcp-my-connections', array( $admin, 'render_app' ) );
-		if ( $hook ) { add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
+		$is_180 = 'vendor-original-1.8.0' === \GetMCPExtensions\Runtime::profile();
+		$hook = add_submenu_page( 'getmcp', 'Gateways & Remote MCP', 'Gateways & Remote MCP', 'getmcp_manage_servers', $is_180 ? 'getmcp-extensions-connections' : 'getmcp-connections', $is_180 ? static fn() => \GetMCPExtensions\Standalone180::render( 'connections' ) : array( $admin, 'render_app' ) );
+		if ( $hook ) { add_action( 'load-' . $hook, $is_180 ? static fn() => \GetMCPExtensions\Standalone180::enqueue( 'connections' ) : array( $admin, 'on_page_load' ) ); }
+		$hook = add_submenu_page( 'getmcp', 'My MCP Connections', 'My MCP Connections', 'getmcp_manage_servers', $is_180 ? 'getmcp-extensions-my-connections' : 'getmcp-my-connections', $is_180 ? static fn() => \GetMCPExtensions\Standalone180::render( 'portal' ) : array( $admin, 'render_app' ) );
+		if ( $hook ) { add_action( 'load-' . $hook, $is_180 ? static fn() => \GetMCPExtensions\Standalone180::enqueue( 'portal' ) : array( $admin, 'on_page_load' ) ); }
 		$hook = add_users_page( 'My MCP Connections', 'My MCP Connections', 'read', 'getmcp-account-connections', fn() => self::render( true ) );
-		if ( $hook ) { add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
+		if ( $hook ) { add_action( 'load-' . $hook, $is_180 ? static fn() => \GetMCPExtensions\Standalone180::enqueue( 'portal' ) : array( $admin, 'on_page_load' ) ); }
+		if ( $is_180 ) {
+			$hook = add_submenu_page( 'getmcp', 'Personal provider access', 'Provider access', 'getmcp_manage_servers', 'getmcp-extensions-providers', static fn() => \GetMCPExtensions\Standalone180::render( 'providers' ) );
+			if ( $hook ) { add_action( 'load-' . $hook, static fn() => \GetMCPExtensions\Standalone180::enqueue( 'providers' ) ); }
+		}
 	}
 
 	public static function portal(): void {
@@ -105,7 +147,8 @@ class FeatureModule {
 		self::require_login();
 		if ( ! current_user_can( 'read' ) ) { wp_die( 'Access denied.', '', array( 'response' => 403 ) ); }
 		nocache_headers();
-		( new \GetMCP\Admin\Admin() )->enqueue_assets();
+		if ( 'vendor-original-1.8.0' === \GetMCPExtensions\Runtime::profile() ) { \GetMCPExtensions\Standalone180::enqueue( 'portal' ); }
+		else { ( new \GetMCP\Admin\Admin() )->enqueue_assets(); }
 		echo '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>My MCP Connections</title>';
 		wp_head(); echo '</head><body class="bg-gray-50">'; self::render( true ); wp_footer(); echo '</body></html>'; exit;
 	}
@@ -125,6 +168,7 @@ class FeatureModule {
 	}
 
 	public static function render( bool $portal ): void {
+		if ( 'vendor-original-1.8.0' === \GetMCPExtensions\Runtime::profile() ) { \GetMCPExtensions\Standalone180::render( $portal ? 'portal' : 'connections' ); return; }
 		if ( ! wp_script_is( 'getmcp-admin', 'enqueued' ) ) { ( new \GetMCP\Admin\Admin() )->enqueue_assets(); }
 		wp_add_inline_script( 'getmcp-admin', 'window.mountGetMCPConnectionPortal();', 'after' );
 		echo '<div class="getmcp-wrap"><div id="getmcp-native-connections"><h1>My MCP Connections</h1><p>Loading…</p></div></div>';

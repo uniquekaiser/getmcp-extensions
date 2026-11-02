@@ -127,9 +127,20 @@ final class MarketingModule {
     }
     public static function configuration_revision( $s ): string { return hash_hmac( 'sha256', AuthenticationSettings::revision( $s ) . '|' . $s->settings, wp_salt( 'auth' ) ); }
     public static function configure( string $uuid, array $args ): array {
+		if ( LegacyBridge::is_180() ) {
+			$server = ( new ServerManager() )->get_by_uuid( $uuid );
+			if ( ! $server ) { throw new \InvalidArgumentException( 'Server not found.' ); }
+			// Serialize the re-read, revision check and write with the native editor.
+			$result = ServerManager::with_auth_lock( $server->id, static fn() => self::configure_locked( $uuid, $args ) );
+			if ( is_wp_error( $result ) ) { throw new SettingsConflict( 'Provider settings are being saved. Try again.' ); }
+			return $result;
+		}
+		return self::configure_locked( $uuid, $args );
+	}
+	private static function configure_locked( string $uuid, array $args ): array {
         $manager = new ServerManager(); $s = $manager->get_by_uuid( $uuid );
         if ( ! $s || ! isset( $args['configuration_revision'] ) || ! hash_equals( self::configuration_revision( $s ), (string) $args['configuration_revision'] ) ) { throw new SettingsConflict( 'Provider settings changed. Reload before saving.' ); }
-        if ( 'native' !== $s->server_kind || array_diff( array_keys( $args ), array( 'configuration_revision', 'auth_config', 'auth_type', 'auth_credentials', 'outbound_auth_type', 'outbound_auth_config', 'outbound_auth_credentials', 'auth_config_mode', 'clear_credentials', 'personal_provider', 'token_sources' ) ) ) { throw new \InvalidArgumentException( 'Use the connection manager for remote servers and gateways; supply only supported provider fields.' ); }
+        if ( 'native' !== LegacyBridge::kind( $s ) || array_diff( array_keys( $args ), array( 'configuration_revision', 'auth_config', 'auth_type', 'auth_credentials', 'outbound_auth_type', 'outbound_auth_config', 'outbound_auth_credentials', 'auth_config_mode', 'clear_credentials', 'personal_provider', 'token_sources' ) ) ) { throw new \InvalidArgumentException( 'Use the connection manager for remote servers and gateways; supply only supported provider fields.' ); }
         foreach ( array( 'auth_type', 'outbound_auth_type' ) as $field ) { if ( isset( $args[$field] ) && ! in_array( $args[$field], array( 'none', 'api_key', 'bearer', 'basic', 'oauth' ), true ) ) { throw new \InvalidArgumentException( 'Unsupported authentication type.' ); } }
         $settings = AuthenticationSettings::object( $s->settings ); $data = array();
         foreach ( array( 'auth_config', 'auth_type', 'auth_credentials', 'outbound_auth_type', 'outbound_auth_config', 'outbound_auth_credentials' ) as $field ) { if ( array_key_exists( $field, $args ) ) { $data[$field] = $args[$field]; } }
@@ -148,6 +159,7 @@ final class MarketingModule {
             if ( in_array( 'page', $sources, true ) ) { $settings['getmcp_extensions_required'] = true; }
         }
         $data['settings'] = wp_json_encode( $settings ); $data['_authentication_revision'] = AuthenticationSettings::revision( $s ); $data['_configuration_revision'] = $args['configuration_revision'];
+		if ( LegacyBridge::is_180() ) { $data = AuthenticationSettings::prepare( $s, $data ); }
         $saved = $manager->update( $s->id, $data ); if ( ! $saved ) { throw new \RuntimeException( 'Could not save settings.' ); }
         return self::configuration( $uuid );
     }
