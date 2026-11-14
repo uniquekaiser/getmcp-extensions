@@ -1,6 +1,6 @@
 <?php
 /** Fresh 1.8 installation must never rewrite core's native grant store. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
 global $wpdb;
 $previous_prefix = $wpdb->prefix; $previous_options = $wpdb->options;
 $prefix = 'qa180fresh_' . substr( str_replace( '-', '', wp_generate_uuid4() ), 0, 10 ) . '_';

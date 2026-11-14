@@ -37,7 +37,7 @@ final class Lifecycle {
         $columns = $wpdb->get_col( "SHOW COLUMNS FROM {$table}", 0 );
         if ( ! $columns ) { return; } // GetMCP's own activation/migration must create its tables first.
         if ( ! in_array( 'server_kind', $columns, true ) && false === $wpdb->query( "ALTER TABLE {$table} ADD server_kind VARCHAR(20) NOT NULL DEFAULT 'native'" ) ) { throw new \RuntimeException( 'Could not add the server kind column.' ); }
-		if ( defined( 'GETMCP_VERSION' ) && '1.8.0' === GETMCP_VERSION ) { self::prepare_180_store(); return; }
+		if ( Runtime::is_180_version() ) { self::prepare_180_store(); return; }
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         $charset = $wpdb->get_charset_collate();
         dbDelta( "CREATE TABLE {$wpdb->prefix}getmcp_upstream_connections (

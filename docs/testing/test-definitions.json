@@ -32,7 +32,7 @@
           "sourceRefs": [
             {
               "path": "includes/class-upgrade180.php",
-              "line": 16
+              "line": 34
             }
           ],
           "inputs": {
@@ -56,7 +56,7 @@
           "sourceRefs": [
             {
               "path": "includes/class-upgrade180.php",
-              "line": 7
+              "line": 25
             }
           ],
           "inputs": {
@@ -679,6 +679,168 @@
           "status": "gap",
           "reason": "Real protocol/database assertions exist locally. Studio database/cache assertions and browser log drawer bindings are unavailable.",
           "recovery": "Import the current immutable plugin snapshot into Studio, inspect supported recipes and bindings, review the preview, then run the bound owned-fixture scenarios and retain execution receipts."
+        }
+      ]
+    },
+    {
+      "id": "compat.beta181",
+      "title": "GetMCP 1.8.1-beta2 reviewed compatibility",
+      "intent": "Load the exact reviewed beta while preserving prior access and credentials, upstream security behavior, and the fail-closed guard for modified builds.",
+      "provenance": [
+        {
+          "kind": "owner-requirement",
+          "reference": "docs/verification-1.8.1-beta2.md",
+          "description": "Review and patch the Extensions compatibility warning for the beta; preserve configuration, credentials and protected endpoints."
+        }
+      ],
+      "dependencies": [
+        {
+          "slug": "getmcp",
+          "version": "1.8.1-beta2"
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "reviewed-loader",
+          "title": "Load the reviewed beta and its Extensions settings",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-runtime.php",
+              "line": 55
+            }
+          ],
+          "inputs": {
+            "fixture": "owned exact 1.8.1-beta2 package",
+            "expectedWarning": false
+          },
+          "status": "gap",
+          "reason": "The source and isolated runtime have local checks; Studio browser and deployed acceptance are not recorded.",
+          "recovery": "Import the current immutable snapshot and bind an owned beta fixture, then verify the Extensions screen and a permitted workflow."
+        },
+        {
+          "id": "unreviewed-refusal",
+          "title": "Block protected endpoints for a modified beta",
+          "case": "refusal",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "includes/class-runtime.php",
+              "line": 56
+            },
+            {
+              "path": "includes/class-upgrade180.php",
+              "line": 141
+            }
+          ],
+          "inputs": {
+            "fixture": "owned beta with one changed execution file and synthetic protected configuration",
+            "expectedProtectedMutation": false
+          },
+          "status": "gap",
+          "reason": "A Studio fixture with a deliberately modified core and an independent protected-state oracle is not bound.",
+          "recovery": "Bind an isolated modified core, issue a direct protected request and compare stored settings and grants."
+        },
+        {
+          "id": "debug-redaction",
+          "title": "Keep credentials out of the beta tool test output",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp"
+          },
+          "sourceRefs": [
+            {
+              "path": "compat/versions/1.8.1-beta2/includes/execution/class-tool-executor.php",
+              "line": 269
+            }
+          ],
+          "inputs": {
+            "fixture": "synthetic request and response with credential fields",
+            "expectedCredentialDisclosure": false
+          },
+          "status": "gap",
+          "reason": "The loaded local runtime has synthetic HTTP checks; a Studio tool-test browser binding is not recorded.",
+          "recovery": "Bind a synthetic upstream, execute a tool test and inspect the response and replay without exposing credential values."
+        },
+        {
+          "id": "connector-license-refusal",
+          "title": "Refuse a new connector when the tier forbids templates",
+          "case": "refusal",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp"
+          },
+          "sourceRefs": [
+            {
+              "path": "compat/versions/1.8.1-beta2/includes/api/class-servers-controller.php",
+              "line": 3212
+            }
+          ],
+          "inputs": {
+            "fixture": "unlicensed synthetic server with no database tools",
+            "expectedNewTools": 0
+          },
+          "status": "gap",
+          "reason": "Local direct REST and stored-state checks exist; Studio role and route bindings are not recorded.",
+          "recovery": "Bind an unlicensed owned fixture, submit the connector request and compare the stored tool count."
+        },
+        {
+          "id": "transport-pinning",
+          "title": "Pin resolved addresses for remote MCP requests",
+          "case": "positive",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "compat/includes/remote/class-safe-http.php",
+              "line": 30
+            }
+          ],
+          "inputs": {
+            "fixture": "synthetic HTTPS endpoint intercepted before network I/O",
+            "expectedDnsPinning": true
+          },
+          "status": "gap",
+          "reason": "The local runtime has synthetic transport checks; no Studio network-interception binding is recorded.",
+          "recovery": "Bind an owned synthetic endpoint and verify that the reviewed native transport pins its resolved address."
+        },
+        {
+          "id": "transport-refusal",
+          "title": "Refuse private, insecure and reserved-header requests",
+          "case": "refusal",
+          "role": "administrator",
+          "entry": {
+            "surface": "admin",
+            "path": "/wp-admin/admin.php?page=getmcp-extensions"
+          },
+          "sourceRefs": [
+            {
+              "path": "compat/includes/remote/class-safe-http.php",
+              "line": 31
+            }
+          ],
+          "inputs": {
+            "fixture": "private address, plain HTTP and reserved Host header",
+            "expectedOutboundRequests": 0
+          },
+          "status": "gap",
+          "reason": "The local runtime checks these refusals; no Studio direct-request binding is recorded.",
+          "recovery": "Bind an owned fixture and confirm each refused request produces no outbound connection."
         }
       ]
     }

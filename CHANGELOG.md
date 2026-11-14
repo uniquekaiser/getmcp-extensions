@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.1 - 2026-11-13
+- [COMPAT] Support the reviewed GetMCP 1.8.1-beta2 build while continuing to block unreviewed builds.
+- [SECURITY] Preserve credential redaction, connector plan limits and DNS-pinned remote requests on the reviewed beta.
+- [FIX] Correct the compatibility notice navigation arrow.
+- [DEV] Add upgrade, endpoint-guard and cross-version compatibility checks.
+
 ## 1.6.0 - 2026-11-02
 - [NEW] Connect individual Oura accounts on GetMCP 1.8 using personal OAuth grants.
 - [NEW] Allow explicitly configured public, read-only upstreams through existing authorized project and account gateways without forwarding gateway credentials.

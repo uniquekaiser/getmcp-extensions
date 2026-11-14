@@ -1,6 +1,6 @@
 <?php
 /** Local-only contract test for the legacy remote transport on GetMCP 1.8. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION ) {
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) ) {
 	throw new RuntimeException( 'A local GetMCP 1.8 fixture is required.' );
 }
 require_once GETMCP_EXTENSIONS_PATH . 'compat/includes/remote/class-remote-exception.php';

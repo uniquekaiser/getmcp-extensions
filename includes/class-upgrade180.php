@@ -11,6 +11,17 @@ final class Upgrade180 {
 		'\\GetMCP\\Api\\ServersController' => array( 'compat/versions/1.8.0/includes/api/class-servers-controller.php', '0f79a5f1d234edb330bcc9cda6dc76522177c4089654685c1c9e3c7f6f87f7cf' ),
 		'\\GetMCP\\Builtin\\BuiltinTools' => array( 'compat/versions/1.8.0/includes/builtin/class-builtin-tools.php', '1f2769370078257aa02fdbe505e942780f0557b6718413c66d04721568f9dfa8' ),
 	);
+	private const ADAPTERS_181_BETA = array(
+		'\\GetMCP\\Api\\ServersController' => array( 'compat/versions/1.8.1-beta2/includes/api/class-servers-controller.php', '467949de9d6e06e3d3130e502546553a6469376c3769e4e451042229bd215246' ),
+		'\\GetMCP\\Execution\\ToolExecutor' => array( 'compat/versions/1.8.1-beta2/includes/execution/class-tool-executor.php', '0e19203bd58832a61aca21499d7a18316832b7e37f275db88de4e350b871180d' ),
+	);
+
+	private static function adapters( ?string $profile = null ): array {
+		$profile = $profile ?? Runtime::profile();
+		if ( 'vendor-original-1.8.0' === $profile ) { return self::ADAPTERS_180; }
+		if ( 'vendor-original-1.8.1-beta2' === $profile ) { return array_replace( self::ADAPTERS_180, self::ADAPTERS_181_BETA ); }
+		return array();
+	}
     /** @wp-test feature=upgrade.180 scenario=preview-refusal */
     public static function preview( int $id ) {
         if ( ! current_user_can( 'manage_options' ) ) { return new \WP_Error( 'upgrade_forbidden', 'You cannot review this migration.', array( 'status' => 403 ) ); }
@@ -127,9 +138,20 @@ final class Upgrade180 {
         return true;
     }
 
+    /** @wp-test feature=compat.beta181 scenario=unreviewed-refusal */
     public static function reviewed_core_files(): bool {
-        if ( ! defined( 'GETMCP_PATH' ) || ! defined( 'GETMCP_VERSION' ) || '1.8.0' !== GETMCP_VERSION ) { return false; }
-        $manifest_file = GETMCP_EXTENSIONS_PATH . 'compatibility-1.8-migration.json';
+        if ( ! defined( 'GETMCP_PATH' ) || ! Runtime::is_180_version() ) { return false; }
+		if ( '1.8.1-beta2' === GETMCP_VERSION ) {
+			// Never migrate an unreviewed beta or run with a rejected adapter. The
+			// activation path may call this before Runtime::boot has run.
+			if ( Runtime::is_reviewed_180() ) {
+				if ( ! Runtime::ready() || 'vendor-original-1.8.1-beta2' !== Runtime::profile() ) { return false; }
+			} else {
+				$check = Runtime::inspect( GETMCP_PATH );
+				if ( 'vendor-original-1.8.1-beta2' !== $check['profile'] || ! self::reviewed_adapter_files( $check['classes'], $check['profile'] ) ) { return false; }
+			}
+		}
+        $manifest_file = GETMCP_EXTENSIONS_PATH . ( '1.8.1-beta2' === GETMCP_VERSION ? 'compatibility-1.8.1-beta2-migration.json' : 'compatibility-1.8-migration.json' );
         $manifest = is_file( $manifest_file ) ? json_decode( file_get_contents( $manifest_file ), true ) : null;
         if ( ! is_array( $manifest ) || count( $manifest ) !== 14 ) { return false; }
         foreach ( $manifest as $file => $expected ) {
@@ -154,31 +176,34 @@ final class Upgrade180 {
             if ( ! class_exists( $class ) ) { return false; }
             $loaded = realpath( ( new \ReflectionClass( $class ) )->getFileName() );
             $expected = realpath( GETMCP_PATH . $file );
-			if ( '\\GetMCP\\Core\\ServerManager' === $class && 'vendor-original-1.8.0' === Runtime::profile() ) {
+			if ( '\\GetMCP\\Core\\ServerManager' === $class && Runtime::is_reviewed_180() ) {
 				if ( ! self::reviewed_adapter( $class ) ) { return false; }
 				continue;
 			}
             if ( ! $expected || $loaded !== $expected ) { return false; }
         }
-		if ( 'vendor-original-1.8.0' === Runtime::profile() && ! self::reviewed_adapter( '\\GetMCP\\Protocol\\JsonRpcRouter' ) ) { return false; }
-		if ( 'vendor-original-1.8.0' === Runtime::profile() && ! self::reviewed_adapter( '\\GetMCP\\Execution\\ToolExecutor' ) ) { return false; }
-		if ( 'vendor-original-1.8.0' === Runtime::profile() && ! self::reviewed_adapter( '\\GetMCP\\Protocol\\ToolsCallHandler' ) ) { return false; }
-		if ( 'vendor-original-1.8.0' === Runtime::profile() && ! self::reviewed_adapter( '\\GetMCP\\Api\\ServersController' ) ) { return false; }
-		if ( 'vendor-original-1.8.0' === Runtime::profile() && ! self::reviewed_adapter( '\\GetMCP\\Builtin\\BuiltinTools' ) ) { return false; }
+		if ( Runtime::is_reviewed_180() && ! self::reviewed_adapter( '\\GetMCP\\Protocol\\JsonRpcRouter' ) ) { return false; }
+		if ( Runtime::is_reviewed_180() && ! self::reviewed_adapter( '\\GetMCP\\Execution\\ToolExecutor' ) ) { return false; }
+		if ( Runtime::is_reviewed_180() && ! self::reviewed_adapter( '\\GetMCP\\Protocol\\ToolsCallHandler' ) ) { return false; }
+		if ( Runtime::is_reviewed_180() && ! self::reviewed_adapter( '\\GetMCP\\Api\\ServersController' ) ) { return false; }
+		if ( Runtime::is_reviewed_180() && ! self::reviewed_adapter( '\\GetMCP\\Builtin\\BuiltinTools' ) ) { return false; }
         return true;
     }
 
 	private static function reviewed_adapter( string $class ): bool {
-		if ( ! isset( self::ADAPTERS_180[$class] ) || ! class_exists( $class ) ) { return false; }
-		list( $relative, $expected_hash ) = self::ADAPTERS_180[$class];
+		$adapters = self::adapters();
+		if ( ! isset( $adapters[$class] ) || ! class_exists( $class ) ) { return false; }
+		list( $relative, $expected_hash ) = $adapters[$class];
 		$path = GETMCP_EXTENSIONS_PATH . $relative;
 		if ( ! is_file( $path ) || realpath( ( new \ReflectionClass( $class ) )->getFileName() ) !== realpath( $path ) ) { return false; }
 		return hash_equals( $expected_hash, hash( 'sha256', str_replace( "\r\n", "\n", file_get_contents( $path ) ) ) );
 	}
 
 	/** Verify the mapped adapter bytes before any replacement autoloader is registered. */
-	public static function reviewed_adapter_files( array $classes ): bool {
-		foreach ( self::ADAPTERS_180 as $class => $adapter ) {
+	public static function reviewed_adapter_files( array $classes, ?string $profile = null ): bool {
+		$adapters = self::adapters( $profile );
+		if ( ! $adapters ) { return false; }
+		foreach ( $adapters as $class => $adapter ) {
 			list( $relative, $expected_hash ) = $adapter;
 			if ( ( $classes[ltrim( $class, '\\' )] ?? null ) !== $relative ) { return false; }
 			$path = GETMCP_EXTENSIONS_PATH . $relative;

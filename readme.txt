@@ -5,7 +5,7 @@ Requires at least: 6.2
 Tested up to: 7.1.3
 Requires PHP: 8.2
 Requires Plugins: getmcp
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,6 +40,12 @@ No. Command-only configurations require a reviewed native port.
 No. Its persistent endpoint guard blocks affected endpoints until a compatible runtime returns or records are deliberately migrated.
 
 == Changelog ==
+
+= 1.6.1 =
+* [COMPAT] Support the reviewed GetMCP 1.8.1-beta2 build while continuing to block unreviewed builds.
+* [SECURITY] Preserve credential redaction, connector plan limits and DNS-pinned remote requests on the reviewed beta.
+* [FIX] Correct the compatibility notice navigation arrow.
+* [DEV] Add upgrade, endpoint-guard and cross-version compatibility checks.
 
 = 1.6.0 =
 * [NEW] Connect individual Oura accounts on GetMCP 1.8 using personal OAuth grants.

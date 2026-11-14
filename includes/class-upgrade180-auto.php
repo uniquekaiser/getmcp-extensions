@@ -8,7 +8,7 @@ final class Upgrade180Auto {
 	/** @wp-test feature=upgrade.180 scenario=automatic-legacy-migration */
 	public static function maybe_migrate(): void {
 		if ( is_multisite() || ! Runtime::ready() || get_option( 'getmcp_extensions_deactivated' ) ) { return; }
-		if ( 'vendor-original-1.8.0' === Runtime::profile() && '1.35' === get_option( 'getmcp_db_version' ) && Upgrade180Store::SEPARATE === get_option( Upgrade180Store::OPTION ) && Upgrade180::reviewed_core() ) {
+		if ( Runtime::is_reviewed_180() && '1.35' === get_option( 'getmcp_db_version' ) && Upgrade180Store::SEPARATE === get_option( Upgrade180Store::OPTION ) && Upgrade180::reviewed_core() ) {
 			global $wpdb;
 			$scope = self::scope();
 			if ( is_wp_error( $scope ) || array() === $scope ) { return; }
@@ -25,7 +25,7 @@ final class Upgrade180Auto {
 	 * @wp-test feature=upgrade.180 scenario=deferred-migration-notice
 	 */
 	public static function notice(): void {
-		if ( ! current_user_can( 'manage_options' ) || ! Runtime::ready() || 'vendor-original-1.8.0' !== Runtime::profile() ) { return; }
+		if ( ! current_user_can( 'manage_options' ) || ! Runtime::ready() || ! Runtime::is_reviewed_180() ) { return; }
 		$scope = self::scope(); if ( is_wp_error( $scope ) || array() === $scope ) { return; }
 		global $wpdb; $where = self::scope_sql( $scope );
 		$rows = $wpdb->get_results( $wpdb->prepare( "SELECT id,name,status,auth_config FROM {$wpdb->prefix}getmcp_servers WHERE auth_type='oauth' AND server_kind IN ('native','remote-mcp','gateway') AND auth_config LIKE %s {$where} ORDER BY name,id", '%getmcp%' ), ARRAY_A );
@@ -44,7 +44,7 @@ final class Upgrade180Auto {
 	/** Convert only the currently reviewed legacy remote/gateway sign-in shape. */
 	public static function convert() {
 		global $wpdb;
-		if ( is_multisite() || ! Runtime::ready() || get_option( 'getmcp_extensions_deactivated' ) || 'vendor-original-1.8.0' !== Runtime::profile() || '1.35' !== get_option( 'getmcp_db_version' ) || Upgrade180Store::SEPARATE !== get_option( Upgrade180Store::OPTION ) || ! Upgrade180::reviewed_core() ) { return self::error(); }
+		if ( is_multisite() || ! Runtime::ready() || get_option( 'getmcp_extensions_deactivated' ) || ! Runtime::is_reviewed_180() || '1.35' !== get_option( 'getmcp_db_version' ) || Upgrade180Store::SEPARATE !== get_option( Upgrade180Store::OPTION ) || ! Upgrade180::reviewed_core() ) { return self::error(); }
 		if ( ! self::transactional() ) { return self::error(); }
 		$lock = 'getmcp-ext-auth180-' . substr( hash( 'sha256', $wpdb->prefix ), 0, 32 );
 		if ( '1' !== (string) $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, 2)', $lock ) ) ) { return self::error(); }

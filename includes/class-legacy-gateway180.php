@@ -100,7 +100,7 @@ final class LegacyGateway180 {
 
 	/** Describe the review without exposing credentials or changing current access. */
 	private static function review_items(): array {
-		if ( ! Runtime::ready() || 'vendor-original-1.8.0' !== Runtime::profile() || ! \GetMCP\Gateway\McpGateway::is_enabled() ) { return array(); }
+		if ( ! Runtime::ready() || ! Runtime::is_reviewed_180() || ! \GetMCP\Gateway\McpGateway::is_enabled() ) { return array(); }
 		$raw = get_option( self::OPTION, false ); $snapshot = is_string( $raw ) ? json_decode( $raw, true ) : null;
 		$valid = is_array( $snapshot ) && is_array( $snapshot['members'] ?? null ) && is_array( $snapshot['keys'] ?? null ) && is_bool( $snapshot['boundary_ambiguous'] ?? false ) && is_string( $snapshot['signature'] ?? null ) && preg_match( '/\A[a-f0-9]{64}\z/D', $snapshot['signature'] ) && hash_equals( self::signature( $snapshot['members'], $snapshot['keys'], $snapshot['boundary_ambiguous'] ?? false ), $snapshot['signature'] );
 		$items = array();

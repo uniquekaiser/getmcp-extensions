@@ -1,6 +1,6 @@
 <?php
 /** Disposable account Gateway and personal-provider authorization regression. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
 global $wpdb;
 $manager = new \GetMCP\Core\ServerManager(); $tools = new \GetMCP\Core\ToolManager();
 $user = get_userdata( 1 ); $slug = 'qa-personal-' . substr( wp_generate_uuid4(), 0, 8 );

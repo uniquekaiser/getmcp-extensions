@@ -1,6 +1,6 @@
 <?php
 /** Synthetic Oura consent, state replay and personal token exchange. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
 global $wpdb;
 $manager = new \GetMCP\Core\ServerManager();
 $slug = 'qa-oura-consent-' . substr( wp_generate_uuid4(), 0, 8 );

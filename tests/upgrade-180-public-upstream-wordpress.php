@@ -1,6 +1,6 @@
 <?php
 /** Public REST upstreams retain only explicitly granted Gateway access. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
 global $wpdb;
 $manager = new \GetMCP\Core\ServerManager(); $tools = new \GetMCP\Core\ToolManager(); $old_user = get_current_user_id(); wp_set_current_user( 1 );
 $suffix = substr( wp_generate_uuid4(), 0, 8 ); $server = null; $tool = null; $gateway = null; $second_user = 0; $checks = 0; $calls = 0;

@@ -27,10 +27,12 @@ class SafeHttp {
 	}
 
 	/** Redirects are deliberately refused: token endpoints and MCP URLs must be exact. */
+	/** @wp-test feature=compat.beta181 scenario=transport-pinning */
+	/** @wp-test feature=compat.beta181 scenario=transport-refusal */
 	public static function request( string $url, string $method = 'GET', array $headers = array(), ?string $body = null ): array {
 		// 1.8's transport pins the validated DNS answers to the actual cURL
 		// connection. Reuse it instead of resolving a second time after checking.
-		if ( defined( 'GETMCP_VERSION' ) && '1.8.0' === GETMCP_VERSION && class_exists( '\\GetMCP\\RemoteMcp\\SafeHttp' ) ) {
+		if ( \GetMCPExtensions\Runtime::is_reviewed_180() && class_exists( '\\GetMCP\\RemoteMcp\\SafeHttp' ) ) {
 			self::validate_headers( $headers );
 			try {
 				$result = \GetMCP\RemoteMcp\SafeHttp::request( $method, $url, $headers, $body );

@@ -5,7 +5,7 @@ namespace GetMCPExtensions;
 final class Standalone180 {
 	public static function enqueue( string $page ): void {
 		static $enqueued = false;
-		if ( $enqueued || 'vendor-original-1.8.0' !== Runtime::profile() || ! Runtime::ready() || ! in_array( $page, array( 'connections', 'portal', 'catalogue', 'settings', 'providers' ), true ) ) { return; }
+		if ( $enqueued || ! Runtime::is_reviewed_180() || ! Runtime::ready() || ! in_array( $page, array( 'connections', 'portal', 'catalogue', 'settings', 'providers' ), true ) ) { return; }
 		$enqueued = true;
 		$version = static fn( string $name ): string => substr( hash_file( 'sha256', GETMCP_EXTENSIONS_PATH . 'admin/' . $name ), 0, 16 );
 		wp_enqueue_style( 'getmcp-extensions-180', GETMCP_EXTENSIONS_URL . 'admin/standalone-180.css', array(), $version( 'standalone-180.css' ) );

@@ -36,10 +36,10 @@
     "semantic_hash": "df72d1bb70f8f3316a15149fb7b3a049"
   },
   "compatibility.json": {
-    "mtime": 1793573047.3591049,
-    "seen": 1793584157.2585578,
-    "ast_hash": "ee5c401ead4aab3f4cdc5fda22670532",
-    "semantic_hash": "ee5c401ead4aab3f4cdc5fda22670532"
+    "mtime": 1794619625.938955,
+    "seen": 1794621085.6952677,
+    "ast_hash": "7f0fb01c1c7c02c9df80bade3ab7bff4",
+    "semantic_hash": "7f0fb01c1c7c02c9df80bade3ab7bff4"
   },
   "composer.json": {
     "mtime": 1791305253.9036195,
@@ -72,10 +72,10 @@
     "semantic_hash": "fd00c953db95d044f56005c78c215bdf"
   },
   "includes/class-lifecycle.php": {
-    "mtime": 1793557622.8255503,
-    "seen": 1793584157.2609205,
-    "ast_hash": "1686e06d8e75dd11d24024ec989beebe",
-    "semantic_hash": "1686e06d8e75dd11d24024ec989beebe"
+    "mtime": 1794619653.2407377,
+    "seen": 1794621085.6962712,
+    "ast_hash": "46a121523defaee5ca01b9b88712b846",
+    "semantic_hash": "46a121523defaee5ca01b9b88712b846"
   },
   "includes/class-marketing-management-tool.php": {
     "mtime": 1793590481.2735085,
@@ -132,10 +132,10 @@
     "semantic_hash": "602697e8ea86928198ae91db8651da6a"
   },
   "includes/class-runtime.php": {
-    "mtime": 1793598060.899223,
-    "seen": 1793599013.1472101,
-    "ast_hash": "900d26872c2c5e5bebf68d74589be884",
-    "semantic_hash": "900d26872c2c5e5bebf68d74589be884"
+    "mtime": 1794621535.7249827,
+    "seen": 1794621629.8594272,
+    "ast_hash": "44ada6839d090ff3336a7eb43f8beddc",
+    "semantic_hash": "44ada6839d090ff3336a7eb43f8beddc"
   },
   "includes/class-updater.php": {
     "mtime": 1791659821.3694053,
@@ -168,10 +168,10 @@
     "semantic_hash": "2b818855a77b30e28ba63035faa2c5ce"
   },
   "tools/build-release.py": {
-    "mtime": 1793490089.7147665,
-    "seen": 1793491507.7783484,
-    "ast_hash": "09021518da5df0b2bfae45441055a52c",
-    "semantic_hash": "09021518da5df0b2bfae45441055a52c"
+    "mtime": 1794619702.4649053,
+    "seen": 1794621085.6976728,
+    "ast_hash": "a9274823a6beeea8cd49bc7dfac4dbc4",
+    "semantic_hash": "a9274823a6beeea8cd49bc7dfac4dbc4"
   },
   "tools/sync-readme.py": {
     "mtime": 1792158756.9787114,
@@ -300,10 +300,10 @@
     "semantic_hash": "05cc858e843655618507488bb1a0fe9a"
   },
   "includes/class-remote-catalogue.php": {
-    "mtime": 1793554427.1722043,
-    "seen": 1793584157.2625275,
-    "ast_hash": "07bd75bd844dfe74573c0a5c6b1b0931",
-    "semantic_hash": "07bd75bd844dfe74573c0a5c6b1b0931"
+    "mtime": 1794619653.1135895,
+    "seen": 1794621085.6972158,
+    "ast_hash": "f8fc53d94f17f40fbb2b1d8ca2a70be5",
+    "semantic_hash": "f8fc53d94f17f40fbb2b1d8ca2a70be5"
   },
   "tools/import-remote-catalogue.py": {
     "mtime": 1792027063.0575337,
@@ -312,10 +312,10 @@
     "semantic_hash": "9a6c404016666f328ba3a7e17cbe8256"
   },
   "docs/testing/test-definitions.json": {
-    "mtime": 1793598951.8783746,
-    "seen": 1793599013.1446202,
-    "ast_hash": "ad7cff47ba3674f8952dede74bb1a521",
-    "semantic_hash": "ad7cff47ba3674f8952dede74bb1a521"
+    "mtime": 1794620850.2456927,
+    "seen": 1794621085.695349,
+    "ast_hash": "e128c7366ecb40f3a73b0ef6ffc249c7",
+    "semantic_hash": "e128c7366ecb40f3a73b0ef6ffc249c7"
   },
   "tools/handoff-catalogue.py": {
     "mtime": 1792078554.430989,
@@ -366,10 +366,10 @@
     "semantic_hash": "a18ae4cdfc194943f8442e60ae61ecec"
   },
   "includes/class-upgrade180.php": {
-    "mtime": 1793598083.2738514,
-    "seen": 1793599013.1478267,
-    "ast_hash": "132a7a60237985c3249ca67e341dcde8",
-    "semantic_hash": "132a7a60237985c3249ca67e341dcde8"
+    "mtime": 1794620378.7410655,
+    "seen": 1794621085.697441,
+    "ast_hash": "56fb094255e5b93e2e8c1549cbd63c15",
+    "semantic_hash": "56fb094255e5b93e2e8c1549cbd63c15"
   },
   "admin/standalone-180.js": {
     "mtime": 1793598702.3599007,
@@ -384,22 +384,22 @@
     "semantic_hash": "768e6e2cee2057c9c0efe1759bce0395"
   },
   "includes/class-legacy-gateway180.php": {
-    "mtime": 1793588660.920376,
-    "seen": 1793591018.9725394,
-    "ast_hash": "ae8238e534651a813706a111269a3d1d",
-    "semantic_hash": "ae8238e534651a813706a111269a3d1d"
+    "mtime": 1794619653.0894635,
+    "seen": 1794621085.6962695,
+    "ast_hash": "1d5eeb2ea67dc4299c6dbf3acd4c0950",
+    "semantic_hash": "1d5eeb2ea67dc4299c6dbf3acd4c0950"
   },
   "includes/class-standalone180.php": {
-    "mtime": 1793555972.0199347,
-    "seen": 1793584157.2625327,
-    "ast_hash": "01f232afaf541697278d70a3519bb783",
-    "semantic_hash": "01f232afaf541697278d70a3519bb783"
+    "mtime": 1794619653.1683457,
+    "seen": 1794621085.6972187,
+    "ast_hash": "9b1acd41690b575acdc0ee15db5564ee",
+    "semantic_hash": "9b1acd41690b575acdc0ee15db5564ee"
   },
   "includes/class-upgrade180-auto.php": {
-    "mtime": 1793597460.5675392,
-    "seen": 1793599013.1474574,
-    "ast_hash": "ea296f0d076aa000458aeba7f379c785",
-    "semantic_hash": "ea296f0d076aa000458aeba7f379c785"
+    "mtime": 1794619653.2079108,
+    "seen": 1794621085.697292,
+    "ast_hash": "e051c99caab9a5b22661b2dcf47bd61d",
+    "semantic_hash": "e051c99caab9a5b22661b2dcf47bd61d"
   },
   "includes/class-upgrade180-codes.php": {
     "mtime": 1793498145.65795,
@@ -408,10 +408,10 @@
     "semantic_hash": "6dc73d74c99c100c71fb66069ff6bc19"
   },
   "includes/class-upgrade180-store.php": {
-    "mtime": 1793572010.614952,
-    "seen": 1793584157.262887,
-    "ast_hash": "0fa201631c31030a63f181ff3c947ba7",
-    "semantic_hash": "0fa201631c31030a63f181ff3c947ba7"
+    "mtime": 1794619653.2089112,
+    "seen": 1794621085.6974394,
+    "ast_hash": "815978b0107be4c2db04f23b96539fa2",
+    "semantic_hash": "815978b0107be4c2db04f23b96539fa2"
   },
   "includes/class-gateway-personal180.php": {
     "mtime": 1793598060.9017403,
@@ -430,5 +430,11 @@
     "seen": 1793599013.1470778,
     "ast_hash": "e4768beccfcf7cdbcec358f61a49cdb4",
     "semantic_hash": "e4768beccfcf7cdbcec358f61a49cdb4"
+  },
+  "compatibility-1.8.1-beta2-migration.json": {
+    "mtime": 1794619625.9410925,
+    "seen": 1794621085.6952653,
+    "ast_hash": "c62848ed33d5595c68a6375fb28cbfd3",
+    "semantic_hash": "c62848ed33d5595c68a6375fb28cbfd3"
   }
 }

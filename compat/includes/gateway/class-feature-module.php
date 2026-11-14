@@ -124,7 +124,7 @@ class FeatureModule {
 
 	public static function menu(): void {
 		$admin = new \GetMCP\Admin\Admin();
-		$is_180 = 'vendor-original-1.8.0' === \GetMCPExtensions\Runtime::profile();
+		$is_180 = \GetMCPExtensions\Runtime::is_reviewed_180();
 		$hook = add_submenu_page( 'getmcp', 'Gateways & Remote MCP', 'Gateways & Remote MCP', 'getmcp_manage_servers', $is_180 ? 'getmcp-extensions-connections' : 'getmcp-connections', $is_180 ? static fn() => \GetMCPExtensions\Standalone180::render( 'connections' ) : array( $admin, 'render_app' ) );
 		if ( $hook ) { add_action( 'load-' . $hook, $is_180 ? static fn() => \GetMCPExtensions\Standalone180::enqueue( 'connections' ) : array( $admin, 'on_page_load' ) ); }
 		$hook = add_submenu_page( 'getmcp', 'My MCP Connections', 'My MCP Connections', 'getmcp_manage_servers', $is_180 ? 'getmcp-extensions-my-connections' : 'getmcp-my-connections', $is_180 ? static fn() => \GetMCPExtensions\Standalone180::render( 'portal' ) : array( $admin, 'render_app' ) );
@@ -147,7 +147,7 @@ class FeatureModule {
 		self::require_login();
 		if ( ! current_user_can( 'read' ) ) { wp_die( 'Access denied.', '', array( 'response' => 403 ) ); }
 		nocache_headers();
-		if ( 'vendor-original-1.8.0' === \GetMCPExtensions\Runtime::profile() ) { \GetMCPExtensions\Standalone180::enqueue( 'portal' ); }
+		if ( \GetMCPExtensions\Runtime::is_reviewed_180() ) { \GetMCPExtensions\Standalone180::enqueue( 'portal' ); }
 		else { ( new \GetMCP\Admin\Admin() )->enqueue_assets(); }
 		echo '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>My MCP Connections</title>';
 		wp_head(); echo '</head><body class="bg-gray-50">'; self::render( true ); wp_footer(); echo '</body></html>'; exit;
@@ -168,7 +168,7 @@ class FeatureModule {
 	}
 
 	public static function render( bool $portal ): void {
-		if ( 'vendor-original-1.8.0' === \GetMCPExtensions\Runtime::profile() ) { \GetMCPExtensions\Standalone180::render( $portal ? 'portal' : 'connections' ); return; }
+		if ( \GetMCPExtensions\Runtime::is_reviewed_180() ) { \GetMCPExtensions\Standalone180::render( $portal ? 'portal' : 'connections' ); return; }
 		if ( ! wp_script_is( 'getmcp-admin', 'enqueued' ) ) { ( new \GetMCP\Admin\Admin() )->enqueue_assets(); }
 		wp_add_inline_script( 'getmcp-admin', 'window.mountGetMCPConnectionPortal();', 'after' );
 		echo '<div class="getmcp-wrap"><div id="getmcp-native-connections"><h1>My MCP Connections</h1><p>Loading…</p></div></div>';

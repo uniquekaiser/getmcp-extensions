@@ -22,16 +22,23 @@ final class Runtime {
     }
     public static function ready(): bool { return self::$ready; }
     public static function profile(): string { return self::$profile; }
+    /** Only the separately reviewed 1.8 builds share these adapters and migrations. */
+    public static function is_reviewed_180(): bool {
+        return in_array( self::$profile, array( 'vendor-original-1.8.0', 'vendor-original-1.8.1-beta2' ), true );
+    }
+    public static function is_180_version(): bool {
+        return defined( 'GETMCP_VERSION' ) && in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true );
+    }
     public static function server_enabled( $server ): bool {
-		if ( 'vendor-original-1.8.0' === self::$profile && $server instanceof \GetMCP\Core\Server && \GetMCP\Gateway\McpGateway::is_gateway( $server ) ) { return true; }
+		if ( self::is_reviewed_180() && $server instanceof \GetMCP\Core\Server && \GetMCP\Gateway\McpGateway::is_gateway( $server ) ) { return true; }
         $settings = json_decode( $server->settings ?? '{}', true ) ?: array();
         if ( ! empty( $settings['getmcp_extensions_required'] ) && ! ( GoogleHealth::is_server( $server ) ? GoogleHealth::enabled() : MarketingModule::enabled() ) ) { return false; }
-        $kind = $server->server_kind ?? ( defined( 'GETMCP_VERSION' ) && '1.8.0' === GETMCP_VERSION ? LegacyBridge::kind( $server ) : 'native' );
+        $kind = $server->server_kind ?? ( self::is_180_version() ? LegacyBridge::kind( $server ) : 'native' );
         if ( 'unknown' === $kind ) { return false; }
 		$config = json_decode( $server->auth_config ?? '{}', true ) ?: array();
 		// An incomplete conversion must never make a legacy OAuth endpoint
 		// available through 1.8's different OAuth interpretation.
-		if ( 'vendor-original-1.8.0' === self::$profile ) {
+		if ( self::is_reviewed_180() ) {
 			if ( in_array( $kind, array( 'gateway', 'remote-mcp' ), true ) && ( 'wordpress' !== ( $server->auth_type ?? '' ) || 'standard' !== ( $server->kind ?? '' ) ) ) { return false; }
 			if ( 'native' === $kind && 'oauth' === ( $server->auth_type ?? '' ) && 'getmcp' === ( $config['provider'] ?? '' ) ) { return false; }
 		}
@@ -45,6 +52,8 @@ final class Runtime {
     public static function assert_enabled( string $feature ): void {
         if ( ! self::enabled( $feature ) ) { throw new \GetMCP\Remote\RemoteException( 'This GetMCP Extensions feature is disabled.', -32003 ); }
     }
+    /** @wp-test feature=compat.beta181 scenario=reviewed-loader */
+    /** @wp-test feature=compat.beta181 scenario=unreviewed-refusal */
     public static function inspect( string $path ): array {
         $manifest = json_decode( file_get_contents( GETMCP_EXTENSIONS_PATH . 'compatibility.json' ), true );
         $best = array(); $selected = '';
@@ -74,7 +83,7 @@ final class Runtime {
         if ( ! defined( 'GETMCP_PATH' ) || version_compare( PHP_VERSION, '8.2', '<' ) ) { self::$errors = array( 'GetMCP and PHP 8.2 or newer are required.' ); return; }
         $check = self::inspect( GETMCP_PATH ); self::$profile = $check['profile']; self::$errors = $check['errors'];
         if ( ! self::$profile ) { return; }
-		if ( 'vendor-original-1.8.0' === self::$profile && ! Upgrade180::reviewed_adapter_files( $check['classes'] ) ) { self::$errors = array( 'A required 1.8 compatibility adapter did not match its reviewed version.' ); return; }
+		if ( self::is_reviewed_180() && ! Upgrade180::reviewed_adapter_files( $check['classes'] ) ) { self::$errors = array( 'A required 1.8 compatibility adapter did not match its reviewed version.' ); return; }
         // Already integrated builds own their implementation; do not redeclare their classes.
         $native = 'integrated-handoff-1.6.0' === self::$profile;
         {
@@ -143,30 +152,30 @@ final class Runtime {
     public static function menu(): void {
         $hook = add_submenu_page( 'getmcp', 'GetMCP Extensions', 'Extensions', 'manage_options', 'getmcp-extensions', array( self::class, 'render' ) );
 		if ( $hook && self::$ready ) {
-			if ( 'vendor-original-1.8.0' === self::$profile ) { add_action( 'load-' . $hook, static fn() => Standalone180::enqueue( 'settings' ) ); }
+			if ( self::is_reviewed_180() ) { add_action( 'load-' . $hook, static fn() => Standalone180::enqueue( 'settings' ) ); }
 			else { $admin = new \GetMCP\Admin\Admin(); add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
 		}
     }
     public static function render(): void {
         if ( ! self::$ready ) {
             echo '<div class="wrap"><h1>GetMCP Extensions</h1><p>Compatibility review required. Affected MCP endpoints are blocked; configuration and credentials are preserved.</p><pre>' . esc_html( implode( "\n", self::$errors ) ) . '</pre>';
-            if ( defined( 'GETMCP_VERSION' ) && '1.8.0' === GETMCP_VERSION ) {
+            if ( self::is_180_version() ) {
                 echo '<h2>Review an isolated WordPress sign-in server</h2><p>This limited migration covers empty standalone sign-in servers only. Servers with tools or custom settings, remote servers, gateways, existing grants and other Extensions features still need compatibility work and remain protected.</p><p><label for="getmcp-upgrade-server-id">Server ID</label> <input id="getmcp-upgrade-server-id" type="number" min="1" step="1"> <button type="button" class="button" id="getmcp-upgrade-review">Review</button> <button type="button" class="button button-primary" id="getmcp-upgrade-migrate" hidden>Migrate reviewed server</button></p><p id="getmcp-upgrade-result" role="status" aria-live="polite"></p>';
             }
             echo '</div>'; return;
         }
-		if ( 'vendor-original-1.8.0' === self::$profile ) { Standalone180::render( 'settings' ); return; }
+		if ( self::is_reviewed_180() ) { Standalone180::render( 'settings' ); return; }
         echo '<div class="getmcp-wrap"><div id="getmcp-admin-root"></div></div><script>if(!location.hash)location.hash="/extensions";</script>';
     }
     public static function upgrade_assets( string $hook ): void {
-        if ( self::$ready || ! defined( 'GETMCP_VERSION' ) || '1.8.0' !== GETMCP_VERSION || 'getmcp_page_getmcp-extensions' !== $hook || ! current_user_can( 'manage_options' ) ) { return; }
+        if ( self::$ready || ! self::is_180_version() || 'getmcp_page_getmcp-extensions' !== $hook || ! current_user_can( 'manage_options' ) ) { return; }
         wp_enqueue_script( 'getmcp-extensions-upgrade-180', GETMCP_EXTENSIONS_URL . 'admin/upgrade-180.js', array(), self::asset_version( 'admin/upgrade-180.js' ), true );
         wp_add_inline_script( 'getmcp-extensions-upgrade-180', 'window.getmcpUpgrade180=' . wp_json_encode( array( 'base' => rest_url( 'getmcp-extensions/v1/upgrade-180/' ), 'nonce' => wp_create_nonce( 'wp_rest' ) ) ) . ';', 'before' );
     }
     public static function assets(): void {
 		// The 1.7 bundle and its webpack module IDs are incompatible with 1.8.
 		// Its reviewed 1.8 pages load their own scripts; never replace core's app.
-		if ( 'vendor-original-1.8.0' === self::$profile ) { return; }
+		if ( self::is_reviewed_180() ) { return; }
         if ( ! wp_script_is( 'getmcp-admin', 'enqueued' ) ) { return; }
         wp_enqueue_style( 'getmcp-extensions-connections', GETMCP_EXTENSIONS_URL . 'admin/connections.css', array(), self::asset_version( 'admin/connections.css' ) );
         // Use each file's content hash instead of the plugin release number. Admin
@@ -202,6 +211,6 @@ final class Runtime {
         return is_file( $path ) ? substr( hash_file( 'sha256', $path ), 0, 16 ) : GETMCP_EXTENSIONS_VERSION;
     }
     public static function notice(): void {
-        if ( ! self::$ready && current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-error"><p>GetMCP Extensions needs compatibility review. Its affected MCP endpoints are blocked. Open GetMCP â†’ Extensions for details.</p></div>'; }
+        if ( ! self::$ready && current_user_can( 'manage_options' ) ) { echo '<div class="notice notice-error"><p>GetMCP Extensions needs compatibility review. Its affected MCP endpoints are blocked. Open GetMCP &rarr; Extensions for details.</p></div>'; }
     }
 }

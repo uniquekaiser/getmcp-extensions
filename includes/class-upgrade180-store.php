@@ -94,7 +94,7 @@ final class Upgrade180Store {
 	public static function maybe_repair_native_schema(): void {
 		if ( is_multisite() || get_option( 'getmcp_extensions_deactivated' ) || ! Runtime::ready() ) { return; }
 		if ( 'vendor-original-1.7.0' === Runtime::profile() ) { delete_option( self::NATIVE_SCHEMA_OPTION ); return; }
-		if ( 'vendor-original-1.8.0' !== Runtime::profile() || '1.35' !== get_option( 'getmcp_db_version' ) || self::SEPARATE !== get_option( self::OPTION ) || 'ready-v1' === get_option( self::NATIVE_SCHEMA_OPTION ) || get_transient( 'getmcp_extensions_180_schema_retry' ) ) { return; }
+		if ( ! Runtime::is_reviewed_180() || '1.35' !== get_option( 'getmcp_db_version' ) || self::SEPARATE !== get_option( self::OPTION ) || 'ready-v1' === get_option( self::NATIVE_SCHEMA_OPTION ) || get_transient( 'getmcp_extensions_180_schema_retry' ) ) { return; }
 		$result = self::repair_native_schema();
 		if ( ! is_wp_error( $result ) ) { update_option( self::NATIVE_SCHEMA_OPTION, 'ready-v1', false ); return; }
 		set_transient( 'getmcp_extensions_180_schema_retry', 1, 5 * MINUTE_IN_SECONDS );

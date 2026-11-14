@@ -17,12 +17,12 @@ final class RemoteCatalogue {
     public static function menu(): void {
         if ( ! Runtime::enabled( 'remote_mcp' ) ) { return; }
         $admin = new \GetMCP\Admin\Admin();
-        $hook = add_submenu_page( 'getmcp', 'Remote MCP Servers', 'Remote MCP Servers', 'getmcp_manage_servers', 'vendor-original-1.8.0' === Runtime::profile() ? 'getmcp-extensions-remote-servers' : 'getmcp-remote-servers', static function(): void {
-			if ( 'vendor-original-1.8.0' === Runtime::profile() ) { Standalone180::render( 'catalogue' ); return; }
+        $hook = add_submenu_page( 'getmcp', 'Remote MCP Servers', 'Remote MCP Servers', 'getmcp_manage_servers', Runtime::is_reviewed_180() ? 'getmcp-extensions-remote-servers' : 'getmcp-remote-servers', static function(): void {
+			if ( Runtime::is_reviewed_180() ) { Standalone180::render( 'catalogue' ); return; }
             echo '<div class="getmcp-wrap"><div id="getmcp-admin-root"></div></div><script>if(!location.hash||location.hash==="#/connections")location.hash="/remote-servers";</script>';
         } );
 		if ( $hook ) {
-			if ( 'vendor-original-1.8.0' === Runtime::profile() ) { add_action( 'load-' . $hook, static fn() => Standalone180::enqueue( 'catalogue' ) ); }
+			if ( Runtime::is_reviewed_180() ) { add_action( 'load-' . $hook, static fn() => Standalone180::enqueue( 'catalogue' ) ); }
 			else { add_action( 'load-' . $hook, array( $admin, 'on_page_load' ) ); }
 		}
     }

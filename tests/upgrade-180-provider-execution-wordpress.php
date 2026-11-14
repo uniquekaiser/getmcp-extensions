@@ -1,6 +1,6 @@
 <?php
 /** Local synthetic per-user REST provider execution on the 1.8 adapter. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
 global $wpdb;
 wp_set_current_user( 1 );
 $manager = new \GetMCP\Core\ServerManager();

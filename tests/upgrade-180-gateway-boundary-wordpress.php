@@ -1,6 +1,6 @@
 <?php
 /** Reconstruct only members unambiguously inside the old 500-server limit. */
-if ( 'local' !== wp_get_environment_type() || '1.8.0' !== GETMCP_VERSION || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
+if ( 'local' !== wp_get_environment_type() || ! in_array( GETMCP_VERSION, array( '1.8.0', '1.8.1-beta2' ), true ) || '1' !== getenv( 'GETMCP_180_QA_ENABLE' ) ) { throw new RuntimeException( 'Isolated 1.8 fixture required.' ); }
 global $wpdb; $prior_prefix = $wpdb->prefix; $prefix = 'qa180_' . substr( str_replace( '-', '', wp_generate_uuid4() ), 0, 10 ) . '_'; $table = $prefix . 'getmcp_servers'; $checks = 0;
 $names = array( 'getmcp_gateway_enabled', 'getmcp_gateway_auth_type', 'getmcp_gateway_mode', 'getmcp_gateway_servers', 'getmcp_db_version', \GetMCPExtensions\LegacyGateway180::OPTION );
 $prior = array(); foreach ( $names as $name ) { $prior[$name] = get_option( $name, null ); }
